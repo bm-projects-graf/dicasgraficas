@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  slug: string;
+  pubDate: Date;
+  readingTime?: string;
+}
+
+const { title, description, category, slug, pubDate, readingTime } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('pt-PT', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+});
+---
+
+<article class="article-card">
+  <a href={`/artigos/${slug}/`}>
+    <div class="article-meta">
+      <span class="category">{category}</span>
+      {readingTime && <span>{readingTime}</span>}
+    </div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <span class="read-more">Ler artigo →</span>
+  </a>
+</article>
