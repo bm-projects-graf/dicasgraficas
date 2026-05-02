@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+
+const categories = [
+  { title: 'Preparação de ficheiros', slug: 'preparacao-de-ficheiros', description: 'CMYK, DPI, bleed e tudo o que precisas saber antes de enviar para a gráfica.' },
+  { title: 'Papel e suportes', slug: 'papel-e-suportes', description: 'Tipos de papel, gramagens, acabamentos. O guia completo do material que dá vida ao impresso.' },
+  { title: 'Acabamentos', slug: 'acabamentos', description: 'Verniz UV, laminados, hot stamping, encadernações.' },
+  { title: 'Produtos impressos', slug: 'produtos-impressos', description: 'Cartões, flyers, catálogos, embalagens, sinalética.' },
+  { title: 'Processos de impressão', slug: 'processos-de-impressao', description: 'Offset, digital, serigrafia, flexografia. Como funciona cada técnica.' },
+  { title: 'História e curiosidades', slug: 'historia-e-curiosidades', description: 'De Gutenberg ao digital. Os 600 anos da imprensa.' },
+  { title: 'Ciência da cor', slug: 'ciencia-da-cor', description: 'CMYK, Pantone, ICC profiles, ganho de ponto.' },
+  { title: 'Tipografia', slug: 'tipografia', description: 'Tipógrafos clássicos, fontes famosas, tipografia portuguesa.' },
+  { title: 'Negócio e marketing', slug: 'negocio-e-marketing', description: 'Como pedir orçamento, escolher a gráfica certa.' }
+];
+
+const categoriesWithCount = categories.map(cat => ({
+  ...cat,
+  count: allArticles.filter(a => a.data.category === cat.title).length
+})).filter(c => c.count > 0 || true);
+---
+
+<Base
+  title="Categorias | dicasgraficas.com"
+  description="Explora todos os temas cobertos: preparação de ficheiros, papel, acabamentos, processos, história gráfica, tipografia e mais."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem;">
+        <div class="eyebrow">Navegação por temas</div>
+        <h1>Categorias</h1>
+        <p>Os temas principais do site, organizados para uma exploração natural do mundo das artes gráficas.</p>
+      </div>
+
+      <div class="categories-grid" style="margin-top: 2rem;">
+        {categoriesWithCount.map((cat, idx) => (
+          <a href={`/categorias/${cat.slug}/`} class="category-card">
+            <div class="category-number">{String(idx + 1).padStart(2, '0')} · {cat.count} {cat.count === 1 ? 'artigo' : 'artigos'}</div>
+            <h3>{cat.title}</h3>
+            <p>{cat.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
