@@ -15,12 +15,6 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { Content } = await render(article);
 
-const formattedDate = new Date(article.data.pubDate).toLocaleDateString('pt-PT', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric'
-});
-
 // Find related articles (same category, exclude current)
 const allArticles = await getCollection('articles');
 const relatedArticles = allArticles
@@ -52,7 +46,6 @@ const catColor = cat?.color ?? 'var(--color-primary)';
 
         <div class="article-info">
           <span class="category">{article.data.category}</span>
-          <span>{formattedDate}</span>
           {article.data.readingTime && <span>{article.data.readingTime}</span>}
         </div>
       </div>

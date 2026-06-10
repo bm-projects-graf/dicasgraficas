@@ -16,8 +16,15 @@ function isActive(href: string) {
 
 <header class="site-header">
   <div class="container">
-    <a href="/" class="site-logo">
-      <span>dicasgraficas<span class="dot">.</span>com</span>
+    <a href="/" class="site-logo" aria-label="dicasgraficas.com — início">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 30" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="12" r="9" fill="#00AEEF" />
+          <circle cx="26" cy="12" r="9" fill="#EC008C" />
+          <circle cx="20" cy="20" r="9" fill="#FFD200" />
+        </svg>
+      </span>
+      <span class="logo-text">dicasgraficas<span class="dot">.</span>com</span>
     </a>
 
     <button class="menu-toggle" aria-label="Abrir menu">

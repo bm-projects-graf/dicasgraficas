@@ -2,13 +2,17 @@
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import { getCategory } from '../../data/categories';
 
 const allArticles = await getCollection('articles');
 const sortedArticles = allArticles.sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 
-const categories = [...new Set(allArticles.map(a => a.data.category))];
+// Categorias presentes, com o slug correto vindo da fonte central
+const usedCategories = [...new Set(allArticles.map(a => a.data.category))]
+  .map(title => getCategory(title))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
 ---
 
 <Base
@@ -25,9 +29,9 @@ const categories = [...new Set(allArticles.map(a => a.data.category))];
 
       <div class="filter-bar">
         <a href="/artigos/" class="active">Todos</a>
-        {categories.map(cat => (
-          <a href={`/categorias/${cat.toLowerCase().replace(/\s+/g, '-').replace(/ç/g, 'c').replace(/ã/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i')}/`}>
-            {cat}
+        {usedCategories.map(cat => (
+          <a href={`/categorias/${cat.slug}/`} style={`--cat: ${cat.color}`}>
+            {cat.title}
           </a>
         ))}
       </div>
