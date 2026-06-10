@@ -25,7 +25,7 @@ const formattedDate = pubDate.toLocaleDateString('pt-PT', {
   <a href={`/artigos/${slug}/`}>
     <div class="article-meta">
       <span class="category">{category}</span>
-      {readingTime && <span>{readingTime}</span>}
+      {readingTime && <span>{readingTime} de leitura</span>}
     </div>
     <h3>{title}</h3>
     <p>{description}</p>
