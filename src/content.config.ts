@@ -16,7 +16,8 @@ const articles = defineCollection({
       'Processos de impressão',
       'História e curiosidades',
       'Ciência da cor',
-      'Tipografia'
+      'Tipografia',
+      'Design gráfico'
     ]),
     keywords: z.string().optional(),
     readingTime: z.string().optional(),
