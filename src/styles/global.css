@@ -815,8 +815,8 @@ img {
 
 .logo-mark {
   display: inline-flex;
-  width: 36px;
-  height: 27px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
   transition: transform 0.35s ease;
 }
