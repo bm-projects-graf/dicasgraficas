@@ -10,4 +10,4 @@
 //
 // Assim que preencheres este valor e publicares, os "Auto Ads"
 // do Google passam a aparecer automaticamente em todo o site.
-export const ADSENSE_CLIENT = '';
+export const ADSENSE_CLIENT = 'ca-pub-4273939150309967';
