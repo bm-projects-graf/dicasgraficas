@@ -1,4 +1,6 @@
 ---
+import { getCategory } from '../data/categories';
+
 interface Props {
   title: string;
   description: string;
@@ -10,6 +12,8 @@ interface Props {
 
 const { title, description, category, slug, pubDate, readingTime } = Astro.props;
 
+const catColor = getCategory(category)?.color ?? 'var(--color-primary)';
+
 const formattedDate = pubDate.toLocaleDateString('pt-PT', {
   day: 'numeric',
   month: 'long',
@@ -17,7 +21,7 @@ const formattedDate = pubDate.toLocaleDateString('pt-PT', {
 });
 ---
 
-<article class="article-card">
+<article class="article-card reveal" style={`--cat: ${catColor}`}>
   <a href={`/artigos/${slug}/`}>
     <div class="article-meta">
       <span class="category">{category}</span>

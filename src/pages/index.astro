@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import { categories } from '../data/categories';
 
 const allArticles = await getCollection('articles');
 const sortedArticles = allArticles.sort(
@@ -10,44 +11,11 @@ const sortedArticles = allArticles.sort(
 
 const recentArticles = sortedArticles.slice(0, 6);
 
-const categories = [
-  {
-    title: 'Preparação de ficheiros',
-    description: 'CMYK, DPI, bleed e tudo o que precisas saber antes de enviar para a gráfica.',
-    slug: 'preparacao-de-ficheiros',
-    number: '01'
-  },
-  {
-    title: 'Papel e suportes',
-    description: 'Tipos, gramagens, acabamentos. O guia completo do material que dá vida ao impresso.',
-    slug: 'papel-e-suportes',
-    number: '02'
-  },
-  {
-    title: 'Acabamentos',
-    description: 'Verniz UV, laminados, hot stamping, encadernações. As técnicas que distinguem o profissional.',
-    slug: 'acabamentos',
-    number: '03'
-  },
-  {
-    title: 'Processos de impressão',
-    description: 'Offset, digital, serigrafia, flexografia. Como funciona cada técnica e quando usar.',
-    slug: 'processos-de-impressao',
-    number: '04'
-  },
-  {
-    title: 'História e curiosidades',
-    description: 'De Gutenberg ao digital. Os 600 anos da imprensa contados com rigor e leveza.',
-    slug: 'historia-e-curiosidades',
-    number: '05'
-  },
-  {
-    title: 'Negócio e marketing',
-    description: 'Como pedir orçamento, escolher a gráfica certa e fazer o impresso render.',
-    slug: 'negocio-e-marketing',
-    number: '06'
-  }
-];
+// Contagem de artigos por categoria
+const categoryCards = categories.map(cat => ({
+  ...cat,
+  count: allArticles.filter(a => a.data.category === cat.title).length
+}));
 ---
 
 <Base
@@ -66,15 +34,17 @@ const categories = [
 
   <section class="categories-section">
     <div class="container">
-      <h2 class="section-title">Por onde começar</h2>
-      <p class="section-subtitle">Os temas principais cobertos pelo site, organizados para uma exploração natural.</p>
+      <h2 class="section-title reveal">Por onde começar</h2>
+      <p class="section-subtitle reveal">Nove temas que cobrem o mundo das artes gráficas, de ponta a ponta.</p>
 
-      <div class="categories-grid">
-        {categories.map(cat => (
-          <a href={`/categorias/${cat.slug}/`} class="category-card">
+      <div class="categories-grid reveal-stagger">
+        {categoryCards.map(cat => (
+          <a href={`/categorias/${cat.slug}/`} class="category-card" style={`--cat: ${cat.color}`}>
+            <div class="cat-icon" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${cat.icon}</svg>`} />
             <div class="category-number">{cat.number} ·</div>
             <h3>{cat.title}</h3>
-            <p>{cat.description}</p>
+            <p>{cat.short}</p>
+            <span class="cat-count">{cat.count} {cat.count === 1 ? 'artigo' : 'artigos'}</span>
           </a>
         ))}
       </div>
@@ -84,8 +54,8 @@ const categories = [
   {recentArticles.length > 0 && (
     <section class="articles-section">
       <div class="container">
-        <h2 class="section-title">Artigos recentes</h2>
-        <p class="section-subtitle">Os últimos artigos publicados.</p>
+        <h2 class="section-title reveal">Artigos recentes</h2>
+        <p class="section-subtitle reveal">Os últimos artigos publicados.</p>
 
         <div class="articles-grid">
           {recentArticles.map(article => (
@@ -101,26 +71,9 @@ const categories = [
         </div>
 
         <p class="text-center mt-2">
-          <a href="/artigos/" class="cta-button">Ver todos os artigos →</a>
+          <a href="/artigos/" class="btn-outline">Ver todos os artigos →</a>
         </p>
       </div>
     </section>
   )}
 </Base>
-
-<style>
-  .cta-button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 4px;
-    transition: all 0.2s;
-  }
-  .cta-button:hover {
-    background: var(--color-primary);
-    color: white;
-  }
-</style>

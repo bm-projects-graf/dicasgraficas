@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection, render } from 'astro:content';
+import { getCategory } from '../../data/categories';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -26,21 +27,17 @@ const relatedArticles = allArticles
   .filter(a => a.data.category === article.data.category && a.id !== article.id)
   .slice(0, 3);
 
-const categorySlug = article.data.category
-  .toLowerCase()
-  .replace(/\s+/g, '-')
-  .replace(/ç/g, 'c')
-  .replace(/ã/g, 'a')
-  .replace(/é/g, 'e')
-  .replace(/í/g, 'i');
+const cat = getCategory(article.data.category);
+const categorySlug = cat?.slug ?? '';
+const catColor = cat?.color ?? 'var(--color-primary)';
 ---
 
 <Base
   title={article.data.title}
   description={article.data.description}
 >
-  <article>
-    <header class="article-header">
+  <article style={`--cat: ${catColor}`}>
+    <header class="article-header article-header--cat">
       <div class="container container-narrow">
         <div class="breadcrumb">
           <a href="/">Início</a>

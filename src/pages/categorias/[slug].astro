@@ -2,21 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import { categories } from '../../data/categories';
 
 export async function getStaticPaths() {
-  const categoryMap = [
-    { title: 'Preparação de ficheiros', slug: 'preparacao-de-ficheiros', description: 'Tudo o que precisas saber antes de enviar um ficheiro para a gráfica: CMYK, DPI, bleed, formatos, e os erros mais comuns que estragam um trabalho.' },
-    { title: 'Papel e suportes', slug: 'papel-e-suportes', description: 'O guia do material que dá vida ao impresso: tipos de papel, gramagens, acabamentos, e como escolher para cada projeto.' },
-    { title: 'Acabamentos', slug: 'acabamentos', description: 'Verniz UV, laminados, hot stamping, relevos, encadernações. As técnicas que distinguem um trabalho profissional.' },
-    { title: 'Produtos impressos', slug: 'produtos-impressos', description: 'Cartões de visita, flyers, catálogos, embalagens, sinalética. Como cada produto se planeia, desenha e imprime.' },
-    { title: 'Processos de impressão', slug: 'processos-de-impressao', description: 'Offset, digital, serigrafia, flexografia, rotogravura. Como funciona cada técnica e quando usar cada uma.' },
-    { title: 'História e curiosidades', slug: 'historia-e-curiosidades', description: 'De Gutenberg ao digital: 600 anos de imprensa contados com rigor histórico e leveza narrativa.' },
-    { title: 'Ciência da cor', slug: 'ciencia-da-cor', description: 'CMYK, Pantone, ICC profiles, ganho de ponto. A tecnologia por trás das cores que vemos impressas.' },
-    { title: 'Tipografia', slug: 'tipografia', description: 'Os mestres do tipo, fontes famosas, e a tradição tipográfica portuguesa.' },
-    { title: 'Negócio e marketing', slug: 'negocio-e-marketing', description: 'Como pedir orçamento, escolher a gráfica certa, e fazer o impresso render em campanhas reais.' }
-  ];
-
-  return categoryMap.map(cat => ({
+  return categories.map(cat => ({
     params: { slug: cat.slug },
     props: { category: cat }
   }));
@@ -33,7 +22,7 @@ const articles = allArticles
   title={`${category.title} | dicasgraficas.com`}
   description={category.description}
 >
-  <header class="category-header">
+  <header class="category-header" style={`--cat: ${category.color}`}>
     <div class="container">
       <div class="breadcrumb">
         <a href="/">Início</a>
@@ -42,6 +31,7 @@ const articles = allArticles
         <span>/</span>
         <span>{category.title}</span>
       </div>
+      <div class="category-hero-icon" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${category.icon}</svg>`} />
       <div class="eyebrow">Categoria</div>
       <h1>{category.title}</h1>
       <p>{category.description}</p>

@@ -801,3 +801,274 @@ img {
     display: none;
   }
 }
+
+/* ============================================
+   REDESIGN DINÂMICO — cor por categoria,
+   ícones e micro-animações
+   ============================================ */
+
+/* --- Hero com movimento subtil --- */
+.hero {
+  background:
+    radial-gradient(60% 120% at 85% -10%, color-mix(in srgb, var(--color-primary-light) 22%, transparent) 0%, transparent 60%),
+    radial-gradient(50% 100% at 10% 120%, color-mix(in srgb, var(--color-accent) 12%, transparent) 0%, transparent 55%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 18%, transparent) 0%, transparent 70%);
+  filter: blur(10px);
+  animation: floaty 14s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+@keyframes floaty {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-24px, 22px) scale(1.08); }
+}
+
+.hero-eyebrow::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* --- Cartões de categoria coloridos --- */
+.category-card {
+  --cat: var(--color-primary);
+  overflow: hidden;
+  padding-top: 1.9rem;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--cat);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.category-card:hover {
+  border-color: var(--cat);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--cat) 18%, transparent);
+}
+
+.category-card:hover::before { transform: scaleX(1); }
+
+.cat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--cat) 12%, transparent);
+  color: var(--cat);
+  margin-bottom: 1.1rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.category-card:hover .cat-icon {
+  transform: translateY(-2px) rotate(-4deg);
+  background: color-mix(in srgb, var(--cat) 20%, transparent);
+}
+
+.cat-icon svg { width: 24px; height: 24px; }
+
+.category-card .category-number { color: var(--cat); }
+
+.category-card .cat-count {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--cat);
+  opacity: 0.85;
+}
+
+/* --- Cartões de artigo com cor da categoria --- */
+.article-card {
+  --cat: var(--color-primary);
+  position: relative;
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--cat);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.article-card:hover {
+  border-color: var(--cat);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--cat) 16%, transparent);
+}
+
+.article-card:hover::before { opacity: 1; }
+
+.article-card .article-meta .category,
+.article-card .read-more { color: var(--cat); }
+
+.article-card .article-meta .category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.article-card .article-meta .category::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--cat);
+}
+
+/* --- Barra de filtros (chips de categoria) --- */
+.filter-bar a {
+  --cat: var(--color-primary);
+}
+
+.filter-bar a:hover,
+.filter-bar a.active {
+  background: var(--cat);
+  border-color: var(--cat);
+}
+
+/* --- Botão "ver todos" e CTA --- */
+.btn-outline {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all var(--transition);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+/* --- Cabeçalho de categoria com a sua cor --- */
+.category-header {
+  --cat: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cat), color-mix(in srgb, var(--cat) 30%, transparent));
+}
+
+.category-header .eyebrow { color: var(--cat); }
+
+.category-hero-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--cat) 12%, transparent);
+  color: var(--cat);
+  margin-bottom: 1rem;
+}
+
+.category-hero-icon svg { width: 30px; height: 30px; }
+
+/* --- Revelar ao deslizar (scroll reveal) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Atraso em cascata para grelhas */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.06s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.12s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.18s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.24s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.30s; }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 0.36s; }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.42s; }
+.reveal-stagger.is-visible > *:nth-child(9) { transition-delay: 0.48s; }
+
+/* --- Página de artigo com a cor da categoria --- */
+.article-header--cat {
+  position: relative;
+}
+
+.article-header--cat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cat), color-mix(in srgb, var(--cat) 30%, transparent));
+}
+
+article[style*="--cat"] .article-info .category { color: var(--cat); }
+article[style*="--cat"] .article-body h2::before { color: var(--cat); }
+article[style*="--cat"] .article-body h3 { color: color-mix(in srgb, var(--cat) 75%, #000); }
+article[style*="--cat"] .article-body blockquote { border-left-color: var(--cat); }
+article[style*="--cat"] .article-body a { color: var(--cat); }
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .hero::after,
+  .hero-eyebrow::after { animation: none; }
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+}
