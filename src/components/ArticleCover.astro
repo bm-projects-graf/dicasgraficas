@@ -1,0 +1,14 @@
+---
+// Capa visual temática do artigo — cor + ícone da categoria, textura de
+// pontos de impressão (meio-tom) e faixa CMYK. Sem imagens externas nem direitos.
+interface Props {
+  color: string;
+  icon: string;
+  category: string;
+}
+const { color, icon, category } = Astro.props;
+---
+<div class="article-cover" style={`--cat: ${color}`} role="img" aria-label={`Ilustração da categoria ${category}`}>
+  <span class="article-cover-eyebrow">{category}</span>
+  <span class="article-cover-icon" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${icon}</svg>`} />
+</div>

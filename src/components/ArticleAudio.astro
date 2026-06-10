@@ -1,0 +1,103 @@
+---
+// Botão "Ouvir artigo" — usa a leitura de voz do navegador (Web Speech API).
+// Sem custos nem servidores: a voz vem do próprio sistema/navegador do utilizador.
+---
+<div class="article-audio" data-state="idle">
+  <button type="button" id="tts-toggle" class="tts-btn" aria-label="Ouvir o artigo em voz alta">
+    <svg class="tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path class="tts-glyph-play" d="M11 5 6 9H3v6h3l5 4V5z" />
+      <path class="tts-glyph-play" d="M15.5 8.5a5 5 0 0 1 0 7" />
+      <path class="tts-glyph-play" d="M18.5 6a8 8 0 0 1 0 12" />
+      <path class="tts-glyph-pause" d="M9 6v12M15 6v12" />
+    </svg>
+    <span class="tts-label">Ouvir artigo</span>
+  </button>
+  <button type="button" id="tts-stop" class="tts-btn tts-btn--stop" aria-label="Parar a leitura" hidden>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" /></svg>
+  </button>
+  <span class="tts-hint" hidden>A ler…</span>
+</div>
+
+<script>
+  const wrap = document.querySelector('.article-audio') as HTMLElement | null;
+  const toggle = document.getElementById('tts-toggle');
+  const stopBtn = document.getElementById('tts-stop') as HTMLElement | null;
+  const hint = document.querySelector('.tts-hint') as HTMLElement | null;
+  const label = document.querySelector('.tts-label');
+  const body = document.querySelector('.article-body');
+  const supported = 'speechSynthesis' in window;
+
+  if (!wrap || !toggle || !body || !supported) {
+    if (wrap) wrap.style.display = 'none';
+  } else {
+    const synth = window.speechSynthesis;
+    let chunks: string[] = [];
+    let idx = 0;
+    let playing = false;
+    let paused = false;
+    let voice: SpeechSynthesisVoice | null = null;
+
+    function pickVoice() {
+      const vs = synth.getVoices();
+      voice = vs.find(v => v.lang && v.lang.toLowerCase() === 'pt-pt')
+           || vs.find(v => v.lang && v.lang.toLowerCase().startsWith('pt'))
+           || null;
+    }
+    pickVoice();
+    if (typeof synth.onvoiceschanged !== 'undefined') synth.onvoiceschanged = pickVoice;
+
+    function buildChunks() {
+      const raw = (body as HTMLElement).innerText.replace(/\s+/g, ' ').trim();
+      const sentences = raw.match(/[^.!?]+[.!?]*\s*/g) || [raw];
+      const out: string[] = [];
+      let cur = '';
+      for (const s of sentences) {
+        if ((cur + s).length > 220) { if (cur) out.push(cur.trim()); cur = s; }
+        else cur += s;
+      }
+      if (cur.trim()) out.push(cur.trim());
+      return out;
+    }
+
+    function setState(s: 'idle' | 'playing' | 'paused') {
+      wrap!.dataset.state = s;
+      if (label) label.textContent = s === 'playing' ? 'Pausar' : s === 'paused' ? 'Continuar' : 'Ouvir artigo';
+      if (stopBtn) stopBtn.hidden = s === 'idle';
+      if (hint) hint.hidden = s === 'idle';
+    }
+
+    function speakNext() {
+      if (!playing || idx >= chunks.length) { stop(); return; }
+      const u = new SpeechSynthesisUtterance(chunks[idx]);
+      u.lang = 'pt-PT';
+      if (voice) u.voice = voice;
+      u.rate = 1; u.pitch = 1;
+      u.onend = () => { if (playing && !paused) { idx++; speakNext(); } };
+      u.onerror = () => { if (playing && !paused) { idx++; speakNext(); } };
+      synth.speak(u);
+    }
+
+    function start() {
+      chunks = buildChunks();
+      idx = 0; playing = true; paused = false;
+      synth.cancel();
+      speakNext();
+      setState('playing');
+    }
+    function stop() {
+      playing = false; paused = false; idx = 0;
+      synth.cancel();
+      setState('idle');
+    }
+    function togglePause() {
+      if (!playing) return;
+      if (paused) { synth.resume(); paused = false; setState('playing'); }
+      else { synth.pause(); paused = true; setState('paused'); }
+    }
+
+    toggle.addEventListener('click', () => { if (!playing) start(); else togglePause(); });
+    if (stopBtn) stopBtn.addEventListener('click', stop);
+    window.addEventListener('beforeunload', () => synth.cancel());
+    window.addEventListener('pagehide', () => synth.cancel());
+  }
+</script>

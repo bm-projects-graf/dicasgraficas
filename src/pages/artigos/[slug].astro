@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import ArticleCover from '../../components/ArticleCover.astro';
+import ArticleAudio from '../../components/ArticleAudio.astro';
 import { getCollection, render } from 'astro:content';
 import { getCategory } from '../../data/categories';
 
@@ -41,6 +43,8 @@ const catColor = cat?.color ?? 'var(--color-primary)';
           <span>Artigo</span>
         </div>
 
+        <ArticleCover color={catColor} icon={cat?.icon ?? ''} category={article.data.category} />
+
         <h1 class="article-title">{article.data.title}</h1>
         <p class="article-description">{article.data.description}</p>
 
@@ -48,6 +52,8 @@ const catColor = cat?.color ?? 'var(--color-primary)';
           <span class="category">{article.data.category}</span>
           {article.data.readingTime && <span>{article.data.readingTime} de leitura</span>}
         </div>
+
+        <ArticleAudio />
       </div>
     </header>
 
