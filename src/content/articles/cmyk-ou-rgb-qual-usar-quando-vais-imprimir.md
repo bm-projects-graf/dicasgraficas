@@ -28,6 +28,27 @@ Funciona ao contrário do RGB. É um sistema **subtrativo**: começas com branco
 
 Em teoria, juntando ciano + magenta + amarelo a 100% obterias preto. Na prática obténs um castanho lamacento — por isso o **preto (K)** é adicionado como quarta cor, para conseguir pretos verdadeiros e detalhe nas sombras.
 
+<figure class="article-figure">
+<svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RGB aditivo (luz) versus CMY subtractivo (tinta)">
+<rect x="20" y="20" width="230" height="205" rx="10" fill="#111111" />
+<g>
+<circle cx="120" cy="100" r="52" fill="#FF2D2D" style="mix-blend-mode:screen" />
+<circle cx="170" cy="100" r="52" fill="#2DFF2D" style="mix-blend-mode:screen" />
+<circle cx="145" cy="148" r="52" fill="#2D6BFF" style="mix-blend-mode:screen" />
+</g>
+<g>
+<circle cx="350" cy="100" r="52" fill="#00AEEF" style="mix-blend-mode:multiply" />
+<circle cx="400" cy="100" r="52" fill="#EC008C" style="mix-blend-mode:multiply" />
+<circle cx="375" cy="148" r="52" fill="#FFE000" style="mix-blend-mode:multiply" />
+</g>
+<g font-family="monospace" font-size="14" fill="#374151" text-anchor="middle">
+<text x="145" y="258">RGB — luz (aditivo)</text>
+<text x="375" y="258">CMY — tinta (subtractivo)</text>
+</g>
+</svg>
+<figcaption>À esquerda, o ecrã soma luz (RGB) e o centro fica branco. À direita, a tinta subtrai luz (CMY) e o centro escurece. São dois mundos opostos — e por isso a cor muda do ecrã para o papel.</figcaption>
+</figure>
+
 ## Porque é que as cores parecem "apagadas" quando se converte
 
 Aqui está o problema central: o **CMYK consegue reproduzir muito menos cores do que o RGB**. A gama de cores do CMYK é mais pequena — ficam fora muitos verdes vibrantes, azuis elétricos, laranjas saturados e roxos profundos.

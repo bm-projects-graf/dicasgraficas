@@ -1193,6 +1193,29 @@ article[style*="--cat"] .article-body a { color: var(--cat); }
 .article-audio[data-state="playing"] .tts-glyph-play { display: none; }
 .article-audio[data-state="playing"] .tts-glyph-pause { display: inline; }
 
+/* --- Figuras/diagramas dentro dos artigos --- */
+.article-figure {
+  margin: 2.5rem 0;
+  text-align: center;
+}
+
+.article-figure svg {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg-soft);
+  padding: 1rem;
+}
+
+.article-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.7rem;
+  line-height: 1.5;
+}
+
 /* Respeita quem prefere menos movimento */
 @media (prefers-reduced-motion: reduce) {
   .hero::after,

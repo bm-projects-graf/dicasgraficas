@@ -43,6 +43,28 @@ A consequência mais visível está nas **dobras**. Uma dobra **a favor da fibra
 
 É por isso que, num [folheto ou numa capa](/artigos/folhetos-e-flyers-formatos-e-dobras/), as dobras devem, sempre que possível, ser **paralelas à fibra**. Quando não é possível, **vinca-se** antes de dobrar para minimizar o estrago — mas a fibra certa é sempre melhor que o melhor vinco.
 
+<figure class="article-figure">
+<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dobrar a favor da fibra (limpo) versus contra a fibra (racha)">
+<g>
+<rect x="30" y="25" width="200" height="135" rx="4" fill="#fff" stroke="#D1D5DB" />
+<g stroke="var(--cat)" stroke-width="1.5" opacity="0.5">
+<line x1="40" y1="42" x2="220" y2="42" /><line x1="40" y1="58" x2="220" y2="58" /><line x1="40" y1="74" x2="220" y2="74" /><line x1="40" y1="90" x2="220" y2="90" /><line x1="40" y1="106" x2="220" y2="106" /><line x1="40" y1="122" x2="220" y2="122" /><line x1="40" y1="138" x2="220" y2="138" />
+</g>
+<line x1="30" y1="92" x2="230" y2="92" stroke="#059669" stroke-width="3" stroke-dasharray="8 5" />
+<text x="130" y="185" text-anchor="middle" font-family="monospace" font-size="13" fill="#059669">A favor da fibra — dobra limpa</text>
+</g>
+<g>
+<rect x="290" y="25" width="200" height="135" rx="4" fill="#fff" stroke="#D1D5DB" />
+<g stroke="var(--cat)" stroke-width="1.5" opacity="0.5">
+<line x1="300" y1="42" x2="480" y2="42" /><line x1="300" y1="58" x2="480" y2="58" /><line x1="300" y1="74" x2="480" y2="74" /><line x1="300" y1="90" x2="480" y2="90" /><line x1="300" y1="106" x2="480" y2="106" /><line x1="300" y1="122" x2="480" y2="122" /><line x1="300" y1="138" x2="480" y2="138" />
+</g>
+<path d="M390,25 L384,46 L396,66 L383,86 L397,106 L384,126 L390,160" fill="none" stroke="#DC2626" stroke-width="3" />
+<text x="390" y="185" text-anchor="middle" font-family="monospace" font-size="13" fill="#DC2626">Contra a fibra — racha</text>
+</g>
+</svg>
+<figcaption>As fibras (linhas) correm na horizontal. Dobrar <strong>ao longo</strong> delas (verde) sai liso; dobrar <strong>atravessando-as</strong> (vermelho) parte as fibras e racha — sobretudo em papel grosso ou revestido.</figcaption>
+</figure>
+
 ## Porque importa (ainda mais): encadernar
 
 No mundo do **livro**, o sentido da fibra é **regra de ouro**: a fibra deve correr **paralela à lombada** (à vertical do livro). Quando é assim:

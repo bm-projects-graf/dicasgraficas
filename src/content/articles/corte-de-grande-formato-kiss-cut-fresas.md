@@ -19,6 +19,31 @@ Comecemos pela distinção mais importante, sobretudo em **autocolantes e vinil*
 - **Kiss cut ("corte beijo"):** a lâmina corta **apenas o vinil e o adesivo**, mas **não** o liner — fica intacto por baixo. O resultado: o autocolante pode ser **descolado** do liner com a unha, como qualquer sticker de folha. O liner mantém tudo junto e organizado.
 - **Through cut ("corte total" / die cut):** a lâmina corta **tudo**, vinil **e** liner, separando completamente a peça. O autocolante sai **recortado e solto**, já com a forma final.
 
+<figure class="article-figure">
+<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kiss cut corta só o vinil; through cut corta o vinil e o liner">
+<g>
+<polygon points="120,52 140,52 130,74" fill="#6B7280" />
+<rect x="40" y="86" width="180" height="26" rx="2" fill="var(--cat)" />
+<rect x="40" y="112" width="180" height="20" rx="2" fill="#9CA3AF" />
+<line x1="130" y1="80" x2="130" y2="112" stroke="#DC2626" stroke-width="3" />
+<text x="130" y="160" text-anchor="middle" font-family="monospace" font-size="13" fill="#374151">Kiss cut</text>
+<text x="130" y="178" text-anchor="middle" font-family="monospace" font-size="11.5" fill="#6B7280">corta só o vinil</text>
+</g>
+<g>
+<polygon points="380,52 400,52 390,74" fill="#6B7280" />
+<rect x="300" y="86" width="180" height="26" rx="2" fill="var(--cat)" />
+<rect x="300" y="112" width="180" height="20" rx="2" fill="#9CA3AF" />
+<line x1="390" y1="80" x2="390" y2="134" stroke="#DC2626" stroke-width="3" />
+<text x="390" y="160" text-anchor="middle" font-family="monospace" font-size="13" fill="#374151">Through cut</text>
+<text x="390" y="178" text-anchor="middle" font-family="monospace" font-size="11.5" fill="#6B7280">corta vinil + liner</text>
+</g>
+<g font-family="monospace" font-size="11.5" fill="#9CA3AF">
+<text x="232" y="103">vinil</text><text x="232" y="126">liner</text>
+</g>
+</svg>
+<figcaption>A diferença está na profundidade da lâmina: no <strong>kiss cut</strong> a faca atravessa só o vinil (o liner cinzento fica inteiro, para descolar à mão); no <strong>through cut</strong> corta tudo.</figcaption>
+</figure>
+
 <div class="tech-box">
 <div class="tech-label">Quando usar cada um</div>
 <p>Queres uma <strong>folha de autocolantes</strong> que se descolam um a um? É <strong>kiss cut</strong> — o liner contínuo segura tudo, e cada sticker descola-se à mão. Queres autocolantes <strong>individuais já recortados</strong> (cada um por si, com a forma exata)? É <strong>through cut</strong>. A regra: <em>kiss cut para descolar de uma folha; through cut para peças soltas</em>. A profundidade exata da lâmina (pressão) é o que separa um do outro — cortar de mais no kiss cut atravessa o liner e estraga a folha.</p>

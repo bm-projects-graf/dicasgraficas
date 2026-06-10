@@ -18,6 +18,22 @@ Vamos perceber o que é, porque existe, e como o adicionar nos programas que usa
 
 Imagina que estás a desenhar um flyer A5 (148 × 210 mm) com um fundo azul. Sem bleed, o fundo termina exatamente nas bordas do A5. Com bleed, o fundo prolonga-se para fora, formando um retângulo de 154 × 216 mm — 3 mm extra em cada lado, que serão cortados depois.
 
+<figure class="article-figure">
+<svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama com a área de sangria, a linha de corte e a margem de segurança">
+<rect x="30" y="30" width="380" height="230" fill="var(--cat)" opacity="0.12" />
+<rect x="30" y="30" width="380" height="230" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="7 5" />
+<rect x="57" y="57" width="326" height="176" fill="none" stroke="#1A1A1A" stroke-width="2" />
+<rect x="86" y="86" width="268" height="118" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="7 5" />
+<text x="220" y="151" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B7280">conteúdo seguro aqui dentro</text>
+<g font-family="monospace" font-size="13" fill="#374151">
+<line x1="40" y1="300" x2="66" y2="300" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 4" /><text x="74" y="304">Sangria — 3 mm que serão cortados</text>
+<line x1="40" y1="325" x2="66" y2="325" stroke="#1A1A1A" stroke-width="2" /><text x="74" y="329">Linha de corte — o tamanho final</text>
+<line x1="40" y1="350" x2="66" y2="350" stroke="#059669" stroke-width="2" stroke-dasharray="6 4" /><text x="74" y="354">Margem de segurança — nada importante fora</text>
+</g>
+</svg>
+<figcaption>As três zonas de qualquer ficheiro de impressão: a arte prolonga-se até à sangria, o corte dá-se na linha preta, e o conteúdo essencial fica dentro da margem verde.</figcaption>
+</figure>
+
 ## Os 3 milímetros mágicos
 
 Em quase toda a Europa, **3 mm de bleed** é o padrão universal. É o suficiente para acomodar pequenos desvios na máquina de corte, mas pequeno o suficiente para não desperdiçar papel.

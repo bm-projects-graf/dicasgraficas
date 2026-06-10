@@ -26,6 +26,20 @@ A genialidade do canelado é a mesma de uma viga em I ou de um favo de mel: ao s
 <p>As folhas planas exteriores e interiores chamam-se <strong>liners</strong> (em português, "capa" e "contracapa", ou simplesmente <em>liner</em>). A folha ondulada do meio é a <strong>canelura</strong> ou <em>fluting</em>. A cola que une tudo é tipicamente à base de <strong>amido</strong> (fécula). O <em>kraftliner</em> é um liner de fibra virgem, mais resistente; o <em>testliner</em> é reciclado, mais económico.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corte de cartão canelado: liner, canelura ondulada e liner">
+<rect x="40" y="63" width="320" height="15" rx="2" fill="var(--cat)" />
+<rect x="40" y="142" width="320" height="15" rx="2" fill="var(--cat)" />
+<path d="M40,110 a32,32 0 0 1 64,0 a32,32 0 0 0 64,0 a32,32 0 0 1 64,0 a32,32 0 0 0 64,0 a32,32 0 0 1 64,0" fill="none" stroke="var(--cat)" stroke-width="3" />
+<g font-family="monospace" font-size="12.5" fill="#374151">
+<line x1="360" y1="70" x2="374" y2="70" stroke="#9CA3AF" stroke-width="1" /><text x="380" y="74">Liner (capa)</text>
+<line x1="360" y1="110" x2="374" y2="110" stroke="#9CA3AF" stroke-width="1" /><text x="380" y="114">Canelura (flute)</text>
+<line x1="360" y1="150" x2="374" y2="150" stroke="#9CA3AF" stroke-width="1" /><text x="380" y="154">Liner (contracapa)</text>
+</g>
+</svg>
+<figcaption>Cartão canelado de canelura simples (3 camadas): duas folhas planas (liners) com uma onda colada no meio — a estrutura que dá muita rigidez com pouco peso.</figcaption>
+</figure>
+
 ## As camadas: simples, dupla, tripla
 
 O canelado classifica-se pelo número de paredes (caneluras):
