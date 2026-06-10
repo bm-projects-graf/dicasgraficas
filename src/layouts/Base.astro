@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ADSENSE_CLIENT } from '../config';
 
 interface Props {
   title: string;
@@ -64,8 +65,10 @@ const ogImage = image || `${siteUrl}/og-default.jpg`;
     gtag('config', 'GA_MEASUREMENT_ID');
   </script> -->
 
-  <!-- AdSense placeholder - descomentar e adicionar publisher ID quando aprovado -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-PUBLISHER_ID" crossorigin="anonymous"></script> -->
+  <!-- Google AdSense — carrega só quando ADSENSE_CLIENT está definido em src/config.ts -->
+  {ADSENSE_CLIENT && (
+    <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossorigin="anonymous"></script>
+  )}
 </head>
 <body>
   <Header />
