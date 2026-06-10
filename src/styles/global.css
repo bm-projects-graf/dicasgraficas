@@ -1042,6 +1042,17 @@ img {
 .reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.42s; }
 .reveal-stagger.is-visible > *:nth-child(9) { transition-delay: 0.48s; }
 
+/* --- Homepage: artigos recentes em linha de 3 --- */
+.articles-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .articles-grid--three {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Página de artigo com a cor da categoria --- */
 .article-header--cat {
   position: relative;

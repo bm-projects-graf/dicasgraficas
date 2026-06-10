@@ -9,7 +9,7 @@ const sortedArticles = allArticles.sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 
-const recentArticles = sortedArticles.slice(0, 6);
+const recentArticles = sortedArticles.slice(0, 3);
 
 // Contagem de artigos por categoria
 const categoryCards = categories.map(cat => ({
@@ -57,7 +57,7 @@ const categoryCards = categories.map(cat => ({
         <h2 class="section-title reveal">Artigos recentes</h2>
         <p class="section-subtitle reveal">Os últimos artigos publicados.</p>
 
-        <div class="articles-grid">
+        <div class="articles-grid articles-grid--three">
           {recentArticles.map(article => (
             <ArticleCard
               title={article.data.title}
@@ -69,10 +69,6 @@ const categoryCards = categories.map(cat => ({
             />
           ))}
         </div>
-
-        <p class="text-center mt-2">
-          <a href="/artigos/" class="btn-outline">Ver todos os artigos →</a>
-        </p>
       </div>
     </section>
   )}
