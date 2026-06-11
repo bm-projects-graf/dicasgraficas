@@ -34,6 +34,22 @@ Uma grelha tem um vocabulário próprio. Os elementos essenciais:
 - **Linha de base (*baseline grid*):** uma grelha **horizontal** fina à qual o texto se alinha, linha a linha, para que as colunas fiquem "afinadas" entre si (a entrelinha cai sempre nos mesmos pontos).
 - **Campos / zonas:** áreas da grelha reservadas a tipos de conteúdo (cabeçalho, imagem, texto, legenda).
 
+<figure class="article-figure">
+<svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Página com margens, colunas e goteiras">
+<rect x="20" y="20" width="260" height="320" rx="3" fill="#fff" stroke="#D1D5DB" />
+<rect x="55" y="55" width="190" height="250" fill="none" stroke="var(--cat)" stroke-width="1.5" stroke-dasharray="5 4" />
+<g fill="var(--cat)" opacity="0.16">
+<rect x="55" y="55" width="37" height="250" /><rect x="106" y="55" width="37" height="250" /><rect x="157" y="55" width="37" height="250" /><rect x="208" y="55" width="37" height="250" />
+</g>
+<g font-family="monospace" font-size="12" fill="#374151">
+<rect x="30" y="352" width="22" height="15" fill="none" stroke="var(--cat)" stroke-width="1.5" stroke-dasharray="4 3" /><text x="60" y="364">margem — espaço à volta</text>
+<rect x="30" y="376" width="22" height="15" fill="var(--cat)" opacity="0.16" /><text x="60" y="388">coluna — onde assenta o conteúdo</text>
+<rect x="30" y="400" width="9" height="15" fill="var(--cat)" opacity="0.16" /><rect x="43" y="400" width="9" height="15" fill="var(--cat)" opacity="0.16" /><text x="60" y="412">goteira — o gap entre colunas</text>
+</g>
+</svg>
+<figcaption>A estrutura invisível de uma página: as <strong>margens</strong> à volta, as <strong>colunas</strong> onde o conteúdo assenta, e as <strong>goteiras</strong> que as separam. Os elementos encaixam nesta grelha — e a ordem nasce daí.</figcaption>
+</figure>
+
 ## Os tipos de grelha
 
 Conforme o trabalho, escolhe-se um tipo de grelha:

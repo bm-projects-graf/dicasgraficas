@@ -41,6 +41,26 @@ O número mágico é o **1**: é, aproximadamente, a **menor diferença de cor q
 
 Isto dá um critério objetivo: se a tua marca exige fidelidade alta, podes especificar "tolerância máxima de ΔE ≤ 2" e a gráfica tem um **alvo medível** para cumprir — não uma vaga promessa.
 
+<figure class="article-figure">
+<svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Delta E é a distância entre duas cores e a escala do que o olho nota">
+<circle cx="150" cy="65" r="34" fill="#B83C5E" />
+<circle cx="310" cy="65" r="34" fill="#BE5A6E" />
+<line x1="186" y1="65" x2="274" y2="65" stroke="#374151" stroke-width="1.5" stroke-dasharray="5 4" />
+<text x="230" y="56" text-anchor="middle" font-family="monospace" font-size="15" fill="#111">&#916;E</text>
+<g font-family="monospace" font-size="12" fill="#6B7280" text-anchor="middle">
+<text x="150" y="120">cor pretendida</text><text x="310" y="120">cor obtida</text>
+</g>
+<rect x="40" y="165" width="95" height="18" fill="#16A34A" /><rect x="135" y="165" width="95" height="18" fill="#A3B814" /><rect x="230" y="165" width="95" height="18" fill="#F59E0B" /><rect x="325" y="165" width="95" height="18" fill="#DC2626" />
+<g font-family="monospace" font-size="11.5" fill="#374151" text-anchor="middle">
+<text x="87" y="202">&lt;1</text><text x="87" y="216">igual</text>
+<text x="182" y="202">1–2</text><text x="182" y="216">olho treinado</text>
+<text x="277" y="202">2–3,5</text><text x="277" y="216">nota-se</text>
+<text x="372" y="202">&gt;5</text><text x="372" y="216">diferente</text>
+</g>
+</svg>
+<figcaption>O ΔE mede a <strong>distância</strong> entre a cor que querias e a que saiu. A escala diz o que o olho nota: abaixo de 1 são, na prática, iguais; acima de 5 são claramente cores diferentes.</figcaption>
+</figure>
+
 ## Nem todos os Delta E são iguais
 
 Aqui está a parte que distingue quem percebe do assunto. Há **várias fórmulas** de Delta E, cada vez mais sofisticadas, porque a primeira tinha um problema.

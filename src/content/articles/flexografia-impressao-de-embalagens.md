@@ -28,6 +28,28 @@ O percurso da tinta tem quatro peças-chave:
 <p>A peça que torna a flexografia possível é o <strong>rolo anilox</strong>: um cilindro de cerâmica gravado com milhões de minúsculas células (alvéolos) que funcionam como copinhos. Ao rodar, o anilox enche as células de tinta; uma lâmina (<em>doctor blade</em>) raspa o excesso; e o que fica nas células é transferido em dose exata para a chapa. A "lineatura" do anilox (células por centímetro) controla quanta tinta passa — é o que separa um branco opaco e encorpado de um traço fino e limpo. Sem o anilox, não há flexografia.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 520 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema da flexografia: rolo anilox, chapa em relevo e material sobre o cilindro de impressão">
+<circle cx="255" cy="270" r="82" fill="#fff" stroke="#9CA3AF" stroke-width="2" />
+<rect x="120" y="220" width="350" height="11" fill="#E5E7EB" stroke="#D1D5DB" />
+<circle cx="130" cy="125" r="52" fill="#fff" stroke="var(--cat)" stroke-width="2" />
+<g fill="var(--cat)" opacity="0.55"><circle cx="115" cy="106" r="3" /><circle cx="140" cy="101" r="3" /><circle cx="150" cy="126" r="3" /><circle cx="120" cy="142" r="3" /><circle cx="104" cy="124" r="3" /><circle cx="135" cy="146" r="3" /><circle cx="126" cy="118" r="3" /><circle cx="148" cy="113" r="3" /></g>
+<line x1="70" y1="78" x2="106" y2="106" stroke="#6B7280" stroke-width="3" stroke-linecap="round" />
+<circle cx="255" cy="150" r="58" fill="#fff" stroke="var(--cat)" stroke-width="2" />
+<g fill="var(--cat)"><rect x="234" y="203" width="7" height="14" /><rect x="251" y="205" width="7" height="14" /><rect x="268" y="203" width="7" height="14" /></g>
+<line x1="186" y1="128" x2="200" y2="140" stroke="#374151" stroke-width="1.5" />
+<g font-family="monospace" font-size="12" fill="#374151">
+<text x="130" y="52" text-anchor="middle">Rolo anilox</text>
+<text x="63" y="74" text-anchor="end">lâmina</text>
+<text x="255" y="80" text-anchor="middle">Chapa (relevo)</text>
+<text x="175" y="120" text-anchor="end" fill="#6B7280">tinta</text>
+<text x="430" y="214" text-anchor="middle">Material</text>
+<text x="255" y="258" text-anchor="middle">Cilindro de impressão</text>
+</g>
+</svg>
+<figcaption>O <strong>anilox</strong> (com as suas células) doseia a tinta para a <strong>chapa em relevo</strong>; a chapa imprime o material, que passa sobre o <strong>cilindro de impressão</strong>. A imagem está nas partes <strong>altas</strong> da chapa — é impressão em relevo.</figcaption>
+</figure>
+
 ## Porque domina a embalagem (e o offset não)
 
 A flexografia conquistou a embalagem por razões muito concretas que o offset não consegue igualar:

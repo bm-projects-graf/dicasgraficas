@@ -87,6 +87,28 @@ A folha é dobrada em várias etapas em direções perpendiculares — primeiro 
 
 É a dobra mais complexa de executar com precisão, porque envolve dobras cruzadas que têm de se encaixar perfeitamente. Em grandes formatos, é praticamente impossível fazer à mão com qualidade — requer maquinaria especializada.
 
+<figure class="article-figure">
+<svg viewBox="0 0 540 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Quatro tipos de dobra: ao meio, carta, acordeão e janela">
+<g fill="var(--cat)" opacity="0.1" stroke="#D1D5DB"><rect x="20" y="28" width="110" height="65" /><rect x="152" y="28" width="110" height="65" /><rect x="284" y="28" width="110" height="65" /><rect x="416" y="28" width="110" height="65" /></g>
+<g stroke="#1A1A1A" stroke-width="1.5" stroke-dasharray="5 4">
+<line x1="75" y1="28" x2="75" y2="93" />
+<line x1="189" y1="28" x2="189" y2="93" /><line x1="226" y1="28" x2="226" y2="93" />
+<line x1="321" y1="28" x2="321" y2="93" /><line x1="358" y1="28" x2="358" y2="93" />
+<line x1="444" y1="28" x2="444" y2="93" /><line x1="498" y1="28" x2="498" y2="93" />
+</g>
+<g font-family="monospace" font-size="13" fill="#6B7280" text-anchor="middle">
+<text x="75" y="22">&#8595;</text>
+<text x="189" y="22">&#8595;</text><text x="226" y="22">&#8595;</text>
+<text x="321" y="22">&#8595;</text><text x="358" y="22">&#8593;</text>
+<text x="444" y="22">&#8594;</text><text x="498" y="22">&#8592;</text>
+</g>
+<g font-family="monospace" font-size="12.5" fill="#374151" text-anchor="middle">
+<text x="75" y="115">Ao meio</text><text x="207" y="115">Carta (em 3)</text><text x="339" y="115">Acordeão (Z)</text><text x="471" y="115">Janela (gate)</text>
+</g>
+</svg>
+<figcaption>Onde caem os vincos em cada dobra (as setas indicam o sentido). Na <strong>carta</strong> os painéis dobram para o mesmo lado; no <strong>acordeão</strong> alternam (Z); na <strong>janela</strong> os dois lados fecham para o centro.</figcaption>
+</figure>
+
 ## O problema do papel grosso e do bulk
 
 Quando um produto tem muitas páginas ou dobras com papel de gramagem elevada, o **bulk** (espessura física do papel) torna-se um problema visível.

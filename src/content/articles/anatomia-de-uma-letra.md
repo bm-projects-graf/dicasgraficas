@@ -27,6 +27,20 @@ Antes das partes, as **linhas de referência**. Toda a letra assenta num sistema
 <p>De duas fontes ao mesmo tamanho em pontos, a que tiver <strong>maior altura-x</strong> parece maior e costuma ler-se melhor em corpos pequenos — as minúsculas ocupam mais "corpo" e abrem as contraformas. É por isso que duas fontes a "12 pt" podem parecer de tamanhos diferentes: o ponto mede o corpo total, mas o olho lê a altura-x. Um pormenor decisivo quando escolhes letra para <a href="/artigos/serif-sans-serif-familias-tipograficas/">texto longo impresso</a>.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Linhas de referência da tipografia: ascendente, altura-x, linha de base e descendente">
+<g stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="6 4">
+<line x1="20" y1="100" x2="460" y2="100" /><line x1="20" y1="132" x2="460" y2="132" /><line x1="20" y1="216" x2="460" y2="216" />
+</g>
+<line x1="20" y1="190" x2="460" y2="190" stroke="#1A1A1A" stroke-width="2" />
+<text x="178" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="120" fill="var(--cat)">hxgp</text>
+<g font-family="monospace" font-size="12" fill="#374151" text-anchor="end">
+<text x="160" y="104">linha ascendente</text><text x="160" y="136">altura-x</text><text x="160" y="194">linha de base</text><text x="160" y="220">linha descendente</text>
+</g>
+</svg>
+<figcaption>As linhas invisíveis que organizam a letra: a maioria das minúsculas vive entre a <strong>linha de base</strong> e a <strong>altura-x</strong>; o "h" sobe acima dela (ascendente) e o "g" e o "p" descem abaixo da base (descendente).</figcaption>
+</figure>
+
 ## As partes principais da letra
 
 Agora o corpo. Os termos mais usados, dos que vais ouvir em qualquer conversa de design:

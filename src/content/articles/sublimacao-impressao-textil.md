@@ -31,6 +31,27 @@ O resultado é único: a cor não é uma camada por cima — está **dentro da f
 <p>Como a cor passa a fazer <strong>parte da fibra</strong> (e não fica como uma película por cima, ao contrário da <a href="/artigos/serigrafia-impressao-em-quase-tudo/">serigrafia</a> ou do DTF), uma peça sublimada não tem "toque" nenhum — o tecido continua macio e respirável. E, por estar <strong>dentro</strong> do material, a impressão é extremamente <strong>durável</strong>: não estala, não descasca e quase não desbota com as lavagens. É a grande vantagem da sublimação.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 540 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Processo de sublimação em três passos">
+<rect x="25" y="35" width="120" height="95" rx="3" fill="#fff" stroke="#D1D5DB" />
+<circle cx="62" cy="68" r="12" fill="#00AEEF" /><circle cx="98" cy="88" r="12" fill="#EC008C" /><circle cx="76" cy="108" r="11" fill="#FFD200" />
+<text x="85" y="158" text-anchor="middle" font-family="monospace" font-size="12" fill="#374151">1. Papel impresso</text>
+<text x="170" y="92" text-anchor="middle" font-family="monospace" font-size="30" fill="#9CA3AF">&#8594;</text>
+<path d="M210,28 q10,-8 20,0 q10,8 20,0 q10,-8 20,0 q10,8 20,0" fill="none" stroke="#DC2626" stroke-width="1.5" />
+<text x="330" y="32" font-family="monospace" font-size="12" fill="#DC2626">&#8776;190&#176;C</text>
+<rect x="205" y="40" width="130" height="13" rx="2" fill="#6B7280" />
+<rect x="205" y="55" width="130" height="15" fill="var(--cat)" opacity="0.3" />
+<rect x="205" y="70" width="130" height="24" fill="#E5E7EB" />
+<g stroke="#DC2626" stroke-width="1.5"><line x1="240" y1="60" x2="240" y2="86" /><line x1="270" y1="60" x2="270" y2="86" /><line x1="300" y1="60" x2="300" y2="86" /></g>
+<text x="270" y="158" text-anchor="middle" font-family="monospace" font-size="12" fill="#374151">2. Prensa (calor)</text>
+<text x="370" y="92" text-anchor="middle" font-family="monospace" font-size="30" fill="#9CA3AF">&#8594;</text>
+<rect x="400" y="55" width="120" height="55" rx="3" fill="#E5E7EB" stroke="#D1D5DB" />
+<circle cx="436" cy="76" r="12" fill="#00AEEF" opacity="0.85" /><circle cx="472" cy="92" r="12" fill="#EC008C" opacity="0.85" /><circle cx="452" cy="100" r="10" fill="#FFD200" opacity="0.85" />
+<text x="460" y="158" text-anchor="middle" font-family="monospace" font-size="12" fill="#374151">3. Cor na fibra</text>
+</svg>
+<figcaption>A tinta impressa no papel (1) é prensada a quente sobre o tecido (2); o calor transforma-a em gás que entra no poliéster e, ao arrefecer, fica <strong>dentro da fibra</strong> (3) — por isso não se sente ao toque.</figcaption>
+</figure>
+
 ## A grande limitação: só poliéster (e revestidos)
 
 Aqui está o calcanhar de Aquiles. A sublimação só funciona onde houver **poliéster** (ou outro polímero) para receber o gás. Concretamente:
