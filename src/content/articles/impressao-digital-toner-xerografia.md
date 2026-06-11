@@ -49,6 +49,28 @@ Para imprimir **a cores**, repete-se o processo com quatro toners — [CMYK](/ar
 <p>Como o toner é uma camada de plástico <strong>fundida à superfície</strong> (e não absorvida como a tinta), tem tendência a <strong>estalar quando se dobra</strong> o papel, sobretudo em gramagens altas e áreas de cor cheia. Por isso o acabamento digital exige quase sempre <strong>vincar antes de dobrar</strong> — um pormenor que deu origem a máquinas de acabamento próprias para o digital. A natureza do toner molda a forma como se termina o trabalho.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ciclo da impressão a toner: carga, laser, toner, transferência e fusão">
+<circle cx="170" cy="135" r="78" fill="#fff" stroke="var(--cat)" stroke-width="2" />
+<text x="170" y="140" text-anchor="middle" font-family="monospace" font-size="12" fill="#9CA3AF">tambor</text>
+<rect x="55" y="205" width="320" height="11" fill="#E5E7EB" stroke="#D1D5DB" />
+<line x1="245" y1="80" x2="205" y2="108" stroke="#DC2626" stroke-width="1.5" />
+<g font-family="monospace" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">
+<circle cx="128" cy="66" r="13" fill="var(--cat)" /><text x="128" y="70">1</text>
+<circle cx="248" cy="88" r="13" fill="var(--cat)" /><text x="248" y="92">2</text>
+<circle cx="256" cy="158" r="13" fill="var(--cat)" /><text x="256" y="162">3</text>
+<circle cx="170" cy="210" r="13" fill="var(--cat)" /><text x="170" y="214">4</text>
+<circle cx="320" cy="210" r="13" fill="var(--cat)" /><text x="320" y="214">5</text>
+</g>
+<g font-family="monospace" font-size="12" fill="#374151" text-anchor="middle">
+<text x="210" y="258">1 Carga elétrica · 2 Laser escreve a imagem</text>
+<text x="210" y="276">3 Toner adere · 4 Transfere para o papel</text>
+<text x="210" y="294">5 Funde com calor (fica fixo no papel)</text>
+</g>
+</svg>
+<figcaption>O ciclo da eletrofotografia: o <strong>tambor</strong> é carregado (1), o <strong>laser</strong> escreve a imagem (2), o <strong>toner</strong> em pó adere a essa imagem (3), passa para o <strong>papel</strong> (4) e é <strong>fundido com calor</strong> (5). Por isso a folha sai morna — e o toner pode estalar na dobra.</figcaption>
+</figure>
+
 ## Da copiadora à máquina de produção digital
 
 A passagem de "fotocopiadora" a "máquina de impressão digital de produção" deu-se nos anos 1990:

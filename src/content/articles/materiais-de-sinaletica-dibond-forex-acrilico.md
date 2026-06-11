@@ -25,6 +25,20 @@ Duas finas chapas de **alumínio** com um **núcleo de polietileno** no meio —
 - **Acabamento:** superfície lisa de qualidade; imprime-se diretamente (flatbed) ou cola-se vinil. Corta-se e fresa-se bem (letras soltas).
 - **É o material "premium e durável"** da sinalética exterior.
 
+<figure class="article-figure">
+<svg viewBox="0 0 460 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corte do Dibond: duas chapas de alumínio com um núcleo de polietileno">
+<rect x="60" y="52" width="320" height="13" fill="#9CA3AF" />
+<rect x="60" y="65" width="320" height="26" fill="#374151" />
+<rect x="60" y="91" width="320" height="13" fill="#9CA3AF" />
+<g font-family="monospace" font-size="12.5" fill="#374151">
+<line x1="380" y1="58" x2="398" y2="58" stroke="#9CA3AF" /><text x="402" y="62">alumínio</text>
+<line x1="380" y1="78" x2="398" y2="78" stroke="#9CA3AF" /><text x="402" y="82">polietileno</text>
+<line x1="380" y1="97" x2="398" y2="97" stroke="#9CA3AF" /><text x="402" y="101">alumínio</text>
+</g>
+</svg>
+<figcaption>O <strong>Dibond</strong> (compósito de alumínio / ACM) é uma sanduíche: duas finas chapas de <strong>alumínio</strong> com um <strong>núcleo de polietileno</strong>. Resulta numa placa rígida, perfeitamente plana, leve e resistente ao tempo — ideal para exterior.</figcaption>
+</figure>
+
 ## PVC espumado (Forex / Foamex)
 
 Uma placa de **PVC** com estrutura **espumada** (cheia de microbolhas), o que a torna **rígida mas leve** e fácil de trabalhar. *Forex* e *Foamex* são marcas; o material é **PVC espumado**.

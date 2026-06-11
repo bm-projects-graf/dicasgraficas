@@ -41,6 +41,21 @@ O **couché mate** tem o mesmo revestimento técnico que o brilhante, mas com ac
 
 Existe ainda uma terceira variante chamada **acetinado** ou *silk*, que fica entre o brilhante e o mate. Tem um brilho subtil, sem ser óbvio. Cada vez mais comum em catálogos profissionais que querem o meio-termo perfeito.
 
+<figure class="article-figure">
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Couché revestido: tinta assenta à superfície. Natural não revestido: tinta absorve">
+<rect x="40" y="110" width="170" height="34" fill="#F3F4F6" stroke="#E5E7EB" />
+<rect x="40" y="104" width="170" height="7" fill="#D1D5DB" />
+<ellipse cx="125" cy="100" rx="26" ry="11" fill="var(--cat)" />
+<path d="M270,110 l10,-7 l10,7 l10,-7 l10,7 l10,-7 l10,7 l10,-7 l10,7 l10,-7 l10,7 l10,-7 l10,7 l10,-7 l10,7 l10,-7 l10,7 v34 h-170 z" fill="#F3F4F6" stroke="#E5E7EB" />
+<path d="M330,108 q-22,4 -26,20 q24,8 30,-2 q20,10 26,-4 q-8,-16 -30,-14 z" fill="var(--cat)" opacity="0.65" />
+<g font-family="monospace" font-size="12.5" fill="#374151" text-anchor="middle">
+<text x="125" y="170">Couché (revestido)</text><text x="125" y="187" fill="#6B7280">tinta assenta — cor viva</text>
+<text x="355" y="170">Natural (não revestido)</text><text x="355" y="187" fill="#6B7280">tinta absorve — mais suave</text>
+</g>
+</svg>
+<figcaption>A superfície mente o resultado: no <strong>couché</strong> (revestido e liso), a tinta <strong>assenta por cima</strong> — cores vivas e nítidas; no papel <strong>natural</strong> (não revestido, fibroso), a tinta <strong>penetra e espalha-se</strong> — tons mais suaves e absorvidos.</figcaption>
+</figure>
+
 ## Offset (não-revestido): para escrita e leitura prolongada
 
 O papel **offset** (também chamado *uncoated* em inglês, ou simplesmente "papel não-revestido") não tem qualquer revestimento. É o papel "natural" — semelhante ao papel A4 de escritório, mas em qualidades muito superiores quando profissional.

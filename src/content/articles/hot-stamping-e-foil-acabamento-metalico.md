@@ -39,6 +39,26 @@ Uma cor de foil por passagem. Vários foils (ouro **e** prata, por exemplo) exig
 - **Magnésio:** barato, para tiragens curtas e detalhe médio.
 - **Latão (*brass*):** caro mas durável e com detalhe fino — para grandes tiragens e trabalho de precisão. Aguenta o calor e a pressão repetidos sem se gastar.
 
+<figure class="article-figure">
+<svg viewBox="0 0 460 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Estampagem a quente: o cliché aquecido pressiona o foil contra o material, transferindo o metálico">
+<rect x="50" y="165" width="360" height="26" rx="2" fill="#E5E7EB" stroke="#D1D5DB" />
+<rect x="50" y="150" width="360" height="7" fill="#E8C547" />
+<line x1="50" y1="149" x2="410" y2="149" stroke="#D1D5DB" />
+<rect x="175" y="70" width="110" height="45" rx="3" fill="#9CA3AF" />
+<rect x="205" y="115" width="50" height="20" fill="#9CA3AF" />
+<rect x="205" y="156" width="50" height="9" fill="#C99A1E" />
+<g stroke="#DC2626" stroke-width="2"><line x1="230" y1="138" x2="230" y2="150" /></g>
+<path d="M300,78 q8,-7 16,0 q8,7 16,0" fill="none" stroke="#DC2626" stroke-width="1.5" />
+<g font-family="monospace" font-size="12" fill="#374151">
+<text x="230" y="60" text-anchor="middle">cliché aquecido</text>
+<text x="345" y="80" fill="#DC2626">calor + pressão</text>
+<text x="95" y="146" text-anchor="end" fill="#A77E12">foil</text>
+<text x="380" y="182">material</text>
+</g>
+</svg>
+<figcaption>Uma ferramenta de metal (<strong>cliché</strong>) aquecida pressiona o <strong>foil</strong> contra o material. Onde toca, com <strong>calor e pressão</strong>, a camada metálica do foil solta-se do filme e <strong>cola-se ao papel</strong> — é assim que se obtém o dourado espelhado que a tinta não faz.</figcaption>
+</figure>
+
 ## Foil a quente vs foil a frio
 
 Há duas grandes vias para aplicar foil, e a diferença é importante:

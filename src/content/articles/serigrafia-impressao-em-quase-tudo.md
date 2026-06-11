@@ -30,6 +30,26 @@ O processo, passo a passo:
 <p>A finura da malha (medida em fios por centímetro) controla quanta tinta passa e quanto detalhe se consegue. <strong>Malha aberta</strong> (poucos fios) deixa passar muita tinta — ideal para brancos opacos e cores vivas sobre tecido escuro. <strong>Malha fina</strong> (muitos fios) deixa passar pouca tinta — para detalhe e linhas finas. Escolher a malha certa para o trabalho é metade da arte da serigrafia.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Serigrafia: a espátula empurra a tinta através das zonas abertas da malha para o material">
+<rect x="50" y="160" width="380" height="22" fill="#E5E7EB" stroke="#D1D5DB" />
+<line x1="55" y1="105" x2="190" y2="105" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="3 3" />
+<line x1="260" y1="105" x2="425" y2="105" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="3 3" />
+<rect x="55" y="99" width="135" height="7" fill="#6B7280" /><rect x="260" y="99" width="165" height="7" fill="#6B7280" />
+<ellipse cx="150" cy="92" rx="34" ry="9" fill="var(--cat)" />
+<polygon points="178,52 198,52 208,98" fill="#374151" />
+<rect x="196" y="105" width="58" height="57" fill="var(--cat)" />
+<g stroke="var(--cat)" stroke-width="1.5"><line x1="212" y1="112" x2="212" y2="150" /><line x1="238" y1="112" x2="238" y2="150" /></g>
+<g font-family="monospace" font-size="12" fill="#374151">
+<text x="193" y="42" text-anchor="middle">rácle (squeegee)</text>
+<text x="120" y="84" text-anchor="end">tinta</text>
+<text x="345" y="92" text-anchor="middle">malha + stencil</text>
+<text x="395" y="176">material</text>
+</g>
+</svg>
+<figcaption>A <strong>espátula (rácle)</strong> arrasta a tinta sobre a malha; o <strong>stencil</strong> tapa as zonas fechadas, e a tinta só passa pela <strong>abertura</strong> (a imagem), depositando-se no material por baixo. Uma cor por tela.</figcaption>
+</figure>
+
 ## O superpoder: a camada de tinta
 
 O que distingue a serigrafia de quase todos os outros processos é a **espessura da tinta depositada**. Enquanto o offset ou o digital põem uma camada finíssima, a serigrafia deposita uma camada **encorpada**. Isso traz vantagens únicas:

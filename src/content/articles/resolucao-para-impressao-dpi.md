@@ -31,6 +31,19 @@ Quando preparas um ficheiro digital para impressão, o que estás realmente a de
 
 Para efeitos práticos, podes pensar nos dois como a mesma coisa. A maior parte dos programas (Photoshop, Illustrator, etc.) usa o termo **DPI** mesmo quando tecnicamente está a falar de PPI.
 
+<figure class="article-figure">
+<svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Baixa resolução serrilhada versus alta resolução nítida">
+<g fill="var(--cat)">
+<rect x="94" y="48" width="24" height="24" /><rect x="118" y="48" width="24" height="24" /><rect x="70" y="72" width="24" height="24" /><rect x="94" y="72" width="24" height="24" /><rect x="118" y="72" width="24" height="24" /><rect x="142" y="72" width="24" height="24" /><rect x="70" y="96" width="24" height="24" /><rect x="94" y="96" width="24" height="24" /><rect x="118" y="96" width="24" height="24" /><rect x="142" y="96" width="24" height="24" /><rect x="94" y="120" width="24" height="24" /><rect x="118" y="120" width="24" height="24" />
+</g>
+<circle cx="345" cy="96" r="50" fill="var(--cat)" />
+<g font-family="monospace" font-size="12.5" fill="#374151" text-anchor="middle">
+<text x="118" y="170">72 dpi — serrilhado</text><text x="345" y="170">300 dpi — nítido</text>
+</g>
+</svg>
+<figcaption>A mesma forma a baixa e a alta resolução: poucos pontos por polegada deixam ver os "quadradinhos" (serrilhado); 300 dpi dão bordos lisos e nítidos. É por isso que uma imagem da web (72 dpi) sai "às escadinhas" no papel.</figcaption>
+</figure>
+
 ## Porquê 300 DPI é o padrão de impressão
 
 Não é coincidência que 300 DPI seja o número mágico para impressão profissional. É um valor cuidadosamente calibrado:
