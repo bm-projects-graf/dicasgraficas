@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Misturador de cores à pigmento — dicasgraficas.com</title>
+<title>Misturador de cores — mistura de pigmentos | dicasgraficas.com</title>
 <style>
   :root {
     --azul: #1B6FA8;
@@ -135,7 +135,7 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🎨 Misturador de cores à pigmento</h1>
+    <h1>🎨 Misturador de cores</h1>
     <p class="sub">Mistura cores como se fossem <strong>tintas</strong> (não luz). Azul + amarelo dá <strong>verde</strong>, como na realidade — graças à teoria de Kubelka-Munk (Spectral.js).</p>
   </header>
 
@@ -206,7 +206,7 @@
   <footer>
     Misturador de cores — um projeto da <strong>Onda Grafe</strong> para o
     <a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a>.
-    Mistura à pigmento por <span class="mono">Spectral.js</span> (Kubelka-Munk, licença MIT).
+    Mistura de pigmentos com <span class="mono">Spectral.js</span> (Kubelka-Munk, licença MIT).
   </footer>
 </div>
 
@@ -283,7 +283,7 @@
       return;
     }
 
-    // Mistura à pigmento (Kubelka-Munk via Spectral.js)
+    // Mistura de pigmentos (Kubelka-Munk via Spectral.js)
     var pares = ativos.map(function (i) {
       return [new spectral.Color(i.hex), i.partes];
     });
@@ -359,7 +359,7 @@
     var temAzul = ativos.some(function (i) { var c = hexToRgb(i.hex); return c[2] > 120 && c[0] < 120 && c[1] < 160; });
     var temAmarelo = ativos.some(function (i) { var c = hexToRgb(i.hex); return c[0] > 180 && c[1] > 180 && c[2] < 130; });
     if (temAzul && temAmarelo) {
-      dicas.push(["O clássico", "Azul + amarelo dá <strong>verde</strong> à pigmento. No RGB (luz), a mesma soma daria um cinzento ou um tom apagado — é a diferença entre misturar <strong>tinta</strong> e misturar <strong>luz</strong>."]);
+      dicas.push(["O clássico", "Azul + amarelo dá <strong>verde</strong> quando se misturam pigmentos. No RGB (luz), a mesma soma daria um cinzento ou um tom apagado — é a diferença entre misturar <strong>tinta</strong> e misturar <strong>luz</strong>."]);
     }
 
     if (branco > 0) {
@@ -370,7 +370,7 @@
     }
 
     if (ativos.length === 1 && branco === 0 && preto === 0) {
-      dicas.push(["Falta misturar", "Tens só uma tinta. Adiciona outra cor (ou junta branco/preto) para veres a mistura à pigmento a acontecer."]);
+      dicas.push(["Falta misturar", "Tens só uma tinta. Adiciona outra cor (ou junta branco/preto) para veres a mistura de pigmentos a acontecer."]);
     }
 
     // Render
