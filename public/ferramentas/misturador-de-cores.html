@@ -392,6 +392,7 @@
         var inp = document.createElement("input");
         inp.type = "color";
         inp.value = ing.hex;
+        inp.title = "Carrega para mudar a cor";
         inp.addEventListener("input", function () { ingredientes[idx].hex = inp.value; calcular(); });
         row.appendChild(inp);
       } else {
@@ -442,6 +443,10 @@
         renderTudo();
       });
       addRow.appendChild(b);
+      var nota = document.createElement("div");
+      nota.style.cssText = "font-size:0.8rem;color:var(--texto2);margin-top:0.5rem;flex-basis:100%";
+      nota.innerHTML = "💡 Carrega num <strong>quadrado de cor</strong> para o mudares. Usa os deslizadores para as <strong>partes</strong> de cada uma.";
+      addRow.appendChild(nota);
     } else {
       TINTAS_PROCESSO.forEach(function (t) {
         var b = document.createElement("button");
