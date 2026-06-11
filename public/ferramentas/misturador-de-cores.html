@@ -288,8 +288,9 @@
       return [new spectral.Color(i.hex), i.partes];
     });
     var corTinta = spectral.mix.apply(null, pares);
-    var hexTinta = corTinta.toString();          // "#RRGGBB"
-    var rgbTinta = corTinta.sRGB;                // [r,g,b]
+    var hexTinta = corTinta.toString();          // "#RRGGBB" (já dentro do gamut)
+    var rgbTinta = hexToRgb(hexTinta);           // [r,g,b] 0-255, coerente com o HEX
+                                                 // (não usamos corTinta.sRGB porque pode sair fora do gamut: valores negativos ou >255)
 
     // Mistura "no ecrã": média ponderada do RGB (o que faz o digital ingénuo)
     var somaParte = 0, r = 0, g = 0, b = 0;
