@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Misturador de cores à pigmento | dicasgraficas.com"
+  description="Mistura cores como se fossem tintas (não luz): azul + amarelo dá verde. Uma ferramenta interativa para perceber a mistura à pigmento, com proporções, comparação com o ecrã (RGB) e dicas."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem; --cat: #DB2777;">
+        <div class="eyebrow">Ferramenta interativa</div>
+        <h1>Misturador de cores</h1>
+        <p>
+          Mistura cores como se fossem <strong>tintas</strong> (não luz): azul + amarelo dá <strong>verde</strong>,
+          como na realidade. Ajusta as proporções, compara com a mistura no ecrã (RGB) e vê a receita em partes.
+          Uma forma simples de perceber porque é que a cor se comporta de maneira diferente na tinta e no monitor.
+        </p>
+      </div>
+
+      <iframe
+        id="mixerFrame"
+        src="/ferramentas/misturador-de-cores.html"
+        title="Misturador de cores à pigmento"
+        loading="lazy"
+        style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 900px; background: #F9FAFB;"
+      ></iframe>
+
+      <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-top: 1rem;">
+        A mistura realista usa a biblioteca <span style="font-family: var(--font-mono)">Spectral.js</span>
+        (teoria de Kubelka-Munk). É uma aproximação para fins educativos — a cor real numa impressão
+        depende das tintas, do papel e da quadricromia.
+      </p>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Ajusta a altura do iframe à do conteúdo (sem barras de scroll internas).
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.type === 'mixer-height' && typeof e.data.height === 'number') {
+        var f = document.getElementById('mixerFrame');
+        if (f) f.style.height = (e.data.height + 24) + 'px';
+      }
+    });
+  </script>
+</Base>
