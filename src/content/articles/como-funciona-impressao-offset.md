@@ -62,6 +62,26 @@ Pode parecer um passo desnecessário — porque não imprimir diretamente da cha
 
 E pronto: a folha sai do outro lado com a imagem impressa numa cor.
 
+<figure class="article-figure">
+<svg viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema do offset: rolos de água e tinta, chapa, blanket e papel">
+<circle cx="160" cy="56" r="22" fill="#BFDBFE" stroke="#93C5FD" />
+<circle cx="320" cy="56" r="22" fill="var(--cat)" />
+<circle cx="240" cy="108" r="55" fill="#fff" stroke="var(--cat)" stroke-width="2" />
+<circle cx="240" cy="214" r="55" fill="#fff" stroke="#6B7280" stroke-width="2" />
+<circle cx="240" cy="300" r="44" fill="#fff" stroke="#9CA3AF" stroke-width="2" />
+<rect x="110" y="262" width="300" height="9" fill="#E5E7EB" stroke="#D1D5DB" />
+<g font-family="monospace" font-size="12" fill="#374151">
+<text x="128" y="50" text-anchor="end">água</text>
+<text x="352" y="50">tinta</text>
+<line x1="295" y1="108" x2="310" y2="108" stroke="#9CA3AF" /><text x="314" y="112">Chapa</text>
+<line x1="295" y1="214" x2="310" y2="214" stroke="#9CA3AF" /><text x="314" y="218">Borracha (blanket)</text>
+<text x="416" y="270">Papel</text>
+<text x="240" y="304" text-anchor="middle" fill="#6B7280">impressão</text>
+</g>
+</svg>
+<figcaption>A <strong>chapa</strong> recebe água (nos brancos) e tinta (na imagem); passa a imagem à <strong>borracha (blanket)</strong> e esta ao <strong>papel</strong>, prensado pelo cilindro de impressão. A imagem nunca vai direta da chapa ao papel — daí o nome "offset" (desviado).</figcaption>
+</figure>
+
 ## Mas como se imprime a cores?
 
 Tudo o que descrevemos até agora explica como se imprime **uma cor**. Para imprimir a cores, precisamos de fazer este processo **quatro vezes** — uma para cada cor do sistema CMYK.

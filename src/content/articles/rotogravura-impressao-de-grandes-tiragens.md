@@ -31,6 +31,24 @@ Uma cor por cilindro; uma máquina de gravura tem vários cilindros em sequênci
 <p>Ao contrário de processos que simulam tons só por <strong>pontos de tamanhos diferentes</strong>, a gravura pode variar a <strong>profundidade</strong> das células — ou seja, a <strong>quantidade real de tinta</strong> depositada em cada ponto. Isto dá transições e profundidades de cor difíceis de igualar, com uma riqueza quase fotográfica. É por isso que a heliogravura foi, durante décadas, o processo das reproduções de arte e das revistas mais luxuosas.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 480 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corte do cilindro de rotogravura: tinta dentro de células gravadas, raspada pela lâmina">
+<rect x="40" y="120" width="400" height="48" fill="#CBD5E1" />
+<g fill="var(--cat)">
+<rect x="80" y="120" width="22" height="22" /><rect x="150" y="120" width="22" height="32" /><rect x="220" y="120" width="22" height="16" /><rect x="290" y="120" width="22" height="30" /><rect x="360" y="120" width="22" height="20" />
+</g>
+<polygon points="55,86 72,86 64,120" fill="#6B7280" />
+<rect x="60" y="70" width="360" height="11" fill="#E5E7EB" stroke="#D1D5DB" />
+<g stroke="var(--cat)" stroke-width="1.5"><line x1="161" y1="118" x2="161" y2="83" /><line x1="301" y1="118" x2="301" y2="83" /></g>
+<g font-family="monospace" font-size="12" fill="#374151">
+<text x="64" y="60" text-anchor="middle">lâmina raspa a superfície</text>
+<text x="240" y="200" text-anchor="middle">células gravadas (a tinta fica lá dentro)</text>
+<text x="420" y="64" text-anchor="end">material</text>
+</g>
+</svg>
+<figcaption>Ao contrário da <a href="/artigos/flexografia-impressao-de-embalagens/">flexografia</a> (imagem em relevo, nas partes altas), na rotogravura a imagem está em <strong>células gravadas para dentro</strong> do cilindro: enchem-se de tinta, a lâmina raspa o excesso da superfície, e a tinta salta das células para o material. Células mais fundas = cor mais escura.</figcaption>
+</figure>
+
 ## As forças da rotogravura
 
 - **Qualidade e consistência excecionais**, mantidas ao longo de tiragens enormes. O cilindro de cobre, cromado à superfície, **quase não se gasta** — a milionésima cópia é igual à primeira.

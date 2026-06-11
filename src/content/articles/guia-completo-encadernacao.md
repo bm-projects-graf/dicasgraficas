@@ -14,6 +14,30 @@ Este artigo cobre todos os sistemas relevantes — dos mais industriais aos mais
 
 ---
 
+<figure class="article-figure">
+<svg viewBox="0 0 520 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três sistemas de encadernação: agrafo, cola e espiral">
+<g>
+<rect x="40" y="30" width="115" height="90" rx="2" fill="#fff" stroke="#D1D5DB" />
+<g stroke="#E5E7EB"><line x1="60" y1="50" x2="140" y2="50" /><line x1="60" y1="65" x2="140" y2="65" /><line x1="60" y1="80" x2="140" y2="80" /><line x1="60" y1="95" x2="140" y2="95" /></g>
+<rect x="33" y="52" width="14" height="6" rx="2" fill="#6B7280" /><rect x="33" y="92" width="14" height="6" rx="2" fill="#6B7280" />
+<text x="97" y="145" text-anchor="middle" font-family="monospace" font-size="12.5" fill="#374151">Agrafo (saddle)</text>
+</g>
+<g>
+<rect x="205" y="30" width="115" height="90" rx="2" fill="#fff" stroke="#D1D5DB" />
+<rect x="205" y="30" width="13" height="90" fill="var(--cat)" />
+<g stroke="#E5E7EB"><line x1="228" y1="50" x2="305" y2="50" /><line x1="228" y1="65" x2="305" y2="65" /><line x1="228" y1="80" x2="305" y2="80" /><line x1="228" y1="95" x2="305" y2="95" /></g>
+<text x="262" y="145" text-anchor="middle" font-family="monospace" font-size="12.5" fill="#374151">Cola (lombada)</text>
+</g>
+<g>
+<rect x="378" y="30" width="115" height="90" rx="2" fill="#fff" stroke="#D1D5DB" />
+<g stroke="#E5E7EB"><line x1="400" y1="50" x2="478" y2="50" /><line x1="400" y1="65" x2="478" y2="65" /><line x1="400" y1="80" x2="478" y2="80" /><line x1="400" y1="95" x2="478" y2="95" /></g>
+<g fill="none" stroke="#6B7280" stroke-width="2"><circle cx="378" cy="46" r="5" /><circle cx="378" cy="62" r="5" /><circle cx="378" cy="78" r="5" /><circle cx="378" cy="94" r="5" /><circle cx="378" cy="110" r="5" /></g>
+<text x="435" y="145" text-anchor="middle" font-family="monospace" font-size="12.5" fill="#374151">Espiral / wire-o</text>
+</g>
+</svg>
+<figcaption>Três formas de prender as páginas: <strong>agrafo</strong> (grampos na dobra, para folhetos), <strong>cola</strong> (lombada quadrada colada, para livros e catálogos) e <strong>espiral / wire-o</strong> (argolas, para abrir totalmente plano).</figcaption>
+</figure>
+
 ## Sistemas industriais de grande tiragem
 
 ### Cosido a arame

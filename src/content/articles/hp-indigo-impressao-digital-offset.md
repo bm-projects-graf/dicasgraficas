@@ -37,6 +37,26 @@ Aqui está o pormenor que explica o apelido. Repara em como a Indigo transfere a
 <p>Como a ElectroInk chega ao papel já praticamente seca (o blanket aquecido evapora o óleo no momento da transferência), a Indigo imprime bem numa enorme variedade de <strong>suportes</strong> — incluindo plásticos e materiais não absorventes — e a imagem fica <strong>imediatamente seca</strong>, pronta para acabamento. Também permite imprimir uma cor de cada vez sobre a anterior, possibilitando estações de cor extra.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 460 295" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema da HP Indigo: cilindro de imagem, ElectroInk, blanket aquecido e papel">
+<rect x="62" y="68" width="46" height="34" rx="3" fill="var(--cat)" />
+<g fill="var(--cat)"><circle cx="120" cy="74" r="2.5" /><circle cx="132" cy="82" r="2.5" /><circle cx="126" cy="92" r="2.5" /></g>
+<circle cx="215" cy="86" r="48" fill="#fff" stroke="var(--cat)" stroke-width="2" />
+<circle cx="215" cy="188" r="52" fill="#fff" stroke="#6B7280" stroke-width="2" />
+<circle cx="215" cy="275" r="44" fill="#fff" stroke="#9CA3AF" stroke-width="2" />
+<rect x="95" y="238" width="290" height="9" fill="#E5E7EB" stroke="#D1D5DB" />
+<path d="M120,165 q8,-7 16,0 q8,7 16,0" fill="none" stroke="#DC2626" stroke-width="1.5" />
+<g font-family="monospace" font-size="12" fill="#374151">
+<text x="85" y="60" text-anchor="middle">ElectroInk</text>
+<line x1="263" y1="86" x2="278" y2="86" stroke="#9CA3AF" /><text x="282" y="90">Cilindro de imagem</text>
+<line x1="267" y1="188" x2="282" y2="188" stroke="#9CA3AF" /><text x="286" y="184">Blanket</text>
+<text x="286" y="200" fill="#DC2626">aquecido</text>
+<text x="392" y="246">Papel</text>
+</g>
+</svg>
+<figcaption>Como o <a href="/artigos/como-funciona-impressao-offset/">offset</a>, a imagem passa por um <strong>blanket de borracha</strong> antes de chegar ao papel — daí "offset digital". A diferença: a tinta é líquida (<strong>ElectroInk</strong>), o blanket é aquecido, e tudo é digital, sem chapas.</figcaption>
+</figure>
+
 ## Mais do que CMYK: 6, 7 estações de cor
 
 Uma das grandes forças da Indigo é o número de **estações de cor**. Além do [CMYK](/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/), pode ter estações adicionais para:

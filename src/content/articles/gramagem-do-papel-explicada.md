@@ -25,6 +25,23 @@ Quanto maior o número, mais pesado o papel — e geralmente mais espesso, mais 
 <p>Gramagem não é exatamente o mesmo que <strong>espessura</strong>. Dois papéis diferentes com a mesma gramagem podem ter espessuras diferentes — depende da densidade da pasta. Um papel reciclado é tipicamente menos denso que um couché, então 200g de reciclado parece mais grosso que 200g de couché. Para projetos onde a espessura específica importa (cartões, capas), a indústria usa também a medida em <strong>microns</strong> ou em <strong>volume específico</strong>.</p>
 </div>
 
+<figure class="article-figure">
+<svg viewBox="0 0 480 175" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mais gramagem significa papel mais espesso e rígido">
+<text x="240" y="22" text-anchor="middle" font-family="monospace" font-size="12.5" fill="#6B7280">mais gramagem &#8594; mais espesso e rígido</text>
+<g fill="var(--cat)">
+<rect x="43" y="119" width="64" height="6" /><rect x="153" y="113" width="64" height="12" /><rect x="263" y="103" width="64" height="22" /><rect x="373" y="91" width="64" height="34" />
+</g>
+<line x1="30" y1="125" x2="450" y2="125" stroke="#D1D5DB" />
+<g font-family="monospace" font-size="13" fill="#374151" text-anchor="middle">
+<text x="75" y="143">80 g</text><text x="185" y="143">130 g</text><text x="295" y="143">250 g</text><text x="405" y="143">350 g</text>
+</g>
+<g font-family="monospace" font-size="11" fill="#9CA3AF" text-anchor="middle">
+<text x="75" y="160">comum</text><text x="185" y="160">flyer</text><text x="295" y="160">capa</text><text x="405" y="160">cartão</text>
+</g>
+</svg>
+<figcaption>A gramagem (g/m²) reflete-se na espessura: 80 g é o papel comum, 130-170 g o dos flyers, 250 g as capas, 350 g os cartões de visita. Mais gramagem = mais corpo, mais rigidez e sensação "premium".</figcaption>
+</figure>
+
 ## 80-115g: papel de escritório e folhetos baratos
 
 Esta é a faixa do papel mais "fino" do uso comum. O papel A4 que tens no escritório é tipicamente **80g**.

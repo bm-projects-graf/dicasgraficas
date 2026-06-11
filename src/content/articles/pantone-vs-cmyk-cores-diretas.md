@@ -42,6 +42,24 @@ Vais ver sempre uma letra depois do número:
 
 A mesma cor Pantone tem aspeto diferente em C e em U — não é erro, é física do papel. Por isso é que o [tipo de papel](/artigos/tipos-de-papel-para-impressao/) faz parte da decisão de cor, não é um detalhe à parte.
 
+<figure class="article-figure">
+<svg viewBox="0 0 460 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cor direta (tinta sólida) versus quadricromia (trama de pontos CMYK)">
+<defs>
+<pattern id="htP" width="13" height="13" patternUnits="userSpaceOnUse">
+<rect width="13" height="13" fill="#fff" />
+<circle cx="4" cy="4" r="4.6" fill="#FFE000" /><circle cx="9" cy="8" r="3" fill="#EC008C" /><circle cx="3" cy="10" r="1.7" fill="#00AEEF" />
+</pattern>
+</defs>
+<circle cx="135" cy="90" r="58" fill="#E8682A" />
+<circle cx="330" cy="90" r="58" fill="url(#htP)" stroke="#E5E7EB" />
+<g font-family="monospace" font-size="12.5" fill="#374151" text-anchor="middle">
+<text x="135" y="178">Cor direta (Pantone)</text><text x="135" y="196" fill="#6B7280">1 tinta sólida e exata</text>
+<text x="330" y="178">Quadricromia (CMYK)</text><text x="330" y="196" fill="#6B7280">trama de pontos C M Y K</text>
+</g>
+</svg>
+<figcaption>A mesma cor de duas maneiras: à esquerda, uma <strong>tinta sólida</strong> já misturada (Pantone), uniforme e sempre igual; à direita, a ilusão da mesma cor feita de <strong>pontos minúsculos</strong> de ciano, magenta e amarelo (quadricromia) — vista de perto, são pontos.</figcaption>
+</figure>
+
 ## Então porque não se usa Pantone para tudo?
 
 Por duas razões: **custo** e **fotografia**.
