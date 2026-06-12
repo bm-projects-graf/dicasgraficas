@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const ferramentas = [
+  {
+    titulo: 'Misturador de cores',
+    descricao: 'Mistura cores como se fossem tintas (não luz): azul + amarelo dá verde. Com proporções, comparação com o ecrã, jogo de adivinha e modo inverso (cor → receita).',
+    href: '/misturador-de-cores/',
+    cor: '#DB2777',
+    emoji: '🎨'
+  },
+  {
+    titulo: 'Conversor de folhas ↔ peso',
+    descricao: 'Converte entre número de folhas e quilos, a partir do formato e da gramagem — nos dois sentidos. O cálculo que as gráficas fazem todos os dias.',
+    href: '/conversor-de-papel/',
+    cor: '#B45309',
+    emoji: '📄'
+  }
+];
+---
+
+<Base
+  title="Ferramentas | dicasgraficas.com"
+  description="Ferramentas interativas e gratuitas para as artes gráficas: misturador de cores à pigmento e conversor de folhas para peso (kg)."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem;">
+        <div class="eyebrow">Interativo e gratuito</div>
+        <h1>Ferramentas</h1>
+        <p>Pequenas ferramentas práticas para o dia a dia das artes gráficas. Funcionam no navegador, sem instalar nada.</p>
+      </div>
+
+      <div class="categories-grid reveal-stagger" style="margin-top: 2rem;">
+        {ferramentas.map(f => (
+          <a href={f.href} class="category-card" style={`--cat: ${f.cor}`}>
+            <div class="cat-icon" style="font-size: 26px; line-height: 1;">{f.emoji}</div>
+            <h3>{f.titulo}</h3>
+            <p>{f.descricao}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Base>
