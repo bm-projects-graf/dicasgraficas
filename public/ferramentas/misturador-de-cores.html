@@ -355,8 +355,11 @@
   // Lista completa de ingredientes ativos (cores + branco/preto), só com partes > 0
   function ingredientesAtivos() {
     var todos = ingredientes.slice();
-    if (branco > 0) todos.push({ nome: "Branco", hex: "#FFFFFF", partes: branco });
-    if (preto > 0) todos.push({ nome: "Preto", hex: "#000000", partes: preto });
+    // O branco e o preto recebem mais "força" (tintam mais por parte), para o
+    // comportamento ser intuitivo e próximo de tinta de impressão. A "força" só
+    // afeta a mistura interna — as partes mostradas ao utilizador não mudam.
+    if (branco > 0) todos.push({ nome: "Branco", hex: "#FFFFFF", partes: branco, forca: 1.5 });
+    if (preto > 0) todos.push({ nome: "Preto", hex: "#000000", partes: preto, forca: 2.5 });
     return todos.filter(function (i) { return i.partes > 0; });
   }
 
@@ -371,7 +374,7 @@
 
     // Mistura de pigmentos (Kubelka-Munk via Spectral.js)
     var pares = ativos.map(function (i) {
-      return [new spectral.Color(i.hex), i.partes];
+      return [new spectral.Color(i.hex), i.partes * (i.forca || 1)];
     });
     var corTinta = spectral.mix.apply(null, pares);
     var hexTinta = corTinta.toString();          // "#RRGGBB" (já dentro do gamut)
@@ -732,9 +735,11 @@
   // ---- Modo Encontrar receita ----
   var BASE = [
     { nome: "Cyan", hex: "#009FE3" }, { nome: "Magenta", hex: "#E6007E" }, { nome: "Amarelo", hex: "#FFED00" },
-    { nome: "Branco", hex: "#FFFFFF" }, { nome: "Preto", hex: "#1D1D1B" }
+    { nome: "Branco", hex: "#FFFFFF" }, { nome: "Preto", hex: "#000000" }
   ];
   var BASE_C = BASE.map(function (b) { return new C(b.hex); });
+  // Mesma "força" do misturador para o branco e o preto (coerência entre os dois modos)
+  var BASE_FORCA = [1, 1, 1, 1.5, 2.5];
   function oklabDist(a, b) { var A = a.OKLab, B = b.OKLab; return Math.sqrt((A[0] - B[0]) * (A[0] - B[0]) + (A[1] - B[1]) * (A[1] - B[1]) + (A[2] - B[2]) * (A[2] - B[2])); }
   function gcd(a, b) { return b ? gcd(b, a % b) : a; }
 
@@ -746,7 +751,7 @@
         var used = [];
         for (var k = 0; k < n; k++) if (parts[k] > 0) used.push([BASE_C[k], parts[k], k]);
         if (!used.length) return;
-        var mixCol = spectral.mix.apply(null, used.map(function (u) { return [u[0], u[1]]; }));
+        var mixCol = spectral.mix.apply(null, used.map(function (u) { return [u[0], u[1] * BASE_FORCA[u[2]]]; }));
         var d = oklabDist(mixCol, target);
         if (!best || d < best.d) best = { d: d, hex: mixCol.toString(), parts: parts.slice() };
         return;
