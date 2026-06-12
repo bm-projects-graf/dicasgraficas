@@ -69,6 +69,8 @@
   .ingrediente input[type=color] {
     width: 42px; height: 42px; border: 1px solid var(--borda); border-radius: 8px; padding: 0; cursor: pointer; background: none;
   }
+  .cor-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; flex-shrink: 0; }
+  .cor-cap { font-size: 0.6rem; color: var(--azul); font-weight: 700; line-height: 1; white-space: nowrap; }
   .swatch-fixo { width: 42px; height: 42px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); flex-shrink: 0; }
   .ingrediente .nome { font-weight: 600; font-size: 0.92rem; min-width: 64px; }
   .ingrediente input[type=range] { flex: 1; accent-color: var(--azul); }
@@ -303,7 +305,7 @@
 
   // ---- Tintas de processo (valores aproximados) ----
   var TINTAS_PROCESSO = [
-    { nome: "Ciano",   hex: "#009FE3" },
+    { nome: "Cyan",   hex: "#009FE3" },
     { nome: "Magenta", hex: "#E6007E" },
     { nome: "Amarelo", hex: "#FFED00" }
   ];
@@ -473,12 +475,19 @@
 
       // swatch (color picker no modo livre; fixo no modo processo)
       if (modo === "livre") {
+        var cell = document.createElement("label");
+        cell.className = "cor-cell";
+        cell.title = "Carrega para mudar a cor";
         var inp = document.createElement("input");
         inp.type = "color";
         inp.value = ing.hex;
-        inp.title = "Carrega para mudar a cor";
         inp.addEventListener("input", function () { ingredientes[idx].hex = inp.value; calcular(); });
-        row.appendChild(inp);
+        var cap = document.createElement("span");
+        cap.className = "cor-cap";
+        cap.textContent = "▾ mudar";
+        cell.appendChild(inp);
+        cell.appendChild(cap);
+        row.appendChild(cell);
       } else {
         var sw = document.createElement("div");
         sw.className = "swatch-fixo";
@@ -571,7 +580,7 @@
     modo = "processo";
     $("modoProcesso").classList.add("ativo"); $("modoLivre").classList.remove("ativo");
     ingredientes = [
-      { nome: "Ciano", hex: "#009FE3", partes: 1 },
+      { nome: "Cyan", hex: "#009FE3", partes: 1 },
       { nome: "Amarelo", hex: "#FFED00", partes: 1 }
     ];
     renderTudo();
@@ -645,7 +654,7 @@
   // ---- Modo Adivinha ----
   var POOL = [
     { nome: "Vermelho", hex: "#E2231A" }, { nome: "Azul", hex: "#0033CC" }, { nome: "Amarelo", hex: "#FFE000" },
-    { nome: "Verde", hex: "#2E8B2E" }, { nome: "Magenta", hex: "#D6006E" }, { nome: "Ciano", hex: "#00A3C7" },
+    { nome: "Verde", hex: "#2E8B2E" }, { nome: "Magenta", hex: "#D6006E" }, { nome: "Cyan", hex: "#00A3C7" },
     { nome: "Laranja", hex: "#FF7A00" }, { nome: "Violeta", hex: "#6A2C9E" }
   ];
   var advStreak = 0, advBest = 0, advCorreta = null, advRespondido = false;
@@ -722,7 +731,7 @@
 
   // ---- Modo Encontrar receita ----
   var BASE = [
-    { nome: "Ciano", hex: "#009FE3" }, { nome: "Magenta", hex: "#E6007E" }, { nome: "Amarelo", hex: "#FFED00" },
+    { nome: "Cyan", hex: "#009FE3" }, { nome: "Magenta", hex: "#E6007E" }, { nome: "Amarelo", hex: "#FFED00" },
     { nome: "Branco", hex: "#FFFFFF" }, { nome: "Preto", hex: "#1D1D1B" }
   ];
   var BASE_C = BASE.map(function (b) { return new C(b.hex); });
