@@ -30,17 +30,12 @@
   .card { background: var(--bg-card); border: 1px solid var(--borda); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.25rem; }
   .card h2 { font-size: 1.05rem; margin: 0 0 1rem; }
 
-  .campo { margin-bottom: 1rem; }
   .campo label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; }
-  .campo select, .campo input { width: 100%; padding: 0.6rem 0.7rem; border: 1.5px solid var(--borda); border-radius: 8px; font-size: 1rem; font-family: inherit; background: #fff; }
-  .campo select:focus, .campo input:focus { outline: none; border-color: var(--azul); }
-
-  .dims { display: none; gap: 0.7rem; }
-  .dims.ativo { display: flex; }
-  .dims .campo { flex: 1; margin-bottom: 0; }
+  .campo input { width: 100%; padding: 0.6rem 0.7rem; border: 1.5px solid var(--borda); border-radius: 8px; font-size: 1rem; font-family: inherit; background: #fff; }
+  .campo input:focus { outline: none; border-color: var(--azul); }
 
   .linha2 { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .linha2 .campo { flex: 1; min-width: 160px; }
+  .linha2 .campo { flex: 1; min-width: 150px; }
 
   /* Referência */
   .ref { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem 1rem; margin-top: 0.5rem; }
@@ -51,7 +46,7 @@
 
   /* Conversor de duas vias */
   .conv { display: flex; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
-  .conv .campo { flex: 1; min-width: 150px; margin-bottom: 0; }
+  .conv .campo { flex: 1; min-width: 150px; }
   .conv .seta { font-size: 1.6rem; color: var(--texto2); padding-bottom: 0.4rem; }
   .conv input { font-size: 1.25rem; font-weight: 700; text-align: center; font-family: 'IBM Plex Mono', monospace; }
   .conv .unidade { font-size: 0.8rem; color: var(--texto2); font-weight: 400; }
@@ -77,18 +72,13 @@
 
   <div class="card">
     <h2>1. Papel</h2>
-    <div class="campo">
-      <label for="formato">Formato da folha</label>
-      <select id="formato"></select>
-    </div>
-    <div class="dims" id="dims">
+    <p style="font-size:0.85rem;color:var(--texto2);margin:0 0 1rem;">Escreve o formato em <strong>milímetros</strong> — funciona para qualquer tamanho.</p>
+    <div class="linha2">
       <div class="campo"><label for="larg">Largura (mm)</label><input type="number" id="larg" min="1" step="1" value="210" /></div>
       <div class="campo"><label for="alt">Altura (mm)</label><input type="number" id="alt" min="1" step="1" value="297" /></div>
-    </div>
-    <div class="linha2" style="margin-top:1rem;">
       <div class="campo"><label for="gramagem">Gramagem (g/m²)</label><input type="number" id="gramagem" min="1" step="1" value="80" /></div>
-      <div class="campo"><label>Dimensão atual</label><input type="text" id="dimInfo" readonly /></div>
     </div>
+    <p style="font-size:0.85rem;color:var(--texto2);margin:0.9rem 0 0;">Área da folha: <strong id="areaInfo" class="mono">—</strong></p>
   </div>
 
   <div class="card">
@@ -130,49 +120,7 @@
 (function () {
   "use strict";
   var $ = function (id) { return document.getElementById(id); };
-
-  var FORMATOS = [
-    { grupo: "Série A", itens: [
-      ["A6", 105, 148], ["A5", 148, 210], ["A4", 210, 297], ["A3", 297, 420],
-      ["A2", 420, 594], ["A1", 594, 841], ["A0", 841, 1189]
-    ]},
-    { grupo: "SRA / RA (impressão)", itens: [
-      ["SRA4", 225, 320], ["SRA3", 320, 450], ["SRA2", 450, 640], ["SRA1", 640, 900], ["SRA0", 900, 1280],
-      ["RA3", 305, 430], ["RA2", 430, 610], ["RA1", 610, 860], ["RA0", 860, 1220]
-    ]},
-    { grupo: "Folha de máquina (cm)", itens: [
-      ["64 × 88 cm", 640, 880], ["65 × 92 cm", 650, 920], ["70 × 100 cm", 700, 1000], ["72 × 102 cm", 720, 1020]
-    ]},
-    { grupo: "Outros", itens: [
-      ["Carta (Letter)", 216, 279], ["Tabloide", 279, 432], ["Personalizado…", 0, 0]
-    ]}
-  ];
-
-  // Preencher o select
-  var sel = $("formato");
-  FORMATOS.forEach(function (g) {
-    var og = document.createElement("optgroup"); og.label = g.grupo;
-    g.itens.forEach(function (it) {
-      var o = document.createElement("option");
-      o.value = it[1] + "x" + it[2];
-      o.textContent = it[0] + (it[1] ? "  (" + it[1] + " × " + it[2] + " mm)" : "");
-      o.dataset.larg = it[1]; o.dataset.alt = it[2];
-      if (it[0] === "Personalizado…") o.dataset.custom = "1";
-      og.appendChild(o);
-    });
-    sel.appendChild(og);
-  });
-  sel.value = "210x297"; // A4 por defeito
-
   var ultimo = "folhas"; // qual campo o utilizador editou por último
-
-  function dimsAtuais() {
-    var opt = sel.options[sel.selectedIndex];
-    if (opt && opt.dataset.custom === "1") {
-      return [parseFloat($("larg").value) || 0, parseFloat($("alt").value) || 0];
-    }
-    return [parseFloat(opt.dataset.larg) || 0, parseFloat(opt.dataset.alt) || 0];
-  }
 
   function fmtKg(kg) {
     if (kg >= 100) return kg.toFixed(1);
@@ -180,28 +128,28 @@
     return kg.toFixed(4);
   }
   function fmtG(g) { return (g < 10 ? g.toFixed(2) : g.toFixed(1)); }
+  function fmtArea(m2) {
+    // mostra cm² para folhas pequenas, m² para grandes
+    if (m2 >= 0.1) return m2.toFixed(4).replace('.', ',') + " m²";
+    return Math.round(m2 * 10000) + " cm² (" + m2.toFixed(4).replace('.', ',') + " m²)";
+  }
 
   function recalcular() {
-    var d = dimsAtuais();
-    var larg = d[0], alt = d[1];
+    var larg = parseFloat($("larg").value) || 0;
+    var alt = parseFloat($("alt").value) || 0;
     var gram = parseFloat($("gramagem").value) || 0;
-    $("dimInfo").value = (larg && alt) ? (larg + " × " + alt + " mm") : "—";
 
     var areaM2 = (larg / 1000) * (alt / 1000);
     var pesoFolhaG = areaM2 * gram;   // gramas por folha
 
-    // Referências
+    $("areaInfo").textContent = (larg && alt) ? fmtArea(areaM2) : "—";
+
     if (pesoFolhaG > 0) {
       $("r1").textContent = fmtG(pesoFolhaG) + " g";
       $("r500").textContent = fmtKg(500 * pesoFolhaG / 1000) + " kg";
       $("r1000").textContent = fmtKg(1000 * pesoFolhaG / 1000) + " kg";
       $("rkg").textContent = Math.round(1000 / pesoFolhaG) + " folhas";
-    } else {
-      $("r1").textContent = $("r500").textContent = $("r1000").textContent = $("rkg").textContent = "—";
-    }
 
-    // Conversão de duas vias
-    if (pesoFolhaG > 0) {
       if (ultimo === "folhas") {
         var folhas = parseFloat($("folhas").value) || 0;
         $("kg").value = fmtKg(folhas * pesoFolhaG / 1000);
@@ -209,16 +157,12 @@
         var kg = parseFloat($("kg").value) || 0;
         $("folhas").value = Math.round(kg * 1000 / pesoFolhaG);
       }
+    } else {
+      $("r1").textContent = $("r500").textContent = $("r1000").textContent = $("rkg").textContent = "—";
     }
     postHeight();
   }
 
-  // Eventos
-  sel.addEventListener("change", function () {
-    var opt = sel.options[sel.selectedIndex];
-    $("dims").classList.toggle("ativo", opt && opt.dataset.custom === "1");
-    recalcular();
-  });
   $("larg").addEventListener("input", recalcular);
   $("alt").addEventListener("input", recalcular);
   $("gramagem").addEventListener("input", recalcular);
