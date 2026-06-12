@@ -130,6 +130,43 @@
 
   footer { margin-top: 2.5rem; text-align: center; color: var(--texto2); font-size: 0.82rem; }
   footer a { color: var(--azul); }
+
+  /* Separadores (tabs) */
+  .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { flex: 1; min-width: 150px; padding: 0.7rem; border: 1.5px solid var(--borda); background: #fff; border-radius: 9px; cursor: pointer; font-size: 0.95rem; font-weight: 700; color: var(--texto2); }
+  .tab.ativo { border-color: var(--azul); color: var(--azul); background: #F0F7FC; }
+  .tool[hidden] { display: none; }
+
+  /* Modo Adivinha */
+  .adv-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .adv-placar { font-size: 0.9rem; color: var(--texto2); }
+  .adv-pergunta { font-size: 1.05rem; margin: 0.6rem 0 1rem; }
+  .adv-mistura { display: flex; align-items: center; gap: 1rem; justify-content: center; margin: 1rem 0 1.5rem; }
+  .adv-tinta { text-align: center; font-size: 0.85rem; font-weight: 600; }
+  .adv-sw { width: 80px; height: 80px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 0.35rem; }
+  .adv-mais { font-size: 2rem; color: var(--texto2); }
+  .adv-opcoes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+  @media (max-width: 520px) { .adv-opcoes { grid-template-columns: repeat(2, 1fr); } }
+  .adv-opcao { height: 90px; border-radius: 10px; border: 3px solid transparent; cursor: pointer; position: relative; transition: transform 0.1s; padding: 0; }
+  .adv-opcao:hover { transform: scale(1.04); }
+  .adv-opcao.certa { border-color: #16A34A; }
+  .adv-opcao.errada { border-color: #DC2626; opacity: 0.65; }
+  .adv-opcao .marca { position: absolute; top: 4px; right: 7px; font-size: 1.2rem; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .adv-feedback { margin-top: 1rem; font-weight: 600; min-height: 1.4rem; font-size: 0.95rem; }
+  .adv-feedback.acerto { color: #16A34A; }
+  .adv-feedback.falha { color: #DC2626; }
+  .adv-proxima { margin-top: 1rem; padding: 0.6rem 1.2rem; border: 1.5px solid var(--azul); background: var(--azul); color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; }
+
+  /* Modo Encontrar receita */
+  .rec-escolha { display: flex; align-items: center; gap: 0.8rem; margin: 1.2rem 0; flex-wrap: wrap; }
+  .rec-escolha label { font-weight: 600; }
+  .rec-escolha input[type=color] { width: 54px; height: 46px; border: 1px solid var(--borda); border-radius: 8px; cursor: pointer; padding: 0; background: none; }
+  .rec-btn { padding: 0.6rem 1.1rem; border: 1.5px solid var(--azul); background: var(--azul); color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  .rec-swatches { display: flex; gap: 1rem; margin: 1rem 0; }
+  .rec-bloco { flex: 1; text-align: center; font-size: 0.85rem; color: var(--texto2); font-weight: 600; }
+  .rec-sw { height: 100px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 0.4rem; }
+  .rec-qualidade { font-weight: 600; margin-bottom: 0.6rem; }
+  .rec-nota { font-size: 0.82rem; color: var(--texto2); margin-top: 0.8rem; }
 </style>
 </head>
 <body>
@@ -143,6 +180,13 @@
     ⚠️ <strong>Isto é uma aproximação.</strong> A mistura real numa impressão depende das <strong>tintas concretas</strong>, do <strong>papel</strong> e da <strong>quadricromia</strong> (CMYK). Serve para perceber o comportamento das cores — não para prever ao milímetro o resultado de uma gráfica.
   </div>
 
+  <div class="tabs">
+    <button class="tab ativo" data-tool="misturar">🎨 Misturar</button>
+    <button class="tab" data-tool="adivinha">🎯 Adivinha</button>
+    <button class="tab" data-tool="receita">🔍 Encontrar receita</button>
+  </div>
+
+  <section id="tool-misturar" class="tool">
   <div class="grid">
     <!-- COLUNA ESQUERDA: controlos -->
     <div class="card">
@@ -202,6 +246,46 @@
   </div>
 
   <div class="dicas" id="dicas"></div>
+  </section>
+
+  <section id="tool-adivinha" class="tool" hidden>
+    <div class="card">
+      <div class="adv-top">
+        <h2>🎯 Adivinha a cor</h2>
+        <div class="adv-placar">Acertos seguidos: <strong id="advStreak">0</strong> · Melhor: <strong id="advBest">0</strong></div>
+      </div>
+      <p class="adv-pergunta">Que cor dá esta mistura de <strong>tintas</strong>? (partes iguais)</p>
+      <div class="adv-mistura">
+        <div class="adv-tinta"><div class="adv-sw" id="advA"></div><span id="advAnome"></span></div>
+        <div class="adv-mais">+</div>
+        <div class="adv-tinta"><div class="adv-sw" id="advB"></div><span id="advBnome"></span></div>
+      </div>
+      <div class="adv-opcoes" id="advOpcoes"></div>
+      <div class="adv-feedback" id="advFeedback"></div>
+      <button class="adv-proxima" id="advProxima" hidden>Próxima ronda →</button>
+    </div>
+  </section>
+
+  <section id="tool-receita" class="tool" hidden>
+    <div class="card">
+      <h2>🔍 Encontrar receita</h2>
+      <p>Escolhe uma <strong>cor-alvo</strong> e a app sugere uma <strong>receita aproximada</strong> de tintas de processo (ciano, magenta, amarelo, branco e preto) para lá chegar.</p>
+      <div class="rec-escolha">
+        <label for="recAlvo">Cor-alvo:</label>
+        <input type="color" id="recAlvo" value="#3FA148" title="Carrega para escolher a cor-alvo" />
+        <button class="rec-btn" id="recCalcular">Encontrar receita</button>
+      </div>
+      <div class="rec-resultado" id="recResultado" hidden>
+        <div class="rec-swatches">
+          <div class="rec-bloco"><div class="rec-sw" id="recSwAlvo"></div><span>Cor-alvo</span></div>
+          <div class="rec-bloco"><div class="rec-sw" id="recSwObtido"></div><span>Obtido com tintas</span></div>
+        </div>
+        <div class="rec-qualidade" id="recQualidade"></div>
+        <div class="receita"><div class="titulo">Receita aproximada</div><div id="recReceita"></div></div>
+        <p class="rec-nota">Aproximação automática (procura a melhor combinação de tintas). A cor real depende das tintas, do papel e da quadricromia — e há cores muito pálidas ou muito saturadas que são difíceis de obter só com tintas de processo.</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
     Misturador de cores — um projeto da <strong>Onda Grafe</strong> para o
@@ -523,6 +607,176 @@
   } else {
     renderTudo();
   }
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  if (typeof spectral === "undefined") return;
+  var C = spectral.Color;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function postHeight() {
+    if (window.parent === window) return;
+    try { parent.postMessage({ type: "mixer-height", height: document.documentElement.scrollHeight }, "*"); } catch (e) {}
+  }
+  function hexToRgb(h) { h = h.replace("#", ""); if (h.length === 3) h = h.split("").map(function (c) { return c + c; }).join(""); return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)]; }
+  function rgbToHex(r, g, b) { function h(n) { return Math.max(0, Math.min(255, Math.round(n))).toString(16).padStart(2, "0"); } return "#" + (h(r) + h(g) + h(b)).toUpperCase(); }
+  function rgbToHsl(r, g, b) { r /= 255; g /= 255; b /= 255; var max = Math.max(r, g, b), min = Math.min(r, g, b), h, s, l = (max + min) / 2; if (max === min) { h = s = 0; } else { var d = max - min; s = l > 0.5 ? d / (2 - max - min) : d / (max + min); switch (max) { case r: h = (g - b) / d + (g < b ? 6 : 0); break; case g: h = (b - r) / d + 2; break; default: h = (r - g) / d + 4; } h /= 6; } return [h, s, l]; }
+  function hslToRgb(h, s, l) { var r, g, b; if (s === 0) { r = g = b = l; } else { var f = function (p, q, t) { if (t < 0) t += 1; if (t > 1) t -= 1; if (t < 1 / 6) return p + (q - p) * 6 * t; if (t < 1 / 2) return q; if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6; return p; }; var q = l < 0.5 ? l * (1 + s) : l + s - l * s; var p = 2 * l - q; r = f(p, q, h + 1 / 3); g = f(p, q, h); b = f(p, q, h - 1 / 3); } return [r * 255, g * 255, b * 255]; }
+  function shiftHue(hex, deg) { var c = hexToRgb(hex); var x = rgbToHsl(c[0], c[1], c[2]); x[0] = (x[0] + deg / 360 + 1) % 1; x[1] = Math.max(0.25, x[1]); var r = hslToRgb(x[0], x[1], x[2]); return rgbToHex(r[0], r[1], r[2]); }
+  function shiftLight(hex, amt) { var c = hexToRgb(hex); var x = rgbToHsl(c[0], c[1], c[2]); x[2] = Math.max(0.1, Math.min(0.9, x[2] + amt)); var r = hslToRgb(x[0], x[1], x[2]); return rgbToHex(r[0], r[1], r[2]); }
+  function rgbDist(h1, h2) { var a = hexToRgb(h1), b = hexToRgb(h2); return Math.sqrt((a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]) + (a[2] - b[2]) * (a[2] - b[2])); }
+
+  // ---- Separadores (tabs) ----
+  var tabs = document.querySelectorAll(".tab");
+  var advIniciado = false, recIniciado = false;
+  function activar(tool) {
+    tabs.forEach(function (x) { x.classList.toggle("ativo", x.dataset.tool === tool); });
+    ["misturar", "adivinha", "receita"].forEach(function (name) {
+      var sec = $("tool-" + name); if (sec) sec.hidden = (name !== tool);
+    });
+    if (tool === "adivinha" && !advIniciado) { advIniciado = true; advNovaRonda(); }
+    if (tool === "receita" && !recIniciado) { recIniciado = true; recCalcular(); }
+    postHeight();
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { activar(t.dataset.tool); }); });
+
+  // ---- Modo Adivinha ----
+  var POOL = [
+    { nome: "Vermelho", hex: "#E2231A" }, { nome: "Azul", hex: "#0033CC" }, { nome: "Amarelo", hex: "#FFE000" },
+    { nome: "Verde", hex: "#2E8B2E" }, { nome: "Magenta", hex: "#D6006E" }, { nome: "Ciano", hex: "#00A3C7" },
+    { nome: "Laranja", hex: "#FF7A00" }, { nome: "Violeta", hex: "#6A2C9E" }
+  ];
+  var advStreak = 0, advBest = 0, advCorreta = null, advRespondido = false;
+
+  function kmMix(h1, w1, h2, w2) { return spectral.mix([new C(h1), w1], [new C(h2), w2]).toString(); }
+  function mediaRGB(h1, h2) { var a = hexToRgb(h1), b = hexToRgb(h2); return rgbToHex((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, (a[2] + b[2]) / 2); }
+  function perturba(hex) { var c = hexToRgb(hex); function p(v) { return v + (Math.random() * 120 - 60); } return rgbToHex(p(c[0]), p(c[1]), p(c[2])); }
+  function baralha(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+
+  function advNovaRonda() {
+    advRespondido = false;
+    $("advFeedback").textContent = ""; $("advFeedback").className = "adv-feedback";
+    $("advProxima").hidden = true;
+    var i = Math.floor(Math.random() * POOL.length), j;
+    do { j = Math.floor(Math.random() * POOL.length); } while (j === i);
+    var A = POOL[i], B = POOL[j];
+    $("advA").style.background = A.hex; $("advAnome").textContent = A.nome;
+    $("advB").style.background = B.hex; $("advBnome").textContent = B.nome;
+    advCorreta = kmMix(A.hex, 1, B.hex, 1);
+    // Distratores controlados (sempre distinguíveis): a média RGB "do ecrã"
+    // (se for diferente o suficiente), um desvio de matiz, e um de luminosidade.
+    var media = mediaRGB(A.hex, B.hex);
+    var d1 = (rgbDist(media, advCorreta) > 45) ? media : shiftHue(advCorreta, 50);
+    var d2 = shiftHue(advCorreta, -50);
+    var d3 = shiftLight(advCorreta, (Math.random() < 0.5 ? 0.24 : -0.24));
+    var unicas = [advCorreta, d1, d2, d3];
+    // Garante distância mínima entre todas as opções (não ficam ambíguas)
+    for (var a = 1; a < unicas.length; a++) {
+      var tent = 0;
+      while (tent < 8) {
+        var ok = true;
+        for (var b = 0; b < a; b++) { if (rgbDist(unicas[a], unicas[b]) < 35) { ok = false; break; } }
+        if (ok) break;
+        unicas[a] = shiftHue(unicas[a], 40);
+        tent++;
+      }
+    }
+    baralha(unicas);
+    var cont = $("advOpcoes"); cont.innerHTML = "";
+    unicas.forEach(function (h) {
+      var b = document.createElement("button");
+      b.className = "adv-opcao"; b.style.background = h; b.dataset.hex = h;
+      b.title = "Escolher esta cor";
+      b.addEventListener("click", function () { advResponder(b, h); });
+      cont.appendChild(b);
+    });
+    postHeight();
+  }
+
+  function advResponder(botao, hex) {
+    if (advRespondido) return;
+    advRespondido = true;
+    var acertou = (hex === advCorreta);
+    var cont = $("advOpcoes");
+    Array.prototype.forEach.call(cont.children, function (b) {
+      if (b.dataset.hex === advCorreta) { b.classList.add("certa"); b.innerHTML = '<span class="marca">&#10003;</span>'; }
+      else if (b === botao) { b.classList.add("errada"); b.innerHTML = '<span class="marca">&#10007;</span>'; }
+    });
+    var fb = $("advFeedback");
+    if (acertou) {
+      advStreak++; if (advStreak > advBest) advBest = advStreak;
+      fb.textContent = "Certo! A mistura dá " + advCorreta + ".";
+      fb.className = "adv-feedback acerto";
+    } else {
+      advStreak = 0;
+      fb.textContent = "Quase! A mistura dá " + advCorreta + " (escolheste " + hex + ").";
+      fb.className = "adv-feedback falha";
+    }
+    $("advStreak").textContent = advStreak; $("advBest").textContent = advBest;
+    $("advProxima").hidden = false;
+    postHeight();
+  }
+  var advProx = $("advProxima"); if (advProx) advProx.addEventListener("click", advNovaRonda);
+
+  // ---- Modo Encontrar receita ----
+  var BASE = [
+    { nome: "Ciano", hex: "#009FE3" }, { nome: "Magenta", hex: "#E6007E" }, { nome: "Amarelo", hex: "#FFED00" },
+    { nome: "Branco", hex: "#FFFFFF" }, { nome: "Preto", hex: "#1D1D1B" }
+  ];
+  var BASE_C = BASE.map(function (b) { return new C(b.hex); });
+  function oklabDist(a, b) { var A = a.OKLab, B = b.OKLab; return Math.sqrt((A[0] - B[0]) * (A[0] - B[0]) + (A[1] - B[1]) * (A[1] - B[1]) + (A[2] - B[2]) * (A[2] - B[2])); }
+  function gcd(a, b) { return b ? gcd(b, a % b) : a; }
+
+  function encontrarReceita(targetHex, MAX) {
+    var target = new C(targetHex);
+    var best = null, n = BASE.length, parts = new Array(n).fill(0);
+    function rec(i) {
+      if (i === n) {
+        var used = [];
+        for (var k = 0; k < n; k++) if (parts[k] > 0) used.push([BASE_C[k], parts[k], k]);
+        if (!used.length) return;
+        var mixCol = spectral.mix.apply(null, used.map(function (u) { return [u[0], u[1]]; }));
+        var d = oklabDist(mixCol, target);
+        if (!best || d < best.d) best = { d: d, hex: mixCol.toString(), parts: parts.slice() };
+        return;
+      }
+      for (var p = 0; p <= MAX; p++) { parts[i] = p; rec(i + 1); }
+      parts[i] = 0;
+    }
+    rec(0);
+    return best;
+  }
+
+  function recCalcular() {
+    var alvo = $("recAlvo").value;
+    var best = encontrarReceita(alvo, 3);
+    $("recSwAlvo").style.background = alvo;
+    $("recSwObtido").style.background = best.hex;
+    var ps = best.parts, g = 0;
+    ps.forEach(function (v) { if (v > 0) g = gcd(g, v); });
+    if (!g) g = 1;
+    var receita = [];
+    for (var k = 0; k < BASE.length; k++) {
+      if (ps[k] > 0) { var q = ps[k] / g; receita.push(q + (q === 1 ? " parte de " : " partes de ") + BASE[k].nome); }
+    }
+    $("recReceita").innerHTML = receita.join("  ·  ");
+    var q, cor;
+    if (best.d < 0.02) { q = "Excelente"; cor = "#16A34A"; }
+    else if (best.d < 0.05) { q = "Boa"; cor = "#16A34A"; }
+    else if (best.d < 0.10) { q = "Aproximada"; cor = "#F59E0B"; }
+    else { q = "Difícil — esta cor é dura de obter só com tintas de processo"; cor = "#DC2626"; }
+    $("recQualidade").innerHTML = 'Aproximação: <span style="color:' + cor + '">' + q + "</span>";
+    $("recResultado").hidden = false;
+    postHeight();
+  }
+  var recBtn = $("recCalcular"); if (recBtn) recBtn.addEventListener("click", recCalcular);
+  var recAlvo = $("recAlvo"); if (recAlvo) recAlvo.addEventListener("input", recCalcular);
+
+  // ---- Permite abrir num separador específico via #adivinha ou #receita (para embeber) ----
+  var h = (location.hash || "").replace("#", "");
+  if (h === "adivinha" || h === "receita") activar(h);
 })();
 </script>
 </body>
