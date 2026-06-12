@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Calculadora de resolução máxima de impressão | dicasgraficas.com"
+  description="Carrega uma imagem e descobre o tamanho máximo a que pode ser impressa com qualidade. Calcula a partir dos pixéis e do DPI (300 para qualidade, 150 para grande formato)."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem; --cat: #0EA5E9;">
+        <div class="eyebrow">Ferramenta interativa</div>
+        <h1>Resolução máxima de impressão</h1>
+        <p>
+          Tens uma imagem e queres saber até que tamanho a podes imprimir <strong>sem perder qualidade</strong>?
+          Carrega-a aqui: a ferramenta lê os pixéis e calcula o tamanho máximo a <strong>300 DPI</strong>
+          (qualidade fotográfica) ou na resolução que escolheres — incluindo <strong>150 DPI</strong> para grande
+          formato e lonas. A imagem é analisada no teu navegador, sem ser enviada para lado nenhum.
+        </p>
+      </div>
+
+      <iframe
+        id="resFrame"
+        src="/ferramentas/resolucao-de-impressao.html"
+        title="Calculadora de resolução máxima de impressão"
+        loading="lazy"
+        style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 420px; background: #F9FAFB;"
+      ></iframe>
+
+      <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-top: 1rem;">
+        Fórmula: tamanho (cm) = (pixéis ÷ DPI) × 2,54. A 300 DPI a impressão é vista de perto com qualidade;
+        no grande formato, visto à distância, basta menos resolução.
+      </p>
+    </div>
+  </div>
+
+  <script is:inline>
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.type === 'mixer-height' && typeof e.data.height === 'number') {
+        var f = document.getElementById('resFrame');
+        if (f) f.style.height = (e.data.height + 24) + 'px';
+      }
+    });
+  </script>
+</Base>
