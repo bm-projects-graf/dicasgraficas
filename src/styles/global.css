@@ -4,26 +4,28 @@
    ============================================ */
 
 :root {
-  /* Cores primárias (azuis Onda Grafe) */
-  --color-primary: #1B6FA8;
-  --color-primary-light: #5FB4D9;
-  --color-primary-dark: #0F4A7A;
+  /* Tinta & Papel — tinta petróleo + dourado sobre papel quente */
+  --color-primary: #15323B;        /* tinta petróleo (links, marca) */
+  --color-primary-light: #3E5A62;
+  --color-primary-dark: #0E2128;
 
-  /* Acentos */
-  --color-accent: #C8332D;
+  /* Acento dourado */
+  --color-accent: #C9A227;         /* dourado — bordas, detalhes, pontos */
+  --color-accent-dark: #8A6D12;    /* dourado escuro — texto/rótulos (contraste) */
 
-  /* Neutros */
-  --color-text: #1A1A1A;
-  --color-text-secondary: #6B7280;
-  --color-text-muted: #9CA3AF;
-  --color-bg: #FFFFFF;
-  --color-bg-soft: #F9FAFB;
-  --color-bg-section: #F3F4F6;
-  --color-border: #E5E7EB;
+  /* Neutros (quentes) */
+  --color-text: #1E2B2E;           /* tinta escura */
+  --color-text-secondary: #5C6A69;
+  --color-text-muted: #94A09B;
+  --color-page: #FAF6EF;           /* papel quente — fundo da página */
+  --color-bg: #FFFFFF;             /* superfícies (cartões, cabeçalho, inputs) */
+  --color-bg-soft: #F4EEE2;        /* secções suaves */
+  --color-bg-section: #EFE7D8;     /* secções/caixas */
+  --color-border: #E7DFCF;         /* bordas quentes */
 
   /* Tipografia */
-  --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SF Mono', Monaco, monospace;
 
   /* Espaçamento */
@@ -52,7 +54,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: var(--color-page);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -548,7 +550,7 @@ img {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-accent);
+  color: var(--color-accent-dark);
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
