@@ -1,22 +1,62 @@
 ---
-// Botão "Ouvir artigo" — usa a leitura de voz do navegador (Web Speech API).
-// Sem custos nem servidores: a voz vem do próprio sistema/navegador do utilizador.
+// Botão "Ouvir artigo" — leitura de voz do navegador (Web Speech API).
+// Sem custos nem servidores. A qualidade depende das vozes do sistema/navegador,
+// por isso damos prioridade às vozes neurais ("Natural"/"Online"/Google) e deixamos
+// o utilizador escolher a voz e a velocidade. Lê frase a frase para melhor dicção.
 ---
 <div class="article-audio" data-state="idle">
-  <button type="button" id="tts-toggle" class="tts-btn" aria-label="Ouvir o artigo em voz alta">
-    <svg class="tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path class="tts-glyph-play" d="M11 5 6 9H3v6h3l5 4V5z" />
-      <path class="tts-glyph-play" d="M15.5 8.5a5 5 0 0 1 0 7" />
-      <path class="tts-glyph-play" d="M18.5 6a8 8 0 0 1 0 12" />
-      <path class="tts-glyph-pause" d="M9 6v12M15 6v12" />
-    </svg>
-    <span class="tts-label">Ouvir artigo</span>
-  </button>
-  <button type="button" id="tts-stop" class="tts-btn tts-btn--stop" aria-label="Parar a leitura" hidden>
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" /></svg>
-  </button>
-  <span class="tts-hint" hidden>A ler…</span>
+  <div class="tts-main">
+    <button type="button" id="tts-toggle" class="tts-btn" aria-label="Ouvir o artigo em voz alta">
+      <svg class="tts-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path class="tts-glyph-play" d="M11 5 6 9H3v6h3l5 4V5z" />
+        <path class="tts-glyph-play" d="M15.5 8.5a5 5 0 0 1 0 7" />
+        <path class="tts-glyph-play" d="M18.5 6a8 8 0 0 1 0 12" />
+        <path class="tts-glyph-pause" d="M9 6v12M15 6v12" />
+      </svg>
+      <span class="tts-label">Ouvir artigo</span>
+    </button>
+    <button type="button" id="tts-stop" class="tts-btn tts-btn--stop" aria-label="Parar a leitura" hidden>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" /></svg>
+    </button>
+    <span class="tts-hint" hidden>A ler…</span>
+    <button type="button" id="tts-cog" class="tts-cog" aria-label="Opções de voz" title="Opções de voz" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 2.6 15H2.5a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4 8.6l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9 5.4h.1A1.6 1.6 0 0 0 11 3.5V3a2 2 0 1 1 4 0v.1A1.6 1.6 0 0 0 17 5.4a1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1A1.6 1.6 0 0 0 21.4 11h.1a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="tts-controls" id="tts-controls" hidden>
+    <label class="tts-field">
+      <span>Voz</span>
+      <select id="tts-voice"></select>
+    </label>
+    <label class="tts-field">
+      <span>Velocidade</span>
+      <select id="tts-rate">
+        <option value="0.85">Lenta</option>
+        <option value="0.95" selected>Normal</option>
+        <option value="1.1">Rápida</option>
+      </select>
+    </label>
+    <p class="tts-note">A qualidade depende do teu navegador. As vozes <strong>Natural</strong>/<strong>Online</strong> (ex.: no Microsoft Edge) soam muito melhor que as antigas.</p>
+  </div>
 </div>
+
+<style>
+  .tts-main { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+  .tts-cog { background: none; border: none; cursor: pointer; color: var(--color-text-secondary, #6B7280);
+    width: 32px; height: 32px; padding: 5px; border-radius: 8px; display: inline-flex; }
+  .tts-cog:hover { background: rgba(0,0,0,0.05); color: var(--cat, #1B6FA8); }
+  .tts-cog svg { width: 100%; height: 100%; }
+  .tts-controls { display: flex; flex-wrap: wrap; gap: 0.9rem 1.2rem; align-items: flex-end;
+    margin-top: 0.8rem; padding: 0.8rem 1rem; background: rgba(0,0,0,0.03);
+    border: 1px solid var(--color-border, #E5E7EB); border-radius: 10px; }
+  .tts-field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: var(--color-text-secondary, #6B7280); }
+  .tts-field select { font-size: 0.88rem; padding: 0.4rem 0.5rem; border-radius: 8px;
+    border: 1.5px solid var(--color-border, #E5E7EB); background: #fff; color: var(--color-text, #1A1A1A); max-width: 260px; }
+  .tts-note { flex-basis: 100%; margin: 0.2rem 0 0; font-size: 0.78rem; color: var(--color-text-secondary, #6B7280); line-height: 1.4; }
+</style>
 
 <script>
   const wrap = document.querySelector('.article-audio') as HTMLElement | null;
@@ -24,6 +64,10 @@
   const stopBtn = document.getElementById('tts-stop') as HTMLElement | null;
   const hint = document.querySelector('.tts-hint') as HTMLElement | null;
   const label = document.querySelector('.tts-label');
+  const cog = document.getElementById('tts-cog') as HTMLElement | null;
+  const controls = document.getElementById('tts-controls') as HTMLElement | null;
+  const voiceSel = document.getElementById('tts-voice') as HTMLSelectElement | null;
+  const rateSel = document.getElementById('tts-rate') as HTMLSelectElement | null;
   const body = document.querySelector('.article-body');
   const supported = 'speechSynthesis' in window;
 
@@ -35,29 +79,77 @@
     let idx = 0;
     let playing = false;
     let paused = false;
-    let voice: SpeechSynthesisVoice | null = null;
+    let voices: SpeechSynthesisVoice[] = [];
+    let chosen: SpeechSynthesisVoice | null = null;
 
-    function pickVoice() {
-      const vs = synth.getVoices();
-      voice = vs.find(v => v.lang && v.lang.toLowerCase() === 'pt-pt')
-           || vs.find(v => v.lang && v.lang.toLowerCase().startsWith('pt'))
-           || null;
+    // ---- pontua melhor: dá uma "pontuação" de qualidade a cada voz ----
+    function score(v: SpeechSynthesisVoice): number {
+      const n = (v.name || '').toLowerCase();
+      const l = (v.lang || '').toLowerCase();
+      let s = 0;
+      if (l === 'pt-pt') s += 100; else if (l.startsWith('pt')) s += 40;
+      if (/natural|neural/.test(n)) s += 60;        // vozes neurais modernas
+      if (/online/.test(n)) s += 25;                // remotas (Edge) costumam ser neurais
+      if (/google/.test(n)) s += 30;                // Google é boa
+      if (/(helena|maria|hortense)/.test(n)) s -= 15; // SAPI antigas (robóticas)
+      if (v.localService === false) s += 5;
+      return s;
     }
-    pickVoice();
-    if (typeof synth.onvoiceschanged !== 'undefined') synth.onvoiceschanged = pickVoice;
 
-    function buildChunks() {
-      const raw = (body as HTMLElement).innerText.replace(/\s+/g, ' ').trim();
-      const sentences = raw.match(/[^.!?]+[.!?]*\s*/g) || [raw];
+    function loadVoices() {
+      const all = synth.getVoices();
+      // candidatas: portuguesas primeiro; se não houver, todas
+      let pt = all.filter(v => (v.lang || '').toLowerCase().startsWith('pt'));
+      const list = (pt.length ? pt : all).slice().sort((a, b) => score(b) - score(a));
+      voices = list;
+      if (!list.length) return;
+
+      const saved = localStorage.getItem('tts-voice');
+      chosen = list.find(v => v.name === saved) || list[0];
+
+      if (voiceSel) {
+        voiceSel.innerHTML = '';
+        list.forEach(v => {
+          const o = document.createElement('option');
+          o.value = v.name;
+          // rótulo amigável: nome + idioma + marca "natural" se aplicável
+          const nice = /natural|neural|online|google/i.test(v.name) ? ' ✨' : '';
+          o.textContent = `${v.name} (${v.lang})${nice}`;
+          if (chosen && v.name === chosen.name) o.selected = true;
+          voiceSel.appendChild(o);
+        });
+      }
+      if (cog) cog.hidden = false; // só mostramos as opções quando há vozes
+    }
+    loadVoices();
+    if (typeof synth.onvoiceschanged !== 'undefined') synth.onvoiceschanged = loadVoices;
+
+    // limpa símbolos que se leem mal e converte travessões em pausas
+    function normalize(t: string): string {
+      return t
+        .replace(/[→➔➙➤]/g, ' ')   // setas →
+        .replace(/×/g, ' por ')                    // ×
+        .replace(/[—–]/g, ', ')               // — – viram pausa
+        .replace(/[•▪◦·]/g, ', ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function buildChunks(): string[] {
+      const raw = normalize((body as HTMLElement).innerText);
+      // parte por frase (mantém a pontuação); junta frases curtas até ~200 caracteres
+      const sentences = raw.match(/[^.!?…]+[.!?…]+["')\]]?\s*|[^.!?…]+$/g) || [raw];
       const out: string[] = [];
       let cur = '';
       for (const s of sentences) {
-        if ((cur + s).length > 220) { if (cur) out.push(cur.trim()); cur = s; }
+        if ((cur + s).length > 200) { if (cur.trim()) out.push(cur.trim()); cur = s; }
         else cur += s;
       }
       if (cur.trim()) out.push(cur.trim());
       return out;
     }
+
+    function rate(): number { return rateSel ? parseFloat(rateSel.value) || 0.95 : 0.95; }
 
     function setState(s: 'idle' | 'playing' | 'paused') {
       wrap!.dataset.state = s;
@@ -69,9 +161,9 @@
     function speakNext() {
       if (!playing || idx >= chunks.length) { stop(); return; }
       const u = new SpeechSynthesisUtterance(chunks[idx]);
-      u.lang = 'pt-PT';
-      if (voice) u.voice = voice;
-      u.rate = 1; u.pitch = 1;
+      if (chosen) { u.voice = chosen; u.lang = chosen.lang; } else { u.lang = 'pt-PT'; }
+      u.rate = rate();
+      u.pitch = 1;
       u.onend = () => { if (playing && !paused) { idx++; speakNext(); } };
       u.onerror = () => { if (playing && !paused) { idx++; speakNext(); } };
       synth.speak(u);
@@ -94,9 +186,28 @@
       if (paused) { synth.resume(); paused = false; setState('playing'); }
       else { synth.pause(); paused = true; setState('paused'); }
     }
+    // aplicar nova voz/velocidade já no próximo trecho, sem perder o sítio
+    function reflow() {
+      if (!playing) return;
+      synth.cancel();
+      // o trecho atual recomeça com a nova definição
+      setTimeout(() => { if (playing) { paused = false; speakNext(); setState('playing'); } }, 60);
+    }
 
     toggle.addEventListener('click', () => { if (!playing) start(); else togglePause(); });
     if (stopBtn) stopBtn.addEventListener('click', stop);
+    if (cog && controls) cog.addEventListener('click', () => { controls.hidden = !controls.hidden; });
+    if (voiceSel) voiceSel.addEventListener('change', () => {
+      chosen = voices.find(v => v.name === voiceSel.value) || chosen;
+      if (chosen) localStorage.setItem('tts-voice', chosen.name);
+      reflow();
+    });
+    if (rateSel) rateSel.addEventListener('change', () => { localStorage.setItem('tts-rate', rateSel.value); reflow(); });
+
+    // restaura velocidade guardada
+    const savedRate = localStorage.getItem('tts-rate');
+    if (savedRate && rateSel) rateSel.value = savedRate;
+
     window.addEventListener('beforeunload', () => synth.cancel());
     window.addEventListener('pagehide', () => synth.cancel());
   }
