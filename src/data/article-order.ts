@@ -22,6 +22,7 @@ export const orderByCategory: Record<string, string[]> = {
     'formatos-de-papel-a-b-c-sra',
     'gramagem-do-papel-explicada',
     'tipos-de-papel-para-impressao',
+    'papeis-reciclados-e-certificacoes-fsc-pefc',
     'sentido-da-fibra-do-papel',
     'materiais-de-sinaletica-dibond-forex-acrilico',
     'historia-do-papel-cai-lun-a-maquina'
@@ -42,6 +43,7 @@ export const orderByCategory: Record<string, string[]> = {
   'Produtos impressos': [
     'cartoes-de-visita-formatos-papeis-acabamentos',
     'folhetos-e-flyers-formatos-e-dobras',
+    'anatomia-do-livro-e-da-revista',
     'caixas-de-cartao-canelado-fefco',
     'rotulos-e-etiquetas-materiais-adesivos',
     'sleeves-retrateis-shrink-sleeve'
@@ -78,13 +80,16 @@ export const orderByCategory: Record<string, string[]> = {
   'Ciência da cor': [
     'pantone-vs-cmyk-cores-diretas',
     'o-que-e-o-gamut',
+    'ganho-de-ponto-dot-gain',
     'gestao-de-cor-perfis-icc',
     'delta-e-medir-diferenca-de-cor',
     'historia-da-pantone'
   ],
   'Tipografia': [
     'serif-sans-serif-familias-tipograficas',
+    'como-combinar-tipos-de-letra-font-pairing',
     'anatomia-de-uma-letra',
+    'fontes-incorporar-ou-converter-em-curvas',
     'kerning-tracking-entrelinha-espacamento',
     'historia-da-helvetica',
     'aldus-manutius-livro-de-bolso-italico'
@@ -93,6 +98,7 @@ export const orderByCategory: Record<string, string[]> = {
     'como-pedir-orcamento-a-uma-grafica',
     'quanto-custa-imprimir-fatores-preco',
     'preparar-marca-para-grafica',
+    'sustentabilidade-na-impressao',
     'provas-de-cor-antes-da-tiragem',
     'o-impresso-no-marketing-porque-o-papel-funciona'
   ],
