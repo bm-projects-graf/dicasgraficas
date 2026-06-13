@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inspetor de PDF para impressão | dicasgraficas.com</title>
+<style>
+  :root { --cor:#4F46E5; --cor-escura:#3730A3; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF;
+    --ok-bg:#ECFDF5; --ok-bd:#10B981; --av-bg:#FFFBEB; --av-bd:#F59E0B; --er-bg:#FEF2F2; --er-bd:#EF4444; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
+  .wrap { max-width:760px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  header h1 { font-size:1.55rem; margin:0 0 0.25rem; }
+  header p.sub { color:var(--texto2); margin:0 0 1.25rem; }
+  .card { background:var(--bg-card); border:1px solid var(--borda); border-radius:12px; padding:1.25rem; margin-bottom:1.25rem; }
+
+  .drop { border:2px dashed #C7CBD9; border-radius:14px; background:#fff; padding:2.4rem 1.25rem; text-align:center; cursor:pointer; transition:border-color .15s, background .15s; }
+  .drop:hover, .drop.over { border-color:var(--cor); background:#F5F5FF; }
+  .drop .ico { font-size:2.4rem; line-height:1; }
+  .drop h2 { font-size:1.05rem; margin:0.6rem 0 0.25rem; }
+  .drop p { color:var(--texto2); font-size:0.9rem; margin:0.15rem 0; }
+  .drop .btn { display:inline-block; margin-top:0.8rem; background:var(--cor); color:#fff; font-weight:600; padding:0.55rem 1.1rem; border-radius:8px; font-size:0.95rem; }
+  .priv { font-size:0.8rem; color:var(--texto2); margin-top:0.8rem; }
+
+  .progress { display:none; margin-top:1.25rem; }
+  .progress.show { display:block; }
+  .bar { height:8px; background:#E5E7EB; border-radius:99px; overflow:hidden; }
+  .bar i { display:block; height:100%; width:40%; background:var(--cor); border-radius:99px; animation:slide 1.1s ease-in-out infinite; }
+  @keyframes slide { 0%{margin-left:-40%;} 100%{margin-left:100%;} }
+  .progress .lbl { text-align:center; color:var(--texto2); font-size:0.88rem; margin-top:0.5rem; }
+
+  #out { display:none; }
+  #out.show { display:block; }
+  .banner { display:flex; align-items:center; gap:0.8rem; padding:1rem 1.1rem; border-radius:12px; margin-bottom:1.1rem; font-weight:600; }
+  .banner .bi { font-size:1.6rem; line-height:1; }
+  .banner.ok { background:var(--ok-bg); border:1px solid var(--ok-bd); }
+  .banner.aviso { background:var(--av-bg); border:1px solid var(--av-bd); }
+  .banner.erro { background:var(--er-bg); border:1px solid var(--er-bd); }
+  .fileinfo { font-size:0.82rem; color:var(--texto2); font-weight:400; margin-top:0.15rem; }
+
+  .sec { border:1px solid var(--borda); border-left-width:5px; border-radius:10px; padding:0.9rem 1.05rem; margin-bottom:0.8rem; }
+  .sec.ok { border-left-color:var(--ok-bd); }
+  .sec.aviso { border-left-color:var(--av-bd); }
+  .sec.erro { border-left-color:var(--er-bd); }
+  .sec h3 { display:flex; align-items:center; gap:0.5rem; font-size:1rem; margin:0 0 0.3rem; }
+  .sec h3 .st { font-size:1.15rem; }
+  .sec p { margin:0.25rem 0 0; font-size:0.92rem; }
+  .sec .meta { font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--texto2); margin-top:0.4rem; }
+
+  .disc { background:#F5F5FF; border:1px solid #E0E0F5; border-radius:10px; padding:0.85rem 1rem; font-size:0.82rem; color:#4B5563; margin-top:0.4rem; }
+  .disc strong { color:var(--cor-escura); }
+  .again { display:inline-block; margin-top:1rem; background:#fff; color:var(--cor); border:1.5px solid var(--cor); font-weight:600; padding:0.5rem 1rem; border-radius:8px; cursor:pointer; font-size:0.92rem; }
+  .erro-load { background:var(--er-bg); border:1px solid var(--er-bd); border-radius:10px; padding:1rem; font-size:0.9rem; }
+  footer { margin-top:2rem; text-align:center; color:var(--texto2); font-size:0.82rem; }
+  footer a { color:var(--cor); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🔍 Inspetor de PDF para impressão</h1>
+    <p class="sub">Larga aqui um PDF e recebe um diagnóstico de prontidão para a máquina — cor, resolução, fontes e sangria. Tudo no teu navegador.</p>
+  </header>
+
+  <div class="card">
+    <div class="drop" id="drop">
+      <div class="ico">📄</div>
+      <h2>Arrasta o teu PDF para aqui</h2>
+      <p>ou clica para escolher um ficheiro</p>
+      <span class="btn">Escolher PDF</span>
+      <p class="priv">🔒 O ficheiro <strong>não sai do teu computador</strong> — a análise é 100% local.</p>
+      <input type="file" id="file" accept="application/pdf,.pdf" hidden />
+    </div>
+
+    <div class="progress" id="prog">
+      <div class="bar"><i></i></div>
+      <div class="lbl" id="progLbl">A analisar o PDF…</div>
+    </div>
+
+    <div id="out"></div>
+  </div>
+
+  <div class="disc">
+    <strong>Como ler este relatório.</strong> Esta análise corre inteiramente no teu navegador (o PDF não é enviado para nenhum servidor) e serve como <strong>indicador pedagógico</strong>. Não substitui o preflight profissional da gráfica: não cobre overprint, transparências achatadas, cores diretas mal definidas nem perfis ICC específicos. Em caso de dúvida, pede sempre uma <strong>prova</strong>.
+  </div>
+
+  <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+<script src="/ferramentas/preflight-core.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  function postHeight() { if (window.parent === window) return; try { parent.postMessage({ type: "mixer-height", height: document.documentElement.scrollHeight }, "*"); } catch (e) {} }
+  function fmtSize(b) { return b < 1048576 ? (b / 1024).toFixed(0) + " KB" : (b / 1048576).toFixed(1) + " MB"; }
+  var ICON = { ok: "🟢", aviso: "🟡", erro: "🔴" };
+
+  var drop = $("drop"), file = $("file"), prog = $("prog"), out = $("out");
+
+  drop.addEventListener("click", function () { file.click(); });
+  ["dragenter", "dragover"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+  ["dragleave", "drop"].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+  drop.addEventListener("drop", function (e) { var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]; if (f) handle(f); });
+  file.addEventListener("change", function () { if (file.files && file.files[0]) handle(file.files[0]); });
+
+  function handle(f) {
+    if (f.type !== "application/pdf" && !/\.pdf$/i.test(f.name)) { showError("Isso não parece um PDF. Escolhe um ficheiro .pdf."); return; }
+    out.classList.remove("show"); out.innerHTML = "";
+    prog.classList.add("show"); $("progLbl").textContent = "A ler o ficheiro…"; postHeight();
+    var reader = new FileReader();
+    reader.onload = function () {
+      var bytes = new Uint8Array(reader.result);
+      $("progLbl").textContent = "A inspecionar cores, resolução, fontes e sangria…"; postHeight();
+      setTimeout(function () {
+        if (!window.PreflightCore || !window.PDFLib || !window.pako) { prog.classList.remove("show"); showError("Não consegui carregar as bibliotecas de análise (verifica a ligação à internet)."); return; }
+        window.PreflightCore.analyze(bytes, { PDFLib: window.PDFLib, pako: window.pako })
+          .then(function (r) { prog.classList.remove("show"); render(r, f); })
+          .catch(function (err) { prog.classList.remove("show"); showError("Não consegui analisar este PDF. Pode estar protegido por palavra-passe ou corrompido. (" + (err && err.message ? err.message : err) + ")"); });
+      }, 60);
+    };
+    reader.onerror = function () { prog.classList.remove("show"); showError("Falha a ler o ficheiro."); };
+    reader.readAsArrayBuffer(f);
+  }
+
+  function showError(msg) { out.innerHTML = '<div class="erro-load">⚠️ ' + msg + '</div>' + againBtn(); out.classList.add("show"); bindAgain(); postHeight(); }
+  function againBtn() { return '<button class="again" id="again">Analisar outro ficheiro</button>'; }
+  function bindAgain() { var b = $("again"); if (b) b.addEventListener("click", function () { out.classList.remove("show"); out.innerHTML = ""; file.value = ""; postHeight(); }); }
+
+  function sec(status, title, body, meta) {
+    return '<div class="sec ' + status + '"><h3><span class="st">' + ICON[status] + '</span> ' + title + '</h3><p>' + body + '</p>' +
+      (meta ? '<div class="meta">' + meta + '</div>' : '') + '</div>';
+  }
+
+  function render(r, f) {
+    var bannerTxt = { ok: "Pronto para a gráfica", aviso: "Quase lá — há avisos técnicos a rever", erro: "Atenção — há problemas a corrigir" };
+    var bannerIco = { ok: "✅", aviso: "⚠️", erro: "⛔" };
+    var html = '<div class="banner ' + r.overall + '"><span class="bi">' + bannerIco[r.overall] + '</span><span>' + bannerTxt[r.overall] +
+      '<span class="fileinfo">' + escapeHtml(f.name) + " · " + fmtSize(f.size) + " · " + r.pages + (r.pages === 1 ? " página" : " páginas") + '</span></span></div>';
+
+    // Cores
+    var c = r.cor, corBody, corMeta = "CMYK: " + c.cmyk + " · RGB: " + c.rgb + " · Cinza: " + c.gray + " · Diretas: " + c.spot + (c.other ? " · Outras: " + c.other : "");
+    if (c.status === "aviso") corBody = "Encontrei <strong>" + c.rgb + (c.rgb === 1 ? " imagem em RGB" : " imagens em RGB") + "</strong>. Converte para CMYK (ex.: perfil <strong>FOGRA39</strong>) para evitar variações de cor na impressão.";
+    else if (c.total === 0) corBody = "Não encontrei imagens rasterizadas para avaliar. (Verifica também cores RGB em textos/vetores no teu software.)";
+    else corBody = "As imagens estão em CMYK / escala de cinza. Sem RGB a assinalar.";
+    html += sec(c.status, "Cores", corBody, corMeta);
+
+    // Resolução
+    var rs = r.resolucao, resBody, resMeta = rs.na ? "" : ("mínimo ~" + rs.minPPI + " PPI · " + rs.placed + (rs.placed === 1 ? " imagem" : " imagens") + (rs.low ? " · " + rs.low + " abaixo de 300" : ""));
+    if (rs.na) resBody = "Sem imagens colocadas para avaliar (documento vetorial ou só texto).";
+    else if (rs.status === "ok") resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong>. Boa para impressão vista de perto.";
+    else if (rs.status === "aviso") resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong> (abaixo de 300). Pode chegar para <strong>grande formato</strong> visto à distância, mas é arriscado para leitura de perto.";
+    else resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong> — muito baixa. Risco real de impressão pixelizada.";
+    html += sec(rs.status, "Resolução das imagens", resBody, resMeta);
+
+    // Fontes
+    var ft = r.fontes, ftBody, ftMeta = "incorporadas: " + ft.embeddedCount + (ft.nonEmbedded.length ? " · em falta: " + ft.nonEmbedded.length : "");
+    if (ft.noFonts) ftBody = "Sem fontes a assinalar — o texto está vetorizado (em curvas) ou não há texto.";
+    else if (ft.status === "ok") ftBody = "Todas as fontes do documento estão <strong>incorporadas</strong>. ✓";
+    else ftBody = "Há fontes <strong>não incorporadas</strong>: " + ft.nonEmbedded.map(escapeHtml).join(", ") + ". Incorpora-as ou <strong>converte o texto em curvas</strong> no teu software de paginação.";
+    html += sec(ft.status, "Fontes", ftBody, ftMeta);
+
+    // Sangria
+    var sg = r.sangria, sgBody, sgMeta = sg.hasTrim ? ("sangria mínima ~" + sg.minMM + " mm") : "sem TrimBox";
+    if (!sg.hasTrim) sgBody = "O PDF <strong>não define a TrimBox</strong> (tamanho final de corte) — típico de exports simples. Exporta com <strong>marcas de corte e 3 mm de sangria</strong> para a gráfica saber onde cortar.";
+    else if (sg.status === "ok") sgBody = "Sangria de <strong>~" + sg.minMM + " mm</strong> em todos os lados. ✓";
+    else if (sg.minMM <= 0.1) sgBody = "<strong>Sem sangria</strong> — a arte termina na linha de corte. Adiciona <strong>3 mm</strong> para evitar filetes brancos no corte.";
+    else sgBody = "Sangria <strong>insuficiente (~" + sg.minMM + " mm)</strong>. Usa pelo menos <strong>3 mm</strong> para absorver a tolerância da guilhotina.";
+    html += sec(sg.status, "Sangria (bleed)", sgBody, sgMeta);
+
+    html += '<p style="font-size:0.8rem;color:var(--texto2);margin-top:0.6rem;">Quer perceber cada ponto? Lê os guias de <a href="/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/" target="_blank" rel="noopener">CMYK vs RGB</a>, <a href="/artigos/resolucao-para-impressao-dpi/" target="_blank" rel="noopener">resolução/DPI</a> e <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/" target="_blank" rel="noopener">bleed</a>.</p>';
+    html += againBtn();
+    out.innerHTML = html; out.classList.add("show"); bindAgain(); postHeight();
+  }
+
+  function escapeHtml(s) { return String(s).replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); }
+
+  // hook de teste
+  window.__preflight = function (bytes) { return window.PreflightCore.analyze(bytes, { PDFLib: window.PDFLib, pako: window.pako }); };
+  window.addEventListener("load", postHeight);
+  postHeight();
+})();
+</script>
+</body>
+</html>
