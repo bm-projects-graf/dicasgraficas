@@ -8,7 +8,7 @@ readingTime: "10 min"
 featured: false
 ---
 
-Eis um daqueles segredos da impressão que quase ninguém conhece, mas que decide se um trabalho fica bom ou ridículo: **o papel tem uma "direção".** Cada folha tem um sentido em que dobra suavemente e rasga a direito, e outro em que dobra a rachar e rasga torto. Esse sentido chama-se **fibra** (ou grão, em inglês *grain*), e ignorá-lo é a causa de livros que não abrem, capas que racham na dobra e folhetos com um vinco feio.
+Eis um daqueles segredos da impressão que quase ninguém conhece, mas que decide se um trabalho fica bom ou ridículo: **o papel tem uma "direção".** Cada folha tem um sentido em que dobra suavemente e rasga a direito, e outro em que dobra a rachar e rasga torto. Esse sentido chama-se **sentido da fibra** (em inglês, *grain*), e ignorá-lo é a causa de livros que não abrem, capas que racham na dobra e folhetos com um vinco feio.
 
 Este artigo explica o que é o sentido da fibra, porque importa tanto, e como descobri-lo. É um conhecimento de profissional — e a marca de quem percebe mesmo de papel.
 

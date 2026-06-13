@@ -1,6 +1,6 @@
 ---
 title: "O guia completo das dobras em impressão"
-description: "Tipos de dobra, regras técnicas do vinco, direção do grão, bulk, maquinaria e erros comuns — tudo o que precisas de saber para especificar e produzir trabalhos dobrados com qualidade profissional."
+description: "Tipos de dobra, regras técnicas do vinco, direção da fibra, bulk, maquinaria e erros comuns — tudo o que precisas de saber para especificar e produzir trabalhos dobrados com qualidade profissional."
 pubDate: 2026-05-03
 category: "Acabamentos"
 keywords: "dobras impressão, tipos de dobra, vinco papel, tríptico, gate fold, dobra acordeão"
@@ -14,13 +14,13 @@ Este artigo cobre tudo o que precisas de saber sobre dobras em impressão: os ti
 
 ## Porque é que o papel resiste à dobra
 
-O papel é fabricado a partir de fibras celulósicas que se depositam maioritariamente numa direção durante o fabrico — chamada **direção do grão** (ou sentido máquina). Dobrar o papel a favor do grão é sempre mais fácil, mais limpo, e mais resistente ao longo do tempo. Dobrar contra o grão exige mais força, a dobra fica menos nítida, e o produto final pode ondular ao longo da lombada.
+O papel é fabricado a partir de fibras celulósicas que se depositam maioritariamente numa direção durante o fabrico — chamada **direção da fibra** (ou sentido máquina). Dobrar o papel a favor da fibra é sempre mais fácil, mais limpo, e mais resistente ao longo do tempo. Dobrar contra a fibra exige mais força, a dobra fica menos nítida, e o produto final pode ondular ao longo da lombada.
 
 É por isso que, num projeto com dobras, o **formato e orientação do papel** têm de ser escolhidos em função da direção das dobras previstas — não o contrário. Este é um dos primeiros ajustes que um bom pré-impressão faz ao receber um trabalho com dobras.
 
 <div class="tech-box">
-<div class="tech-label">Como identificar a direção do grão</div>
-<p>Há um teste simples: dobra uma folha levemente em cada direção sem a vincar. A direção onde encontras menos resistência é a direção do grão. Podes também humedecer ligeiramente um canto da folha — ela vai curvar na direção perpendicular ao grão, porque as fibras absorvem menos humidade nessa direção.</p>
+<div class="tech-label">Como identificar a direção da fibra</div>
+<p>Há um teste simples: dobra uma folha levemente em cada direção sem a vincar. A direção onde encontras menos resistência é a direção da fibra. Podes também humedecer ligeiramente um canto da folha — ela vai curvar na direção perpendicular à fibra, porque as fibras absorvem menos humidade nessa direção.</p>
 </div>
 
 ## O vinco: quando é obrigatório e quando é dispensável
@@ -136,7 +136,7 @@ Máquinas modernas de alta produção combinam os dois sistemas, permitindo sequ
 
 **Coating rachado na dobra.** Resultado de dobrar couché 150g+ sem vinco. Solução: vincar sempre antes de dobrar.
 
-**Dobra contra o grão.** O papel resiste, ondula, e pode descolar ao longo do tempo. Solução: confirmar a direção do grão antes de definir o formato.
+**Dobra contra a fibra.** O papel resiste, ondula, e pode descolar ao longo do tempo. Solução: confirmar a direção da fibra antes de definir o formato.
 
 **Painel interior demasiado largo num tríptico.** Faz bolsa ou força a dobra exterior. Solução: o painel interior deve ser 2-3mm mais estreito que os exteriores.
 
@@ -156,7 +156,7 @@ A exceção são as imagens que atravessam a dobra: estas precisam de se prolong
 
 Antes de definir qualquer formato com dobras, confirma sempre com a gráfica:
 
-1. **Qual é a direção do grão do papel** que vais usar
+1. **Qual é a direção da fibra do papel** que vais usar
 2. **Se o papel precisa de vinco** para a gramagem escolhida
 3. **Se a máquina de dobrar disponível** faz o tipo de dobra que queres
 4. **Quais as tolerâncias de alinhamento** para dobras com imagens cruzadas

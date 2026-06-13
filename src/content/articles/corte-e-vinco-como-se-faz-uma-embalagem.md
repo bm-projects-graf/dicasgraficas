@@ -124,7 +124,7 @@ Para quem prepara ficheiros para corte e vinco, há regras específicas que não
 
 **Os cantos interiores precisam de raio mínimo** — uma lâmina de aço não consegue fazer um ângulo de 90° perfeito no interior de uma forma. O raio mínimo viável depende da espessura da lâmina, mas tipicamente é de 1-2mm. Cantos interiores a 90° perfeitos ficam como cantos ligeiramente arredondados na peça final.
 
-**Confirma a direção do grão do cartão** — tal como nas dobras simples, o grão do cartão deve estar orientado de forma a que as dobras principais sejam feitas a favor do grão.
+**Confirma o sentido da fibra do cartão** — tal como nas dobras simples, a fibra do cartão deve estar orientada de forma a que as dobras principais sejam feitas a favor da fibra.
 
 ## A regra de ouro
 

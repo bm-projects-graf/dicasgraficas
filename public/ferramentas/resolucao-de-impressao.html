@@ -84,9 +84,10 @@
   footer { margin-top: 2rem; text-align: center; color: var(--texto2); font-size: 0.82rem; }
   footer a { color: var(--azul); }
   /* --- Tema Tinta & Papel (apenas visual) --- */
-  :root { --azul:#15323B; --azul-escuro:#0E2128; --texto:#1E2B2E; --texto2:#5C6A69; --borda:#E7DFCF; --bg:#FAF6EF; --bg-card:#FFFFFF; }
+  :root { --azul:#0284C7; --azul-escuro:#075985; --texto:#1E2B2E; --texto2:#5C6A69; --borda:#E7DFCF; --bg:#FAF6EF; --bg-card:#FFFFFF; }
   body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
   header h1 { font-family:'Fraunces',Georgia,serif; font-weight:700; letter-spacing:-0.02em; }
+  header::after { content:''; display:block; margin-top:0.7rem; width:120px; height:4px; border-radius:2px; background:linear-gradient(90deg,#009FE3 0 25%,#EC008C 0 50%,#FFD200 0 75%,#231F20 0 100%); }
   .card { border-radius:14px; box-shadow:0 1px 3px rgba(21,50,59,0.05); }
   .drop:hover, .drop.over { background:#F4EEE2; }
 </style>
