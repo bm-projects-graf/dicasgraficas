@@ -1,7 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
-import ArticleCover from '../../components/ArticleCover.astro';
 import ArticleAudio from '../../components/ArticleAudio.astro';
 import { getCollection, render } from 'astro:content';
 import { getCategory } from '../../data/categories';
@@ -35,8 +34,8 @@ const catColor = cat?.color ?? 'var(--color-primary)';
   description={article.data.description}
 >
   <article style={`--cat: ${catColor}`}>
-    <header class="article-header article-header--cat">
-      <div class="container container-narrow">
+    <header class="article-masthead">
+      <div class="container container-narrow masthead-inner">
         <div class="breadcrumb">
           <a href="/">Início</a>
           <span>/</span>
@@ -45,19 +44,18 @@ const catColor = cat?.color ?? 'var(--color-primary)';
           <span>Artigo</span>
         </div>
 
-        <ArticleCover color={catColor} icon={cat?.icon ?? ''} category={article.data.category} />
-
-        <h1 class="article-title">{article.data.title}</h1>
-        <p class="article-description">{article.data.description}</p>
-
-        <div class="article-info">
-          <span class="category">{article.data.category}</span>
-          {article.data.readingTime && <span>{article.data.readingTime} de leitura</span>}
-        </div>
-
-        <ArticleAudio />
+        <a href={`/categorias/${categorySlug}/`} class="masthead-cat">{article.data.category}</a>
+        <h1 class="masthead-title">{article.data.title}</h1>
+        <p class="masthead-desc">{article.data.description}</p>
+        {article.data.readingTime && <div class="masthead-info">{article.data.readingTime} de leitura</div>}
       </div>
+      <span class="masthead-icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${cat?.icon ?? ''}</svg>`} />
+      <span class="masthead-stripe" aria-hidden="true"></span>
     </header>
+
+    <div class="container container-narrow article-audio-wrap">
+      <ArticleAudio />
+    </div>
 
     <div class="article-body">
       <div class="container container-narrow">
