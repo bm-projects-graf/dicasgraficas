@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculadora de lombada | dicasgraficas.com</title>
+<style>
+  :root { --azul:#1B6FA8; --azul-escuro:#0F4A7A; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF; --aviso-bg:#FEF3C7; --aviso-borda:#F59E0B; --dica-bg:#EFF6FF; --dica-borda:#1B6FA8; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
+  .wrap { max-width:760px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  header h1 { font-size:1.6rem; margin:0 0 0.25rem; }
+  header p.sub { color:var(--texto2); margin:0 0 1rem; }
+  .mono { font-family:'IBM Plex Mono','SF Mono',Monaco,monospace; }
+  .aviso { background:var(--aviso-bg); border-left:4px solid var(--aviso-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.9rem; margin-bottom:1.5rem; }
+  .card { background:var(--bg-card); border:1px solid var(--borda); border-radius:10px; padding:1.25rem; margin-bottom:1.25rem; }
+  .card h2 { font-size:1.05rem; margin:0 0 1rem; }
+  .linha { display:flex; gap:1rem; flex-wrap:wrap; }
+  .campo { flex:1; min-width:150px; margin-bottom:0.5rem; }
+  .campo label { display:block; font-weight:600; font-size:0.9rem; margin-bottom:0.35rem; }
+  .campo input, .campo select { width:100%; padding:0.6rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:inherit; background:#fff; }
+  .campo input:focus, .campo select:focus { outline:none; border-color:var(--azul); }
+  .grande { text-align:center; padding:1.4rem; background:var(--bg); border-radius:10px; margin-top:0.5rem; }
+  .grande .lbl { font-size:0.8rem; color:var(--texto2); text-transform:uppercase; letter-spacing:0.05em; }
+  .grande .val { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.4rem; color:var(--texto); }
+  .grande .val small { font-size:1.1rem; color:var(--texto2); font-weight:400; }
+  .detalhe { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1rem; margin-top:1rem; }
+  @media (max-width:520px){ .detalhe { grid-template-columns:1fr; } }
+  .detalhe .item { background:var(--bg); border-radius:8px; padding:0.55rem 0.8rem; }
+  .detalhe .k { font-size:0.76rem; color:var(--texto2); }
+  .detalhe .v { font-family:'IBM Plex Mono',monospace; font-weight:700; }
+  .dica { background:var(--dica-bg); border-left:4px solid var(--dica-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.9rem; margin-top:1.25rem; }
+  .dica .lbl { font-weight:700; color:var(--azul-escuro); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.15rem; }
+  footer { margin-top:2rem; text-align:center; color:var(--texto2); font-size:0.82rem; }
+  footer a { color:var(--azul); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📚 Calculadora de lombada</h1>
+    <p class="sub">Para livros e catálogos de <strong>lombada quadrada (colada)</strong>: descobre a espessura exata da lombada para fazeres a capa.</p>
+  </header>
+
+  <div class="aviso">
+    ⚠️ A espessura depende da <strong>"mão" (volume) do papel</strong>, que varia entre fabricantes. Os valores por tipo são <strong>típicos/aproximados</strong> — para um trabalho real, confirma a <strong>espessura (caliper) na ficha técnica</strong> do papel ou usa "Personalizado".
+  </div>
+
+  <div class="card">
+    <h2>1. O miolo</h2>
+    <div class="linha">
+      <div class="campo"><label for="paginas">Nº de páginas</label><input type="number" id="paginas" min="2" step="2" value="200" /></div>
+      <div class="campo"><label for="gramagem">Gramagem do miolo (g/m²)</label><input type="number" id="gramagem" min="1" step="1" value="90" /></div>
+    </div>
+    <div class="linha">
+      <div class="campo"><label for="tipo">Tipo de papel</label>
+        <select id="tipo">
+          <option value="0.80">Couché (revestido) — vol. ~0,80</option>
+          <option value="1.15" selected>IOR / Offset (não revestido) — vol. ~1,15</option>
+          <option value="1.65">Ibérico / avolumado (bouffant) — vol. ~1,65</option>
+          <option value="custom">Personalizado (indicar volume)…</option>
+        </select>
+      </div>
+      <div class="campo" id="volBox" style="display:none;"><label for="volCustom">Volume / mão (cm³/g)</label><input type="number" id="volCustom" min="0.5" max="2.5" step="0.01" value="1.15" /></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Lombada</h2>
+    <div class="grande">
+      <div class="lbl">Espessura da lombada (miolo)</div>
+      <div class="val" id="lombada">—</div>
+    </div>
+    <div class="detalhe">
+      <div class="item"><div class="k">Folhas (páginas ÷ 2)</div><div class="v" id="folhas">—</div></div>
+      <div class="item"><div class="k">Espessura de 1 folha</div><div class="v" id="caliper">—</div></div>
+    </div>
+    <div class="dica">
+      <span class="lbl">Como se calcula</span>
+      Lombada = <strong>nº de folhas × espessura de cada folha</strong>. A espessura de cada folha = gramagem × volume ÷ 1000 (mm). O nº de folhas é metade das páginas (cada folha tem 2 páginas, frente e verso). <strong>A capa não está incluída</strong> — se a capa for grossa, soma a sua espessura à volta da lombada.
+    </div>
+  </div>
+
+  <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id){ return document.getElementById(id); };
+  function postHeight(){ if(window.parent===window) return; try{ parent.postMessage({type:"mixer-height",height:document.documentElement.scrollHeight},"*"); }catch(e){} }
+
+  function volumeAtual(){
+    var v = $("tipo").value;
+    if (v === "custom") return parseFloat($("volCustom").value) || 0;
+    return parseFloat(v);
+  }
+  function fmt1(x){ return x.toFixed(1).replace(".", ","); }
+
+  function calcular(){
+    var paginas = parseInt($("paginas").value,10) || 0;
+    var gram = parseFloat($("gramagem").value) || 0;
+    var vol = volumeAtual();
+    var folhas = Math.ceil(paginas/2);
+    var caliperMm = gram * vol / 1000;       // espessura de 1 folha (mm)
+    var lombadaMm = folhas * caliperMm;
+    if (paginas>0 && gram>0 && vol>0) {
+      $("lombada").innerHTML = fmt1(lombadaMm) + " <small>mm</small>";
+      $("folhas").textContent = folhas + " folhas";
+      $("caliper").textContent = caliperMm.toFixed(3).replace(".", ",") + " mm (" + Math.round(caliperMm*1000) + " µm)";
+    } else {
+      $("lombada").textContent = "—"; $("folhas").textContent = "—"; $("caliper").textContent = "—";
+    }
+    postHeight();
+  }
+  window.__lombada = function(p,g,v){ $("paginas").value=p; $("gramagem").value=g; $("tipo").value="custom"; $("volBox").style.display="block"; $("volCustom").value=v; calcular(); };
+
+  $("tipo").addEventListener("change", function(){ $("volBox").style.display = ($("tipo").value==="custom")?"block":"none"; calcular(); });
+  $("paginas").addEventListener("input", calcular);
+  $("gramagem").addEventListener("input", calcular);
+  $("volCustom").addEventListener("input", calcular);
+  calcular();
+})();
+</script>
+</body>
+</html>

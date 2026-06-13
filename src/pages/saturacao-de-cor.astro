@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Verificador de saturação de cor (TAC) | dicasgraficas.com"
+  description="Soma as percentagens CMYK (Total Area Coverage) de um fundo escuro ou preto rico e avisa, com semáforo, se há tinta a mais — risco de não secar, decalcar e repintar."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem; --cat: #DC2626;">
+        <div class="eyebrow">Ferramenta interativa</div>
+        <h1>Verificador de saturação de cor (TAC)</h1>
+        <p>
+          Pretos "carregados" e fundos escuros podem ter <strong>tinta a mais</strong>. Introduz os valores
+          CMYK e a ferramenta soma-os (Total Area Coverage) e dá-te um <strong>semáforo</strong>: verde, amarelo
+          ou vermelho. Aprende a fazer um <strong>preto rico</strong> seguro, sem saturar o papel.
+        </p>
+      </div>
+
+      <iframe id="tacFrame" src="/ferramentas/saturacao-cmyk.html" title="Verificador de saturação de cor (TAC)" loading="lazy"
+        style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 640px; background: #F9FAFB;"></iframe>
+    </div>
+  </div>
+
+  <script is:inline>
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.type === 'mixer-height' && typeof e.data.height === 'number') {
+        var f = document.getElementById('tacFrame'); if (f) f.style.height = (e.data.height + 24) + 'px';
+      }
+    });
+  </script>
+</Base>

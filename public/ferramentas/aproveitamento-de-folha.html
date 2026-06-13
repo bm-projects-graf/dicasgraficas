@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Otimizador de aproveitamento de folha | dicasgraficas.com</title>
+<style>
+  :root { --azul:#1B6FA8; --azul-escuro:#0F4A7A; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF; --aviso-bg:#FEF3C7; --aviso-borda:#F59E0B; --dica-bg:#EFF6FF; --dica-borda:#1B6FA8; --verde:#16A34A; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
+  .wrap { max-width:820px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  header h1 { font-size:1.6rem; margin:0 0 0.25rem; }
+  header p.sub { color:var(--texto2); margin:0 0 1rem; }
+  .card { background:var(--bg-card); border:1px solid var(--borda); border-radius:10px; padding:1.25rem; margin-bottom:1.25rem; }
+  .card h2 { font-size:1.05rem; margin:0 0 1rem; }
+  .grupo { font-weight:700; font-size:0.82rem; color:var(--texto2); text-transform:uppercase; letter-spacing:0.04em; margin:0.3rem 0 0.4rem; }
+  .linha { display:flex; gap:1rem; flex-wrap:wrap; }
+  .campo { flex:1; min-width:130px; margin-bottom:0.6rem; }
+  .campo label { display:block; font-weight:600; font-size:0.88rem; margin-bottom:0.3rem; }
+  .campo input { width:100%; padding:0.55rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:'IBM Plex Mono',monospace; background:#fff; }
+  .campo input:focus { outline:none; border-color:var(--azul); }
+  .resumo { display:flex; gap:1.5rem; flex-wrap:wrap; align-items:baseline; margin-bottom:1rem; }
+  .resumo .grande { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.3rem; line-height:1; }
+  .resumo .grande small { font-size:1rem; color:var(--texto2); font-weight:400; }
+  .resumo .desperdicio { font-size:1.05rem; }
+  .esquema { text-align:center; background:var(--bg); border-radius:10px; padding:1rem; }
+  .esquema svg { max-width:100%; height:auto; }
+  .esquema .leg { font-size:0.82rem; color:var(--texto2); margin-top:0.5rem; }
+  .aviso { background:var(--aviso-bg); border-left:4px solid var(--aviso-borda); padding:0.7rem 1rem; border-radius:0 6px 6px 0; font-size:0.85rem; margin-top:1rem; }
+  .dica { background:var(--dica-bg); border-left:4px solid var(--dica-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.9rem; margin-top:1.25rem; }
+  .dica .lbl { font-weight:700; color:var(--azul-escuro); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.15rem; }
+  footer { margin-top:2rem; text-align:center; color:var(--texto2); font-size:0.82rem; }
+  footer a { color:var(--azul); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>✂️ Aproveitamento de folha</h1>
+    <p class="sub">Quantos produtos saem de uma folha de máquina, com o melhor plano de corte e o desperdício (aparas).</p>
+  </header>
+
+  <div class="card">
+    <h2>1. Medidas (em cm)</h2>
+    <div class="grupo">Folha de máquina</div>
+    <div class="linha">
+      <div class="campo"><label for="fw">Largura (cm)</label><input type="number" id="fw" min="1" step="0.1" value="70" /></div>
+      <div class="campo"><label for="fh">Altura (cm)</label><input type="number" id="fh" min="1" step="0.1" value="100" /></div>
+      <div class="campo"><label for="margem">Margem/pinça (cm)</label><input type="number" id="margem" min="0" step="0.1" value="0" /></div>
+    </div>
+    <div class="grupo" style="margin-top:0.6rem;">Produto final (aberto)</div>
+    <div class="linha">
+      <div class="campo"><label for="pw">Largura (cm)</label><input type="number" id="pw" min="0.1" step="0.1" value="21" /></div>
+      <div class="campo"><label for="ph">Altura (cm)</label><input type="number" id="ph" min="0.1" step="0.1" value="29.7" /></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Plano de corte</h2>
+    <div class="resumo">
+      <div><div class="grande"><span id="qtd">—</span> <small>à folha</small></div></div>
+      <div class="desperdicio">Desperdício (aparas): <strong id="desp">—</strong></div>
+    </div>
+    <div class="esquema">
+      <div id="svgBox"></div>
+      <div class="leg" id="leg"></div>
+    </div>
+    <div class="aviso" id="aviso">
+      ⚠️ Cálculo <strong>geométrico</strong>: não inclui <strong>sangria</strong>, espaço entre cortes nem pinça (usa o campo "margem" para a pinça/aparas). Numa produção real, soma a sangria a cada peça. Serve para estimar o aproveitamento e comparar formatos de folha.
+    </div>
+  </div>
+
+  <div class="dica">
+    <span class="lbl">Dica de aproveitamento</span>
+    Às vezes <strong>rodar o produto</strong> (ou escolher outra folha de máquina) muda muito o nº de peças e o desperdício. Experimenta trocar a folha entre <strong>70×100</strong> e <strong>50×70</strong> e vê a diferença — é assim que o orçamentista escolhe a folha mais económica.
+  </div>
+
+  <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id){ return document.getElementById(id); };
+  function postHeight(){ if(window.parent===window) return; try{ parent.postMessage({type:"mixer-height",height:document.documentElement.scrollHeight},"*"); }catch(e){} }
+
+  // Encaixe: grelha principal numa orientação + tiras que sobram preenchidas com a peça rodada.
+  function tentar(W,H,w,h){
+    var rects=[];
+    var cols=Math.floor(W/w), rows=Math.floor(H/h);
+    for(var r=0;r<rows;r++) for(var c=0;c<cols;c++) rects.push({x:c*w,y:r*h,w:w,h:h});
+    var usedW=cols*w, usedH=rows*h;
+    // tira à direita: [usedW..W] x [0..H] com peça rodada (h x w)
+    var rightW=W-usedW;
+    var rc=Math.floor(rightW/h), rr=Math.floor(H/w);
+    for(var i=0;i<rc;i++) for(var j=0;j<rr;j++) rects.push({x:usedW+i*h, y:j*w, w:h, h:w});
+    // tira em baixo: [0..usedW] x [usedH..H] com peça rodada
+    var bottomH=H-usedH;
+    var bc=Math.floor(usedW/h), br=Math.floor(bottomH/w);
+    for(var a=0;a<bc;a++) for(var b=0;b<br;b++) rects.push({x:a*h, y:usedH+b*w, w:h, h:w});
+    return rects;
+  }
+
+  function melhor(W,H,w,h){
+    var A=tentar(W,H,w,h);
+    var B=tentar(W,H,h,w);
+    return (B.length>A.length)? B : A;
+  }
+
+  function desenhar(W,H,rects){
+    var maxW=440, maxH=320;
+    var s=Math.min(maxW/W, maxH/H);
+    var sw=W*s, sh=H*s, pad=2;
+    var svg='<svg viewBox="0 0 '+(sw+pad*2)+' '+(sh+pad*2)+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano de corte da folha">';
+    svg+='<rect x="'+pad+'" y="'+pad+'" width="'+sw+'" height="'+sh+'" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>';
+    for(var i=0;i<rects.length;i++){
+      var p=rects[i];
+      svg+='<rect x="'+(pad+p.x*s)+'" y="'+(pad+p.y*s)+'" width="'+(p.w*s)+'" height="'+(p.h*s)+'" fill="rgba(27,111,168,0.35)" stroke="#1B6FA8" stroke-width="1"/>';
+    }
+    svg+='</svg>';
+    return svg;
+  }
+
+  function fmt1(x){ return x.toFixed(1).replace(".", ","); }
+
+  function calcular(){
+    var fw=parseFloat($("fw").value)||0, fh=parseFloat($("fh").value)||0;
+    var pw=parseFloat($("pw").value)||0, ph=parseFloat($("ph").value)||0;
+    var mar=parseFloat($("margem").value)||0;
+    var W=fw-2*mar, H=fh-2*mar;
+
+    if(W<=0||H<=0||pw<=0||ph<=0){ $("qtd").textContent="—"; $("desp").textContent="—"; $("svgBox").innerHTML=""; $("leg").textContent=""; postHeight(); return; }
+
+    var rects=melhor(W,H,pw,ph);
+    var n=rects.length;
+    $("qtd").textContent=n;
+    if(n===0){
+      $("desp").textContent="100% (não cabe)";
+      $("svgBox").innerHTML=desenhar(W,H,[]);
+      $("leg").textContent="O produto não cabe nesta folha (nem rodado).";
+      postHeight(); return;
+    }
+    var areaUtil = W*H;
+    var areaProd = n*pw*ph;
+    var desp = (1 - areaProd/(fw*fh))*100; // desperdício face à folha inteira
+    $("desp").textContent = fmt1(desp)+"%";
+    // deslocar rects pela margem para o desenho usar a folha inteira
+    var offset=mar;
+    var desenhoRects = rects.map(function(p){ return {x:p.x+offset, y:p.y+offset, w:p.w, h:p.h}; });
+    $("svgBox").innerHTML=desenhar(fw,fh,desenhoRects);
+    $("leg").textContent="Folha "+fmt1(fw)+"×"+fmt1(fh)+" cm · produto "+fmt1(pw)+"×"+fmt1(ph)+" cm · "+n+" à folha";
+    postHeight();
+  }
+  window.__aprov = function(fw,fh,pw,ph,mar){ $("fw").value=fw; $("fh").value=fh; $("pw").value=pw; $("ph").value=ph; $("margem").value=mar||0; calcular(); return parseInt($("qtd").textContent,10); };
+
+  ["fw","fh","pw","ph","margem"].forEach(function(id){ $(id).addEventListener("input", calcular); });
+  calcular();
+})();
+</script>
+</body>
+</html>

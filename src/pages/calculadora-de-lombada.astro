@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Calculadora de lombada | dicasgraficas.com"
+  description="Calcula a espessura exata da lombada de um livro ou catálogo (lombada quadrada/colada) a partir do número de páginas, da gramagem e do tipo de papel do miolo."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem; --cat: #7C3AED;">
+        <div class="eyebrow">Ferramenta interativa</div>
+        <h1>Calculadora de lombada</h1>
+        <p>
+          Para livros e catálogos de <strong>lombada quadrada (colada)</strong>: indica o número de páginas, a
+          gramagem e o tipo de papel do miolo, e descobre a <strong>espessura exata da lombada</strong> em
+          milímetros — para fazeres a capa sem erros.
+        </p>
+      </div>
+
+      <iframe id="lombFrame" src="/ferramentas/lombada.html" title="Calculadora de lombada" loading="lazy"
+        style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 560px; background: #F9FAFB;"></iframe>
+    </div>
+  </div>
+
+  <script is:inline>
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.type === 'mixer-height' && typeof e.data.height === 'number') {
+        var f = document.getElementById('lombFrame'); if (f) f.style.height = (e.data.height + 24) + 'px';
+      }
+    });
+  </script>
+</Base>

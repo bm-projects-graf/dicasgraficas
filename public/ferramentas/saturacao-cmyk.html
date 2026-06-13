@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verificador de saturação de cor (TAC) | dicasgraficas.com</title>
+<style>
+  :root { --azul:#1B6FA8; --azul-escuro:#0F4A7A; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF; --dica-bg:#EFF6FF; --dica-borda:#1B6FA8; --verde:#16A34A; --amarelo:#F59E0B; --vermelho:#DC2626; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
+  .wrap { max-width:760px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  header h1 { font-size:1.6rem; margin:0 0 0.25rem; }
+  header p.sub { color:var(--texto2); margin:0 0 1rem; }
+  .card { background:var(--bg-card); border:1px solid var(--borda); border-radius:10px; padding:1.25rem; margin-bottom:1.25rem; }
+  .card h2 { font-size:1.05rem; margin:0 0 1rem; }
+  .cmyk { display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem; }
+  @media (max-width:520px){ .cmyk { grid-template-columns:repeat(2,1fr); } }
+  .cmyk .campo label { display:block; font-weight:700; font-size:0.85rem; margin-bottom:0.3rem; }
+  .cmyk .campo input { width:100%; padding:0.55rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1.05rem; font-family:'IBM Plex Mono',monospace; text-align:center; }
+  .cmyk .campo input:focus { outline:none; border-color:var(--azul); }
+  .topo { display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap; }
+  .preview { width:110px; height:110px; border-radius:10px; border:1px solid rgba(0,0,0,0.12); flex-shrink:0; }
+  .tac { flex:1; min-width:200px; }
+  .tac .num { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.6rem; line-height:1; }
+  .tac .num small { font-size:1.1rem; color:var(--texto2); font-weight:400; }
+  .semaforo { display:inline-block; padding:0.3rem 0.8rem; border-radius:100px; color:#fff; font-weight:700; font-size:0.9rem; margin-top:0.5rem; }
+  .barra { height:14px; border-radius:7px; background:linear-gradient(90deg, var(--verde) 0%, var(--verde) 55%, var(--amarelo) 55%, var(--amarelo) 71%, var(--vermelho) 71%, var(--vermelho) 100%); position:relative; margin:1.2rem 0 0.4rem; }
+  .barra .marca { position:absolute; top:-5px; width:4px; height:24px; background:#1A1A1A; border-radius:2px; transform:translateX(-2px); }
+  .barra-leg { display:flex; justify-content:space-between; font-size:0.72rem; color:var(--texto2); font-family:'IBM Plex Mono',monospace; }
+  .msg { margin-top:1rem; font-size:0.95rem; font-weight:600; }
+  .escala { margin-top:1rem; }
+  .escala .e { display:flex; gap:0.5rem; align-items:flex-start; font-size:0.88rem; margin-bottom:0.4rem; }
+  .escala .pt { width:14px; height:14px; border-radius:50%; flex-shrink:0; margin-top:0.25rem; }
+  .sugerir { margin-top:1rem; padding:0.7rem 0.9rem; background:var(--bg); border-radius:8px; font-size:0.9rem; }
+  .sugerir button { margin-top:0.5rem; padding:0.45rem 0.9rem; border:1.5px solid var(--azul); background:#fff; color:var(--azul); border-radius:7px; cursor:pointer; font-weight:600; font-size:0.85rem; }
+  .dica { background:var(--dica-bg); border-left:4px solid var(--dica-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.9rem; margin-top:1.25rem; }
+  .dica .lbl { font-weight:700; color:var(--azul-escuro); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.15rem; }
+  footer { margin-top:2rem; text-align:center; color:var(--texto2); font-size:0.82rem; }
+  footer a { color:var(--azul); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🎨 Verificador de saturação de cor (TAC)</h1>
+    <p class="sub">Soma as 4 tintas (Total Area Coverage) e avisa se o teu preto/fundo tem <strong>tinta a mais</strong> — o que faz o trabalho não secar, decalcar e repintar.</p>
+  </header>
+
+  <div class="card">
+    <h2>1. A tua cor (CMYK)</h2>
+    <div class="cmyk">
+      <div class="campo"><label style="color:#0093D0;">C %</label><input type="number" id="c" min="0" max="100" step="1" value="80" /></div>
+      <div class="campo"><label style="color:#D6006E;">M %</label><input type="number" id="m" min="0" max="100" step="1" value="70" /></div>
+      <div class="campo"><label style="color:#E0A800;">Y %</label><input type="number" id="y" min="0" max="100" step="1" value="70" /></div>
+      <div class="campo"><label style="color:#1A1A1A;">K %</label><input type="number" id="k" min="0" max="100" step="1" value="100" /></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Resultado</h2>
+    <div class="topo">
+      <div class="preview" id="preview"></div>
+      <div class="tac">
+        <div class="num"><span id="tacNum">—</span><small> % TAC</small></div>
+        <span class="semaforo" id="semaforo">—</span>
+      </div>
+    </div>
+    <div class="barra"><div class="marca" id="marca" style="left:0%"></div></div>
+    <div class="barra-leg"><span>0%</span><span>240%</span><span>300%</span><span>400%</span></div>
+    <div class="msg" id="msg"></div>
+
+    <div class="escala">
+      <div class="e"><span class="pt" style="background:var(--verde)"></span><span><strong>Até 240%</strong> — perfeito para papel jornal / rotativa.</span></div>
+      <div class="e"><span class="pt" style="background:var(--amarelo)"></span><span><strong>240% a 300%</strong> — seguro para offset em papel couché.</span></div>
+      <div class="e"><span class="pt" style="background:var(--vermelho)"></span><span><strong>Acima de 300%</strong> — perigo! Risco de decalque, repintismo e má secagem.</span></div>
+    </div>
+
+    <div class="sugerir">
+      💡 <strong>Preto rico seguro</strong> (em vez de C100 M100 Y100 K100 = 400%): um bom preto profundo usa pouca tinta de apoio — por exemplo <span class="mono">C40 M30 Y0 K100</span> (170%).
+      <br /><button id="usarRico">Usar este preto rico</button>
+    </div>
+  </div>
+
+  <div class="dica">
+    <span class="lbl">O que é o TAC</span>
+    <strong>TAC (Total Area Coverage)</strong> é a soma das quatro percentagens de tinta. Em offset, o papel só absorve uma certa quantidade de tinta; ultrapassar o limite (tipicamente ~300% em couché) faz a tinta não secar, colar à folha seguinte (decalque) e sujar. Por isso nunca se usa "preto registo" (400%) em áreas grandes — usa-se um <strong>preto rico</strong> controlado.
+  </div>
+
+  <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id){ return document.getElementById(id); };
+  function postHeight(){ if(window.parent===window) return; try{ parent.postMessage({type:"mixer-height",height:document.documentElement.scrollHeight},"*"); }catch(e){} }
+  function clamp(v){ return Math.max(0, Math.min(100, v)); }
+
+  function cmykToRgb(c,m,y,k){
+    c/=100; m/=100; y/=100; k/=100;
+    return [Math.round(255*(1-c)*(1-k)), Math.round(255*(1-m)*(1-k)), Math.round(255*(1-y)*(1-k))];
+  }
+
+  function calcular(){
+    var c=clamp(parseFloat($("c").value)||0), m=clamp(parseFloat($("m").value)||0), y=clamp(parseFloat($("y").value)||0), k=clamp(parseFloat($("k").value)||0);
+    var tac = c+m+y+k;
+    $("tacNum").textContent = Math.round(tac);
+    var rgb = cmykToRgb(c,m,y,k);
+    $("preview").style.background = "rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+")";
+    $("marca").style.left = Math.min(100, tac/400*100) + "%";
+
+    var cor, txt, msg;
+    if (tac <= 240) { cor="var(--verde)"; txt="🟢 Seguro"; msg="Ótimo — dentro do limite mesmo para papel jornal e rotativa."; }
+    else if (tac <= 300) { cor="var(--amarelo)"; txt="🟡 Aceitável"; msg="Seguro para offset em papel couché. Evita ir mais alto."; }
+    else { cor="var(--vermelho)"; txt="🔴 Perigo"; msg="Tinta a mais ("+Math.round(tac)+"%): risco de não secar, decalcar e repintar. Reduz — usa um preto rico controlado."; }
+    $("semaforo").textContent = txt; $("semaforo").style.background = cor;
+    $("msg").textContent = msg; $("msg").style.color = cor;
+    postHeight();
+  }
+  window.__tac = function(c,m,y,k){ $("c").value=c; $("m").value=m; $("y").value=y; $("k").value=k; calcular(); };
+
+  ["c","m","y","k"].forEach(function(id){ $(id).addEventListener("input", calcular); });
+  $("usarRico").addEventListener("click", function(){ $("c").value=40; $("m").value=30; $("y").value=0; $("k").value=100; calcular(); });
+  calcular();
+})();
+</script>
+</body>
+</html>
