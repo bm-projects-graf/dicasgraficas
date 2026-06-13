@@ -18,8 +18,11 @@
   .campo { flex:1; min-width:120px; margin-bottom:0.6rem; }
   .campo label { display:block; font-weight:600; font-size:0.85rem; margin-bottom:0.3rem; }
   .campo input, .campo select { width:100%; padding:0.55rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:inherit; background:#fff; }
-  .campo input { font-family:'IBM Plex Mono',monospace; }
+  .campo input[type=number] { font-family:'IBM Plex Mono',monospace; }
   .campo input:focus, .campo select:focus { outline:none; border-color:var(--azul); }
+  .check { display:flex; align-items:center; gap:0.5rem; margin-top:0.4rem; }
+  .check input { width:18px; height:18px; }
+  .check label { font-weight:600; font-size:0.9rem; }
   .resumo { display:flex; gap:1.5rem; flex-wrap:wrap; align-items:baseline; margin-bottom:1rem; }
   .resumo .grande { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.3rem; line-height:1; }
   .resumo .grande small { font-size:1rem; color:var(--texto2); font-weight:400; }
@@ -38,7 +41,7 @@
 <div class="wrap">
   <header>
     <h1>✂️ Aproveitamento de folha</h1>
-    <p class="sub">Quantos produtos saem de uma folha de máquina, com o melhor plano de corte e o desperdício — a contar com pinça, margens, espaço entre peças e o modo de tira-retira.</p>
+    <p class="sub">Quantos produtos saem de uma folha, com o melhor plano de corte e o desperdício — a contar com pinça, margens, espaço entre peças, tira-retira e o sentido da fibra.</p>
   </header>
 
   <div class="card">
@@ -60,13 +63,14 @@
         <label for="modo">Tira-retira</label>
         <select id="modo">
           <option value="frente" selected>Frente apenas (1 face)</option>
-          <option value="normal">Tira-retira normal</option>
-          <option value="cambalhota">Tira-retira de cambalhota</option>
+          <option value="normal">Tira-retira normal (divisão ao alto)</option>
+          <option value="cambalhota">Tira-retira de cambalhota (ao baixo)</option>
         </select>
       </div>
     </div>
+    <div class="check"><input type="checkbox" id="fibra" /><label for="fibra">Manter o sentido da fibra (não rodar as peças 90°)</label></div>
 
-    <div class="grupo" style="margin-top:0.6rem;">Margens e cortes (mm)</div>
+    <div class="grupo" style="margin-top:0.8rem;">Margens e cortes (mm)</div>
     <div class="linha">
       <div class="campo"><label for="pinca" id="pincaLbl">Pinça / boca</label><input type="number" id="pinca" min="0" step="1" value="15" /></div>
       <div class="campo"><label for="margem">Margens (laterais/saída)</label><input type="number" id="margem" min="0" step="1" value="8" /></div>
@@ -89,8 +93,8 @@
   </div>
 
   <div class="dica">
-    <span class="lbl">Modos de tira-retira</span>
-    Na <strong>cambalhota</strong>, a folha vira sobre a boca e a máquina <strong>agarra dos dois lados</strong> — por isso há pinça nas duas margens opostas. Na <strong>tira-retira normal</strong>, mantém-se uma só pinça, mas reserva-se uma <strong>cruzeta central</strong> maior (onde a folha "vira ao alto"). Falta ainda somar a <strong>sangria</strong> a cada peça, conforme o trabalho.
+    <span class="lbl">Tira-retira e fibra</span>
+    No <strong>tira-retira</strong> a folha funciona como <strong>duas metades iguais</strong> (a "retira" é o espelho da "tira"): nenhuma peça pode atravessar o eixo central, por isso o encaixe é feito <strong>numa metade e multiplicado por 2</strong>. Se tiveres de <strong>manter o sentido da fibra</strong>, a peça não pode rodar 90° — o que costuma reduzir o aproveitamento.
   </div>
 
   <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
@@ -101,105 +105,116 @@
   "use strict";
   var $ = function (id){ return document.getElementById(id); };
   function postHeight(){ if(window.parent===window) return; try{ parent.postMessage({type:"mixer-height",height:document.documentElement.scrollHeight},"*"); }catch(e){} }
+  function nFit(L,p,g){ if(p<=0||L<=0) return 0; return Math.max(0, Math.floor((L+g)/(p+g))); }
+  function fmt1(x){ return x.toFixed(1).replace(".", ","); }
 
-  function nFit(L, p, g){ if(p<=0||L<=0) return 0; return Math.max(0, Math.floor((L + g) / (p + g))); }
-
-  function tentar(W,H,w,h,g){
-    var rects=[];
-    var cols=nFit(W,w,g), rows=nFit(H,h,g);
+  function grelha(W,H,w,h,g){
+    var rects=[], cols=nFit(W,w,g), rows=nFit(H,h,g);
     for(var r=0;r<rows;r++) for(var c=0;c<cols;c++) rects.push({x:c*(w+g), y:r*(h+g), w:w, h:h});
-    var usedW = cols>0 ? cols*w+(cols-1)*g : 0;
-    var usedH = rows>0 ? rows*h+(rows-1)*g : 0;
-    var stripX = usedW + (cols>0 ? g : 0);
-    var rightW = W - stripX;
-    var rc=nFit(rightW, h, g), rr=nFit(H, w, g);
+    return rects;
+  }
+  // com rotação: grelha principal + tiras que sobram com peça rodada (tudo dentro da região)
+  function tentar(W,H,w,h,g){
+    var rects=grelha(W,H,w,h,g);
+    var cols=nFit(W,w,g), rows=nFit(H,h,g);
+    var usedW=cols>0?cols*w+(cols-1)*g:0, usedH=rows>0?rows*h+(rows-1)*g:0;
+    var stripX=usedW+(cols>0?g:0), rightW=W-stripX;
+    var rc=nFit(rightW,h,g), rr=nFit(H,w,g);
     for(var i=0;i<rc;i++) for(var j=0;j<rr;j++) rects.push({x:stripX+i*(h+g), y:j*(w+g), w:h, h:w});
-    var stripY = usedH + (rows>0 ? g : 0);
-    var bottomH = H - stripY;
-    var bc=nFit(usedW, h, g), br=nFit(bottomH, w, g);
+    var stripY=usedH+(rows>0?g:0), bottomH=H-stripY;
+    var bc=nFit(usedW,h,g), br=nFit(bottomH,w,g);
     for(var a=0;a<bc;a++) for(var b=0;b<br;b++) rects.push({x:a*(h+g), y:stripY+b*(w+g), w:h, h:w});
     return rects;
   }
-  function melhor(W,H,w,h,g){
+  // encaixe numa região (rodar = permite 90º; senão só na orientação dada)
+  function encaixar(W,H,w,h,g,rodar){
+    if(!rodar) return grelha(W,H,w,h,g);
     var A=tentar(W,H,w,h,g), B=tentar(W,H,h,w,g);
-    return (B.length>A.length)? B : A;
+    return (B.length>A.length)?B:A;
   }
 
-  function desenhar(W,H,offX,offY,uW,uH,rects){
-    var maxW=440, maxH=320;
-    var s=Math.min(maxW/W, maxH/H);
-    var sw=W*s, sh=H*s, pad=2;
-    var svg='<svg viewBox="0 0 '+(sw+pad*2)+' '+(sh+pad*2)+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano de corte da folha">';
+  function desenhar(fw,fh,regioes){
+    var maxW=440, maxH=320, s=Math.min(maxW/fw, maxH/fh), sw=fw*s, sh=fh*s, pad=2;
+    var svg='<svg viewBox="0 0 '+(sw+pad*2)+' '+(sh+pad*2)+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano de corte">';
     svg+='<rect x="'+pad+'" y="'+pad+'" width="'+sw+'" height="'+sh+'" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>';
-    svg+='<rect x="'+(pad+offX*s)+'" y="'+(pad+offY*s)+'" width="'+(uW*s)+'" height="'+(uH*s)+'" fill="none" stroke="#C7CDD6" stroke-width="1" stroke-dasharray="4 3"/>';
-    for(var i=0;i<rects.length;i++){
-      var p=rects[i];
-      svg+='<rect x="'+(pad+(offX+p.x)*s)+'" y="'+(pad+(offY+p.y)*s)+'" width="'+(p.w*s)+'" height="'+(p.h*s)+'" fill="rgba(27,111,168,0.35)" stroke="#1B6FA8" stroke-width="1"/>';
-    }
-    svg+='</svg>';
-    return svg;
+    regioes.forEach(function(R){
+      svg+='<rect x="'+(pad+R.offX*s)+'" y="'+(pad+R.offY*s)+'" width="'+(R.uW*s)+'" height="'+(R.uH*s)+'" fill="none" stroke="#C7CDD6" stroke-width="1" stroke-dasharray="4 3"/>';
+      R.rects.forEach(function(p){
+        svg+='<rect x="'+(pad+(R.offX+p.x)*s)+'" y="'+(pad+(R.offY+p.y)*s)+'" width="'+(p.w*s)+'" height="'+(p.h*s)+'" fill="rgba(27,111,168,0.35)" stroke="#1B6FA8" stroke-width="1"/>';
+      });
+    });
+    return svg+'</svg>';
   }
-  function fmt1(x){ return x.toFixed(1).replace(".", ","); }
 
   function calcular(){
     var fw=parseFloat($("fw").value)||0, fh=parseFloat($("fh").value)||0;
     var pw=parseFloat($("pw").value)||0, ph=parseFloat($("ph").value)||0;
-    var pinca=(parseFloat($("pinca").value)||0)/10;
-    var marg=(parseFloat($("margem").value)||0)/10;
-    var g=(parseFloat($("gap").value)||0)/10;
-    var cruz=(parseFloat($("cruzeta").value)||0)/10;
-    var modo=$("modo").value;
+    var pinca=(parseFloat($("pinca").value)||0)/10, marg=(parseFloat($("margem").value)||0)/10;
+    var g=(parseFloat($("gap").value)||0)/10, cruz=(parseFloat($("cruzeta").value)||0)/10;
+    var modo=$("modo").value, rodar=!$("fibra").checked;
 
-    var offX, offY, uW, uH;
-    if (modo === "cambalhota") {
-      offY = pinca; uH = fh - 2*pinca;        // pinça nos dois lados (cima e baixo)
-      offX = marg;  uW = fw - 2*marg;
-    } else if (modo === "normal") {
-      offY = marg;  uH = fh - marg - pinca;   // uma pinça
-      uW = fw - 2*marg - cruz;                // cruzeta central desconta da largura útil
-      offX = (fw - uW) / 2;                    // centra a área útil
-    } else { // frente
-      offX = marg; offY = marg;
-      uW = fw - 2*marg; uH = fh - marg - pinca;
+    function falha(msg){ $("qtd").textContent="—"; $("desp").textContent="—"; $("svgBox").innerHTML=""; $("leg").textContent=msg||""; postHeight(); }
+    if(fw<=0||fh<=0||pw<=0||ph<=0){ falha(""); return; }
+
+    var regioes=[], n=0, legExtra="";
+
+    if(modo==="frente"){
+      var uW=fw-2*marg, uH=fh-marg-pinca;
+      if(uW<=0||uH<=0){ falha("Margens grandes demais."); return; }
+      var rects=encaixar(uW,uH,pw,ph,g,rodar);
+      regioes=[{offX:marg, offY:marg, uW:uW, uH:uH, rects:rects}];
+      n=rects.length;
+      legExtra="útil "+fmt1(uW)+"×"+fmt1(uH)+" cm";
+    } else if(modo==="normal"){
+      // divisão ao alto: 2 metades lado a lado, cruzeta central entre elas; pinça em baixo
+      var halfW=(fw-2*marg-cruz)/2, uHn=fh-marg-pinca;
+      if(halfW<=0||uHn<=0){ falha("Margens/cruzeta grandes demais."); return; }
+      var rn=encaixar(halfW,uHn,pw,ph,g,rodar), per=rn.length; n=2*per;
+      regioes=[
+        {offX:marg, offY:marg, uW:halfW, uH:uHn, rects:rn},
+        {offX:marg+halfW+cruz, offY:marg, uW:halfW, uH:uHn, rects:rn}
+      ];
+      legExtra="2 metades de "+fmt1(halfW)+"×"+fmt1(uHn)+" cm · "+per+" por metade";
+    } else { // cambalhota: divisão ao baixo, pinça nos dois lados, metades sobrepostas
+      var uWc=fw-2*marg, halfH=(fh-2*pinca-g)/2;
+      if(uWc<=0||halfH<=0){ falha("Margens grandes demais."); return; }
+      var rc2=encaixar(uWc,halfH,pw,ph,g,rodar), per2=rc2.length; n=2*per2;
+      regioes=[
+        {offX:marg, offY:pinca, uW:uWc, uH:halfH, rects:rc2},
+        {offX:marg, offY:pinca+halfH+g, uW:uWc, uH:halfH, rects:rc2}
+      ];
+      legExtra="2 metades de "+fmt1(uWc)+"×"+fmt1(halfH)+" cm · "+per2+" por metade";
     }
 
-    if(uW<=0||uH<=0||pw<=0||ph<=0){ $("qtd").textContent="—"; $("desp").textContent="—"; $("svgBox").innerHTML=""; $("leg").textContent="Margens grandes demais para esta folha."; postHeight(); return; }
-
-    var rects=melhor(uW,uH,pw,ph,g);
-    var n=rects.length;
     $("qtd").textContent=n;
-    if(n===0){
-      $("desp").textContent="100% (não cabe)";
-      $("svgBox").innerHTML=desenhar(fw,fh,offX,offY,uW,uH,[]);
-      $("leg").textContent="O produto não cabe na área útil (nem rodado).";
-      postHeight(); return;
-    }
-    var desp=(1 - (n*pw*ph)/(fw*fh))*100;
+    if(n===0){ $("desp").textContent="100% (não cabe)"; $("svgBox").innerHTML=desenhar(fw,fh,regioes); $("leg").textContent="Não cabe ("+legExtra+")."; postHeight(); return; }
+    var desp=(1-(n*pw*ph)/(fw*fh))*100;
     $("desp").textContent=fmt1(desp)+"%";
-    $("svgBox").innerHTML=desenhar(fw,fh,offX,offY,uW,uH,rects);
-    $("leg").textContent="Folha "+fmt1(fw)+"×"+fmt1(fh)+" cm · útil "+fmt1(uW)+"×"+fmt1(uH)+" cm · "+n+" à folha";
+    $("svgBox").innerHTML=desenhar(fw,fh,regioes);
+    $("leg").textContent="Folha "+fmt1(fw)+"×"+fmt1(fh)+" cm · "+legExtra+" · "+n+" à folha";
     postHeight();
   }
 
   function atualizarModo(){
     var modo=$("modo").value;
-    $("cruzBox").style.display = (modo==="normal") ? "block" : "none";
-    $("pincaLbl").textContent = (modo==="cambalhota") ? "Pinça (nos dois lados)" : "Pinça / boca";
-    var av = $("aviso");
-    if (modo==="cambalhota") av.innerHTML = "⚠️ <strong>Cambalhota:</strong> pinça nos <strong>dois lados</strong> opostos (a folha vira sobre a boca). Falta somar a <strong>sangria</strong> a cada peça.";
-    else if (modo==="normal") av.innerHTML = "⚠️ <strong>Tira-retira normal:</strong> uma pinça + uma <strong>cruzeta central</strong> (descontada da largura útil). Falta somar a <strong>sangria</strong> a cada peça.";
-    else av.innerHTML = "⚠️ Cálculo geométrico (frente). A <strong>pinça</strong> é o lado por onde a máquina agarra; as <strong>margens</strong> guardam a tira de cor/defesa; o <strong>espaço entre peças</strong> é a folga de corte. Falta somar a <strong>sangria</strong> a cada peça.";
+    $("cruzBox").style.display=(modo==="normal")?"block":"none";
+    $("pincaLbl").textContent=(modo==="cambalhota")?"Pinça (nos dois lados)":"Pinça / boca";
+    var av=$("aviso");
+    if(modo==="cambalhota") av.innerHTML="⚠️ <strong>Cambalhota:</strong> duas metades sobrepostas, pinça nas <strong>duas pontas</strong>. Encaixe por metade ×2. Falta somar a <strong>sangria</strong> a cada peça.";
+    else if(modo==="normal") av.innerHTML="⚠️ <strong>Tira-retira normal:</strong> duas metades lado a lado, com a <strong>cruzeta central</strong> entre elas. Encaixe por metade ×2. Falta somar a <strong>sangria</strong> a cada peça.";
+    else av.innerHTML="⚠️ Cálculo geométrico (frente). <strong>Pinça</strong> = lado por onde a máquina agarra; <strong>margens</strong> = tira de cor/defesa; <strong>espaço entre peças</strong> = folga de corte. Falta somar a <strong>sangria</strong> a cada peça.";
     calcular();
   }
 
-  window.__aprov = function(fw,fh,pw,ph,pinca,marg,gap,modo,cruz){
+  window.__aprov=function(fw,fh,pw,ph,pinca,marg,gap,modo,cruz,fibra){
     $("fw").value=fw; $("fh").value=fh; $("pw").value=pw; $("ph").value=ph;
     $("pinca").value=(pinca==null?15:pinca); $("margem").value=(marg==null?8:marg); $("gap").value=(gap==null?4:gap);
-    $("modo").value=(modo||"frente"); if(cruz!=null) $("cruzeta").value=cruz;
+    $("modo").value=(modo||"frente"); if(cruz!=null) $("cruzeta").value=cruz; $("fibra").checked=!!fibra;
     atualizarModo(); return parseInt($("qtd").textContent,10);
   };
 
   $("modo").addEventListener("change", atualizarModo);
+  $("fibra").addEventListener("change", calcular);
   ["fw","fh","pw","ph","pinca","margem","gap","cruzeta"].forEach(function(id){ $(id).addEventListener("input", calcular); });
   atualizarModo();
 })();
