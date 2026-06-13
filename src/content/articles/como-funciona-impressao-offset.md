@@ -90,6 +90,34 @@ As máquinas modernas têm **quatro unidades em sequência**: uma para ciano, ou
 
 A precisão é impressionante. Os quatro cilindros têm de estar **perfeitamente alinhados** para que os pontos de cada cor coincidam exatamente. Pequenas falhas de alinhamento — chamadas **erros de registo** — provocam aquele efeito desfocado em que se vê o ciano deslocado em relação ao magenta. Em máquinas profissionais, o registo é de centésimos de milímetro.
 
+## A retícula: como o offset "finge" tons contínuos
+
+Há aqui um pormenor que confunde muita gente: a tinta de offset sai da máquina sempre na **mesma intensidade** — não há "meio ciano". Então como é que se imprime uma fotografia com mil tonalidades a partir de apenas quatro tintas chapadas? A resposta é a **retícula** (*halftone*): a imagem é decomposta em **milhares de pontos minúsculos** de tamanho variável. Pontos grandes e juntos = zona escura; pontos pequenos e afastados = zona clara. O olho, à distância de leitura, funde tudo e "vê" um tom contínuo. É a mesma ilusão do pontilhismo.
+
+À densidade desses pontos chama-se **lineatura** (em inglês *LPI — lines per inch*, linhas por polegada). É um valor da **máquina e do papel**, não do teu ficheiro:
+
+- **Jornal (papel poroso, rotativa):** 85–100 LPI — o papel absorve a tinta e os pontos alastram, por isso usam-se pontos maiores.
+- **Offset comercial em couché:** 150 LPI — o padrão de revistas e catálogos.
+- **Trabalhos de alta qualidade (livros de arte):** 175–200 LPI ou mais.
+
+<div class="tech-box">
+<div class="tech-label">O fator de qualidade: 2 × LPI = PPI</div>
+<p>Aqui está a regra que separa quem sabe de quem repete o "põe tudo a 300". A resolução da imagem (em <strong>PPI</strong>) deve ser cerca do <strong>dobro da lineatura</strong> da máquina:</p>
+<ul>
+<li>Revista impressa a <strong>150 LPI</strong> → imagem a <strong>300 PPI</strong> (150 × 2). É <em>daqui</em> que vem o famoso "300".</li>
+<li>Jornal impresso a <strong>85 LPI</strong> → <strong>170 PPI</strong> já chegam. Mandar 300 PPI para um jornal é desperdício: a retícula grosseira nunca usa esse detalhe.</li>
+</ul>
+<p>Ou seja, "300 DPI" não é uma lei universal — é a consequência de imprimir a 150 LPI, que é o caso mais comum. Mais do que ~2× a lineatura não acrescenta nitidez visível; só engorda o ficheiro.</p>
+</div>
+
+Por isso é que, no nosso artigo sobre [resolução para impressão](/artigos/resolucao-para-impressao-dpi/), a regra prática "300 PPI para perto, menos para longe" funciona — mas agora sabes a razão técnica por trás dela.
+
+## O ganho de ponto (dot gain): porque o impresso sai mais escuro
+
+Ligado à retícula há um efeito que apanha quem prepara ficheiros pela primeira vez: o **ganho de ponto** (*dot gain*). Quando a tinta toca no papel, o ponto da retícula **alastra** ligeiramente — fica maior do que era na chapa. Resultado: as zonas de meio-tom saem **mais escuras** do que apareciam no ecrã, sobretudo em papéis não revestidos (que absorvem mais).
+
+Não é um defeito, é física do papel — e é precisamente uma das coisas que os **perfis ICC** (como o FOGRA39) descrevem e compensam. É também por isto que um mesmo ficheiro sai diferente em couché e em offset não revestido: o ganho de ponto é maior no segundo.
+
 ## Folha vs bobina: máquinas planas e rotativas
 
 Há duas grandes famílias de máquinas offset, distinguidas pelo tipo de papel que usam.

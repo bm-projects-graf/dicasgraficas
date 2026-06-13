@@ -21,8 +21,9 @@ Um papel de 80g/m² pesa 80 gramas se cortares uma folha quadrada com 1 metro de
 Quanto maior o número, mais pesado o papel — e geralmente mais espesso, mais rígido, e com sensação mais "premium" ao toque.
 
 <div class="tech-box">
-<div class="tech-label">Pormenor importante</div>
-<p>Gramagem não é exatamente o mesmo que <strong>espessura</strong>. Dois papéis diferentes com a mesma gramagem podem ter espessuras diferentes — depende da densidade da pasta. Um papel reciclado é tipicamente menos denso que um couché, então 200g de reciclado parece mais grosso que 200g de couché. Para projetos onde a espessura específica importa (cartões, capas), a indústria usa também a medida em <strong>microns</strong> ou em <strong>volume específico</strong>.</p>
+<div class="tech-label">Gramagem não é espessura: a "mão" do papel</div>
+<p>Gramagem é <strong>peso</strong> (g/m²), não espessura. A relação entre as duas chama-se <strong>mão do papel</strong> (ou volume específico): um papel de mão alta é "fofo" e ocupa muita espessura por grama; um de mão baixa é denso e compacto. Por isso a regra "mais gramagem = mais grosso" só vale <em>dentro do mesmo papel</em>.</p>
+<p>O caso que apanha toda a gente: um <strong>papel de edição (Ibérico) de 80g pode ser visivelmente mais espesso e encorpado do que um couché brilhante de 100g</strong> — apesar de pesar menos — porque tem mão muito mais alta. É por isto que os miolos de livros usam papéis de mão alta (mais corpo com menos peso, livro mais leve no correio). Onde a espessura real importa (cartões, capas, lombadas), mede-se em <strong>microns (µm)</strong>, não em gramas.</p>
 </div>
 
 <figure class="article-figure">

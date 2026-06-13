@@ -77,6 +77,11 @@ Isto é especialmente visível em:
 
 Antes de converter, é boa prática usar `Imagem → Modo → Aviso de gama` para veres em cinzento as cores que vão ser afetadas. Permite-te ajustar manualmente.
 
+<div class="tech-box">
+<div class="tech-label">Atenção: "CMYK" não é um só</div>
+<p>Mudar o botão para CMYK <strong>não</strong> garante cor certa, porque o CMYK depende do <strong>perfil</strong> de destino — ou seja, do papel e da máquina. Converter para couché (ex.: FOGRA39) dá separações diferentes de converter para um papel não revestido. O ideal é pedires à tua gráfica <strong>qual o perfil ICC que ela usa</strong> e converteres para esse. Se isto te parece chinês, não há problema — explicamos tudo no artigo de <a href="/artigos/gestao-de-cor-perfis-icc/">gestão de cor e perfis ICC</a>.</p>
+</div>
+
 ### Adobe Illustrator
 
 No Illustrator, defines o modo **antes** de começar:

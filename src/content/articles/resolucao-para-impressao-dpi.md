@@ -54,6 +54,11 @@ Não é coincidência que 300 DPI seja o número mágico para impressão profiss
 
 Há contudo casos onde se pode ir mais baixo sem prejuízo, que vamos ver já a seguir.
 
+<div class="tech-box">
+<div class="tech-label">De onde vem mesmo o "300"</div>
+<p>O 300 não é um número mágico arbitrário. Em offset, a imagem é impressa com uma <strong>retícula</strong> de pontos cuja densidade se chama <strong>lineatura</strong> (LPI). A regra técnica é que a resolução da imagem deve ser cerca do <strong>dobro da lineatura</strong>: uma revista impressa a 150 LPI pede 300 PPI (150 × 2). Um jornal a 85 LPI fica-se bem por 170 PPI. Por isso "300" é só o caso mais comum (150 LPI), não uma lei. Explicamos isto em detalhe em <a href="/artigos/como-funciona-impressao-offset/">como funciona o offset</a>.</p>
+</div>
+
 ## Resoluções por tipo de produto
 
 A regra dos 300 DPI aplica-se a tudo o que é visualizado de perto. Mas a **distância de visualização** muda completamente o cenário. Quanto mais longe estás de uma imagem, menos DPI precisas — porque o teu olho não distingue os pequenos pontos de qualquer maneira.
