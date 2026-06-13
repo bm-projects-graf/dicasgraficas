@@ -1,0 +1,254 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Glossário de artes gráficas — termo, definição e (opcional) link para artigo/ferramenta.
+// Para acrescentar termos, basta adicionar ao array; a página agrupa e ordena sozinha.
+interface Termo { t: string; d: string; h?: string; }
+
+const termos: Termo[] = [
+  { t: 'Acabamento', d: 'Tudo o que se faz ao impresso depois da impressão: vernizes, laminados, relevos, cortes, dobras, encadernação.' },
+  { t: 'Acerto (makeready)', d: 'Preparação e afinação da máquina antes da tiragem boa; as primeiras folhas até a cor estabilizar são refugo.' },
+  { t: 'Aditivo (RGB)', d: 'Sistema de cor por luz, onde somar vermelho, verde e azul dá branco. É o dos ecrãs.', h: '/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/' },
+  { t: 'Agrafe a cavalo', d: 'Encadernação com agrafos na dobra central; típica de revistas e brochuras de poucas páginas.', h: '/artigos/guia-completo-encadernacao/' },
+  { t: 'Altura-x', d: 'Altura das letras minúsculas (como o "x"), sem ascendentes nem descendentes; afeta legibilidade e o emparelhamento de fontes.', h: '/artigos/anatomia-de-uma-letra/' },
+  { t: 'Anilox', d: 'Cilindro gravado com micro-células que dosa a tinta na flexografia.', h: '/artigos/flexografia-impressao-de-embalagens/' },
+  { t: 'Aparas', d: 'Sobras de papel cortado que vão para reciclagem; minimizá-las reduz custo e desperdício.', h: '/aproveitamento-de-folha/' },
+  { t: 'Badana (orelha)', d: 'Aba da capa que dobra para dentro; costuma levar sinopse ou biografia.', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'BAT (bon à tirer)', d: '"Bom para imprimir": a aprovação final do cliente que autoriza a tiragem.', h: '/artigos/provas-de-cor-antes-da-tiragem/' },
+  { t: 'Bleed (sangria)', d: 'Extensão da arte (3 mm) para além da linha de corte, para evitar filetes brancos no corte.', h: '/artigos/bleed-margem-de-seguranca-linha-de-corte/' },
+  { t: 'Bobina', d: 'Rolo contínuo de papel usado nas máquinas rotativas (web).' },
+  { t: 'Brancura', d: 'Medida de quão branco é um papel; afeta a vivacidade das cores impressas.' },
+  { t: 'Cadernos (signatures)', d: 'Folhas grandes impressas com várias páginas que, dobradas e cortadas, formam grupos de páginas na ordem certa.', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'Calibração', d: 'Pôr um dispositivo (monitor, máquina) num estado conhecido e estável, base de toda a gestão de cor.', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'Canelura', d: 'A onda de papel entre as faces do cartão canelado, que lhe dá rigidez e amortecimento.', h: '/artigos/caixas-de-cartao-canelado-fefco/' },
+  { t: 'Capa dura (cartonado)', d: 'Encadernação com capa rígida; o miolo é colado/cosido e ligado por guardas.', h: '/artigos/guia-completo-encadernacao/' },
+  { t: 'Cartão canelado', d: 'Estrutura de faces de papel coladas a uma canelura ondulada; base das caixas de transporte.', h: '/artigos/caixas-de-cartao-canelado-fefco/' },
+  { t: 'Cauchu (blanket)', d: 'O pano de borracha do offset que recebe a imagem da chapa e a transfere para o papel.', h: '/artigos/como-funciona-impressao-offset/' },
+  { t: 'Chapa', d: 'Placa (normalmente de alumínio) que segura a imagem a imprimir; no offset, separa zonas que atraem tinta e água.', h: '/artigos/como-funciona-impressao-offset/' },
+  { t: 'CIELAB (Lab)', d: 'Espaço de cor independente do dispositivo, baseado na visão humana; a "língua universal" da gestão de cor.', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'CMYK', d: 'Quadricromia: ciano, magenta, amarelo e preto (K). O sistema subtrativo da impressão.', h: '/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/' },
+  { t: 'Colofão', d: 'Nota no fim de um livro com os dados de produção (papel, fontes, gráfica).', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'Cor direta (spot)', d: 'Tinta pré-misturada de uma cor exata (ex.: Pantone), em vez de simulada por CMYK.', h: '/artigos/pantone-vs-cmyk-cores-diretas/' },
+  { t: 'Corte e vinco', d: 'Processo que corta o contorno e marca as dobras de uma embalagem ou recorte com um cortante.', h: '/artigos/corte-e-vinco-como-se-faz-uma-embalagem/' },
+  { t: 'Cortante (cunho)', d: 'Ferramenta com lâminas e filetes que corta e vinca o papel/cartão na forma desejada.', h: '/artigos/corte-e-vinco-como-se-faz-uma-embalagem/' },
+  { t: 'Couché (estucado)', d: 'Papel revestido com camada que segura a tinta à superfície; cores vivas e baixo ganho de ponto.', h: '/artigos/tipos-de-papel-para-impressao/' },
+  { t: 'CTP (Computer-to-Plate)', d: 'Gravação direta da imagem do computador para a chapa, sem fotolitos.', h: '/artigos/como-funciona-impressao-offset/' },
+  { t: 'Curvas (contornos/outlines)', d: 'Converter texto em formas vetoriais, eliminando a dependência da fonte.', h: '/artigos/fontes-incorporar-ou-converter-em-curvas/' },
+  { t: 'Debossing', d: 'Marca afundada no papel (pressionada para dentro), efeito característico do letterpress.', h: '/artigos/letterpress-tipografia-em-relevo/' },
+  { t: 'Delta E (ΔE)', d: 'Medida numérica da diferença entre duas cores; abaixo de ~1-2 é impercetível ao olho.', h: '/artigos/delta-e-medir-diferenca-de-cor/' },
+  { t: 'Densitometria', d: 'Medição da densidade/quantidade de tinta com um densitómetro, para controlar a impressão.', h: '/artigos/ganho-de-ponto-dot-gain/' },
+  { t: 'Die cut', d: 'Corte de contorno completo com cortante, separando totalmente a forma do papel.', h: '/artigos/corte-de-grande-formato-kiss-cut-fresas/' },
+  { t: 'Dobra', d: 'Vinco que dobra o papel; há vários tipos (ao meio, em janela, sanfona, etc.).', h: '/artigos/guia-tecnico-dobras-impressao/' },
+  { t: 'DPI (Dots Per Inch)', d: 'Pontos de tinta por polegada que a máquina aplica; mede a resolução de impressão.', h: '/artigos/resolucao-para-impressao-dpi/' },
+  { t: 'DTF (Direct to Film)', d: 'Impressão têxtil em que a imagem é impressa num filme e transferida com pó adesivo e calor.', h: '/artigos/dtf-direct-to-film-com-e-sem-po/' },
+  { t: 'Duotone', d: 'Imagem reproduzida com duas tintas (muitas vezes preto + uma cor) para profundidade ou estilo.' },
+  { t: 'Embossing (relevo)', d: 'Relevo elevado (empurrado para fora) feito com molde e contramolde, geralmente sem tinta.' },
+  { t: 'Encadernação', d: 'Conjunto de técnicas para unir as páginas de um livro/revista (agrafe, colado, cosido, espiral…).', h: '/artigos/guia-completo-encadernacao/' },
+  { t: 'Entrelinha (leading)', d: 'Espaço vertical entre linhas de texto; afeta o conforto de leitura.', h: '/artigos/kerning-tracking-entrelinha-espacamento/' },
+  { t: 'Escala de cinzentos', d: 'Imagem só em tons de cinzento (um canal), sem cor.' },
+  { t: 'Espaço de cor', d: 'Conjunto de cores que um sistema pode representar (sRGB, Adobe RGB, FOGRA39…).', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'FEFCO', d: 'Catálogo internacional de modelos normalizados de caixas de cartão canelado, identificados por código.', h: '/artigos/caixas-de-cartao-canelado-fefco/' },
+  { t: 'Fibra (sentido da)', d: 'Direção de alinhamento das fibras do papel; dobra-se e rasga-se mais facilmente a favor da fibra.', h: '/artigos/sentido-da-fibra-do-papel/' },
+  { t: 'Filete branco', d: 'Linha branca indesejada na junta de duas cores, causada por mau registo; evita-se com trapping.', h: '/artigos/sobreimpressao-e-trapping/' },
+  { t: 'Flatten (achatamento)', d: 'Conversão de transparências em elementos opacos na exportação; o PDF/X-1a fá-lo, o X-4 não.', h: '/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/' },
+  { t: 'Flexografia', d: 'Impressão com chapas em relevo flexíveis; domina embalagens, rótulos e filmes.', h: '/artigos/flexografia-impressao-de-embalagens/' },
+  { t: 'FOGRA', d: 'Conjunto de condições de impressão normalizadas (ex.: FOGRA39 para couché europeu) usadas nos perfis ICC.', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'Foil', d: 'Película metálica/colorida aplicada a quente (hot stamping) para efeitos brilhantes.', h: '/artigos/hot-stamping-e-foil-acabamento-metalico/' },
+  { t: 'Folha de rosto', d: 'Página inicial de um livro com título, autor e editora.', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'FSC', d: 'Certificação de papel proveniente de florestas geridas de forma responsável.', h: '/artigos/papeis-reciclados-e-certificacoes-fsc-pefc/' },
+  { t: 'Gamut', d: 'Conjunto de cores que um dispositivo consegue reproduzir; o do CMYK é menor que o do ecrã.', h: '/artigos/o-que-e-o-gamut/' },
+  { t: 'Ganho de ponto (dot gain)', d: 'Crescimento dos pontos de retícula entre o ficheiro e o papel, que escurece os meios-tons.', h: '/artigos/ganho-de-ponto-dot-gain/' },
+  { t: 'Glifo', d: 'A representação visual concreta de um caráter numa fonte (uma forma; um caráter pode ter vários glifos).' },
+  { t: 'Gramagem (g/m²)', d: 'Peso do papel por metro quadrado; não é o mesmo que espessura.', h: '/artigos/gramagem-do-papel-explicada/' },
+  { t: 'Grande formato', d: 'Impressão de grandes dimensões (lonas, cartazes, sinalética) em plotters de jato de tinta.', h: '/artigos/grande-formato-tintas-solvente-latex-uv/' },
+  { t: 'Guardas', d: 'Folhas que ligam a capa dura ao miolo num livro cartonado.', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'Guilhotina', d: 'Máquina de corte que apara pilhas de papel em linha reta; tem sempre uma pequena tolerância.' },
+  { t: 'Hinting', d: 'Instruções na fonte que melhoram a nitidez das letras a tamanhos pequenos.' },
+  { t: 'Hot stamping', d: 'Aplicação de foil metálico a quente, com um cunho; acabamento de destaque.', h: '/artigos/hot-stamping-e-foil-acabamento-metalico/' },
+  { t: 'HP Indigo', d: 'Impressão digital de alta qualidade com tinta líquida (ElectroInk), próxima do offset.', h: '/artigos/hp-indigo-impressao-digital-offset/' },
+  { t: 'Imposição', d: 'Organização das páginas na folha de máquina para saírem na ordem certa depois de dobrar e cortar.', h: '/aproveitamento-de-folha/' },
+  { t: 'Incorporar fonte (embed)', d: 'Guardar a fonte dentro do PDF, para a gráfica não precisar de a ter instalada.', h: '/artigos/fontes-incorporar-ou-converter-em-curvas/' },
+  { t: 'Inkjet (jato de tinta)', d: 'Impressão que projeta gotas de tinta no suporte; base de muito do grande formato e da produção digital.', h: '/artigos/inkjet-de-producao-jato-de-tinta/' },
+  { t: 'Itálico', d: 'Variante inclinada e geralmente redesenhada de uma fonte, usada para ênfase.' },
+  { t: 'Kerning', d: 'Ajuste do espaço entre dois caracteres específicos para um espaçamento ótico uniforme.', h: '/artigos/kerning-tracking-entrelinha-espacamento/' },
+  { t: 'Kiss cut', d: 'Corte que atravessa só o autocolante, deixando o liner intacto (para descolar facilmente).', h: '/artigos/corte-de-grande-formato-kiss-cut-fresas/' },
+  { t: 'Knockout (vazado)', d: 'A cor de cima "fura" o fundo e imprime limpa, sem se misturar; comportamento padrão.', h: '/artigos/sobreimpressao-e-trapping/' },
+  { t: 'Laminação (plastificação)', d: 'Aplicação de uma película (mate, brilhante ou soft touch) que protege e valoriza o impresso.', h: '/artigos/plastificado-mate-brilhante-soft-touch/' },
+  { t: 'Látex (tinta)', d: 'Tinta à base de água para grande formato, sem solventes agressivos; seca por calor.', h: '/artigos/grande-formato-tintas-solvente-latex-uv/' },
+  { t: 'LED-UV', d: 'Cura de tinta UV por LED, com menor consumo energético que a UV convencional.', h: '/artigos/sustentabilidade-na-impressao/' },
+  { t: 'Letterpress', d: 'Impressão em relevo direto (a de Gutenberg), hoje valorizada pelo debossing táctil.', h: '/artigos/letterpress-tipografia-em-relevo/' },
+  { t: 'Ligadura', d: 'Junção de dois caracteres num só glifo (ex.: fi, fl) para melhor desenho.' },
+  { t: 'Lineatura (LPI)', d: 'Densidade da retícula em linhas por polegada; a resolução da imagem deve ser ~2× a lineatura.', h: '/artigos/ganho-de-ponto-dot-gain/' },
+  { t: 'Linha de corte', d: 'O contorno onde o produto será cortado (tamanho final/TrimBox).', h: '/artigos/bleed-margem-de-seguranca-linha-de-corte/' },
+  { t: 'Lombada', d: 'O lado que une as folhas de um livro; a sua espessura depende das páginas e do papel.', h: '/calculadora-de-lombada/' },
+  { t: 'Mão do papel', d: 'Relação entre espessura e peso; um papel de mão alta é mais "fofo" e espesso por grama.', h: '/artigos/gramagem-do-papel-explicada/' },
+  { t: 'Maquete (dummy)', d: 'Modelo físico de um produto (livro, embalagem) feito com o papel real, para validar antes da produção.' },
+  { t: 'Margem de segurança', d: 'Zona interior onde não se devem pôr elementos importantes, por causa da tolerância de corte.', h: '/artigos/bleed-margem-de-seguranca-linha-de-corte/' },
+  { t: 'Meio-tom', d: 'Reprodução de tons contínuos através de pontos de retícula de tamanho variável.', h: '/artigos/ganho-de-ponto-dot-gain/' },
+  { t: 'Metamerismo', d: 'Fenómeno em que duas cores parecem iguais sob uma luz e diferentes sob outra.', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'Micron (µm)', d: 'Milésimo de milímetro; unidade da espessura real do papel.' },
+  { t: 'Miolo', d: 'Conjunto das páginas interiores de um livro ou revista.', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'Mockup', d: 'Simulação visual (normalmente digital) de como o produto ficará, para apresentação.' },
+  { t: 'Offset', d: 'Impressão indireta (chapa → cauchu → papel) baseada na repulsão água/óleo; domina tiragens médias e grandes.', h: '/artigos/como-funciona-impressao-offset/' },
+  { t: 'Opacidade (papel)', d: 'Grau em que um papel impede que a impressão do verso transpareça.' },
+  { t: 'Output intent', d: 'Perfil de cor de destino declarado no PDF/X, que dá sentido aos valores de cor.', h: '/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/' },
+  { t: 'Overprint (sobreimpressão)', d: 'A cor de cima imprime sobre o fundo e soma-se a ele; usa-se no preto de texto.', h: '/artigos/sobreimpressao-e-trapping/' },
+  { t: 'Pantone (PMS)', d: 'Sistema de cores diretas normalizadas, com leques e fórmulas; referência universal de cor.', h: '/artigos/pantone-vs-cmyk-cores-diretas/' },
+  { t: 'PDF/X', d: 'Família de normas ISO para PDFs prontos para impressão (fontes incorporadas + output intent).', h: '/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/' },
+  { t: 'PEFC', d: 'Esquema de certificação florestal que reconhece sistemas nacionais; alternativa/complemento ao FSC.', h: '/artigos/papeis-reciclados-e-certificacoes-fsc-pefc/' },
+  { t: 'Perfil ICC', d: 'Ficheiro que descreve o comportamento de cor de um dispositivo, permitindo traduzir cor entre eles.', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'Picotado', d: 'Linha de pequenos cortes que facilita destacar uma parte do impresso (talões, cupões).' },
+  { t: 'Ponto (tipográfico)', d: 'Unidade de medida do tamanho da letra; 1 ponto ≈ 0,353 mm (72 pontos = 1 polegada).' },
+  { t: 'Pós-consumo', d: 'Fibra reciclada a partir de papel que já foi usado e descartado pelo consumidor.', h: '/artigos/papeis-reciclados-e-certificacoes-fsc-pefc/' },
+  { t: 'PPI (Pixels Per Inch)', d: 'Densidade de pixels de uma imagem digital; é o que defines no ficheiro (muitas vezes dito "DPI").', h: '/artigos/resolucao-para-impressao-dpi/' },
+  { t: 'Preto puro', d: 'Preto só com K (K100); usa-se em texto pequeno para um registo perfeito.', h: '/artigos/preto-rico-vs-preto-puro/' },
+  { t: 'Preto rico', d: 'Preto reforçado com CMY (ex.: C40 M30 Y0 K100) para grandes áreas pretas profundas.', h: '/artigos/preto-rico-vs-preto-puro/' },
+  { t: 'Prova de cor', d: 'Amostra (digital ou física) que mostra como o trabalho vai sair antes da tiragem.', h: '/artigos/provas-de-cor-antes-da-tiragem/' },
+  { t: 'Quadricromia', d: 'Impressão a quatro cores de processo (CMYK).', h: '/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/' },
+  { t: 'Raster (bitmap)', d: 'Imagem feita de pixels, com resolução fixa; ideal para fotografias.', h: '/artigos/vetorial-vs-raster-imagens-para-impressao/' },
+  { t: 'Reciclado (papel)', d: 'Papel que reaproveita fibra usada; conta sobretudo a percentagem pós-consumo.', h: '/artigos/papeis-reciclados-e-certificacoes-fsc-pefc/' },
+  { t: 'Recto e verso', d: 'Página da direita (recto, ímpar) e da esquerda (verso, par) num documento aberto.', h: '/artigos/anatomia-do-livro-e-da-revista/' },
+  { t: 'Registo', d: 'Alinhamento exato das várias cores/chapas; o mau registo cria filetes brancos.', h: '/artigos/sobreimpressao-e-trapping/' },
+  { t: 'Resma', d: 'Conjunto de 500 folhas de papel.' },
+  { t: 'Resolução', d: 'Quantidade de detalhe de uma imagem; para impressão de perto, 300 PPI ao tamanho final.', h: '/artigos/resolucao-para-impressao-dpi/' },
+  { t: 'Retícula', d: 'Trama de pontos que reproduz tons contínuos a partir de tinta chapada.', h: '/artigos/como-funciona-impressao-offset/' },
+  { t: 'RGB', d: 'Sistema de cor por luz (vermelho, verde, azul) dos ecrãs; deve converter-se para CMYK ao imprimir.', h: '/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/' },
+  { t: 'RIP', d: 'Raster Image Processor: o software que interpreta o ficheiro e o prepara para a máquina (incl. retícula e cor).' },
+  { t: 'Risografia', d: 'Impressão por estêncil rotativo com tintas spot (incl. flúor), de estética texturada e de culto.', h: '/artigos/risografia-impressao-de-culto/' },
+  { t: 'Rotogravura', d: 'Impressão a partir de cilindros gravados; excelente para tiragens enormes (embalagens, revistas).', h: '/artigos/rotogravura-impressao-de-grandes-tiragens/' },
+  { t: 'Sans-serif', d: 'Famílias de letra sem serifas (sem "pezinhos"); aspeto limpo e moderno.', h: '/artigos/serif-sans-serif-familias-tipograficas/' },
+  { t: 'Sangria', d: 'Ver Bleed: a tinta que se prolonga para além do corte.', h: '/artigos/bleed-margem-de-seguranca-linha-de-corte/' },
+  { t: 'Serif', d: 'Famílias de letra com serifas (pequenos remates nas pontas); aspeto clássico.', h: '/artigos/serif-sans-serif-familias-tipograficas/' },
+  { t: 'Serigrafia', d: 'Impressão por estêncil, forçando tinta através de uma tela; imprime em quase qualquer material.', h: '/artigos/serigrafia-impressao-em-quase-tudo/' },
+  { t: 'Série A (ISO 216)', d: 'Formatos de papel na proporção 1:√2 (A4, A3, A0…), em que cortar ao meio dá o formato seguinte.', h: '/artigos/formatos-de-papel-a-b-c-sra/' },
+  { t: 'Soft proofing', d: 'Simulação no ecrã (com o perfil da impressão) de como as cores vão sair no papel.', h: '/artigos/gestao-de-cor-perfis-icc/' },
+  { t: 'Soft touch', d: 'Laminado de toque aveludado, sedoso ao tato; muito usado em capas premium.', h: '/artigos/plastificado-mate-brilhante-soft-touch/' },
+  { t: 'Solvente (tinta)', d: 'Tinta de grande formato resistente ao exterior, mas com mais compostos voláteis; substituída por látex/UV.', h: '/artigos/grande-formato-tintas-solvente-latex-uv/' },
+  { t: 'SRA / RA', d: 'Formatos de papel maiores que os A, com espaço para bleed e pinça (ex.: SRA3 320×450 mm para imprimir A3).', h: '/artigos/formatos-de-papel-a-b-c-sra/' },
+  { t: 'Subconjunto (subset)', d: 'Incorporar no PDF apenas os caracteres usados de uma fonte, para ficar mais leve.', h: '/artigos/fontes-incorporar-ou-converter-em-curvas/' },
+  { t: 'Sublimação', d: 'Transferência por calor de tinta (gás) para poliéster e materiais revestidos; cores duradouras.', h: '/artigos/sublimacao-impressao-textil/' },
+  { t: 'Subtrativo (CMYK)', d: 'Sistema de cor por tinta, onde se subtrai luz refletida; somar pigmentos escurece.', h: '/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/' },
+  { t: 'TAC (cobertura de tinta)', d: 'Soma das percentagens CMYK num ponto; ultrapassar o limite causa problemas de secagem e decalque.', h: '/saturacao-de-cor/' },
+  { t: 'Tampografia', d: 'Impressão por tampão de silicone que transfere tinta de uma chapa gravada para objetos com formas irregulares.' },
+  { t: 'Tiragem', d: 'Quantidade de exemplares de um trabalho; influencia decisivamente o custo por unidade.', h: '/artigos/quanto-custa-imprimir-fatores-preco/' },
+  { t: 'Toner', d: 'Pó eletrostático fundido por calor no papel; base da impressão digital xerográfica.', h: '/artigos/impressao-digital-toner-xerografia/' },
+  { t: 'Tracking', d: 'Ajuste uniforme do espaçamento de um bloco de texto (diferente do kerning, que é par a par).', h: '/artigos/kerning-tracking-entrelinha-espacamento/' },
+  { t: 'Transparência', d: 'Sombras, esfumados e opacidades parciais; tratadas no RIP em PDF/X-4, achatadas em X-1a.', h: '/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/' },
+  { t: 'Trapping', d: 'Pequena sobreposição entre cores adjacentes que tapa os filetes brancos do mau registo.', h: '/artigos/sobreimpressao-e-trapping/' },
+  { t: 'TrimBox', d: 'A caixa do PDF que define o tamanho final de corte do produto.', h: '/artigos/bleed-margem-de-seguranca-linha-de-corte/' },
+  { t: 'TVI (Tone Value Increase)', d: 'Nome técnico moderno do ganho de ponto, medido nas condições de impressão normalizadas.', h: '/artigos/ganho-de-ponto-dot-gain/' },
+  { t: 'UV (verniz/tinta)', d: 'Verniz ou tinta que seca/cura instantaneamente sob luz ultravioleta; permite alto brilho e efeitos localizados.', h: '/artigos/verniz-uv-total-reserva-efeito-mate-brilhante/' },
+  { t: 'Vazado', d: 'Ver Knockout: a cor de cima fura o fundo, sem mistura.', h: '/artigos/sobreimpressao-e-trapping/' },
+  { t: 'Verniz UV localizado (reserva)', d: 'Verniz brilhante aplicado só em certas zonas, criando contraste com o resto mate.', h: '/artigos/verniz-uv-total-reserva-efeito-mate-brilhante/' },
+  { t: 'Vetorial', d: 'Imagem feita de fórmulas matemáticas; escala sem perder qualidade. Ideal para logótipos e texto.', h: '/artigos/vetorial-vs-raster-imagens-para-impressao/' },
+  { t: 'Vinco', d: 'Marca pressionada que cria uma dobra limpa sem partir o papel/cartão.', h: '/artigos/corte-e-vinco-como-se-faz-uma-embalagem/' },
+  { t: 'Volume específico', d: 'Espessura por unidade de gramagem; quantifica a "mão" do papel.', h: '/artigos/gramagem-do-papel-explicada/' },
+  { t: 'Wire-o (espiral)', d: 'Encadernação com argolas metálicas ou plásticas; abre na horizontal a 360°.', h: '/artigos/guia-completo-encadernacao/' },
+  { t: 'Xerografia', d: 'Processo eletrostático da impressão a toner (laser), inventado por Chester Carlson.', h: '/artigos/impressao-digital-toner-xerografia/' }
+];
+
+const DIACRITICOS = new RegExp('[\\u0300-\\u036f]', 'g');
+function chave(s: string): string {
+  return s.normalize('NFD').replace(DIACRITICOS, '').charAt(0).toUpperCase();
+}
+const ordenados = [...termos].sort((a, b) => a.t.localeCompare(b.t, 'pt'));
+const grupos: Record<string, Termo[]> = {};
+for (const termo of ordenados) {
+  let k = chave(termo.t);
+  if (!/[A-Z]/.test(k)) k = '#';
+  (grupos[k] ||= []).push(termo);
+}
+const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+---
+
+<Base
+  title="Glossário de artes gráficas | dicasgraficas.com"
+  description="Glossário completo de termos de artes gráficas e impressão, de A a Z: bleed, CMYK, ganho de ponto, gramagem, overprint, retícula, sangria, trapping e muito mais — com ligações aos artigos."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 0.5rem; --cat: #1B6FA8;">
+        <div class="eyebrow">Referência</div>
+        <h1>Glossário de artes gráficas</h1>
+        <p>{termos.length} termos de impressão, pré-impressão, cor, papel e acabamentos, explicados de forma simples. Usa a pesquisa ou salta para uma letra.</p>
+      </div>
+
+      <input type="search" id="gl-search" class="gl-search" placeholder="Pesquisar termo… (ex.: bleed, retícula, gramagem)" aria-label="Pesquisar no glossário" autocomplete="off" />
+
+      <nav class="gl-index" aria-label="Índice alfabético">
+        {letras.map(l => (
+          grupos[l]
+            ? <a href={`#l-${l}`}>{l}</a>
+            : <span class="off">{l}</span>
+        ))}
+      </nav>
+
+      <p id="gl-empty" class="gl-empty" hidden>Sem resultados para a tua pesquisa.</p>
+
+      <div id="gl-list">
+        {letras.filter(l => grupos[l]).map(l => (
+          <section class="gl-letter" id={`l-${l}`} data-letter={l}>
+            <h2>{l}</h2>
+            <dl>
+              {grupos[l].map(termo => (
+                <div class="gl-term" data-term={termo.t.toLowerCase()} data-def={termo.d.toLowerCase()}>
+                  <dt>{termo.h ? <a href={termo.h}>{termo.t}</a> : termo.t}</dt>
+                  <dd>{termo.d}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .gl-search { width: 100%; padding: 0.7rem 0.9rem; font-size: 1rem; border: 1.5px solid var(--color-border);
+      border-radius: 10px; margin: 0.5rem 0 1rem; background: #fff; color: var(--color-text); }
+    .gl-search:focus { outline: none; border-color: #1B6FA8; }
+    .gl-index { display: flex; flex-wrap: wrap; gap: 0.3rem; position: sticky; top: 0; z-index: 5;
+      background: var(--color-bg, #fff); padding: 0.6rem 0; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border); }
+    .gl-index a, .gl-index span { display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 7px; font-weight: 700; font-size: 0.85rem; text-decoration: none; }
+    .gl-index a { color: #1B6FA8; background: rgba(27,111,168,0.08); }
+    .gl-index a:hover { background: #1B6FA8; color: #fff; }
+    .gl-index span.off { color: var(--color-text-secondary, #9CA3AF); opacity: 0.4; }
+    .gl-letter { margin: 1.6rem 0; scroll-margin-top: 60px; }
+    .gl-letter h2 { font-size: 1.5rem; color: #1B6FA8; border-bottom: 2px solid var(--color-border);
+      padding-bottom: 0.2rem; margin: 0 0 0.8rem; }
+    .gl-term { padding: 0.6rem 0; border-bottom: 1px solid var(--color-border); }
+    .gl-term dt { font-weight: 700; font-size: 1.02rem; margin-bottom: 0.15rem; }
+    .gl-term dt a { color: var(--color-text); text-decoration: none; border-bottom: 2px solid rgba(27,111,168,0.35); }
+    .gl-term dt a:hover { color: #1B6FA8; border-bottom-color: #1B6FA8; }
+    .gl-term dd { margin: 0; color: var(--color-text-secondary, #4B5563); font-size: 0.95rem; }
+    .gl-empty { text-align: center; padding: 2rem 0; color: var(--color-text-secondary); }
+    dl { margin: 0; }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var input = document.getElementById('gl-search');
+      var empty = document.getElementById('gl-empty');
+      if (!input) return;
+      var DIA = new RegExp('[\\u0300-\\u036f]', 'g');
+      function norm(s) { return s.normalize('NFD').replace(DIA, '').toLowerCase(); }
+      input.addEventListener('input', function () {
+        var q = norm(input.value.trim());
+        var anyVisible = false;
+        document.querySelectorAll('.gl-letter').forEach(function (sec) {
+          var secVisible = false;
+          sec.querySelectorAll('.gl-term').forEach(function (term) {
+            var hay = norm((term.getAttribute('data-term') || '') + ' ' + (term.getAttribute('data-def') || ''));
+            var show = !q || hay.indexOf(q) !== -1;
+            term.style.display = show ? '' : 'none';
+            if (show) secVisible = true;
+          });
+          sec.style.display = secVisible ? '' : 'none';
+          if (secVisible) anyVisible = true;
+        });
+        if (empty) empty.hidden = anyVisible;
+      });
+    })();
+  </script>
+</Base>

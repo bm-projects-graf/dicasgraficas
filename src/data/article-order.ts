@@ -8,6 +8,7 @@
 
 export const orderByCategory: Record<string, string[]> = {
   'Preparação de ficheiros': [
+    'checklist-de-pre-impressao',
     'cmyk-ou-rgb-qual-usar-quando-vais-imprimir',
     'resolucao-para-impressao-dpi',
     'bleed-margem-de-seguranca-linha-de-corte',
@@ -52,6 +53,8 @@ export const orderByCategory: Record<string, string[]> = {
     'impressao-digital-vs-offset',
     'como-funciona-impressao-offset',
     'serigrafia-impressao-em-quase-tudo',
+    'risografia-impressao-de-culto',
+    'letterpress-tipografia-em-relevo',
     'flexografia-impressao-de-embalagens',
     'sublimacao-impressao-textil',
     'dtf-direct-to-film-com-e-sem-po',
