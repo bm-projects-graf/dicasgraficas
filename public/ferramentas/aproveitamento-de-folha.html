@@ -132,6 +132,9 @@
     var A=tentar(W,H,w,h,g), B=tentar(W,H,h,w,g);
     return (B.length>A.length)?B:A;
   }
+  // a "retira" é o espelho da "tira": o fim de uma metade é o princípio da outra
+  function espelharH(rects,W){ return rects.map(function(p){ return {x:W-p.x-p.w, y:p.y, w:p.w, h:p.h}; }); }
+  function espelharV(rects,H){ return rects.map(function(p){ return {x:p.x, y:H-p.y-p.h, w:p.w, h:p.h}; }); }
 
   function desenhar(fw,fh,regioes){
     var maxW=440, maxH=320, s=Math.min(maxW/fw, maxH/fh), sw=fw*s, sh=fh*s, pad=2;
@@ -172,7 +175,7 @@
       var rn=encaixar(halfW,uHn,pw,ph,g,rodar), per=rn.length; n=2*per;
       regioes=[
         {offX:marg, offY:marg, uW:halfW, uH:uHn, rects:rn},
-        {offX:marg+halfW+cruz, offY:marg, uW:halfW, uH:uHn, rects:rn}
+        {offX:marg+halfW+cruz, offY:marg, uW:halfW, uH:uHn, rects:espelharH(rn,halfW)}
       ];
       legExtra="2 metades de "+fmt1(halfW)+"×"+fmt1(uHn)+" cm · "+per+" por metade";
     } else { // cambalhota: divisão ao baixo, pinça nos dois lados, metades sobrepostas
@@ -181,7 +184,7 @@
       var rc2=encaixar(uWc,halfH,pw,ph,g,rodar), per2=rc2.length; n=2*per2;
       regioes=[
         {offX:marg, offY:pinca, uW:uWc, uH:halfH, rects:rc2},
-        {offX:marg, offY:pinca+halfH+g, uW:uWc, uH:halfH, rects:rc2}
+        {offX:marg, offY:pinca+halfH+g, uW:uWc, uH:halfH, rects:espelharV(rc2,halfH)}
       ];
       legExtra="2 metades de "+fmt1(uWc)+"×"+fmt1(halfH)+" cm · "+per2+" por metade";
     }
