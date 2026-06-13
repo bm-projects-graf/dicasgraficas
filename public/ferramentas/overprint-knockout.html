@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simulador de sobreimpressão vs vazado | dicasgraficas.com</title>
+<style>
+  /* ----- Tema escuro (amigável para designers) ----- */
+  :root {
+    --bg:#0F1115; --panel:#181B22; --panel2:#1F232C; --linha:#2A2F3A;
+    --txt:#E7E9EE; --txt2:#9AA1AE; --acc:#22D3EE; --acc2:#0891B2;
+    --ok:#34D399; --av:#FBBF24; --av-bg:#3a2f08; --er:#F87171; --er-bg:#3a1212;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--txt); line-height:1.55; }
+  .wrap { max-width:880px; margin:0 auto; padding:1.5rem 1.25rem 3.5rem; }
+  header h1 { font-size:1.5rem; margin:0 0 0.2rem; }
+  header p.sub { color:var(--txt2); margin:0 0 1.25rem; font-size:0.95rem; }
+
+  /* layout principal: preview + diagnóstico em cima, controlos em baixo */
+  .preview-row { display:grid; grid-template-columns:1fr; gap:1rem; margin-bottom:1.1rem; }
+  @media(min-width:680px){ .preview-row { grid-template-columns:1.3fr 1fr; } }
+
+  .preview { border-radius:14px; min-height:230px; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; border:1px solid var(--linha); }
+  .preview .obj { font-weight:800; font-size:2.3rem; letter-spacing:0.02em; text-align:center; padding:0 0.5rem; line-height:1.1; user-select:none; }
+  @media(min-width:680px){ .preview .obj { font-size:2.7rem; } }
+  .preview .badge { position:absolute; top:10px; left:10px; font-size:0.72rem; font-weight:700; text-transform:uppercase;
+    letter-spacing:0.06em; padding:0.2rem 0.5rem; border-radius:6px; background:rgba(0,0,0,0.45); color:#fff; backdrop-filter:blur(2px); }
+
+  .readout { background:var(--panel); border:1px solid var(--linha); border-radius:14px; padding:1rem; font-size:0.9rem; }
+  .readout h3 { margin:0 0 0.6rem; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--txt2); }
+  .swatch-line { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.55rem; }
+  .swatch { width:34px; height:34px; border-radius:8px; border:1px solid var(--linha); flex:none; }
+  .mono { font-family:'IBM Plex Mono','SF Mono',Menlo,monospace; font-size:0.82rem; }
+  .readout .lab { color:var(--txt2); font-size:0.76rem; }
+
+  /* toggle de modo */
+  .modebar { display:flex; gap:0; background:var(--panel2); border:1px solid var(--linha); border-radius:10px; padding:4px; margin:0 0 1.1rem; }
+  .modebar button { flex:1; border:none; background:transparent; color:var(--txt2); font-weight:700; font-size:0.92rem;
+    padding:0.6rem 0.4rem; border-radius:7px; cursor:pointer; transition:background .15s,color .15s; }
+  .modebar button.active { background:var(--acc2); color:#04222b; }
+  .modebar button .s { display:block; font-weight:500; font-size:0.72rem; opacity:0.85; }
+
+  .controls { display:grid; grid-template-columns:1fr; gap:1rem; }
+  @media(min-width:680px){ .controls { grid-template-columns:1fr 1fr; } }
+  .panel { background:var(--panel); border:1px solid var(--linha); border-radius:14px; padding:1rem 1.1rem; }
+  .panel h2 { font-size:0.95rem; margin:0 0 0.8rem; display:flex; align-items:center; gap:0.5rem; }
+  .panel h2 .dot { width:12px; height:12px; border-radius:3px; border:1px solid var(--linha); }
+  .row { display:flex; align-items:center; gap:0.7rem; margin-bottom:0.5rem; }
+  .row label { width:1.3rem; font-weight:700; font-family:'IBM Plex Mono',monospace; color:var(--txt2); }
+  .row input[type=range] { flex:1; accent-color:var(--acc); }
+  .row input[type=number] { width:58px; background:var(--panel2); border:1px solid var(--linha); color:var(--txt);
+    border-radius:7px; padding:0.35rem 0.4rem; font-family:'IBM Plex Mono',monospace; font-size:0.85rem; text-align:right; }
+  .quick { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.7rem; }
+  .quick button { background:var(--panel2); border:1px solid var(--linha); color:var(--txt); border-radius:8px;
+    padding:0.35rem 0.6rem; font-size:0.78rem; cursor:pointer; }
+  .quick button:hover { border-color:var(--acc2); color:var(--acc); }
+
+  /* diagnóstico */
+  .diag { margin-top:1.2rem; }
+  .alert { border-radius:12px; padding:0.9rem 1.05rem; font-size:0.9rem; margin-bottom:0.7rem; border:1px solid var(--linha); }
+  .alert.ok { background:#0f2a20; border-color:#1f5c43; }
+  .alert.aviso { background:var(--av-bg); border-color:#7a5c0a; }
+  .alert.erro { background:var(--er-bg); border-color:#7a2424; }
+  .alert .t { font-weight:700; display:block; margin-bottom:0.15rem; }
+  .alert.erro.blink { animation:blink 0.9s steps(1) infinite; }
+  @keyframes blink { 50% { background:#5a1a1a; border-color:#f87171; } }
+  .alert.ok .t { color:var(--ok); } .alert.aviso .t { color:var(--av); } .alert.erro .t { color:var(--er); }
+
+  .disc { background:var(--panel); border:1px solid var(--linha); border-radius:10px; padding:0.8rem 1rem; font-size:0.8rem; color:var(--txt2); margin-top:0.4rem; }
+  footer { margin-top:1.8rem; text-align:center; color:var(--txt2); font-size:0.8rem; }
+  footer a { color:var(--acc); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🖍️ Sobreimpressão vs vazado</h1>
+    <p class="sub">Vê em tempo real o que acontece quando uma tinta é impressa <strong>por cima</strong> de outra — e porque é que o "texto branco em overprint" desaparece na máquina.</p>
+  </header>
+
+  <!-- Toggle de modo -->
+  <div class="modebar" id="modebar">
+    <button data-mode="knockout" class="active">Knockout <span class="s">vazado (padrão)</span></button>
+    <button data-mode="overprint">Overprint <span class="s">sobreimpressão</span></button>
+  </div>
+
+  <!-- Preview + leitura de cor -->
+  <div class="preview-row">
+    <div class="preview" id="preview">
+      <span class="badge" id="badge">Knockout</span>
+      <span class="obj" id="obj">ARTES GRÁFICAS</span>
+    </div>
+    <div class="readout">
+      <h3>Cor renderizada do objeto</h3>
+      <div class="swatch-line">
+        <span class="swatch" id="swObj"></span>
+        <div>
+          <div class="mono" id="cmykObj">C0 M0 Y0 K0</div>
+          <div class="lab" id="rgbObj">rgb(255, 255, 255)</div>
+        </div>
+      </div>
+      <div class="swatch-line">
+        <span class="swatch" id="swBg"></span>
+        <div>
+          <div class="mono" id="cmykBg">fundo</div>
+          <div class="lab">cor do suporte</div>
+        </div>
+      </div>
+      <div class="lab" id="explica" style="margin-top:0.5rem;"></div>
+    </div>
+  </div>
+
+  <!-- Controlos -->
+  <div class="controls">
+    <div class="panel">
+      <h2><span class="dot" id="dotBg"></span> Fundo (suporte)</h2>
+      <div class="row"><label>C</label><input type="range" data-g="bg" data-ch="c" min="0" max="100" value="20"><input type="number" data-g="bg" data-ch="c" min="0" max="100" value="20"></div>
+      <div class="row"><label>M</label><input type="range" data-g="bg" data-ch="m" min="0" max="100" value="80"><input type="number" data-g="bg" data-ch="m" min="0" max="100" value="80"></div>
+      <div class="row"><label>Y</label><input type="range" data-g="bg" data-ch="y" min="0" max="100" value="0"><input type="number" data-g="bg" data-ch="y" min="0" max="100" value="0"></div>
+      <div class="row"><label>K</label><input type="range" data-g="bg" data-ch="k" min="0" max="100" value="0"><input type="number" data-g="bg" data-ch="k" min="0" max="100" value="0"></div>
+    </div>
+
+    <div class="panel">
+      <h2><span class="dot" id="dotObj"></span> Objeto / texto de cima</h2>
+      <div class="row"><label>C</label><input type="range" data-g="obj" data-ch="c" min="0" max="100" value="60"><input type="number" data-g="obj" data-ch="c" min="0" max="100" value="60"></div>
+      <div class="row"><label>M</label><input type="range" data-g="obj" data-ch="m" min="0" max="100" value="10"><input type="number" data-g="obj" data-ch="m" min="0" max="100" value="10"></div>
+      <div class="row"><label>Y</label><input type="range" data-g="obj" data-ch="y" min="0" max="100" value="90"><input type="number" data-g="obj" data-ch="y" min="0" max="100" value="90"></div>
+      <div class="row"><label>K</label><input type="range" data-g="obj" data-ch="k" min="0" max="100" value="0"><input type="number" data-g="obj" data-ch="k" min="0" max="100" value="0"></div>
+      <div class="quick">
+        <button data-preset="white">Tornar o texto branco</button>
+        <button data-preset="kpure">Preto puro (K100)</button>
+        <button data-preset="krich">Preto rico</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagnóstico -->
+  <div class="diag" id="diag"></div>
+
+  <div class="disc">
+    <strong style="color:var(--txt);">Como funciona.</strong> Em <em>knockout</em> a máquina "fura" o fundo e a tinta de cima não se mistura. Em <em>overprint</em> as tintas somam-se (física subtrativa): cada canal final = mín(fundo + objeto, 100%). A conversão para RGB é só para o ecrã (aproximação padrão) — o resultado real depende do papel e do perfil. Não substitui uma prova de cor.
+  </div>
+
+  <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  function postHeight() { if (window.parent === window) return; try { parent.postMessage({ type: "mixer-height", height: document.documentElement.scrollHeight }, "*"); } catch (e) {} }
+
+  // estado
+  var bg = { c: 20, m: 80, y: 0, k: 0 };
+  var obj = { c: 60, m: 10, y: 90, k: 0 };
+  var mode = "knockout";
+
+  // ---- conversão CMYK(0-100) -> RGB (aproximação padrão p/ ecrã) ----
+  function cmyk2rgb(x) {
+    var C = x.c / 100, M = x.m / 100, Y = x.y / 100, K = x.k / 100;
+    return {
+      r: Math.round(255 * (1 - C) * (1 - K)),
+      g: Math.round(255 * (1 - M) * (1 - K)),
+      b: Math.round(255 * (1 - Y) * (1 - K))
+    };
+  }
+  function rgbStr(c) { return "rgb(" + c.r + ", " + c.g + ", " + c.b + ")"; }
+  function mixRgb(a, b, t) { // t = peso de b (0..1)
+    return { r: Math.round(a.r * (1 - t) + b.r * t), g: Math.round(a.g * (1 - t) + b.g * t), b: Math.round(a.b * (1 - t) + b.b * t) };
+  }
+  function isWhite(x) { return x.c === 0 && x.m === 0 && x.y === 0 && x.k === 0; }
+  function isPureBlack(x) { return x.c === 0 && x.m === 0 && x.y === 0 && x.k === 100; }
+  function cmykLabel(x) { return "C" + x.c + " M" + x.m + " Y" + x.y + " K" + x.k; }
+
+  // ---- núcleo: dado bg/obj/mode devolve a cor a desenhar + estado ----
+  function compute(bg, obj, mode) {
+    var finalCmyk, transparece = false, hidden = false;
+    if (mode === "overprint") {
+      // soma subtrativa, limitada a 100% por canal
+      finalCmyk = {
+        c: Math.min(bg.c + obj.c, 100), m: Math.min(bg.m + obj.m, 100),
+        y: Math.min(bg.y + obj.y, 100), k: Math.min(bg.k + obj.k, 100)
+      };
+      // branco em overprint = ausência de tinta -> fica igual ao fundo (desaparece)
+      if (isWhite(obj)) hidden = true;
+      // preto puro em overprint: a tinta preta não é 100% opaca -> fundo transparece
+      if (isPureBlack(obj)) transparece = true;
+    } else {
+      finalCmyk = { c: obj.c, m: obj.m, y: obj.y, k: obj.k }; // vazado: cor pura do objeto
+    }
+    var rgb = cmyk2rgb(finalCmyk);
+    if (transparece) rgb = mixRgb(rgb, cmyk2rgb(bg), 0.12); // simula o "transparecer" do K100
+    return { finalCmyk: finalCmyk, rgb: rgb, hidden: hidden, transparece: transparece };
+  }
+
+  // ---- diagnóstico ----
+  function diagnostico(bg, obj, mode, res) {
+    var html = "";
+    if (mode === "overprint" && isWhite(obj)) {
+      html += '<div class="alert erro blink"><span class="t">🔴 ERRO CRÍTICO: texto branco em overprint desaparece!</span>' +
+        'Na gráfica o branco é a <strong>ausência de tinta</strong> (a cor do papel). Se der ordem de sobreimpressão, a máquina não aplica "tinta branca" e imprime o fundo por cima — o texto fica coberto e some.</div>';
+    } else if (mode === "overprint" && isPureBlack(obj)) {
+      html += '<div class="alert aviso"><span class="t">🟡 Dica técnica: preto em overprint</span>' +
+        'O overprint em <strong>texto preto pequeno</strong> é padrão na indústria, para evitar falhas de registo (filetes brancos). Mas em <strong>áreas grandes de preto</strong> o fundo pode transparecer (como vês no preview). Para grandes fundos pretos usa <strong>preto rico</strong> (ex.: C40 M30 Y0 K100) em <strong>knockout</strong>.</div>';
+    } else if (mode === "knockout" && isWhite(obj)) {
+      html += '<div class="alert ok"><span class="t">🟢 Branco em knockout = papel</span>' +
+        'Correto: em vazado o branco "fura" o fundo e mostra a cor do <strong>papel</strong>. É assim que se imprime texto branco sobre uma cor.</div>';
+    } else if (mode === "overprint") {
+      var f = res.finalCmyk;
+      html += '<div class="alert ok"><span class="t">🟢 Sobreimpressão das tintas</span>' +
+        'As tintas somam-se: resultado <span class="mono">' + cmykLabel(f) + '</span>. Útil para registo perfeito, mas atenção a fundos fortes que alteram a cor de cima.</div>';
+    } else {
+      html += '<div class="alert ok"><span class="t">🟢 Vazado (knockout)</span>' +
+        'A máquina fura o fundo e imprime a cor do objeto limpa, sem mistura. É o comportamento padrão da maioria dos elementos.</div>';
+    }
+    $("diag").innerHTML = html;
+  }
+
+  // ---- render ----
+  function render() {
+    var res = compute(bg, obj, mode);
+    var bgRgb = cmyk2rgb(bg);
+    var prev = $("preview");
+    prev.style.background = rgbStr(bgRgb);
+    var objEl = $("obj");
+    objEl.style.color = rgbStr(res.rgb); // se hidden, res.rgb == bgRgb -> desaparece
+    objEl.style.opacity = "1";
+    $("badge").textContent = (mode === "knockout") ? "Knockout" : "Overprint";
+
+    // leitura
+    $("swObj").style.background = rgbStr(res.rgb);
+    $("swBg").style.background = rgbStr(bgRgb);
+    $("cmykObj").textContent = cmykLabel(res.finalCmyk);
+    $("rgbObj").textContent = rgbStr(res.rgb);
+    $("cmykBg").textContent = cmykLabel(bg);
+    $("dotBg").style.background = rgbStr(bgRgb);
+    $("dotObj").style.background = rgbStr(cmyk2rgb(obj));
+
+    var ex = "";
+    if (mode === "overprint" && res.hidden) ex = "O objeto ficou igual ao fundo — desapareceu.";
+    else if (mode === "overprint") ex = "Cor de cima + fundo (sobreimpressão).";
+    else ex = "Cor pura do objeto (vazado).";
+    $("explica").textContent = ex;
+
+    diagnostico(bg, obj, mode, res);
+    postHeight();
+  }
+
+  // ---- ligações de UI ----
+  function setMode(m) {
+    mode = m;
+    Array.prototype.forEach.call($("modebar").children, function (b) { b.classList.toggle("active", b.getAttribute("data-mode") === m); });
+    render();
+  }
+  $("modebar").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (b) setMode(b.getAttribute("data-mode"));
+  });
+
+  // sincroniza range <-> number, atualiza estado
+  function bindInputs() {
+    var inputs = document.querySelectorAll("input[data-g]");
+    Array.prototype.forEach.call(inputs, function (inp) {
+      inp.addEventListener("input", function () {
+        var g = inp.getAttribute("data-g"), ch = inp.getAttribute("data-ch");
+        var v = Math.max(0, Math.min(100, parseInt(inp.value, 10) || 0));
+        (g === "bg" ? bg : obj)[ch] = v;
+        // espelha no par (range<->number) com o mesmo data-g/data-ch
+        document.querySelectorAll('input[data-g="' + g + '"][data-ch="' + ch + '"]').forEach(function (o) { if (o !== inp) o.value = v; });
+        render();
+      });
+    });
+  }
+
+  function applyGroup(g) {
+    var src = (g === "bg" ? bg : obj);
+    ["c", "m", "y", "k"].forEach(function (ch) {
+      document.querySelectorAll('input[data-g="' + g + '"][data-ch="' + ch + '"]').forEach(function (o) { o.value = src[ch]; });
+    });
+  }
+
+  document.querySelectorAll("button[data-preset]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var p = btn.getAttribute("data-preset");
+      if (p === "white") obj = { c: 0, m: 0, y: 0, k: 0 };
+      else if (p === "kpure") obj = { c: 0, m: 0, y: 0, k: 100 };
+      else if (p === "krich") obj = { c: 40, m: 30, y: 0, k: 100 };
+      applyGroup("obj"); render();
+    });
+  });
+
+  bindInputs();
+  render();
+  window.addEventListener("load", postHeight);
+
+  // hook de teste
+  window.__op = function (b, o, m) {
+    var save = { bg: bg, obj: obj, mode: mode };
+    return compute(b, o, m);
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Simulador de sobreimpressão vs vazado (overprint/knockout) | dicasgraficas.com"
+  description="Simulador interativo que mostra, em tempo real, o que acontece quando uma tinta é impressa por cima de outra: overprint (sobreimpressão) vs knockout (vazado). Percebe porque o texto branco em overprint desaparece na máquina."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem; --cat: #0891B2;">
+        <div class="eyebrow">Ferramenta interativa</div>
+        <h1>Sobreimpressão vs vazado</h1>
+        <p>
+          Define a cor do <strong>fundo</strong> e a do <strong>objeto/texto</strong> em CMYK e alterna entre
+          <strong>knockout</strong> (vazado) e <strong>overprint</strong> (sobreimpressão) para ver, em tempo real,
+          como as tintas se comportam na máquina — incluindo a armadilha clássica do <strong>texto branco em
+          overprint</strong> que desaparece na impressão.
+        </p>
+      </div>
+
+      <iframe id="opFrame" src="/ferramentas/overprint-knockout.html" title="Simulador de sobreimpressão vs vazado" loading="lazy"
+        style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 760px; background: #0F1115;"></iframe>
+    </div>
+  </div>
+
+  <script is:inline>
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.type === 'mixer-height' && typeof e.data.height === 'number') {
+        var f = document.getElementById('opFrame'); if (f) f.style.height = (e.data.height + 24) + 'px';
+      }
+    });
+  </script>
+</Base>
