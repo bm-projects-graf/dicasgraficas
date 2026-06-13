@@ -115,7 +115,7 @@ Quando um produto tem muitas páginas ou dobras com papel de gramagem elevada, o
 
 Imagina uma brochura de 8 páginas em cartolina 300g dobrada ao meio: as páginas interiores ficam desalinhadas em relação às exteriores porque o papel interior percorre um arco mais curto. A diferença pode ser de vários milímetros, suficiente para fazer as páginas interiores sobressaírem pelo corte.
 
-A solução é **sangrar as páginas interiores** — reduzir progressivamente a largura das folhas interiores para compensar o bulk. Em gráficas profissionais, este cálculo é feito automaticamente pelos programas de imposição. Em trabalhos manuais, tem de ser feito à mão.
+A solução é **encurtar progressivamente as páginas interiores** (*push-out* ou *creep*) — reduzir a largura das folhas interiores para compensar o bulk. Em gráficas profissionais, este cálculo é feito automaticamente pelos programas de imposição. Em trabalhos manuais, tem de ser feito à mão.
 
 <div class="tech-box">
 <div class="tech-label">Fórmula rápida para calcular o bulk</div>
@@ -150,7 +150,7 @@ Máquinas modernas de alta produção combinam os dois sistemas, permitindo sequ
 
 Num produto com dobras, o **bleed** aplica-se apenas às bordas exteriores do produto final — não às linhas de dobra internas. Um erro comum é adicionar bleed nos painéis interiores como se fossem bordas de corte, o que resulta em ficheiros incorretos.
 
-A exceção são as imagens que atravessam a dobra: estas precisam de sangrar alguns milímetros de cada lado da linha de dobra para absorver as inevitáveis imprecisões de posicionamento.
+A exceção são as imagens que atravessam a dobra: estas precisam de se prolongar (bleed) alguns milímetros para cada lado da linha de dobra para absorver as inevitáveis imprecisões de posicionamento.
 
 ## A regra prática
 

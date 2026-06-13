@@ -3,35 +3,35 @@ title: "Bleed, margem de segurança e linha de corte explicados"
 description: "O que é o bleed, porque é necessário, e como adicioná-lo nos programas mais usados — InDesign, Illustrator e Canva. Os 3mm que fazem a diferença entre um trabalho profissional e um amador."
 pubDate: 2026-05-03
 category: "Preparação de ficheiros"
-keywords: "bleed impressão, margem segurança gráfica, sangria 3mm, linha de corte"
+keywords: "bleed impressão, margem segurança gráfica, bleed 3mm, linha de corte"
 readingTime: "7 min"
 featured: false
 ---
 
-Recebeste um email de uma gráfica a dizer "*o ficheiro precisa de bleed de 3mm*" e ficaste a olhar para o ecrã sem perceber o que isso quer dizer? Não estás sozinho. O **bleed** (também chamado **sangria** em português) é um daqueles conceitos que parece técnico mas é, na verdade, simples — e absolutamente fundamental para qualquer trabalho de impressão sair bem.
+Recebeste um email de uma gráfica a dizer "*o ficheiro precisa de bleed de 3mm*" e ficaste a olhar para o ecrã sem perceber o que isso quer dizer? Não estás sozinho. O **bleed** — a palavra inglesa para a tinta que se prolonga para lá da linha de corte — é um daqueles conceitos que parece técnico mas é, na verdade, simples — e absolutamente fundamental para qualquer trabalho de impressão sair bem.
 
 Vamos perceber o que é, porque existe, e como o adicionar nos programas que usas.
 
-## O que é bleed (sangria)
+## O que é o bleed
 
 **Bleed** é uma extensão extra do design para além das linhas de corte do trabalho final. Em termos práticos, é uma "moldura invisível" de cor ou imagem que se prolonga 3 milímetros para fora das dimensões reais do produto.
 
 Imagina que estás a desenhar um flyer A5 (148 × 210 mm) com um fundo azul. Sem bleed, o fundo termina exatamente nas bordas do A5. Com bleed, o fundo prolonga-se para fora, formando um retângulo de 154 × 216 mm — 3 mm extra em cada lado, que serão cortados depois.
 
 <figure class="article-figure">
-<svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama com a área de sangria, a linha de corte e a margem de segurança">
+<svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama com a área de bleed, a linha de corte e a margem de segurança">
 <rect x="30" y="30" width="380" height="230" fill="var(--cat)" opacity="0.12" />
 <rect x="30" y="30" width="380" height="230" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="7 5" />
 <rect x="57" y="57" width="326" height="176" fill="none" stroke="#1A1A1A" stroke-width="2" />
 <rect x="86" y="86" width="268" height="118" fill="none" stroke="#059669" stroke-width="2" stroke-dasharray="7 5" />
 <text x="220" y="151" text-anchor="middle" font-family="monospace" font-size="13" fill="#6B7280">conteúdo seguro aqui dentro</text>
 <g font-family="monospace" font-size="13" fill="#374151">
-<line x1="40" y1="300" x2="66" y2="300" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 4" /><text x="74" y="304">Sangria — 3 mm que serão cortados</text>
+<line x1="40" y1="300" x2="66" y2="300" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 4" /><text x="74" y="304">Bleed — 3 mm que serão cortados</text>
 <line x1="40" y1="325" x2="66" y2="325" stroke="#1A1A1A" stroke-width="2" /><text x="74" y="329">Linha de corte — o tamanho final</text>
 <line x1="40" y1="350" x2="66" y2="350" stroke="#059669" stroke-width="2" stroke-dasharray="6 4" /><text x="74" y="354">Margem de segurança — nada importante fora</text>
 </g>
 </svg>
-<figcaption>As três zonas de qualquer ficheiro de impressão: a arte prolonga-se até à sangria, o corte dá-se na linha preta, e o conteúdo essencial fica dentro da margem verde.</figcaption>
+<figcaption>As três zonas de qualquer ficheiro de impressão: a arte prolonga-se até ao bleed, o corte dá-se na linha preta, e o conteúdo essencial fica dentro da margem verde.</figcaption>
 </figure>
 
 ## Os 3 milímetros mágicos

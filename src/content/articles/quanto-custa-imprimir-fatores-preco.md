@@ -86,7 +86,7 @@ Um cartão de visita simples a 350 g é barato; o mesmo cartão com soft touch +
 Dois custos "invisíveis" que muita gente ignora:
 
 - **Urgência:** trabalho para ontem fura filas, paga horas extra e portes rápidos. A pressa tem preço. Planeia com antecedência e poupa.
-- **Pré-impressão (preparação de ficheiros):** se entregas ficheiros bem preparados — CMYK, 300 DPI, com [sangria e margens](/artigos/bleed-margem-de-seguranca-linha-de-corte/), fontes em curvas — a gráfica imprime direto. Se entregas um JPEG em RGB de baixa resolução, alguém tem de o "arranjar", e esse tempo de design **vai à fatura** (ou pior, sai um trabalho fraco). Ficheiros limpos são desconto disfarçado.
+- **Pré-impressão (preparação de ficheiros):** se entregas ficheiros bem preparados — CMYK, 300 DPI, com [bleed e margens](/artigos/bleed-margem-de-seguranca-linha-de-corte/), fontes em curvas — a gráfica imprime direto. Se entregas um JPEG em RGB de baixa resolução, alguém tem de o "arranjar", e esse tempo de design **vai à fatura** (ou pior, sai um trabalho fraco). Ficheiros limpos são desconto disfarçado.
 
 ## Como pedir para comparar com justiça
 

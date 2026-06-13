@@ -29,7 +29,7 @@ Há variações que vale a pena conhecer:
 
 <div class="tech-box">
 <div class="tech-label">Bleed: não te esqueças</div>
-<p>Se o teu cartão tem cor ou imagem até à beira, o ficheiro tem de incluir <strong>sangria</strong> (bleed): normalmente <strong>3 mm extra</strong> para lá da linha de corte, de cada lado. Sem sangria, o corte — que tem sempre uma pequena tolerância — pode deixar uma linha branca na borda. Se este conceito é novo para ti, lê o <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">guia de bleed, margem de segurança e linha de corte</a> antes de exportar.</p>
+<p>Se o teu cartão tem cor ou imagem até à beira, o ficheiro tem de incluir <strong>bleed</strong>: normalmente <strong>3 mm extra</strong> para lá da linha de corte, de cada lado. Sem bleed, o corte — que tem sempre uma pequena tolerância — pode deixar uma linha branca na borda. Se este conceito é novo para ti, lê o <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">guia de bleed, margem de segurança e linha de corte</a> antes de exportar.</p>
 </div>
 
 ## O papel: a gramagem faz o cartão
@@ -91,7 +91,7 @@ Antes de enviar para a gráfica, confirma:
 
 1. **Modo de cor: CMYK** (ou CMYK + Pantone se tiveres cor de marca exata). Nunca RGB. Vê [CMYK ou RGB](/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/).
 2. **Resolução: 300 DPI** nas imagens. Abaixo disso, sai com falta de nitidez. Vê o [guia do DPI](/artigos/resolucao-para-impressao-dpi/).
-3. **Sangria de 3 mm** em todos os lados, com a arte de fundo a chegar até lá.
+3. **Bleed de 3 mm** em todos os lados, com a arte de fundo a chegar até lá.
 4. **Margem de segurança:** texto e logótipo a pelo menos **3-4 mm da borda**, para nada ficar cortado.
 5. **Fontes convertidas em curvas** (ou PDF com fontes incorporadas), para não rebentarem na gráfica.
 6. **Preto correto:** para texto pequeno usa preto puro (K=100), não "preto rico" de quatro cores, que pode desfocar no registo.
@@ -123,6 +123,6 @@ Arriscas surpresas de cor. Converte tu para CMYK e vê o resultado antes de entr
 
 ## Em resumo
 
-Um bom cartão de visita resolve-se com poucas decisões certas: **85 × 55 mm**, **350 g**, um **laminado** que combine com a marca, no máximo **um acabamento de destaque**, e um **ficheiro bem preparado** com sangria, CMYK e 300 DPI. Faz isto e tens um objeto que comunica profissionalismo antes de dizeres uma palavra.
+Um bom cartão de visita resolve-se com poucas decisões certas: **85 × 55 mm**, **350 g**, um **laminado** que combine com a marca, no máximo **um acabamento de destaque**, e um **ficheiro bem preparado** com bleed, CMYK e 300 DPI. Faz isto e tens um objeto que comunica profissionalismo antes de dizeres uma palavra.
 
 E como sempre na impressão: para um trabalho que vais distribuir às centenas, vale a pena uma **prova física** antes da tiragem. Quando [pedires orçamento](/artigos/como-pedir-orcamento-a-uma-grafica/), indica logo gramagem, acabamentos e quantidade — é o que a gráfica precisa para te dar um preço sério à primeira.

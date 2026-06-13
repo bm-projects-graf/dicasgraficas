@@ -71,7 +71,7 @@ Quando chega a hora de enviar um trabalho concreto para a gráfica, o standard �
 
 - **Modo de cor CMYK** (+ Pantone se aplicável), nunca RGB. Vê [CMYK ou RGB](/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/).
 - **300 DPI** nas imagens. Vê o [guia do DPI](/artigos/resolucao-para-impressao-dpi/).
-- **Sangria (bleed) de 3 mm** e margem de segurança. Vê [bleed e linha de corte](/artigos/bleed-margem-de-seguranca-linha-de-corte/).
+- **Bleed de 3 mm** e margem de segurança. Vê [bleed e linha de corte](/artigos/bleed-margem-de-seguranca-linha-de-corte/).
 - **Fontes** em curvas ou incorporadas.
 - **Marcas de corte**, se a gráfica as pedir.
 
@@ -100,10 +100,10 @@ O HEX é para ecrã (RGB). Para imprimir precisas do equivalente **CMYK** e, ide
 Confirma a licença. Muitas fontes gratuitas são só para uso pessoal e não cobrem uso comercial nem incorporação em ficheiros para a gráfica.
 
 **"Mando o ficheiro do Word / Canva, a gráfica que trate."**
-Pode dar problemas (cores RGB, fontes em falta, sem sangria, baixa resolução). Exporta um **PDF de impressão** bem feito, ou conta com tempo (e custo) de pré-impressão para o corrigir.
+Pode dar problemas (cores RGB, fontes em falta, sem bleed, baixa resolução). Exporta um **PDF de impressão** bem feito, ou conta com tempo (e custo) de pré-impressão para o corrigir.
 
 ## Em resumo
 
-Preparar a marca para a gráfica é montar um pequeno **kit**, uma vez, que serve para sempre: **logótipo em vetor**, **cores em HEX/CMYK/Pantone**, **fontes com licença** (e em curvas na entrega), **versões** do logótipo (cor, preto, negativo), e **ficheiros em PDF/X** com CMYK, 300 DPI e sangria. Junta tudo numa folha de marca.
+Preparar a marca para a gráfica é montar um pequeno **kit**, uma vez, que serve para sempre: **logótipo em vetor**, **cores em HEX/CMYK/Pantone**, **fontes com licença** (e em curvas na entrega), **versões** do logótipo (cor, preto, negativo), e **ficheiros em PDF/X** com CMYK, 300 DPI e bleed. Junta tudo numa folha de marca.
 
 Faz este trabalho de base e todos os impressos futuros ficam mais fáceis, mais baratos e mais consistentes — e a tua marca passa a ter, em qualquer suporte, o mesmo rosto cuidado. Quando entregares à gráfica, é meio caminho para um [orçamento](/artigos/como-pedir-orcamento-a-uma-grafica/) sem surpresas.

@@ -63,7 +63,7 @@ O equilíbrio: encorpado o suficiente para comunicar qualidade, fino o suficient
 
 Pequenos descuidos que arruínam uma tiragem inteira:
 
-- **Esquecer a [sangria](/artigos/bleed-margem-de-seguranca-linha-de-corte/):** cor até à borda **sem** sangria = linhas brancas no corte.
+- **Esquecer o [bleed](/artigos/bleed-margem-de-seguranca-linha-de-corte/):** cor até à borda **sem** bleed = linhas brancas no corte.
 - **Texto colado à dobra:** informação importante em cima de um vinco fica **estragada** pela dobra. Respeita uma margem à volta dos vincos.
 - **Papel grosso sem vinco:** dobrar 250 g sem vincar = vinco **rachado** e feio.
 - **Demasiada informação:** um flyer não é um livro. **Uma mensagem clara** e uma **chamada à ação** (o que fazer a seguir) valem mais que texto a abarrotar.
@@ -92,4 +92,4 @@ Não. Formatos **normalizados** (A5, A6, DL) aproveitam melhor a folha e custam 
 
 Folhetos e flyers resolvem-se com poucas decisões certas: **flyer** (folha plana) ou **folheto** (dobrado); um **formato normalizado** (A5, A6 ou o omnipresente **DL** dos expositores) que aproveita a folha; a **dobra** certa (simples, tri-fold, sanfona, janela) que organiza a sequência de leitura; e a **gramagem** equilibrada (130-170 g, com vinco se for mais grosso).
 
-Evita os erros clássicos — sangria, texto sobre a dobra, papel grosso sem vinco, excesso de informação, RGB — e lembra-te da regra de ouro: **uma mensagem clara, uma chamada à ação, e espaço para respirar**. Um bom flyer não diz tudo; diz **o essencial**, de forma que se perceba em três segundos e dê vontade de agir.
+Evita os erros clássicos — bleed, texto sobre a dobra, papel grosso sem vinco, excesso de informação, RGB — e lembra-te da regra de ouro: **uma mensagem clara, uma chamada à ação, e espaço para respirar**. Um bom flyer não diz tudo; diz **o essencial**, de forma que se perceba em três segundos e dê vontade de agir.

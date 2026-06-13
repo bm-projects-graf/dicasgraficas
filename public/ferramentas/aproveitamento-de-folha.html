@@ -200,9 +200,9 @@
     $("cruzBox").style.display=(modo==="normal")?"block":"none";
     $("pincaLbl").textContent=(modo==="cambalhota")?"Pinça (nos dois lados)":"Pinça / boca";
     var av=$("aviso");
-    if(modo==="cambalhota") av.innerHTML="⚠️ <strong>Cambalhota:</strong> duas metades sobrepostas, pinça nas <strong>duas pontas</strong>. Encaixe por metade ×2. Falta somar a <strong>sangria</strong> a cada peça.";
-    else if(modo==="normal") av.innerHTML="⚠️ <strong>Tira-retira normal:</strong> duas metades lado a lado, com a <strong>cruzeta central</strong> entre elas. Encaixe por metade ×2. Falta somar a <strong>sangria</strong> a cada peça.";
-    else av.innerHTML="⚠️ Cálculo geométrico (frente). <strong>Pinça</strong> = lado por onde a máquina agarra; <strong>margens</strong> = tira de cor/defesa; <strong>espaço entre peças</strong> = folga de corte. Falta somar a <strong>sangria</strong> a cada peça.";
+    if(modo==="cambalhota") av.innerHTML="⚠️ <strong>Cambalhota:</strong> duas metades sobrepostas, pinça nas <strong>duas pontas</strong>. Encaixe por metade ×2. Falta somar o <strong>bleed</strong> a cada peça.";
+    else if(modo==="normal") av.innerHTML="⚠️ <strong>Tira-retira normal:</strong> duas metades lado a lado, com a <strong>cruzeta central</strong> entre elas. Encaixe por metade ×2. Falta somar o <strong>bleed</strong> a cada peça.";
+    else av.innerHTML="⚠️ Cálculo geométrico (frente). <strong>Pinça</strong> = lado por onde a máquina agarra; <strong>margens</strong> = tira de cor/defesa; <strong>espaço entre peças</strong> = folga de corte. Falta somar o <strong>bleed</strong> a cada peça.";
     calcular();
   }
 

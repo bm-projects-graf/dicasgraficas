@@ -75,7 +75,7 @@ A cultura de massas vira arte (e design).
 
 ## Punk / New Wave (anos 1970-80)
 
-O faça-você-mesmo raivoso.
+O «faz-tu-mesmo» raivoso.
 
 - **Pistas:** estética de **fotocópia e recorte**, letras tipo **resgate** (recortadas de jornais), colagem tosca, tipografia caótica, alto contraste, ar "feito à pressa e de propósito mal".
 - **Sensação:** rebelde, cru, anti-design, urgente.
