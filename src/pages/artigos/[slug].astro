@@ -5,6 +5,7 @@ import ArticleCover from '../../components/ArticleCover.astro';
 import ArticleAudio from '../../components/ArticleAudio.astro';
 import { getCollection, render } from 'astro:content';
 import { getCategory } from '../../data/categories';
+import { byInteresse } from '../../data/article-order';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -21,6 +22,7 @@ const { Content } = await render(article);
 const allArticles = await getCollection('articles');
 const relatedArticles = allArticles
   .filter(a => a.data.category === article.data.category && a.id !== article.id)
+  .sort(byInteresse)
   .slice(0, 3);
 
 const cat = getCategory(article.data.category);
@@ -80,7 +82,16 @@ const catColor = cat?.color ?? 'var(--color-primary)';
             />
           ))}
         </div>
+        <p class="related-more">
+          Vê todos os artigos de <a href={`/categorias/${categorySlug}/`}>{article.data.category}</a>
+          · Encontraste um termo que não conheces? Consulta o <a href="/glossario/">glossário de artes gráficas</a>.
+        </p>
       </div>
     </section>
   )}
+
+  <style>
+    .related-more { margin-top: 1.5rem; text-align: center; font-size: 0.92rem; color: var(--color-text-secondary, #6B7280); }
+    .related-more a { color: var(--cat, #1B6FA8); font-weight: 600; }
+  </style>
 </Base>
