@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Otimizador de aproveitamento de folha | dicasgraficas.com</title>
 <style>
-  :root { --azul:#1B6FA8; --azul-escuro:#0F4A7A; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF; --aviso-bg:#FEF3C7; --aviso-borda:#F59E0B; --dica-bg:#EFF6FF; --dica-borda:#1B6FA8; --verde:#16A34A; }
+  :root { --azul:#1B6FA8; --azul-escuro:#0F4A7A; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF; --aviso-bg:#FEF3C7; --aviso-borda:#F59E0B; --dica-bg:#EFF6FF; --dica-borda:#1B6FA8; }
   * { box-sizing:border-box; }
   body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
   .wrap { max-width:820px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
@@ -17,8 +17,9 @@
   .linha { display:flex; gap:1rem; flex-wrap:wrap; }
   .campo { flex:1; min-width:120px; margin-bottom:0.6rem; }
   .campo label { display:block; font-weight:600; font-size:0.85rem; margin-bottom:0.3rem; }
-  .campo input { width:100%; padding:0.55rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:'IBM Plex Mono',monospace; background:#fff; }
-  .campo input:focus { outline:none; border-color:var(--azul); }
+  .campo input, .campo select { width:100%; padding:0.55rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:inherit; background:#fff; }
+  .campo input { font-family:'IBM Plex Mono',monospace; }
+  .campo input:focus, .campo select:focus { outline:none; border-color:var(--azul); }
   .resumo { display:flex; gap:1.5rem; flex-wrap:wrap; align-items:baseline; margin-bottom:1rem; }
   .resumo .grande { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.3rem; line-height:1; }
   .resumo .grande small { font-size:1rem; color:var(--texto2); font-weight:400; }
@@ -37,7 +38,7 @@
 <div class="wrap">
   <header>
     <h1>✂️ Aproveitamento de folha</h1>
-    <p class="sub">Quantos produtos saem de uma folha de máquina, com o melhor plano de corte e o desperdício (aparas) — já a contar com pinça, margens e espaço entre peças.</p>
+    <p class="sub">Quantos produtos saem de uma folha de máquina, com o melhor plano de corte e o desperdício — a contar com pinça, margens, espaço entre peças e o modo de tira-retira.</p>
   </header>
 
   <div class="card">
@@ -52,11 +53,25 @@
       <div class="campo"><label for="pw">Largura</label><input type="number" id="pw" min="0.1" step="0.1" value="21" /></div>
       <div class="campo"><label for="ph">Altura</label><input type="number" id="ph" min="0.1" step="0.1" value="29.7" /></div>
     </div>
+
+    <div class="grupo" style="margin-top:0.6rem;">Modo de impressão</div>
+    <div class="linha">
+      <div class="campo" style="min-width:220px;">
+        <label for="modo">Tira-retira</label>
+        <select id="modo">
+          <option value="frente" selected>Frente apenas (1 face)</option>
+          <option value="normal">Tira-retira normal</option>
+          <option value="cambalhota">Tira-retira de cambalhota</option>
+        </select>
+      </div>
+    </div>
+
     <div class="grupo" style="margin-top:0.6rem;">Margens e cortes (mm)</div>
     <div class="linha">
-      <div class="campo"><label for="pinca">Pinça / boca</label><input type="number" id="pinca" min="0" step="1" value="15" /></div>
+      <div class="campo"><label for="pinca" id="pincaLbl">Pinça / boca</label><input type="number" id="pinca" min="0" step="1" value="15" /></div>
       <div class="campo"><label for="margem">Margens (laterais/saída)</label><input type="number" id="margem" min="0" step="1" value="8" /></div>
       <div class="campo"><label for="gap">Espaço entre peças</label><input type="number" id="gap" min="0" step="1" value="4" /></div>
+      <div class="campo" id="cruzBox" style="display:none;"><label for="cruzeta">Cruzeta central</label><input type="number" id="cruzeta" min="0" step="1" value="20" /></div>
     </div>
   </div>
 
@@ -70,14 +85,12 @@
       <div id="svgBox"></div>
       <div class="leg" id="leg"></div>
     </div>
-    <div class="aviso">
-      ⚠️ A <strong>pinça/boca</strong> é a margem do lado por onde a máquina agarra a folha; as <strong>margens</strong> guardam espaço para a tira de controlo de cor e defesa; o <strong>espaço entre peças</strong> é a folga para cruzetas/corte. Falta ainda somar a <strong>sangria</strong> a cada peça, conforme o trabalho.
-    </div>
+    <div class="aviso" id="aviso"></div>
   </div>
 
   <div class="dica">
-    <span class="lbl">Dica de aproveitamento</span>
-    Pequenas mudanças na <strong>folha de máquina</strong> (ex.: 70×100 vs 50×70) ou nas margens mudam muito o nº de peças e o desperdício. É assim que o orçamentista escolhe a folha mais económica para a tiragem.
+    <span class="lbl">Modos de tira-retira</span>
+    Na <strong>cambalhota</strong>, a folha vira sobre a boca e a máquina <strong>agarra dos dois lados</strong> — por isso há pinça nas duas margens opostas. Na <strong>tira-retira normal</strong>, mantém-se uma só pinça, mas reserva-se uma <strong>cruzeta central</strong> maior (onde a folha "vira ao alto"). Falta ainda somar a <strong>sangria</strong> a cada peça, conforme o trabalho.
   </div>
 
   <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
@@ -89,22 +102,18 @@
   var $ = function (id){ return document.getElementById(id); };
   function postHeight(){ if(window.parent===window) return; try{ parent.postMessage({type:"mixer-height",height:document.documentElement.scrollHeight},"*"); }catch(e){} }
 
-  // Quantas peças de tamanho p cabem num comprimento L com folga g entre peças
   function nFit(L, p, g){ if(p<=0||L<=0) return 0; return Math.max(0, Math.floor((L + g) / (p + g))); }
 
-  // Grelha principal (orientação w×h) + tiras que sobram preenchidas com a peça rodada. Tudo com folga g.
   function tentar(W,H,w,h,g){
     var rects=[];
     var cols=nFit(W,w,g), rows=nFit(H,h,g);
     for(var r=0;r<rows;r++) for(var c=0;c<cols;c++) rects.push({x:c*(w+g), y:r*(h+g), w:w, h:h});
     var usedW = cols>0 ? cols*w+(cols-1)*g : 0;
     var usedH = rows>0 ? rows*h+(rows-1)*g : 0;
-    // tira à direita (peça rodada h×w)
     var stripX = usedW + (cols>0 ? g : 0);
     var rightW = W - stripX;
     var rc=nFit(rightW, h, g), rr=nFit(H, w, g);
     for(var i=0;i<rc;i++) for(var j=0;j<rr;j++) rects.push({x:stripX+i*(h+g), y:j*(w+g), w:h, h:w});
-    // tira em baixo (dentro da largura já usada), peça rodada
     var stripY = usedH + (rows>0 ? g : 0);
     var bottomH = H - stripY;
     var bc=nFit(usedW, h, g), br=nFit(bottomH, w, g);
@@ -122,7 +131,6 @@
     var sw=W*s, sh=H*s, pad=2;
     var svg='<svg viewBox="0 0 '+(sw+pad*2)+' '+(sh+pad*2)+'" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano de corte da folha">';
     svg+='<rect x="'+pad+'" y="'+pad+'" width="'+sw+'" height="'+sh+'" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5"/>';
-    // área útil (a tracejado)
     svg+='<rect x="'+(pad+offX*s)+'" y="'+(pad+offY*s)+'" width="'+(uW*s)+'" height="'+(uH*s)+'" fill="none" stroke="#C7CDD6" stroke-width="1" stroke-dasharray="4 3"/>';
     for(var i=0;i<rects.length;i++){
       var p=rects[i];
@@ -131,19 +139,29 @@
     svg+='</svg>';
     return svg;
   }
-
   function fmt1(x){ return x.toFixed(1).replace(".", ","); }
 
   function calcular(){
     var fw=parseFloat($("fw").value)||0, fh=parseFloat($("fh").value)||0;
     var pw=parseFloat($("pw").value)||0, ph=parseFloat($("ph").value)||0;
-    var pinca=(parseFloat($("pinca").value)||0)/10;   // mm -> cm
+    var pinca=(parseFloat($("pinca").value)||0)/10;
     var marg=(parseFloat($("margem").value)||0)/10;
     var g=(parseFloat($("gap").value)||0)/10;
-    // área útil: margens nos 3 lados + pinça num lado (em baixo)
-    var offX=marg, offY=marg;
-    var uW = fw - 2*marg;
-    var uH = fh - marg - pinca;
+    var cruz=(parseFloat($("cruzeta").value)||0)/10;
+    var modo=$("modo").value;
+
+    var offX, offY, uW, uH;
+    if (modo === "cambalhota") {
+      offY = pinca; uH = fh - 2*pinca;        // pinça nos dois lados (cima e baixo)
+      offX = marg;  uW = fw - 2*marg;
+    } else if (modo === "normal") {
+      offY = marg;  uH = fh - marg - pinca;   // uma pinça
+      uW = fw - 2*marg - cruz;                // cruzeta central desconta da largura útil
+      offX = (fw - uW) / 2;                    // centra a área útil
+    } else { // frente
+      offX = marg; offY = marg;
+      uW = fw - 2*marg; uH = fh - marg - pinca;
+    }
 
     if(uW<=0||uH<=0||pw<=0||ph<=0){ $("qtd").textContent="—"; $("desp").textContent="—"; $("svgBox").innerHTML=""; $("leg").textContent="Margens grandes demais para esta folha."; postHeight(); return; }
 
@@ -156,21 +174,34 @@
       $("leg").textContent="O produto não cabe na área útil (nem rodado).";
       postHeight(); return;
     }
-    var areaProd=n*pw*ph;
-    var desp=(1 - areaProd/(fw*fh))*100;
+    var desp=(1 - (n*pw*ph)/(fw*fh))*100;
     $("desp").textContent=fmt1(desp)+"%";
     $("svgBox").innerHTML=desenhar(fw,fh,offX,offY,uW,uH,rects);
     $("leg").textContent="Folha "+fmt1(fw)+"×"+fmt1(fh)+" cm · útil "+fmt1(uW)+"×"+fmt1(uH)+" cm · "+n+" à folha";
     postHeight();
   }
-  window.__aprov = function(fw,fh,pw,ph,pinca,marg,gap){
+
+  function atualizarModo(){
+    var modo=$("modo").value;
+    $("cruzBox").style.display = (modo==="normal") ? "block" : "none";
+    $("pincaLbl").textContent = (modo==="cambalhota") ? "Pinça (nos dois lados)" : "Pinça / boca";
+    var av = $("aviso");
+    if (modo==="cambalhota") av.innerHTML = "⚠️ <strong>Cambalhota:</strong> pinça nos <strong>dois lados</strong> opostos (a folha vira sobre a boca). Falta somar a <strong>sangria</strong> a cada peça.";
+    else if (modo==="normal") av.innerHTML = "⚠️ <strong>Tira-retira normal:</strong> uma pinça + uma <strong>cruzeta central</strong> (descontada da largura útil). Falta somar a <strong>sangria</strong> a cada peça.";
+    else av.innerHTML = "⚠️ Cálculo geométrico (frente). A <strong>pinça</strong> é o lado por onde a máquina agarra; as <strong>margens</strong> guardam a tira de cor/defesa; o <strong>espaço entre peças</strong> é a folga de corte. Falta somar a <strong>sangria</strong> a cada peça.";
+    calcular();
+  }
+
+  window.__aprov = function(fw,fh,pw,ph,pinca,marg,gap,modo,cruz){
     $("fw").value=fw; $("fh").value=fh; $("pw").value=pw; $("ph").value=ph;
     $("pinca").value=(pinca==null?15:pinca); $("margem").value=(marg==null?8:marg); $("gap").value=(gap==null?4:gap);
-    calcular(); return parseInt($("qtd").textContent,10);
+    $("modo").value=(modo||"frente"); if(cruz!=null) $("cruzeta").value=cruz;
+    atualizarModo(); return parseInt($("qtd").textContent,10);
   };
 
-  ["fw","fh","pw","ph","pinca","margem","gap"].forEach(function(id){ $(id).addEventListener("input", calcular); });
-  calcular();
+  $("modo").addEventListener("change", atualizarModo);
+  ["fw","fh","pw","ph","pinca","margem","gap","cruzeta"].forEach(function(id){ $(id).addEventListener("input", calcular); });
+  atualizarModo();
 })();
 </script>
 </body>
