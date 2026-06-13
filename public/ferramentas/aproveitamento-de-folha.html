@@ -48,8 +48,8 @@
     <h2>1. Medidas</h2>
     <div class="grupo">Folha de máquina (cm)</div>
     <div class="linha">
-      <div class="campo"><label for="fw">Largura</label><input type="number" id="fw" min="1" step="0.1" value="70" /></div>
-      <div class="campo"><label for="fh">Altura</label><input type="number" id="fh" min="1" step="0.1" value="100" /></div>
+      <div class="campo"><label for="fw">Largura</label><input type="number" id="fw" min="1" step="0.1" value="100" /></div>
+      <div class="campo"><label for="fh">Altura</label><input type="number" id="fh" min="1" step="0.1" value="70" /></div>
     </div>
     <div class="grupo" style="margin-top:0.6rem;">Produto final aberto (cm)</div>
     <div class="linha">
@@ -151,6 +151,8 @@
 
   function calcular(){
     var fw=parseFloat($("fw").value)||0, fh=parseFloat($("fh").value)||0;
+    // a folha de máquina representa-se ao baixo: lado maior na horizontal, pinça na base
+    if(fh>fw){ var _t=fw; fw=fh; fh=_t; }
     var pw=parseFloat($("pw").value)||0, ph=parseFloat($("ph").value)||0;
     var pinca=(parseFloat($("pinca").value)||0)/10, marg=(parseFloat($("margem").value)||0)/10;
     var g=(parseFloat($("gap").value)||0)/10, cruz=(parseFloat($("cruzeta").value)||0)/10;
