@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
 import { categories } from '../../data/categories';
+import { byInteresse } from '../../data/article-order';
 
 export async function getStaticPaths() {
   return categories.map(cat => ({
@@ -15,7 +16,7 @@ const { category } = Astro.props;
 const allArticles = await getCollection('articles');
 const articles = allArticles
   .filter(a => a.data.category === category.title)
-  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+  .sort(byInteresse);
 ---
 
 <Base

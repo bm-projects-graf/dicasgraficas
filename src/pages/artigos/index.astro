@@ -3,11 +3,10 @@ import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
 import { getCategory } from '../../data/categories';
+import { byInteresse } from '../../data/article-order';
 
 const allArticles = await getCollection('articles');
-const sortedArticles = allArticles.sort(
-  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
+const sortedArticles = allArticles.sort(byInteresse);
 
 // Categorias presentes, com o slug correto vindo da fonte central
 const usedCategories = [...new Set(allArticles.map(a => a.data.category))]
