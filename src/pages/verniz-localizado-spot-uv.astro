@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Simulador de verniz localizado (Spot UV) | dicasgraficas.com"
+  description="Simula o efeito de verniz localizado (Spot UV) em papel escuro: carrega um grafismo, vê como a tinta CMYK transparente se funde com o suporte e pinta com o pincel as zonas brilhantes, com reflexo que segue o rato."
+>
+  <div class="static-page">
+    <div class="container">
+      <div class="category-header" style="border-bottom: none; padding-bottom: 1rem; --cat: #9333EA;">
+        <div class="eyebrow">Ferramenta interativa</div>
+        <h1>Verniz localizado (Spot UV)</h1>
+        <p>
+          Escolhe o <strong>papel</strong> (escuro, kraft ou branco), carrega um <strong>grafismo</strong> e vê como a
+          tinta <strong>CMYK transparente</strong> se funde com o suporte. Depois pinta com o <strong>pincel de verniz</strong>
+          as zonas a destacar: ao largar o pincel, o efeito ganha um <strong>brilho que segue o rato</strong>, tal como o
+          Spot UV reflete a luz na realidade.
+        </p>
+      </div>
+
+      <iframe id="spotFrame" src="/ferramentas/spot-uv.html" title="Simulador de verniz localizado (Spot UV)" loading="lazy"
+        style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 760px; background: #FAF6EF;"></iframe>
+    </div>
+  </div>
+
+  <script is:inline>
+    window.addEventListener('message', function (e) {
+      if (e && e.data && e.data.type === 'mixer-height' && typeof e.data.height === 'number') {
+        var f = document.getElementById('spotFrame'); if (f) f.style.height = (e.data.height + 24) + 'px';
+      }
+    });
+  </script>
+</Base>
