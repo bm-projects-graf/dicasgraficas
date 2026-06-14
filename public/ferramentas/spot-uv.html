@@ -28,6 +28,7 @@
   .toolbar button { border:1.5px solid var(--borda); background:#fff; border-radius:9px; padding:0.5rem 0.85rem; cursor:pointer; font-size:0.88rem; font-weight:600; color:var(--texto); display:inline-flex; align-items:center; gap:0.4rem; }
   .toolbar button.on { background:var(--cor); border-color:var(--cor); color:#fff; }
   .toolbar button.danger { color:#B91C1C; }
+  .toolbar button:disabled { opacity:0.45; cursor:not-allowed; }
   .toolbar .sizewrap { display:flex; align-items:center; gap:0.5rem; margin-left:auto; font-size:0.82rem; color:var(--texto2); }
   .toolbar input[type=range] { accent-color:var(--cor); width:120px; }
 
@@ -44,8 +45,8 @@
   .paper-white { background:#FCFBF7; }
   .paper-white::after { opacity:0.25; }
   .paper-kraft { background:#C2A06B; }
-  .paper-dark { background:radial-gradient(120% 120% at 30% 20%, #20242C 0%, #14161B 70%, #0E1014 100%); }
-  .paper-dark::after { opacity:0.35; }
+  .paper-dark { background:radial-gradient(120% 120% at 30% 20%, #3D4452 0%, #2C313C 70%, #242832 100%); }
+  .paper-dark::after { opacity:0.3; }
   #art { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; display:none; pointer-events:none; }
   #view { position:absolute; inset:0; width:100%; height:100%; }
   /* círculo que mostra o tamanho real do pincel, a seguir o cursor */
@@ -73,9 +74,9 @@
   <div class="card">
     <div class="grupo">1. Suporte (papel)</div>
     <div class="papers" id="papers">
-      <button data-paper="dark" class="active"><span class="chip" style="background:#15171C"></span>Cartolina escura</button>
+      <button data-paper="white" class="active"><span class="chip" style="background:#FCFBF7"></span>Branco standard</button>
       <button data-paper="kraft"><span class="chip" style="background:#C2A06B"></span>Kraft natural</button>
-      <button data-paper="white"><span class="chip" style="background:#FCFBF7"></span>Branco standard</button>
+      <button data-paper="dark"><span class="chip" style="background:#2C313C"></span>Cartolina escura</button>
     </div>
     <div class="uploadrow">
       <button class="btn" id="pick">Carregar grafismo</button>
@@ -90,14 +91,20 @@
     <div class="toolbar">
       <button id="brush" class="on">🖌️ Verniz</button>
       <button id="eraser">🧽 Apagador</button>
-      <button id="clear" class="danger">Limpar tudo</button>
+      <button id="rect">▭ Retângulo</button>
+      <button id="circ">⬤ Círculo</button>
       <span class="sizewrap">Tamanho <input type="range" id="size" min="5" max="50" value="22" /> <span id="sizeval">22</span>px</span>
+    </div>
+    <div class="toolbar" style="margin-top:0.55rem;">
+      <button id="auto" disabled>✨ Aplicar na imagem</button>
+      <button id="fill">Encher tudo</button>
+      <button id="clear" class="danger">Limpar tudo</button>
     </div>
     <div class="hint" id="modehint">Modo verniz ativo. Arrasta sobre a imagem para aplicar; larga para ver o brilho.</div>
   </div>
 
   <div class="stage" id="stage">
-    <div class="paper paper-dark" id="paper"></div>
+    <div class="paper paper-white" id="paper"></div>
     <img id="art" alt="" />
     <canvas id="view"></canvas>
     <div class="brush-cursor" id="brushCursor" hidden></div>
@@ -142,6 +149,7 @@
   var hasImg = false;
   var rafPending = false;
   var bc = $("brushCursor"), hovering = false, bcTimer = null;
+  var shaping = false, shapeStart = { x: 0, y: 0 }, shapeEnd = { x: 0, y: 0 }, shapeType = "rect";
 
   function sizeCanvases() {
     var r = stage.getBoundingClientRect();
@@ -232,8 +240,54 @@
     ctx.globalCompositeOperation = "source-over";
   }
 
+  // ---- Formas (retângulo / círculo): área precisa, sem ser à mão livre ----
+  function shapePath(c) {
+    var x0 = Math.min(shapeStart.x, shapeEnd.x), y0 = Math.min(shapeStart.y, shapeEnd.y);
+    var w = Math.abs(shapeEnd.x - shapeStart.x), h = Math.abs(shapeEnd.y - shapeStart.y);
+    c.beginPath();
+    if (shapeType === "circ") c.ellipse(x0 + w / 2, y0 + h / 2, w / 2, h / 2, 0, 0, Math.PI * 2);
+    else c.rect(x0, y0, w, h);
+  }
+  function drawShapePreview() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.drawImage(mask, 0, 0);                                   // verniz já aplicado
+    ctx.fillStyle = "#fff"; shapePath(ctx); ctx.fill();          // + forma a ser desenhada
+    ctx.globalCompositeOperation = "source-in";
+    ctx.fillStyle = "rgba(34,211,238,0.5)"; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "source-over";
+  }
+  function commitShape() {
+    if (!mctx) return;
+    mctx.globalCompositeOperation = "source-over";
+    mctx.fillStyle = "#fff"; shapePath(mctx); mctx.fill();
+  }
+  function fillAll() { if (!mctx) return; mctx.globalCompositeOperation = "source-over"; mctx.fillStyle = "#fff"; mctx.fillRect(0, 0, W, H); render(); }
+  // aplica verniz exatamente onde a imagem tem tinta (não branco / não transparente)
+  function autoFromImage() {
+    if (!mctx || !hasImg || !art.naturalWidth) return;
+    var iw = art.naturalWidth, ih = art.naturalHeight;
+    var scale = Math.min(W / iw, H / ih), dw = iw * scale, dh = ih * scale;
+    var ox = (W - dw) / 2, oy = (H - dh) / 2;
+    var tmp = document.createElement("canvas"); tmp.width = W; tmp.height = H;
+    var t = tmp.getContext("2d"); if (!t) return;
+    t.drawImage(art, ox, oy, dw, dh);                            // imagem na mesma escala do palco
+    var img = t.getImageData(0, 0, W, H), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var a = d[i + 3], lum = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+      if (a > 30 && lum < 245) { d[i] = d[i + 1] = d[i + 2] = 255; d[i + 3] = 255; } // tem tinta -> verniz
+      else d[i + 3] = 0;
+    }
+    t.putImageData(img, 0, 0);
+    mctx.globalCompositeOperation = "source-over"; mctx.drawImage(tmp, 0, 0);
+    render();
+  }
+
   function render() {
-    if (painting && tool) drawPreview(); else drawGloss();
+    if (painting && (tool === "verniz" || tool === "apagador")) drawPreview();
+    else if (shaping) drawShapePreview();
+    else drawGloss();
   }
   function scheduleRender() {
     if (rafPending) return;
@@ -244,15 +298,24 @@
   // ---- Ponteiro (rato + toque) ----
   stage.addEventListener("pointerdown", function (e) {
     var p = pos(e); mx = p.x; my = p.y; hovering = true;
-    if (tool) { painting = true; lastX = p.x; lastY = p.y; stroke(p.x, p.y); updateBrushCursor(p.cx, p.cy); try { stage.setPointerCapture(e.pointerId); } catch (_) {} render(); }
+    if (tool === "verniz" || tool === "apagador") {
+      painting = true; lastX = p.x; lastY = p.y; stroke(p.x, p.y); updateBrushCursor(p.cx, p.cy);
+    } else if (tool === "rect" || tool === "circ") {
+      shaping = true; shapeType = tool; shapeStart = { x: p.x, y: p.y }; shapeEnd = { x: p.x, y: p.y };
+    }
+    if (tool) { try { stage.setPointerCapture(e.pointerId); } catch (_) {} render(); }
   });
   stage.addEventListener("pointermove", function (e) {
     var p = pos(e); mx = p.x; my = p.y; hovering = true;
-    if (tool) updateBrushCursor(p.cx, p.cy); else if (bc) bc.hidden = true;
-    if (painting && tool) { stroke(p.x, p.y); render(); }
+    if (tool === "verniz" || tool === "apagador") updateBrushCursor(p.cx, p.cy); else if (bc) bc.hidden = true;
+    if (painting && (tool === "verniz" || tool === "apagador")) { stroke(p.x, p.y); render(); }
+    else if (shaping) { shapeEnd = { x: p.x, y: p.y }; render(); }
     else scheduleRender(); // só atualiza o reflexo
   });
-  function endStroke() { if (painting) { painting = false; render(); } }
+  function endStroke() {
+    if (painting) { painting = false; render(); }
+    if (shaping) { commitShape(); shaping = false; render(); }
+  }
   stage.addEventListener("pointerup", endStroke);
   stage.addEventListener("pointercancel", endStroke);
   stage.addEventListener("pointerleave", function () { hovering = false; if (bc) bc.hidden = true; if (!painting) { mx = W / 2; my = H / 2; scheduleRender(); } });
@@ -279,15 +342,27 @@
     tool = t;
     $("brush").classList.toggle("on", t === "verniz");
     $("eraser").classList.toggle("on", t === "apagador");
-    stage.style.cursor = t ? "none" : "default";
-    if (!t && bc) bc.hidden = true;
-    $("modehint").textContent = t === "verniz"
-      ? "Modo verniz ativo. Arrasta sobre a imagem para aplicar. Depois passa o rato por cima da zona pintada para ver o brilho."
-      : (t === "apagador" ? "Modo apagador. Arrasta sobre as zonas a remover." : "A ver o brilho. Passa o rato por cima das zonas com verniz para o veres reagir à luz.");
+    $("rect").classList.toggle("on", t === "rect");
+    $("circ").classList.toggle("on", t === "circ");
+    var freehand = (t === "verniz" || t === "apagador");
+    stage.style.cursor = freehand ? "none" : (t ? "crosshair" : "default");
+    if (!freehand && bc) bc.hidden = true;
+    var hints = {
+      verniz: "Modo verniz ativo. Arrasta sobre a imagem para aplicar. Depois passa o rato por cima da zona pintada para ver o brilho.",
+      apagador: "Modo apagador. Arrasta sobre as zonas a remover.",
+      rect: "Modo retângulo. Arrasta para definir a área de verniz.",
+      circ: "Modo círculo. Arrasta para definir a área de verniz.",
+      "": "A ver o brilho. Passa o rato por cima das zonas com verniz para o veres reagir à luz."
+    };
+    $("modehint").textContent = hints[t || ""];
     render();
   }
   $("brush").addEventListener("click", function () { setTool(tool === "verniz" ? null : "verniz"); });
   $("eraser").addEventListener("click", function () { setTool(tool === "apagador" ? null : "apagador"); });
+  $("rect").addEventListener("click", function () { setTool(tool === "rect" ? null : "rect"); });
+  $("circ").addEventListener("click", function () { setTool(tool === "circ" ? null : "circ"); });
+  $("auto").addEventListener("click", autoFromImage);
+  $("fill").addEventListener("click", fillAll);
   $("clear").addEventListener("click", function () { if (mctx) mctx.clearRect(0, 0, W, H); render(); });
   $("size").addEventListener("input", function () {
     size = parseInt(this.value, 10) || 22; $("sizeval").textContent = size;
@@ -305,16 +380,17 @@
   $("file").addEventListener("change", function () {
     var f = this.files && this.files[0]; if (!f) return;
     var url = URL.createObjectURL(f);
-    art.onload = function () { art.style.display = "block"; ph.style.display = "none"; hasImg = true; $("removeImg").hidden = false; URL.revokeObjectURL(url); };
+    art.onload = function () { art.style.display = "block"; ph.style.display = "none"; hasImg = true; $("removeImg").hidden = false; $("auto").disabled = false; URL.revokeObjectURL(url); };
     art.src = url;
   });
   $("removeImg").addEventListener("click", function () {
-    art.removeAttribute("src"); art.style.display = "none"; ph.style.display = "flex"; hasImg = false; this.hidden = true;
+    art.removeAttribute("src"); art.style.display = "none"; ph.style.display = "flex"; hasImg = false; this.hidden = true; $("auto").disabled = true;
   });
 
   // ---- Arranque ----
   window.addEventListener("resize", sizeCanvases);
   sizeCanvases();
+  setTool("verniz");
   setTimeout(sizeCanvases, 60); // após carregar fontes/layout
   window.addEventListener("load", function () { sizeCanvases(); postHeight(); });
   postHeight();
