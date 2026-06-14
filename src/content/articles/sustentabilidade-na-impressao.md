@@ -8,7 +8,7 @@ readingTime: "8 min"
 featured: false
 ---
 
-A sustentabilidade deixou de ser um extra para passar a ser um critério de compra — clientes, marcas e concursos públicos pedem cada vez mais. Mas há muita conversa vaga e pouco rigor. Este guia separa o que **faz mesmo diferença** do que é só marketing, do ponto de vista de quem produz e de quem encomenda.
+A sustentabilidade deixou de ser um extra para passar a ser um critério de compra, clientes, marcas e concursos públicos pedem cada vez mais. Mas há muita conversa vaga e pouco rigor. Este guia separa o que **faz mesmo diferença** do que é só marketing, do ponto de vista de quem produz e de quem encomenda.
 
 ## As tintas
 
@@ -16,19 +16,19 @@ As tintas são uma das áreas com escolhas concretas:
 
 - **Tintas vegetais (à base de óleos de soja ou outros vegetais):** substituem parte dos óleos minerais derivados de petróleo. Têm boa performance em offset e facilitam a **destintagem** (remoção da tinta na reciclagem do papel). São hoje comuns e uma escolha sólida.
 - **Cura UV/LED:** tintas que secam instantaneamente sob luz UV. As de **LED-UV** consomem bastante menos energia que as UV convencionais e dispensam pós/solventes de secagem. Ganho energético real, sobretudo em produção contínua.
-- **À base de água (em flexografia e grande formato):** reduzem os compostos orgânicos voláteis (VOC) face às de solvente — relevante em [grande formato](/artigos/grande-formato-tintas-solvente-latex-uv/), onde o látex e o UV vieram substituir muito solvente.
+- **À base de água (em flexografia e grande formato):** reduzem os compostos orgânicos voláteis (VOC) face às de solvente, relevante em [grande formato](/artigos/grande-formato-tintas-solvente-latex-uv/), onde o látex e o UV vieram substituir muito solvente.
 
 ## Os papéis
 
 O papel costuma ser o maior peso ambiental de um impresso. As alavancas principais:
 
-- **Certificação de origem (FSC/PEFC):** garante floresta gerida de forma responsável. Vê [papéis reciclados e certificações](/artigos/papeis-reciclados-e-certificacoes-fsc-pefc/) — e lembra-te que para o produto levar o selo, a **gráfica** também tem de ser certificada (cadeia de custódia).
+- **Certificação de origem (FSC/PEFC):** garante floresta gerida de forma responsável. Vê [papéis reciclados e certificações](/artigos/papeis-reciclados-e-certificacoes-fsc-pefc/), e lembra-te que para o produto levar o selo, a **gráfica** também tem de ser certificada (cadeia de custódia).
 - **Reciclado pós-consumo:** tira resíduo de circulação. O número que conta é a **percentagem pós-consumo**.
 - **Gramagem adequada:** usar 250 g onde 200 g chega é gastar mais fibra sem necessidade. Escolher bem a [gramagem](/artigos/gramagem-do-papel-explicada/) é também uma decisão ambiental.
 
 <div class="tech-box">
 <div class="tech-label">Menos papel desperdiçado = mais sustentável (e mais barato)</div>
-<p>O desperdício de corte (aparas) é fibra que vai para reciclagem sem nunca ter sido usada. Planear bem a folha — quantos produtos saem de cada folha de máquina — reduz aparas, custo <em>e</em> impacto. É exatamente o que o nosso <a href="/aproveitamento-de-folha/">otimizador de aproveitamento de folha</a> ajuda a calcular. Sustentabilidade e eficiência, aqui, andam juntas.</p>
+<p>O desperdício de corte (aparas) é fibra que vai para reciclagem sem nunca ter sido usada. Planear bem a folha, quantos produtos saem de cada folha de máquina, reduz aparas, custo <em>e</em> impacto. É exatamente o que o nosso <a href="/aproveitamento-de-folha/">otimizador de aproveitamento de folha</a> ajuda a calcular. Sustentabilidade e eficiência, aqui, andam juntas.</p>
 </div>
 
 ## Os processos e a energia
@@ -42,7 +42,7 @@ Para além de tintas e papel:
 
 ## Legislação e o caso das embalagens
 
-Na União Europeia, a pressão regulatória sobre **embalagens** está a crescer (redução de plástico, reciclabilidade, design para reciclagem). Isto já influencia escolhas reais: por exemplo, os [sleeves retráteis](/artigos/sleeves-retrateis-shrink-sleeve/) estão a ser repensados para não atrapalharem a reciclagem das garrafas. Quem produz embalagem tem de acompanhar — é cada vez mais um requisito, não uma opção.
+Na União Europeia, a pressão regulatória sobre **embalagens** está a crescer (redução de plástico, reciclabilidade, design para reciclagem). Isto já influencia escolhas reais: por exemplo, os [sleeves retráteis](/artigos/sleeves-retrateis-shrink-sleeve/) estão a ser repensados para não atrapalharem a reciclagem das garrafas. Quem produz embalagem tem de acompanhar, é cada vez mais um requisito, não uma opção.
 
 ## Cuidado com o greenwashing
 
@@ -74,11 +74,11 @@ Se um cliente quer "imprimir de forma sustentável", uma conversa útil cobre:
 Depende. Um virgem FSC de floresta bem gerida pode ter um balanço excelente; um "reciclado" sem dados nem certificação pode ser pior do que parece. Olha aos factos, não aos rótulos.
 
 **"Pôr 'eco' no produto chega."**
-Sem selo verificável nem dados, é greenwashing — e arrisca a credibilidade da marca.
+Sem selo verificável nem dados, é greenwashing, e arrisca a credibilidade da marca.
 
 **"O mais sustentável é o mais caro."**
 Nem sempre. Tiragem certa, gramagem adequada e bom aproveitamento de folha **poupam dinheiro e impacto** ao mesmo tempo.
 
 ## Em resumo
 
-Impressão mais sustentável faz-se com escolhas concretas: **tintas** vegetais e cura **LED-UV**, **papéis** certificados/reciclados na gramagem certa, **tiragem** ajustada, **menos desperdício** de folha e **acabamentos** recicláveis. E, acima de tudo, com **honestidade** — alegações com selos e dados, não folhinhas verdes. Muitas destas decisões poupam custo e impacto ao mesmo tempo; começa por aí.
+Impressão mais sustentável faz-se com escolhas concretas: **tintas** vegetais e cura **LED-UV**, **papéis** certificados/reciclados na gramagem certa, **tiragem** ajustada, **menos desperdício** de folha e **acabamentos** recicláveis. E, acima de tudo, com **honestidade**, alegações com selos e dados, não folhinhas verdes. Muitas destas decisões poupam custo e impacto ao mesmo tempo; começa por aí.

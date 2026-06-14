@@ -1,5 +1,5 @@
 ---
-// Botão "Ouvir artigo" — leitura de voz do navegador (Web Speech API).
+// Botão "Ouvir artigo", leitura de voz do navegador (Web Speech API).
 // Sem custos nem servidores. A qualidade depende das vozes do sistema/navegador,
 // por isso damos prioridade às vozes neurais ("Natural"/"Online"/Google) e deixamos
 // o utilizador escolher a voz e a velocidade. Lê frase a frase para melhor dicção.
@@ -129,7 +129,7 @@
       return t
         .replace(/[→➔➙➤]/g, ' ')   // setas →
         .replace(/×/g, ' por ')                    // ×
-        .replace(/[—–]/g, ', ')               // — – viram pausa
+        .replace(/[—–]/g, ', ')               //, – viram pausa
         .replace(/[•▪◦·]/g, ', ')
         .replace(/\s+/g, ' ')
         .trim();

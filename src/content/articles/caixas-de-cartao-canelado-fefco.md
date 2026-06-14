@@ -8,9 +8,9 @@ readingTime: "13 min"
 featured: true
 ---
 
-Há um objeto que toda a gente já teve nas mãos centenas de vezes e quase ninguém sabe nomear corretamente: a caixa de cartão. Chamamos-lhe "cartão", mas há cartão e cartão — e a diferença entre uma caixa que protege um produto frágil até ao outro lado do mundo e uma que cede ao primeiro empilhamento está toda em coisas que não se veem: a **canelura**, a **composição das camadas** e a **geometria do corte**.
+Há um objeto que toda a gente já teve nas mãos centenas de vezes e quase ninguém sabe nomear corretamente: a caixa de cartão. Chamamos-lhe "cartão", mas há cartão e cartão, e a diferença entre uma caixa que protege um produto frágil até ao outro lado do mundo e uma que cede ao primeiro empilhamento está toda em coisas que não se veem: a **canelura**, a **composição das camadas** e a **geometria do corte**.
 
-Este artigo é o mapa técnico do cartão canelado: o material, a sua linguagem normalizada (os códigos FEFCO), e os princípios de quem desenha embalagem a sério. É denso de propósito — é para consultar, não só para ler de uma vez.
+Este artigo é o mapa técnico do cartão canelado: o material, a sua linguagem normalizada (os códigos FEFCO), e os princípios de quem desenha embalagem a sério. É denso de propósito, é para consultar, não só para ler de uma vez.
 
 ## Canelado não é cartolina
 
@@ -37,7 +37,7 @@ A genialidade do canelado é a mesma de uma viga em I ou de um favo de mel: ao s
 <line x1="360" y1="150" x2="374" y2="150" stroke="#9CA3AF" stroke-width="1" /><text x="380" y="154">Liner (contracapa)</text>
 </g>
 </svg>
-<figcaption>Cartão canelado de canelura simples (3 camadas): duas folhas planas (liners) com uma onda colada no meio — a estrutura que dá muita rigidez com pouco peso.</figcaption>
+<figcaption>Cartão canelado de canelura simples (3 camadas): duas folhas planas (liners) com uma onda colada no meio, a estrutura que dá muita rigidez com pouco peso.</figcaption>
 </figure>
 
 ## As camadas: simples, dupla, tripla
@@ -58,9 +58,9 @@ A "caixa de cartão" que imaginas é quase sempre **canelura simples (3 camadas)
 Aqui está o coração técnico. Nem todas as ondas são iguais. A **altura e a frequência** da canelura definem-se por letras, e cada uma tem um compromisso diferente entre **rigidez**, **amortecimento** e **qualidade de impressão**.
 
 - **Canelura A (~4,5–5 mm):** a mais alta. Máximo amortecimento e resistência ao esmagamento vertical (empilhamento). Ideal para conteúdos frágeis e leves.
-- **Canelura C (~3,5–4 mm):** o meio-termo equilibrado. É a **mais usada em caixas de expedição** — boa rigidez, bom amortecimento, espessura gerível.
+- **Canelura C (~3,5–4 mm):** o meio-termo equilibrado. É a **mais usada em caixas de expedição**, boa rigidez, bom amortecimento, espessura gerível.
 - **Canelura B (~2,5 mm):** mais baixa e densa. Resiste bem à perfuração e à compressão plana (achatar), e dá uma superfície mais lisa. Boa para latas, garrafas, conteúdos que sustentam a própria caixa.
-- **Canelura E (~1,5 mm):** micro-canelura. Superfície quase lisa — **excelente para impressão de qualidade**. É a ponte entre a caixa de transporte e a embalagem de venda.
+- **Canelura E (~1,5 mm):** micro-canelura. Superfície quase lisa, **excelente para impressão de qualidade**. É a ponte entre a caixa de transporte e a embalagem de venda.
 - **Canelura F e N (~0,8 mm e menos):** micro-caneluras finíssimas, para embalagem de retalho impressa com grande definição, substituindo cartolina onde se quer um pouco de proteção.
 
 Combinando caneluras em paredes duplas (ex.: **BC** ou **EB**) somam-se virtudes: a onda alta dá amortecimento, a baixa dá superfície e resistência à perfuração.
@@ -74,9 +74,9 @@ Combinando caneluras em paredes duplas (ex.: **BC** ou **EB**) somam-se virtudes
 
 Quando uma ficha técnica diz que um cartão "aguenta", há números por trás. Os dois mais importantes:
 
-- **ECT (Edge Crush Test):** mede a resistência à compressão na vertical — ou seja, a capacidade de **empilhar** sem esmagar. É o indicador-rei para caixas que vão em paletes umas sobre as outras. Expresso em kN/m.
+- **ECT (Edge Crush Test):** mede a resistência à compressão na vertical, ou seja, a capacidade de **empilhar** sem esmagar. É o indicador-rei para caixas que vão em paletes umas sobre as outras. Expresso em kN/m.
 - **Mullen / Bursting (resistência ao rebentamento):** mede a pressão que o cartão suporta antes de "estourar". Relevante para conteúdos pesados que empurram as paredes.
-- **BCT (Box Compression Test):** já não mede o material, mas a **caixa montada** — quanto peso aguenta no topo antes de colapsar. É o que prevê o comportamento real numa palete.
+- **BCT (Box Compression Test):** já não mede o material, mas a **caixa montada**, quanto peso aguenta no topo antes de colapsar. É o que prevê o comportamento real numa palete.
 
 Uma boa especificação de embalagem não diz só "cartão canelado castanho"; diz a **composição** (ex.: kraftliner 150 g / canelura C / testliner 140 g), o **ECT** e o **formato FEFCO**.
 
@@ -88,22 +88,22 @@ Os grupos principais:
 
 | Código | Família | Exemplo / descrição |
 |--------|---------|---------------------|
-| **02xx** | Caixas de abas (*slotted*) | **0201** — a "caixa americana" clássica (RSC), abas iguais que se encontram ao centro |
+| **02xx** | Caixas de abas (*slotted*) | **0201**, a "caixa americana" clássica (RSC), abas iguais que se encontram ao centro |
 | **03xx** | Caixas telescópicas | Tampa e fundo separados que encaixam (tipo caixa de sapatos) |
-| **04xx** | Tabuleiros e dobráveis | **0427** e afins — montagem por dobra, bandejas, expositores |
+| **04xx** | Tabuleiros e dobráveis | **0427** e afins, montagem por dobra, bandejas, expositores |
 | **05xx** | Caixas de gaveta | Corpo + gaveta deslizante |
 | **06xx** | Caixas rígidas | Tipo *Bliss*, corpo + duas tampas laterais |
 | **07xx** | Caixas pré-coladas | Já vêm coladas, montam-se num gesto |
 | **09xx** | Acessórios interiores | Divisórias, cantoneiras, calços de proteção |
 
-A estrela absoluta é a **0201 — Regular Slotted Container (RSC)**: a caixa de envio mais produzida do planeta. Abas exteriores que se tocam no centro, fecho com fita ou cola. Económica, eficiente em material, fácil de montar. Quando alguém diz "caixa de cartão normal", está a falar de uma 0201.
+A estrela absoluta é a **0201, Regular Slotted Container (RSC)**: a caixa de envio mais produzida do planeta. Abas exteriores que se tocam no centro, fecho com fita ou cola. Económica, eficiente em material, fácil de montar. Quando alguém diz "caixa de cartão normal", está a falar de uma 0201.
 
 ## Desenhar a caixa: o que decide quem percebe
 
 Uma embalagem bem desenhada equilibra **proteção, custo, logística e comunicação**. Os critérios de um bom projetista de embalagem:
 
 ### 1. Medir o produto certo (e folgas)
-Mede-se o conteúdo e definem-se **folgas** — nem apertado (danifica, dificulta encaixe) nem largo (o produto baila e parte). As medidas da caixa indicam-se **sempre por dentro** (medida interna), pela ordem **comprimento × largura × altura**.
+Mede-se o conteúdo e definem-se **folgas**, nem apertado (danifica, dificulta encaixe) nem largo (o produto baila e parte). As medidas da caixa indicam-se **sempre por dentro** (medida interna), pela ordem **comprimento × largura × altura**.
 
 ### 2. Pensar na palete
 Uma boa caixa **otimiza a palete** (em geral a euro-palete, 800 × 1200 mm). Caixas que deixam espaço morto na palete são dinheiro a viajar como ar. O bom desenho faz as contas de quantas cabem por camada e por altura de contentor.
@@ -121,23 +121,23 @@ Há duas grandes vias para imprimir canelado:
 
 <div class="tech-box">
 <div class="tech-label">Washboard effect</div>
-<p>Quando se imprime muito perto da canelura, sobretudo em micro-canelado com áreas de cor cheias, aparecem listas claras e escuras que seguem a onda — o <em>washboard</em> ("tábua de lavar"). Mitiga-se escolhendo canelura fina (E/F), liners de melhor qualidade, ou passando para litho-lamination. É um dos pormenores que separa quem manda imprimir de quem percebe o que pede.</p>
+<p>Quando se imprime muito perto da canelura, sobretudo em micro-canelado com áreas de cor cheias, aparecem listas claras e escuras que seguem a onda, o <em>washboard</em> ("tábua de lavar"). Mitiga-se escolhendo canelura fina (E/F), liners de melhor qualidade, ou passando para litho-lamination. É um dos pormenores que separa quem manda imprimir de quem percebe o que pede.</p>
 </div>
 
 ## E o cartão compacto (a outra caixa)
 
-Nem toda a caixa é canelada. A embalagem de venda no expositor — cereais, perfume, medicamentos — é tipicamente **cartão compacto** (cartolina), uma folha sólida que imprime com qualidade fotográfica e dobra em caixas elegantes (as *folding cartons*). As qualidades mais comuns:
+Nem toda a caixa é canelada. A embalagem de venda no expositor, cereais, perfume, medicamentos, é tipicamente **cartão compacto** (cartolina), uma folha sólida que imprime com qualidade fotográfica e dobra em caixas elegantes (as *folding cartons*). As qualidades mais comuns:
 
 - **SBS / GC1 (sulfato branqueado):** branco puro nas duas faces, topo de gama, cosmética e tabaco.
 - **FBB (*folding box board*):** miolo mecânico mais leve, ótimo compromisso, farmácia e alimentar.
 - **WLC / GD (*white lined chipboard*, reciclado):** miolo de fibra reciclada, frente branca. Económico, muito usado em alimentar seco.
 - **Kraft:** castanho, ar natural e sustentável.
 
-A escolha entre canelado e compacto resume-se a uma pergunta: **a caixa é para proteger no transporte (canelado) ou para vender na prateleira (compacto)?** Muitos produtos usam ambos — a *folding carton* impressa lá dentro, dentro de uma 0201 canelada para o envio.
+A escolha entre canelado e compacto resume-se a uma pergunta: **a caixa é para proteger no transporte (canelado) ou para vender na prateleira (compacto)?** Muitos produtos usam ambos, a *folding carton* impressa lá dentro, dentro de uma 0201 canelada para o envio.
 
 ## Sustentabilidade: a vantagem natural do cartão
 
-O cartão é, dos materiais de embalagem, dos mais fáceis de reciclar — a fibra de celulose recicla-se 5 a 7 vezes antes de encurtar demasiado. Tendências atuais que vale conhecer:
+O cartão é, dos materiais de embalagem, dos mais fáceis de reciclar, a fibra de celulose recicla-se 5 a 7 vezes antes de encurtar demasiado. Tendências atuais que vale conhecer:
 
 - **Mono-material:** evitar misturar plástico com cartão (janelas, laminados) para facilitar a reciclagem.
 - **Tintas de base aquosa** e vernizes recicláveis em vez de plastificados.
@@ -150,7 +150,7 @@ O cartão é, dos materiais de embalagem, dos mais fáceis de reciclar — a fib
 Espessura não é resistência. Uma canelura B bem especificada pode empilhar melhor que uma A mais grossa. O que importa é o **ECT/BCT** e a orientação da canelura, não os milímetros.
 
 **"Mando imprimir uma foto na caixa de envio."**
-Em pós-impressão flexográfica direta, a fotografia sai sofrível (washboard, baixa definição). Para imagem de qualidade numa caixa robusta, é litho-lamination — e isso muda o orçamento.
+Em pós-impressão flexográfica direta, a fotografia sai sofrível (washboard, baixa definição). Para imagem de qualidade numa caixa robusta, é litho-lamination, e isso muda o orçamento.
 
 **"As medidas são por fora, certo?"**
 Não. As caixas medem-se **por dentro**, porque o que interessa é o que lá cabe. Confundir interno com externo é um clássico que dá caixas que não servem.
@@ -160,6 +160,6 @@ O castanho pode ser kraft (virgem, forte) ou testliner reciclado (mais fraco). E
 
 ## Em resumo
 
-A caixa de cartão é engenharia disfarçada de objeto banal. Quem a domina fala em **camadas** (simples, dupla), **canelura** (A a F, e as combinações), **resistência** (ECT, BCT) e **modelo FEFCO** (a omnipresente 0201). Desenhá-la bem é equilibrar proteção, palete, vincagem e impressão — e, cada vez mais, reciclabilidade.
+A caixa de cartão é engenharia disfarçada de objeto banal. Quem a domina fala em **camadas** (simples, dupla), **canelura** (A a F, e as combinações), **resistência** (ECT, BCT) e **modelo FEFCO** (a omnipresente 0201). Desenhá-la bem é equilibrar proteção, palete, vincagem e impressão, e, cada vez mais, reciclabilidade.
 
 Da próxima vez que receberes uma encomenda, vira a caixa, procura a onda na espessura, e repara: estás a segurar uma das invenções mais subestimadas da logística moderna.

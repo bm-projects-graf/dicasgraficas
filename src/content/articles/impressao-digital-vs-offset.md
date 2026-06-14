@@ -8,13 +8,13 @@ readingTime: "12 min"
 featured: false
 ---
 
-Quando levas um trabalho a uma gráfica comercial, há uma bifurcação invisível logo à entrada: o teu trabalho vai por uma de duas grandes vias — **offset** ou **digital**. A escolha não é um detalhe técnico para iniciados; ela decide o preço, o prazo, a qualidade e até o que é possível fazer. Perceber as duas é perceber metade do negócio da impressão.
+Quando levas um trabalho a uma gráfica comercial, há uma bifurcação invisível logo à entrada: o teu trabalho vai por uma de duas grandes vias, **offset** ou **digital**. A escolha não é um detalhe técnico para iniciados; ela decide o preço, o prazo, a qualidade e até o que é possível fazer. Perceber as duas é perceber metade do negócio da impressão.
 
 Vamos ver como cada uma funciona de verdade, e depois construir um critério de decisão que serve para 95% dos casos.
 
 ## Offset: a impressão indireta com 100 anos
 
-O **offset** (mais precisamente *offset litográfico*) é a tecnologia que imprime quase todos os livros, revistas, jornais e embalagens do mundo em grande escala. O nome diz o essencial: a imagem **não passa diretamente** da chapa para o papel — passa primeiro para um cilindro de borracha (o *blanket*) e só depois para o papel. Daí "offset" (desviado).
+O **offset** (mais precisamente *offset litográfico*) é a tecnologia que imprime quase todos os livros, revistas, jornais e embalagens do mundo em grande escala. O nome diz o essencial: a imagem **não passa diretamente** da chapa para o papel, passa primeiro para um cilindro de borracha (o *blanket*) e só depois para o papel. Daí "offset" (desviado).
 
 Funciona sobre um princípio químico genial: **a água e a gordura não se misturam.**
 
@@ -25,14 +25,14 @@ Funciona sobre um princípio químico genial: **a água e a gordura não se mist
 
 <div class="tech-box">
 <div class="tech-label">Uma invenção por acidente</div>
-<p>O offset nasceu de um erro. Por volta de 1904, o impressor Ira Washington Rubel reparou que, quando uma folha falhava, a imagem ficava impressa no cilindro de borracha e este transferia-a para a folha seguinte — <strong>com mais nitidez</strong> do que a impressão direta. A borracha, ao moldar-se à textura do papel, dava melhor resultado. O "defeito" tornou-se o princípio de toda uma indústria.</p>
+<p>O offset nasceu de um erro. Por volta de 1904, o impressor Ira Washington Rubel reparou que, quando uma folha falhava, a imagem ficava impressa no cilindro de borracha e este transferia-a para a folha seguinte, <strong>com mais nitidez</strong> do que a impressão direta. A borracha, ao moldar-se à textura do papel, dava melhor resultado. O "defeito" tornou-se o princípio de toda uma indústria.</p>
 </div>
 
 ### As forças do offset
 - **Custo por unidade imbatível em tiragens altas.** Depois de feitas as chapas e o acerto, cada folha sai baratíssima. Quanto mais imprimes, menos custa cada uma.
 - **Qualidade de referência.** Definição, fidelidade de cor e consistência ao longo de tiragens enormes.
 - **Cores diretas e especiais.** Pantone reais, metálicos, vernizes, brancos opacos.
-- **Formatos grandes e variedade de suportes** — de papel finíssimo a cartão.
+- **Formatos grandes e variedade de suportes**, de papel finíssimo a cartão.
 
 ### As fraquezas do offset
 - **Custo fixo de arranque alto.** Chapas e *makeready* (acerto de máquina, ajuste de cor e registo, papel desperdiçado no arranque) custam tempo e dinheiro **antes da primeira folha boa**.
@@ -50,11 +50,11 @@ A impressão **digital** elimina a chapa. O ficheiro vai diretamente para a máq
 ### As forças do digital
 - **Sem custo de arranque.** Não há chapas nem acerto demorado. A primeira cópia custa quase o mesmo que a milésima.
 - **Tiragens curtas viáveis e baratas.** 10, 50, 200 exemplares fazem sentido.
-- **Dados variáveis.** Cada folha pode ser diferente — nomes, moradas, números de série, versões. Impossível em offset.
+- **Dados variáveis.** Cada folha pode ser diferente, nomes, moradas, números de série, versões. Impossível em offset.
 - **Rapidez e prova real.** Imprime-se hoje, entrega-se hoje. E a prova sai na máquina final.
 
 ### As fraquezas do digital
-- **Custo por unidade não desce muito** com a quantidade — não há a economia de escala do offset.
+- **Custo por unidade não desce muito** com a quantidade, não há a economia de escala do offset.
 - **Em tiragens altas, fica caro.** A partir de certo ponto, o offset ganha de longe.
 - **Limites de formato e suporte** (embora a encurtar todos os anos): folha máxima menor, alguns papéis muito gramados ou texturados, certos especiais.
 - **Cores diretas e metálicos** mais limitados (muitas vezes simulados, não reais).
@@ -63,8 +63,8 @@ A impressão **digital** elimina a chapa. O ficheiro vai diretamente para a máq
 
 Imagina dois gráficos de custo:
 
-- O **offset** começa caro (o arranque) mas a sua linha sobe devagar — cada cópia adicional custa muito pouco.
-- O **digital** começa barato (sem arranque) mas a sua linha sobe a um ritmo constante — cada cópia custa sempre o mesmo.
+- O **offset** começa caro (o arranque) mas a sua linha sobe devagar, cada cópia adicional custa muito pouco.
+- O **digital** começa barato (sem arranque) mas a sua linha sobe a um ritmo constante, cada cópia custa sempre o mesmo.
 
 As duas linhas **cruzam-se** num ponto. Abaixo desse ponto, o digital é mais barato; acima, o offset. Esse **ponto de equilíbrio** depende do trabalho, mas, como ordem de grandeza para impressão comercial a cores, costuma situar-se entre **algumas centenas e poucos milhares** de exemplares.
 
@@ -76,7 +76,7 @@ As duas linhas **cruzam-se** num ponto. Abaixo desse ponto, o digital é mais ba
 
 <div class="tech-box">
 <div class="tech-label">O segredo: pede os dois orçamentos</div>
-<p>Na zona cinzenta (umas centenas a um par de milhares), <strong>nem o cliente nem o comercial adivinham de cabeça</strong> onde está o cruzamento para aquele trabalho específico — depende do formato, das cores, do papel e da máquina disponível. A jogada certa é pedir orçamento <em>nas duas tecnologias</em> e comparar. Boa parte das gráficas tem ambas e aconselha honestamente; o segredo está em <a href="/artigos/como-pedir-orcamento-a-uma-grafica/">saber pedir o orçamento</a>.</p>
+<p>Na zona cinzenta (umas centenas a um par de milhares), <strong>nem o cliente nem o comercial adivinham de cabeça</strong> onde está o cruzamento para aquele trabalho específico, depende do formato, das cores, do papel e da máquina disponível. A jogada certa é pedir orçamento <em>nas duas tecnologias</em> e comparar. Boa parte das gráficas tem ambas e aconselha honestamente; o segredo está em <a href="/artigos/como-pedir-orcamento-a-uma-grafica/">saber pedir o orçamento</a>.</p>
 </div>
 
 ## Para lá do custo: outros critérios
@@ -102,13 +102,13 @@ Já não é verdade na generalidade. O digital de produção atual rivaliza com 
 Só em tiragens altas. Para 100 folhetos, o offset é caríssimo por causa do arranque. Quantidade é tudo.
 
 **"A prova digital prevê o offset?"**
-Uma prova feita na própria máquina digital prevê o **trabalho digital**. Para prever offset com rigor pede uma **prova de cor calibrada** (ou uma prova de máquina) — o ecrã e uma impressão de escritório não chegam.
+Uma prova feita na própria máquina digital prevê o **trabalho digital**. Para prever offset com rigor pede uma **prova de cor calibrada** (ou uma prova de máquina), o ecrã e uma impressão de escritório não chegam.
 
 **"Quero Pantone, então tem de ser digital moderno."**
 Ao contrário: **cor direta Pantone real** é território clássico do **offset**. O digital costuma *simular* a Pantone em CMYK. Se a cor de marca não pode variar, confirma se é direta real.
 
 ## Em resumo
 
-Duas filosofias. O **offset** transfere a imagem por chapas e borracha, com arranque caro e cópias baratíssimas — manda nas **tiragens altas, na cor exata e na qualidade de referência**. O **digital** vai do ficheiro ao papel sem chapas, sem arranque e com dados variáveis — manda nas **tiragens curtas, na rapidez e na personalização**.
+Duas filosofias. O **offset** transfere a imagem por chapas e borracha, com arranque caro e cópias baratíssimas, manda nas **tiragens altas, na cor exata e na qualidade de referência**. O **digital** vai do ficheiro ao papel sem chapas, sem arranque e com dados variáveis, manda nas **tiragens curtas, na rapidez e na personalização**.
 
-A pergunta certa não é "qual é melhor", é **"quantos exemplares, com que prazo, com que cores e com que personalização?"**. Responde a isso e a tecnologia escolhe-se quase sozinha — e, na dúvida, pede orçamento aos dois e deixa a conta decidir.
+A pergunta certa não é "qual é melhor", é **"quantos exemplares, com que prazo, com que cores e com que personalização?"**. Responde a isso e a tecnologia escolhe-se quase sozinha, e, na dúvida, pede orçamento aos dois e deixa a conta decidir.

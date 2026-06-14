@@ -50,7 +50,7 @@
 <div class="wrap">
   <header>
     <h1>🎨 Verificador de saturação de cor (TAC)</h1>
-    <p class="sub">Soma as 4 tintas (Total Area Coverage) e avisa se o teu preto/fundo tem <strong>tinta a mais</strong> — o que faz o trabalho não secar, decalcar e repintar.</p>
+    <p class="sub">Soma as 4 tintas (Total Area Coverage) e avisa se o teu preto/fundo tem <strong>tinta a mais</strong>, o que faz o trabalho não secar, decalcar e repintar.</p>
   </header>
 
   <div class="card">
@@ -77,20 +77,20 @@
     <div class="msg" id="msg"></div>
 
     <div class="escala">
-      <div class="e"><span class="pt" style="background:var(--verde)"></span><span><strong>Até 240%</strong> — perfeito para papel jornal / rotativa.</span></div>
-      <div class="e"><span class="pt" style="background:var(--amarelo)"></span><span><strong>240% a 300%</strong> — seguro para offset em papel couché.</span></div>
-      <div class="e"><span class="pt" style="background:var(--vermelho)"></span><span><strong>Acima de 300%</strong> — perigo! Risco de decalque, repintismo e má secagem.</span></div>
+      <div class="e"><span class="pt" style="background:var(--verde)"></span><span><strong>Até 240%</strong>, perfeito para papel jornal / rotativa.</span></div>
+      <div class="e"><span class="pt" style="background:var(--amarelo)"></span><span><strong>240% a 300%</strong>, seguro para offset em papel couché.</span></div>
+      <div class="e"><span class="pt" style="background:var(--vermelho)"></span><span><strong>Acima de 300%</strong>, perigo! Risco de decalque, repintismo e má secagem.</span></div>
     </div>
 
     <div class="sugerir">
-      💡 <strong>Preto rico seguro</strong> (em vez de C100 M100 Y100 K100 = 400%): um bom preto profundo usa pouca tinta de apoio — por exemplo <span class="mono">C40 M30 Y0 K100</span> (170%).
+      💡 <strong>Preto rico seguro</strong> (em vez de C100 M100 Y100 K100 = 400%): um bom preto profundo usa pouca tinta de apoio, por exemplo <span class="mono">C40 M30 Y0 K100</span> (170%).
       <br /><button id="usarRico">Usar este preto rico</button>
     </div>
   </div>
 
   <div class="dica">
     <span class="lbl">O que é o TAC</span>
-    <strong>TAC (Total Area Coverage)</strong> é a soma das quatro percentagens de tinta. Em offset, o papel só absorve uma certa quantidade de tinta; ultrapassar o limite (tipicamente ~300% em couché) faz a tinta não secar, colar à folha seguinte (decalque) e sujar. Por isso nunca se usa "preto registo" (400%) em áreas grandes — usa-se um <strong>preto rico</strong> controlado.
+    <strong>TAC (Total Area Coverage)</strong> é a soma das quatro percentagens de tinta. Em offset, o papel só absorve uma certa quantidade de tinta; ultrapassar o limite (tipicamente ~300% em couché) faz a tinta não secar, colar à folha seguinte (decalque) e sujar. Por isso nunca se usa "preto registo" (400%) em áreas grandes, usa-se um <strong>preto rico</strong> controlado.
   </div>
 
   <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
@@ -117,9 +117,9 @@
     $("marca").style.left = Math.min(100, tac/400*100) + "%";
 
     var cor, txt, msg;
-    if (tac <= 240) { cor="var(--verde)"; txt="🟢 Seguro"; msg="Ótimo — dentro do limite mesmo para papel jornal e rotativa."; }
+    if (tac <= 240) { cor="var(--verde)"; txt="🟢 Seguro"; msg="Ótimo, dentro do limite mesmo para papel jornal e rotativa."; }
     else if (tac <= 300) { cor="var(--amarelo)"; txt="🟡 Aceitável"; msg="Seguro para offset em papel couché. Evita ir mais alto."; }
-    else { cor="var(--vermelho)"; txt="🔴 Perigo"; msg="Tinta a mais ("+Math.round(tac)+"%): risco de não secar, decalcar e repintar. Reduz — usa um preto rico controlado."; }
+    else { cor="var(--vermelho)"; txt="🔴 Perigo"; msg="Tinta a mais ("+Math.round(tac)+"%): risco de não secar, decalcar e repintar. Reduz, usa um preto rico controlado."; }
     $("semaforo").textContent = txt; $("semaforo").style.background = cor;
     $("msg").textContent = msg; $("msg").style.color = cor;
     postHeight();

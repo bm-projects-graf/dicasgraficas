@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Misturador de cores — mistura de pigmentos | dicasgraficas.com</title>
+<title>Misturador de cores, mistura de pigmentos | dicasgraficas.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -182,11 +182,11 @@
 <div class="wrap">
   <header>
     <h1>🎨 Misturador de cores</h1>
-    <p class="sub">Mistura cores como se fossem <strong>tintas</strong> (não luz). Azul + amarelo dá <strong>verde</strong>, como na realidade — graças à teoria de Kubelka-Munk (Spectral.js).</p>
+    <p class="sub">Mistura cores como se fossem <strong>tintas</strong> (não luz). Azul + amarelo dá <strong>verde</strong>, como na realidade, graças à teoria de Kubelka-Munk (Spectral.js).</p>
   </header>
 
   <div class="aviso">
-    ⚠️ <strong>Isto é uma aproximação.</strong> A mistura real numa impressão depende das <strong>tintas concretas</strong>, do <strong>papel</strong> e da <strong>quadricromia</strong> (CMYK). Serve para perceber o comportamento das cores — não para prever ao milímetro o resultado de uma gráfica.
+    ⚠️ <strong>Isto é uma aproximação.</strong> A mistura real numa impressão depende das <strong>tintas concretas</strong>, do <strong>papel</strong> e da <strong>quadricromia</strong> (CMYK). Serve para perceber o comportamento das cores, não para prever ao milímetro o resultado de uma gráfica.
   </div>
 
   <div class="tabs">
@@ -291,13 +291,13 @@
         </div>
         <div class="rec-qualidade" id="recQualidade"></div>
         <div class="receita"><div class="titulo">Receita aproximada</div><div id="recReceita"></div></div>
-        <p class="rec-nota">Aproximação automática (procura a melhor combinação de tintas). A cor real depende das tintas, do papel e da quadricromia — e há cores muito pálidas ou muito saturadas que são difíceis de obter só com tintas de processo.</p>
+        <p class="rec-nota">Aproximação automática (procura a melhor combinação de tintas). A cor real depende das tintas, do papel e da quadricromia, e há cores muito pálidas ou muito saturadas que são difíceis de obter só com tintas de processo.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    Misturador de cores — um projeto da <strong>Onda Grafe</strong> para o
+    Misturador de cores, um projeto da <strong>Onda Grafe</strong> para o
     <a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a>.
     Mistura de pigmentos com <span class="mono">Spectral.js</span> (Kubelka-Munk, licença MIT).
   </footer>
@@ -364,7 +364,7 @@
     var todos = ingredientes.slice();
     // O branco e o preto recebem mais "força" (tintam mais por parte), para o
     // comportamento ser intuitivo e próximo de tinta de impressão. A "força" só
-    // afeta a mistura interna — as partes mostradas ao utilizador não mudam.
+    // afeta a mistura interna, as partes mostradas ao utilizador não mudam.
     if (branco > 0) todos.push({ nome: "Branco", hex: "#FFFFFF", partes: branco, forca: 1.5 });
     if (preto > 0) todos.push({ nome: "Preto", hex: "#000000", partes: preto, forca: 2.5 });
     return todos.filter(function (i) { return i.partes > 0; });
@@ -422,7 +422,7 @@
     $("swatchEcra").style.background = hexEcra;
     $("hexEcra").textContent = hexEcra;
 
-    // Valores (do resultado à tinta — o que interessa para a gráfica)
+    // Valores (do resultado à tinta, o que interessa para a gráfica)
     var cmyk = rgbToCmyk(rgbTinta[0], rgbTinta[1], rgbTinta[2]);
     $("vHex").textContent = hexTinta;
     $("vRgb").textContent = "rgb(" + rgbTinta.join(", ") + ")";
@@ -456,14 +456,14 @@
     var temAzul = ativos.some(function (i) { var c = hexToRgb(i.hex); return c[2] > 120 && c[0] < 120 && c[1] < 160; });
     var temAmarelo = ativos.some(function (i) { var c = hexToRgb(i.hex); return c[0] > 180 && c[1] > 180 && c[2] < 130; });
     if (temAzul && temAmarelo) {
-      dicas.push(["O clássico", "Azul + amarelo dá <strong>verde</strong> quando se misturam pigmentos. No RGB (luz), a mesma soma daria um cinzento ou um tom apagado — é a diferença entre misturar <strong>tinta</strong> e misturar <strong>luz</strong>."]);
+      dicas.push(["O clássico", "Azul + amarelo dá <strong>verde</strong> quando se misturam pigmentos. No RGB (luz), a mesma soma daria um cinzento ou um tom apagado, é a diferença entre misturar <strong>tinta</strong> e misturar <strong>luz</strong>."]);
     }
 
     if (branco > 0) {
-      dicas.push(["Juntar branco", "O branco <strong>clareia</strong> e dá um tom mais <strong>pastel</strong>. Na tinta, o branco é um pigmento <strong>opaco</strong> que espalha luz — por isso, ao contrário do ecrã, juntar branco pode até fazer a cor parecer mais <strong>'limpa'</strong> e revelar o seu subtom."]);
+      dicas.push(["Juntar branco", "O branco <strong>clareia</strong> e dá um tom mais <strong>pastel</strong>. Na tinta, o branco é um pigmento <strong>opaco</strong> que espalha luz, por isso, ao contrário do ecrã, juntar branco pode até fazer a cor parecer mais <strong>'limpa'</strong> e revelar o seu subtom."]);
     }
     if (preto > 0) {
-      dicas.push(["Juntar preto", "O preto <strong>escurece</strong> rapidamente — é muito <strong>dominante</strong>. Na prática gráfica usa-se com conta, peso e medida: um pouco muda muito. (Para escurecer sem 'sujar', às vezes usa-se uma cor escura em vez de preto.)"]);
+      dicas.push(["Juntar preto", "O preto <strong>escurece</strong> rapidamente, é muito <strong>dominante</strong>. Na prática gráfica usa-se com conta, peso e medida: um pouco muda muito. (Para escurecer sem 'sujar', às vezes usa-se uma cor escura em vez de preto.)"]);
     }
 
     if (ativos.length === 1 && branco === 0 && preto === 0) {
@@ -787,7 +787,7 @@
     if (best.d < 0.02) { q = "Excelente"; cor = "#16A34A"; }
     else if (best.d < 0.05) { q = "Boa"; cor = "#16A34A"; }
     else if (best.d < 0.10) { q = "Aproximada"; cor = "#F59E0B"; }
-    else { q = "Difícil — esta cor é dura de obter só com tintas de processo"; cor = "#DC2626"; }
+    else { q = "Difícil, esta cor é dura de obter só com tintas de processo"; cor = "#DC2626"; }
     $("recQualidade").innerHTML = 'Aproximação: <span style="color:' + cor + '">' + q + "</span>";
     $("recResultado").hidden = false;
     postHeight();

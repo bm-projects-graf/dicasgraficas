@@ -1,6 +1,6 @@
 ---
 title: "Os grandes estilos do design gráfico: como reconhecer cada um"
-description: "Um guia visual dos estilos que marcaram a comunicação visual — Art Nouveau, Art Deco, Bauhaus, Construtivismo, Estilo Suíço, Psicadélico, Punk, Grunge e Flat — com as pistas para identificar cada um à primeira vista."
+description: "Um guia visual dos estilos que marcaram a comunicação visual, Art Nouveau, Art Deco, Bauhaus, Construtivismo, Estilo Suíço, Psicadélico, Punk, Grunge e Flat, com as pistas para identificar cada um à primeira vista."
 pubDate: 2026-07-05
 category: "Design gráfico"
 keywords: "estilos design gráfico, Art Deco, Art Nouveau, estilo suíço, psicadélico, punk design, grunge, flat design, identificar estilos"
@@ -8,9 +8,9 @@ readingTime: "12 min"
 featured: false
 ---
 
-Há um jogo delicioso que qualquer pessoa pode aprender a jogar: olhar para um cartaz, uma embalagem ou um logótipo e dizer **"isto é anos 20", "isto é Bauhaus", "isto é punk"**. Os estilos do design gráfico têm **assinaturas visuais** reconhecíveis — cores, formas, tipos e composições típicas — e aprender a lê-las muda para sempre a forma como vês o mundo à tua volta.
+Há um jogo delicioso que qualquer pessoa pode aprender a jogar: olhar para um cartaz, uma embalagem ou um logótipo e dizer **"isto é anos 20", "isto é Bauhaus", "isto é punk"**. Os estilos do design gráfico têm **assinaturas visuais** reconhecíveis, cores, formas, tipos e composições típicas, e aprender a lê-las muda para sempre a forma como vês o mundo à tua volta.
 
-Se a [história do design](/artigos/historia-do-design-grafico/) conta a narrativa, este artigo é o **guia de campo**: um catálogo dos grandes estilos, com as pistas para identificar cada um. Vê-os como ferramentas — cada estilo é uma "voz" que podes escolher conforme a mensagem.
+Se a [história do design](/artigos/historia-do-design-grafico/) conta a narrativa, este artigo é o **guia de campo**: um catálogo dos grandes estilos, com as pistas para identificar cada um. Vê-os como ferramentas, cada estilo é uma "voz" que podes escolher conforme a mensagem.
 
 ## Art Nouveau (c. 1890-1910)
 
@@ -47,7 +47,7 @@ A forma segue a função.
 
 - **Pistas:** **geometria pura** (círculo, quadrado, triângulo), **cores primárias**, tipografia **sem serifas** e em caixa baixa, grelha, ausência de ornamento, uso de fotografia.
 - **Sensação:** racional, limpo, universal, intemporal.
-- **Onde:** a escola [Bauhaus](/artigos/historia-do-design-grafico/) e tudo o que dela descende — ou seja, metade do design "limpo" que vês hoje.
+- **Onde:** a escola [Bauhaus](/artigos/historia-do-design-grafico/) e tudo o que dela descende, ou seja, metade do design "limpo" que vês hoje.
 
 ## Estilo Suíço / Internacional (anos 1950-60)
 
@@ -83,7 +83,7 @@ O «faz-tu-mesmo» raivoso.
 
 <div class="tech-box">
 <div class="tech-label">Quebrar regras... conhecendo-as</div>
-<p>O punk e, depois, o <strong>grunge</strong> parecem "anti-design" — mas os seus melhores autores <strong>dominavam</strong> as regras antes de as partir. Há uma diferença abissal entre o caos <em>intencional</em> de quem sabe o que faz e a confusão de quem não sabe compor. O estilo "desarrumado" bem feito é, paradoxalmente, muito controlado. Reconhecer isto evita confundir <em>ousadia</em> com <em>amadorismo</em>.</p>
+<p>O punk e, depois, o <strong>grunge</strong> parecem "anti-design", mas os seus melhores autores <strong>dominavam</strong> as regras antes de as partir. Há uma diferença abissal entre o caos <em>intencional</em> de quem sabe o que faz e a confusão de quem não sabe compor. O estilo "desarrumado" bem feito é, paradoxalmente, muito controlado. Reconhecer isto evita confundir <em>ousadia</em> com <em>amadorismo</em>.</p>
 </div>
 
 ## Grunge / Desconstrução (anos 1990)
@@ -106,16 +106,16 @@ O regresso à simplicidade, agora para ecrãs.
 
 Estes estilos não são gavetas estanques nem "fases ultrapassadas". São um **repertório vivo**. O design contemporâneo mistura-os livremente: uma marca de cervejas artesanais pode pegar no Art Deco, uma editora indie no punk, uma startup no flat, um festival no psicadélico. Conhecer as suas assinaturas dá-te duas coisas:
 
-1. **Ler** o mundo — perceber que "voz" cada peça está a usar e porquê.
-2. **Criar** com intenção — escolher um estilo porque ele **comunica** a mensagem certa ao público certo, não por acaso.
+1. **Ler** o mundo, perceber que "voz" cada peça está a usar e porquê.
+2. **Criar** com intenção, escolher um estilo porque ele **comunica** a mensagem certa ao público certo, não por acaso.
 
 ## Confusões comuns
 
 **"Estilos antigos estão fora de moda."**
-Pelo contrário — voltam ciclicamente. O Art Deco, o psicadélico e o estilo suíço estão constantemente a ser revisitados. Nenhum estilo "morre" de vez; entra e sai de moda.
+Pelo contrário, voltam ciclicamente. O Art Deco, o psicadélico e o estilo suíço estão constantemente a ser revisitados. Nenhum estilo "morre" de vez; entra e sai de moda.
 
 **"Art Nouveau e Art Deco são parecidos."**
-São **opostos**: orgânico/curvo (Nouveau) vs geométrico/angular (Deco). É a confusão clássica — não a cometas.
+São **opostos**: orgânico/curvo (Nouveau) vs geométrico/angular (Deco). É a confusão clássica, não a cometas.
 
 **"Estilo é só decoração."**
 Estilo é **comunicação**: cada um carrega associações (luxo, rebeldia, confiança, festa). Escolher um estilo é escolher um **tom de voz** visual.
@@ -127,4 +127,4 @@ Misturar **sem critério** é confusão; misturar **com intenção** é design c
 
 Os estilos do design gráfico têm **assinaturas reconhecíveis**: o **Art Nouveau** curvo e floral, o **Art Deco** geométrico e luxuoso, o **Construtivismo** em diagonais vermelhas e pretas, o **Bauhaus** geométrico e funcional, o **Estilo Suíço** da grelha e do espaço, o **psicadélico** vibrante, o **punk** de recorte, o **grunge** desconstruído e o **flat** dos ecrãs.
 
-Aprender a identificá-los transforma-te de espetador em **leitor** do design — e dá-te um repertório de "vozes" visuais para usar com intenção. Da próxima vez que olhares para um cartaz, faz o jogo: que estilo é este, e porque é que o escolheram? É aí que o design deixa de ser invisível.
+Aprender a identificá-los transforma-te de espetador em **leitor** do design, e dá-te um repertório de "vozes" visuais para usar com intenção. Da próxima vez que olhares para um cartaz, faz o jogo: que estilo é este, e porque é que o escolheram? É aí que o design deixa de ser invisível.

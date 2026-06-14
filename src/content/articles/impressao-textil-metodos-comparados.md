@@ -8,7 +8,7 @@ readingTime: "12 min"
 featured: true
 ---
 
-Queres estampar t-shirts, e descobres que há **meia dúzia de métodos diferentes**, cada um com o seu nome estranho — serigrafia, DTG, sublimação, DTF, vinil... Qual escolher? A resposta certa depende de três coisas: o **tecido**, a **quantidade** e o **tipo de desenho**. Escolher mal significa pagar a mais, ter má qualidade, ou imprimir num material onde a técnica nem funciona.
+Queres estampar t-shirts, e descobres que há **meia dúzia de métodos diferentes**, cada um com o seu nome estranho, serigrafia, DTG, sublimação, DTF, vinil... Qual escolher? A resposta certa depende de três coisas: o **tecido**, a **quantidade** e o **tipo de desenho**. Escolher mal significa pagar a mais, ter má qualidade, ou imprimir num material onde a técnica nem funciona.
 
 Este artigo é o **mapa** da impressão têxtil: o que é cada método, em que tecido resulta, e quando compensa. É o guia que liga todos os outros artigos do tema.
 
@@ -46,7 +46,7 @@ Imprime-se o desenho (com **branco**) num **filme**, fixa-se com um **adesivo**,
 - Detalhe completo no [DTF, com e sem pó](/artigos/dtf-direct-to-film-com-e-sem-po/).
 
 ### 5. Vinil térmico (HTV)
-Recorta-se uma **película de vinil** colorido com um *plotter* e prensa-se a quente sobre o tecido. Sem impressão de imagem — é **cor sólida recortada**.
+Recorta-se uma **película de vinil** colorido com um *plotter* e prensa-se a quente sobre o tecido. Sem impressão de imagem, é **cor sólida recortada**.
 
 - **Tecidos:** a maioria.
 - **Forte em:** **nomes e números** (equipas desportivas), logótipos simples, peças unitárias, texto.
@@ -54,7 +54,7 @@ Recorta-se uma **película de vinil** colorido com um *plotter* e prensa-se a qu
 
 <div class="tech-box">
 <div class="tech-label">A pergunta que decide quase tudo: que tecido?</div>
-<p>Antes de escolher o método, pergunta <strong>de que é a peça</strong>. <strong>Poliéster</strong> → a sublimação é candidata óbvia (se for clara). <strong>Algodão</strong> → esquece a sublimação; pensa em DTG, serigrafia ou DTF. <strong>Mistura ou não sabes</strong> → o <strong>DTF</strong> é o mais tolerante, pega em quase tudo. O tecido elimina logo metade das opções — começa sempre por aí.</p>
+<p>Antes de escolher o método, pergunta <strong>de que é a peça</strong>. <strong>Poliéster</strong> → a sublimação é candidata óbvia (se for clara). <strong>Algodão</strong> → esquece a sublimação; pensa em DTG, serigrafia ou DTF. <strong>Mistura ou não sabes</strong> → o <strong>DTF</strong> é o mais tolerante, pega em quase tudo. O tecido elimina logo metade das opções, começa sempre por aí.</p>
 </div>
 
 ## A tabela de decisão
@@ -77,7 +77,7 @@ Recorta-se uma **película de vinil** colorido com um *plotter* e prensa-se a qu
 
 Para além do custo e da qualidade, pesa **como a peça envelhece e se sente**:
 
-- **Sublimação:** sem toque, não estala, o mais durável e respirável — mas só em poliéster claro.
+- **Sublimação:** sem toque, não estala, o mais durável e respirável, mas só em poliéster claro.
 - **Serigrafia:** muito durável, toque médio (a tinta sente-se em áreas chapadas).
 - **DTF:** boa durabilidade, mas com uma **camada** que se sente ao toque.
 - **DTG:** toque muito suave (a tinta entranha-se), durabilidade boa em algodão de qualidade.
@@ -91,7 +91,7 @@ Para além do custo e da qualidade, pesa **como a peça envelhece e se sente**:
 Não. Cada um tem o seu terreno. O **DTF** é o mais versátil em tecidos, mas a **serigrafia** ganha em grandes tiragens e a **sublimação** é insuperável em poliéster all-over. A escolha depende sempre do contexto.
 
 **"Sublimação faz t-shirts de algodão a cores."**
-Não — a sublimação **só funciona em poliéster claro**. Para algodão a cores, é DTG ou DTF.
+Não, a sublimação **só funciona em poliéster claro**. Para algodão a cores, é DTG ou DTF.
 
 **"DTG e DTF são a mesma coisa porque imprimem a cores."**
 Não. O **DTG** imprime **diretamente na peça** (sobretudo algodão, com pré-tratamento). O **DTF** imprime **num filme** que depois se transfere (quase qualquer tecido). São processos diferentes, com forças diferentes.
@@ -103,4 +103,4 @@ Em **grandes tiragens de poucas cores**, a serigrafia continua imbatível em cus
 
 A impressão têxtil tem cinco grandes métodos, cada um com o seu lugar: a **serigrafia** (grandes tiragens, cores sólidas, durabilidade), o **DTG** (full-color em algodão, peças únicas), a **sublimação** (poliéster claro, sem toque, all-over), o **DTF** (versátil, quase todos os tecidos, claros e escuros) e o **vinil térmico** (nomes, números, cor sólida).
 
-A escolha resolve-se com três perguntas — **que tecido, quantas peças, que desenho** — e começa sempre pelo tecido, que elimina logo metade das opções. Conhecer os cinco é deixar de perguntar "qual é o melhor?" para perguntar "qual é o certo para este trabalho?" — que é a pergunta que um profissional faz.
+A escolha resolve-se com três perguntas, **que tecido, quantas peças, que desenho**, e começa sempre pelo tecido, que elimina logo metade das opções. Conhecer os cinco é deixar de perguntar "qual é o melhor?" para perguntar "qual é o certo para este trabalho?", que é a pergunta que um profissional faz.

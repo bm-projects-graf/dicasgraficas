@@ -8,15 +8,15 @@ readingTime: "9 min"
 featured: false
 ---
 
-Há uma pergunta que separa quem mexe em tipografia por intuição de quem a percebe: **porque é que esta letra tem uns "pezinhos" e aquela não?** Esses pezinhos chamam-se serifas, e são a fronteira mais antiga e mais útil do mundo dos tipos. Perceber as grandes famílias tipográficas — e o que cada uma comunica — é o primeiro passo para escolher letra com critério em vez de escolher "a que parece gira".
+Há uma pergunta que separa quem mexe em tipografia por intuição de quem a percebe: **porque é que esta letra tem uns "pezinhos" e aquela não?** Esses pezinhos chamam-se serifas, e são a fronteira mais antiga e mais útil do mundo dos tipos. Perceber as grandes famílias tipográficas, e o que cada uma comunica, é o primeiro passo para escolher letra com critério em vez de escolher "a que parece gira".
 
-Este artigo não é sobre fontes específicas. É sobre os **grandes grupos** em que todas elas encaixam, o que distingue cada um, e quando faz sentido usar qual — sobretudo quando o destino é o papel.
+Este artigo não é sobre fontes específicas. É sobre os **grandes grupos** em que todas elas encaixam, o que distingue cada um, e quando faz sentido usar qual, sobretudo quando o destino é o papel.
 
 ## O que é, afinal, uma serifa
 
 A **serifa** é o pequeno traço ou remate que termina as hastes de uma letra. Repara no "T" de um jornal impresso: as pontas horizontais no cimo e os pés na base são serifas. Numa letra **sem serifa** (sans-serif, do francês *sans* = "sem"), essas hastes terminam a direito, limpas.
 
-A origem é fascinante e prática: as serifas nascem da escrita com cinzel na pedra romana e da pena de aparo. Não são decoração gratuita — durante séculos ajudaram o olho a "correr" ao longo da linha de texto.
+A origem é fascinante e prática: as serifas nascem da escrita com cinzel na pedra romana e da pena de aparo. Não são decoração gratuita, durante séculos ajudaram o olho a "correr" ao longo da linha de texto.
 
 <div class="tech-box">
 <div class="tech-label">Sabias que</div>
@@ -44,7 +44,7 @@ Hastes limpas, sem remates. Nascem no século XIX e explodem no século XX com o
 - **Humanistas:** com formas mais abertas e amigáveis, óptimas para ecrã e sinalética. (Frutiger, Open Sans.)
 - **Geométricas:** construídas a partir de círculos e linhas, com ar técnico e contemporâneo. (Futura.)
 
-**Onde funcionam bem:** sinalética, embalagem, logótipos, títulos, blocos curtos de texto, e — historicamente — tudo o que é ecrã. Num cartão de visita comunicam atualidade.
+**Onde funcionam bem:** sinalética, embalagem, logótipos, títulos, blocos curtos de texto, e, historicamente, tudo o que é ecrã. Num cartão de visita comunicam atualidade.
 
 ### 3. Egípcias / slab serif
 
@@ -60,7 +60,7 @@ Imitam a escrita à mão, da caligrafia formal ao rabisco do marcador. Comunicam
 
 ### 5. Decorativas / display
 
-A categoria-saco onde cabe tudo o que é desenhado para **um efeito específico a tamanho grande** — letras com textura, vintage, futuristas, recortadas. São condimentos, não o prato.
+A categoria-saco onde cabe tudo o que é desenhado para **um efeito específico a tamanho grande**, letras com textura, vintage, futuristas, recortadas. São condimentos, não o prato.
 
 **Regra de ouro:** uma display nunca leva texto corrido. Usa-se num título, num logótipo, numa palavra. Mais do que isso, cansa.
 
@@ -90,7 +90,7 @@ A diferença que importa no impresso é outra: **o contraste do tipo contra o pa
 
 <div class="tech-box">
 <div class="tech-label">Pormenor de impressão</div>
-<p>Em papéis muito absorventes (não revestidos) há <strong>ganho de ponto</strong> — a tinta alarga ligeiramente ao penetrar na fibra. Letras com traços muito finos engrossam e podem fechar contraformas (os "buracos" de um "e" ou de um "a"). Se vais imprimir corpo pequeno em papel poroso, foge de tipos de contraste extremo.</p>
+<p>Em papéis muito absorventes (não revestidos) há <strong>ganho de ponto</strong>, a tinta alarga ligeiramente ao penetrar na fibra. Letras com traços muito finos engrossam e podem fechar contraformas (os "buracos" de um "e" ou de um "a"). Se vais imprimir corpo pequeno em papel poroso, foge de tipos de contraste extremo.</p>
 </div>
 
 ## Combinar tipos sem fazer figura triste
@@ -98,7 +98,7 @@ A diferença que importa no impresso é outra: **o contraste do tipo contra o pa
 A maioria dos projetos usa **dois tipos**: um para títulos, outro para texto. A regra que nunca falha: **contraste com harmonia.** Combina famílias diferentes o suficiente para se notar a intenção, mas com personalidade compatível.
 
 - **Combo seguro e clássico:** uma serifada para títulos + uma sans-serif para texto (ou vice-versa). O contraste é claro e elegante.
-- **Combo arriscado:** duas serifadas parecidas, ou duas sans-serif parecidas — parece engano, não escolha.
+- **Combo arriscado:** duas serifadas parecidas, ou duas sans-serif parecidas, parece engano, não escolha.
 - **Atalho infalível:** usar **a mesma família** em pesos diferentes (negro nos títulos, regular no texto). Impossível desentoar.
 
 > Se duas fontes "discutem" em vez de conversarem, simplifica. Um tipo bem usado vale mais do que três a brigar.
@@ -126,4 +126,4 @@ Para 90% dos casos, este caminho resolve:
 3. **Escolhe um par, não cinco.** Um tipo para título, um para texto. Ou um só, em pesos diferentes.
 4. **Imprime uma prova.** O que parece equilibrado no ecrã pode parecer outra coisa no papel. Como em tudo na impressão, a [prova física](/artigos/como-pedir-orcamento-a-uma-grafica/) elimina surpresas.
 
-A tipografia não é a parte "decorativa" de um impresso — é a voz com que ele fala. Escolher bem a família é escolher o tom dessa voz antes de dizer uma única palavra.
+A tipografia não é a parte "decorativa" de um impresso, é a voz com que ele fala. Escolher bem a família é escolher o tom dessa voz antes de dizer uma única palavra.

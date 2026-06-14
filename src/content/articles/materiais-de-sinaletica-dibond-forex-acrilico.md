@@ -8,17 +8,17 @@ readingTime: "11 min"
 featured: false
 ---
 
-No mundo da [impressão plana](/artigos/impressao-plana-flatbed-grande-formato/) e da sinalética, fala-se uma língua própria, cheia de **nomes de marca** que se tornaram genéricos: "faz-me isto em Dibond", "isto é Forex de 5", "uma placa de acrílico". Para quem entra no setor, é um vocabulário confuso — são materiais diferentes, com propriedades muito distintas, e escolher mal significa uma placa que empena ao sol, parte ao toque, ou custa o dobro do necessário.
+No mundo da [impressão plana](/artigos/impressao-plana-flatbed-grande-formato/) e da sinalética, fala-se uma língua própria, cheia de **nomes de marca** que se tornaram genéricos: "faz-me isto em Dibond", "isto é Forex de 5", "uma placa de acrílico". Para quem entra no setor, é um vocabulário confuso, são materiais diferentes, com propriedades muito distintas, e escolher mal significa uma placa que empena ao sol, parte ao toque, ou custa o dobro do necessário.
 
 Este artigo é o **guia dos suportes rígidos** da sinalética e do display: o que é cada material, onde resulta, e como se imprime nele.
 
 ## Primeiro: porque há tantos materiais
 
-Uma placa de sinalética tem de equilibrar várias exigências que mudam conforme o trabalho: **interior ou exterior**, **temporário ou duradouro**, **rígido ou leve**, **barato ou premium**, **fino ou com corpo**. Não há um material que seja o melhor em tudo — há o material **certo para cada situação**. Vamos aos principais.
+Uma placa de sinalética tem de equilibrar várias exigências que mudam conforme o trabalho: **interior ou exterior**, **temporário ou duradouro**, **rígido ou leve**, **barato ou premium**, **fino ou com corpo**. Não há um material que seja o melhor em tudo, há o material **certo para cada situação**. Vamos aos principais.
 
 ## Compósito de alumínio (Dibond / ACM)
 
-Duas finas chapas de **alumínio** com um **núcleo de polietileno** no meio — uma "sanduíche" rígida, plana e leve. *Dibond* é a marca mais conhecida (o termo genérico é **ACM**, *aluminium composite material*).
+Duas finas chapas de **alumínio** com um **núcleo de polietileno** no meio, uma "sanduíche" rígida, plana e leve. *Dibond* é a marca mais conhecida (o termo genérico é **ACM**, *aluminium composite material*).
 
 - **Forte em:** **exterior duradouro**. Não enferruja, não empena, mantém-se perfeitamente plano, resiste anos ao tempo.
 - **Usos:** fachadas, sinalética exterior de empresas, placas profissionais, números de polícia, decoração.
@@ -36,7 +36,7 @@ Duas finas chapas de **alumínio** com um **núcleo de polietileno** no meio —
 <line x1="380" y1="97" x2="398" y2="97" stroke="#9CA3AF" /><text x="402" y="101">alumínio</text>
 </g>
 </svg>
-<figcaption>O <strong>Dibond</strong> (compósito de alumínio / ACM) é uma sanduíche: duas finas chapas de <strong>alumínio</strong> com um <strong>núcleo de polietileno</strong>. Resulta numa placa rígida, perfeitamente plana, leve e resistente ao tempo — ideal para exterior.</figcaption>
+<figcaption>O <strong>Dibond</strong> (compósito de alumínio / ACM) é uma sanduíche: duas finas chapas de <strong>alumínio</strong> com um <strong>núcleo de polietileno</strong>. Resulta numa placa rígida, perfeitamente plana, leve e resistente ao tempo, ideal para exterior.</figcaption>
 </figure>
 
 ## PVC espumado (Forex / Foamex)
@@ -46,7 +46,7 @@ Uma placa de **PVC** com estrutura **espumada** (cheia de microbolhas), o que a 
 - **Forte em:** versatilidade e custo. Leve, rígido, fácil de cortar, imprime muito bem.
 - **Usos:** sinalética **interior** e exterior de curta/média duração, expositores, painéis, montras, decoração, stands.
 - **Espessuras:** de 1 a 19 mm (o "Forex de 3", "de 5", "de 10" refere-se à espessura em mm).
-- **É o cavalo de batalha** da sinalética do dia a dia — bom, bonito e barato.
+- **É o cavalo de batalha** da sinalética do dia a dia, bom, bonito e barato.
 
 <div class="tech-box">
 <div class="tech-label">Dibond vs Forex: a escolha mais comum</div>
@@ -67,7 +67,7 @@ Um plástico **rígido, transparente e brilhante** (também há opaco e colorido
 Uma placa **leve** feita de uma **espuma** revestida por **papel** ou cartão nas duas faces (*Kapa*, *Foamboard*). Muito leve e fácil de cortar à mão.
 
 - **Forte em:** leveza extrema e baixo custo, para **curtíssima duração**.
-- **Usos:** **interior temporário** — apresentações, montagens, painéis de evento, maquetes, expositores leves.
+- **Usos:** **interior temporário**, apresentações, montagens, painéis de evento, maquetes, expositores leves.
 - **Limite:** não resiste a humidade nem ao exterior (o miolo é espuma com papel). É para **dentro e por pouco tempo**.
 
 ## Polipropileno alveolar (Correx / Akylux)
@@ -75,7 +75,7 @@ Uma placa **leve** feita de uma **espuma** revestida por **papel** ou cartão na
 Um **plástico canelado** (como o [cartão canelado](/artigos/caixas-de-cartao-canelado-fefco/), mas em polipropileno), muito leve, barato e **resistente à água**.
 
 - **Forte em:** custo mínimo + resiste à chuva.
-- **Usos:** sinalética **temporária de exterior** — placas de "vende-se", obras, eventos, campanhas eleitorais, direções. As placas espetadas no chão com hastes são quase sempre deste material.
+- **Usos:** sinalética **temporária de exterior**, placas de "vende-se", obras, eventos, campanhas eleitorais, direções. As placas espetadas no chão com hastes são quase sempre deste material.
 - **É o "descartável de exterior"**: barato, leve, aguenta a chuva o tempo de uma campanha.
 
 ## A tabela de decisão
@@ -92,10 +92,10 @@ Um **plástico canelado** (como o [cartão canelado](/artigos/caixas-de-cartao-c
 
 Há duas grandes vias:
 
-1. **Impressão direta** — uma [impressora plana (flatbed) UV](/artigos/impressao-plana-flatbed-grande-formato/) imprime **diretamente** na placa. Limpo, durável, sem camadas adicionais.
-2. **Impressão + aplicação de vinil** — imprime-se em [vinil](/artigos/grande-formato-tintas-solvente-latex-uv/) e **cola-se** este à placa (montagem). Permite usar impressoras de rolo e trocar/atualizar o gráfico.
+1. **Impressão direta**, uma [impressora plana (flatbed) UV](/artigos/impressao-plana-flatbed-grande-formato/) imprime **diretamente** na placa. Limpo, durável, sem camadas adicionais.
+2. **Impressão + aplicação de vinil**, imprime-se em [vinil](/artigos/grande-formato-tintas-solvente-latex-uv/) e **cola-se** este à placa (montagem). Permite usar impressoras de rolo e trocar/atualizar o gráfico.
 
-Em qualquer caso, segue-se muitas vezes o [corte](/artigos/corte-de-grande-formato-kiss-cut-fresas/) — recortar a forma, fazer letras soltas, arredondar — com **fresa** nos rígidos.
+Em qualquer caso, segue-se muitas vezes o [corte](/artigos/corte-de-grande-formato-kiss-cut-fresas/), recortar a forma, fazer letras soltas, arredondar, com **fresa** nos rígidos.
 
 ## Confusões comuns
 
@@ -103,16 +103,16 @@ Em qualquer caso, segue-se muitas vezes o [corte](/artigos/corte-de-grande-forma
 Não. **Dibond** é **compósito de alumínio** (durável, exterior, mais caro); **Forex** é **PVC espumado** (versátil, leve, mais barato). São materiais diferentes para usos diferentes.
 
 **"Foam board serve para uma placa de rua."**
-Não — o foam board é **interior e temporário** (espuma com papel); a humidade estraga-o. Para exterior temporário, é o **polipropileno alveolar**; para exterior duradouro, o **Dibond**.
+Não, o foam board é **interior e temporário** (espuma com papel); a humidade estraga-o. Para exterior temporário, é o **polipropileno alveolar**; para exterior duradouro, o **Dibond**.
 
 **"Forex de 5 é a qualidade; de 10 é melhor qualidade."**
 O número é a **espessura em milímetros** (3, 5, 10 mm), não a qualidade. Mais espesso = mais rígido e com mais corpo, conforme o tamanho da placa o exija.
 
 **"Acrílico e vidro são iguais."**
-O acrílico é **plástico** — mais leve, mais seguro (não estilhaça como vidro), fácil de cortar e fresar, e deixa passar bem a luz. Parece vidro, mas comporta-se de forma diferente.
+O acrílico é **plástico**, mais leve, mais seguro (não estilhaça como vidro), fácil de cortar e fresar, e deixa passar bem a luz. Parece vidro, mas comporta-se de forma diferente.
 
 ## Em resumo
 
-A sinalética fala por **marcas que viraram nomes**: **Dibond** (compósito de alumínio — exterior duradouro, plano e premium), **Forex/Foamex** (PVC espumado — o versátil e económico do dia a dia), **acrílico** (premium, transparente, para luz e elegância), **foam board** (leve, interior, temporário) e **polipropileno alveolar / Correx** (barato, à prova de chuva, exterior temporário).
+A sinalética fala por **marcas que viraram nomes**: **Dibond** (compósito de alumínio, exterior duradouro, plano e premium), **Forex/Foamex** (PVC espumado, o versátil e económico do dia a dia), **acrílico** (premium, transparente, para luz e elegância), **foam board** (leve, interior, temporário) e **polipropileno alveolar / Correx** (barato, à prova de chuva, exterior temporário).
 
-A escolha resolve-se com poucas perguntas: **interior ou exterior? quanto tempo? que aspeto? que orçamento?** Conhecer estes suportes — e como se imprime neles, direto ou por vinil — é dominar a base física de toda a sinalética e do display. A imagem é a mesma; é o **material** que decide se a placa dura uma semana ou dez anos.
+A escolha resolve-se com poucas perguntas: **interior ou exterior? quanto tempo? que aspeto? que orçamento?** Conhecer estes suportes, e como se imprime neles, direto ou por vinil, é dominar a base física de toda a sinalética e do display. A imagem é a mesma; é o **material** que decide se a placa dura uma semana ou dez anos.

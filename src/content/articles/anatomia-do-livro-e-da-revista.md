@@ -1,6 +1,6 @@
 ---
 title: "Anatomia de um livro e de uma revista"
-description: "As partes de um livro e de uma revista explicadas — capa, lombada, badanas, guardas, miolo, cadernos, recto e verso — e os conceitos de paginação que precisas de dominar para preparar um trabalho de muitas páginas."
+description: "As partes de um livro e de uma revista explicadas, capa, lombada, badanas, guardas, miolo, cadernos, recto e verso, e os conceitos de paginação que precisas de dominar para preparar um trabalho de muitas páginas."
 pubDate: 2026-06-13
 category: "Produtos impressos"
 keywords: "anatomia do livro, partes de um livro, lombada badanas guardas, miolo cadernos, paginação revista, recto verso"
@@ -8,7 +8,7 @@ readingTime: "8 min"
 featured: false
 ---
 
-Preparar um cartão de visita é uma página. Preparar um **livro** ou uma **revista** é outro mundo: há capas, lombadas, cadernos, páginas pares e ímpares, e um vocabulário próprio que toda a gente na produção usa. Este guia dá-te o mapa — para falares a língua certa e preparares o ficheiro sem erros.
+Preparar um cartão de visita é uma página. Preparar um **livro** ou uma **revista** é outro mundo: há capas, lombadas, cadernos, páginas pares e ímpares, e um vocabulário próprio que toda a gente na produção usa. Este guia dá-te o mapa, para falares a língua certa e preparares o ficheiro sem erros.
 
 ## As partes da capa
 
@@ -16,7 +16,7 @@ A "capa" de um livro é, na verdade, várias zonas:
 
 - **Primeira capa (capa):** a frente.
 - **Quarta capa (contracapa):** o verso (onde costuma ir a sinopse, o código de barras, o preço).
-- **Lombada:** o lado que une as folhas e fica visível na estante. A sua **espessura** depende do número de páginas e do papel — calcula-a com a [calculadora de lombada](/calculadora-de-lombada/) antes de desenhar a capa, senão o texto da lombada sai descentrado.
+- **Lombada:** o lado que une as folhas e fica visível na estante. A sua **espessura** depende do número de páginas e do papel, calcula-a com a [calculadora de lombada](/calculadora-de-lombada/) antes de desenhar a capa, senão o texto da lombada sai descentrado.
 - **Badanas (ou orelhas):** as abas que dobram para dentro (comuns em capas de brochura de qualidade). Levam frequentemente a biografia do autor ou mais texto.
 - **Segunda e terceira capas:** o interior da capa (verso da primeira e da quarta).
 
@@ -38,7 +38,7 @@ A "capa" de um livro é, na verdade, várias zonas:
 </g>
 <text x="206" y="120" text-anchor="middle" font-family="monospace" font-size="10" fill="var(--cat)" transform="rotate(-90 206 120)">lombada</text>
 </svg>
-<figcaption>Uma capa de brochura "esticada": badana, contracapa, lombada, capa e badana — tudo numa só peça impressa, que depois dobra à volta do miolo. A largura da lombada tem de bater certo com a espessura real do miolo.</figcaption>
+<figcaption>Uma capa de brochura "esticada": badana, contracapa, lombada, capa e badana, tudo numa só peça impressa, que depois dobra à volta do miolo. A largura da lombada tem de bater certo com a espessura real do miolo.</figcaption>
 </figure>
 
 ## O miolo: cadernos, páginas e folhas
@@ -48,13 +48,13 @@ O **miolo** é o conjunto das páginas interiores. Mas atenção a uma distinç�
 - **Folha** = um pedaço de papel físico, com **dois lados**.
 - **Página** = **um lado** de uma folha. Uma folha = duas páginas.
 
-Por isso um livro de "200 páginas" tem 100 folhas. É também por isto que o número de páginas de um livro é quase sempre **par** — e, na encadernação, múltiplo do tamanho do **caderno**.
+Por isso um livro de "200 páginas" tem 100 folhas. É também por isto que o número de páginas de um livro é quase sempre **par**, e, na encadernação, múltiplo do tamanho do **caderno**.
 
-Um **caderno** (*signature*) é uma folha grande impressa com várias páginas que, depois de dobrada e cortada, forma um conjunto de páginas na ordem certa. Os livros são feitos de vários cadernos agrupados — daí o número de páginas ser tipicamente múltiplo de 8, 16 ou 32. O processo de organizar as páginas na folha para que saiam na ordem certa chama-se **imposição**.
+Um **caderno** (*signature*) é uma folha grande impressa com várias páginas que, depois de dobrada e cortada, forma um conjunto de páginas na ordem certa. Os livros são feitos de vários cadernos agrupados, daí o número de páginas ser tipicamente múltiplo de 8, 16 ou 32. O processo de organizar as páginas na folha para que saiam na ordem certa chama-se **imposição**.
 
 <div class="tech-box">
 <div class="tech-label">Recto e verso (página ímpar e par)</div>
-<p>A página da <strong>direita</strong> num livro aberto é o <strong>recto</strong> e é sempre <strong>ímpar</strong> (1, 3, 5…). A da <strong>esquerda</strong> é o <strong>verso</strong> e é <strong>par</strong>. Capítulos importantes costumam abrir no recto (ímpar) — por isso às vezes se deixa uma página par em branco para o capítulo seguinte começar à direita.</p>
+<p>A página da <strong>direita</strong> num livro aberto é o <strong>recto</strong> e é sempre <strong>ímpar</strong> (1, 3, 5…). A da <strong>esquerda</strong> é o <strong>verso</strong> e é <strong>par</strong>. Capítulos importantes costumam abrir no recto (ímpar), por isso às vezes se deixa uma página par em branco para o capítulo seguinte começar à direita.</p>
 </div>
 
 ## As páginas com nome próprio
@@ -71,7 +71,7 @@ Nas primeiras páginas de um livro há uma sequência tradicional (as "páginas 
 Preparar um miolo não é "juntar páginas num PDF". Há três cuidados específicos:
 
 - **Sangria interior, não.** O [bleed](/artigos/bleed-margem-de-seguranca-linha-de-corte/) aplica-se às bordas exteriores, não à margem de baixo do livro (a do lado da lombada). Só imagens que atravessam a dobra precisam de continuar para o outro lado.
-- **Margem de medianiz (lombada).** Deixa margem interior suficiente — parte da página "desaparece" para dentro da encadernação, sobretudo em livros grossos colados.
+- **Margem de medianiz (lombada).** Deixa margem interior suficiente, parte da página "desaparece" para dentro da encadernação, sobretudo em livros grossos colados.
 - **Creep / push-out.** Em cadernos espessos, as páginas interiores avançam ligeiramente e têm de ser compensadas (encurtadas). Está explicado no [guia técnico de dobras](/artigos/guia-tecnico-dobras-impressao/).
 
 ## Livro vs revista: o que muda
@@ -95,4 +95,4 @@ Não. A capa esticada = badana + contracapa + **lombada** + capa + badana. Esque
 
 ## Em resumo
 
-Um livro/revista divide-se em **capa** (com primeira/quarta capa, lombada e por vezes badanas) e **miolo** (páginas interiores, organizadas em **cadernos**). Lembra-te: **folha ≠ página** (uma folha = duas páginas), o **recto** é a página ímpar à direita, e a preparação exige cuidado com **margem de lombada**, **creep** e a **largura exata da lombada** — que deves [calcular](/calculadora-de-lombada/) antes de desenhar a capa.
+Um livro/revista divide-se em **capa** (com primeira/quarta capa, lombada e por vezes badanas) e **miolo** (páginas interiores, organizadas em **cadernos**). Lembra-te: **folha ≠ página** (uma folha = duas páginas), o **recto** é a página ímpar à direita, e a preparação exige cuidado com **margem de lombada**, **creep** e a **largura exata da lombada**, que deves [calcular](/calculadora-de-lombada/) antes de desenhar a capa.

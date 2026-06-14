@@ -1,7 +1,7 @@
 // ============================================
 //  Ordem por INTERESSE dentro de cada categoria
 //  (1.º da lista = mais interessante; aparece primeiro)
-//  Fonte única — não é preciso tocar no frontmatter dos artigos.
+//  Fonte única, não é preciso tocar no frontmatter dos artigos.
 //  Slugs não listados vão para o fim, ordenados por data (mais recente primeiro).
 //  O slug é o id do artigo (nome do ficheiro .md sem extensão).
 // ============================================

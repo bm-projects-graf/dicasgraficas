@@ -82,7 +82,7 @@
 <div class="wrap">
   <header>
     <h1>🖍️ Sobreimpressão vs vazado</h1>
-    <p class="sub">Vê em tempo real o que acontece quando uma tinta é impressa <strong>por cima</strong> de outra — e porque é que o "texto branco em overprint" desaparece na máquina.</p>
+    <p class="sub">Vê em tempo real o que acontece quando uma tinta é impressa <strong>por cima</strong> de outra, e porque é que o "texto branco em overprint" desaparece na máquina.</p>
   </header>
 
   <!-- Toggle de modo -->
@@ -145,7 +145,7 @@
   <div class="diag" id="diag"></div>
 
   <div class="disc">
-    <strong style="color:var(--txt);">Como funciona.</strong> Em <em>knockout</em> a máquina "fura" o fundo e a tinta de cima não se mistura. Em <em>overprint</em> as tintas somam-se (física subtrativa): cada canal final = mín(fundo + objeto, 100%). A conversão para RGB é só para o ecrã (aproximação padrão) — o resultado real depende do papel e do perfil. Não substitui uma prova de cor.
+    <strong style="color:var(--txt);">Como funciona.</strong> Em <em>knockout</em> a máquina "fura" o fundo e a tinta de cima não se mistura. Em <em>overprint</em> as tintas somam-se (física subtrativa): cada canal final = mín(fundo + objeto, 100%). A conversão para RGB é só para o ecrã (aproximação padrão), o resultado real depende do papel e do perfil. Não substitui uma prova de cor.
   </div>
 
   <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
@@ -205,7 +205,7 @@
     var html = "";
     if (mode === "overprint" && isWhite(obj)) {
       html += '<div class="alert erro blink"><span class="t">🔴 ERRO CRÍTICO: texto branco em overprint desaparece!</span>' +
-        'Na gráfica o branco é a <strong>ausência de tinta</strong> (a cor do papel). Se der ordem de sobreimpressão, a máquina não aplica "tinta branca" e imprime o fundo por cima — o texto fica coberto e some.</div>';
+        'Na gráfica o branco é a <strong>ausência de tinta</strong> (a cor do papel). Se der ordem de sobreimpressão, a máquina não aplica "tinta branca" e imprime o fundo por cima, o texto fica coberto e some.</div>';
     } else if (mode === "overprint" && isPureBlack(obj)) {
       html += '<div class="alert aviso"><span class="t">🟡 Dica técnica: preto em overprint</span>' +
         'O overprint em <strong>texto preto pequeno</strong> é padrão na indústria, para evitar falhas de registo (filetes brancos). Mas em <strong>áreas grandes de preto</strong> o fundo pode transparecer (como vês no preview). Para grandes fundos pretos usa <strong>preto rico</strong> (ex.: C40 M30 Y0 K100) em <strong>knockout</strong>.</div>';
@@ -244,7 +244,7 @@
     $("dotObj").style.background = rgbStr(cmyk2rgb(obj));
 
     var ex = "";
-    if (mode === "overprint" && res.hidden) ex = "O objeto ficou igual ao fundo — desapareceu.";
+    if (mode === "overprint" && res.hidden) ex = "O objeto ficou igual ao fundo, desapareceu.";
     else if (mode === "overprint") ex = "Cor de cima + fundo (sobreimpressão).";
     else ex = "Cor pura do objeto (vazado).";
     $("explica").textContent = ex;

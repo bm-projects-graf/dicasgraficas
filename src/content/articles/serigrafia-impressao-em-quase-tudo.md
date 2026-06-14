@@ -8,13 +8,13 @@ readingTime: "11 min"
 featured: false
 ---
 
-Há um processo de impressão que consegue uma coisa que nenhum outro faz tão bem: **imprimir sobre praticamente qualquer superfície** — uma t-shirt, uma caneca, uma garrafa de vidro, uma tábua de madeira, uma placa de metal, um painel de plástico, até um circuito eletrónico. Chama-se **serigrafia** (em inglês, *screen printing* ou *silk screen*), e é o método mais versátil e tátil de toda a impressão.
+Há um processo de impressão que consegue uma coisa que nenhum outro faz tão bem: **imprimir sobre praticamente qualquer superfície**, uma t-shirt, uma caneca, uma garrafa de vidro, uma tábua de madeira, uma placa de metal, um painel de plástico, até um circuito eletrónico. Chama-se **serigrafia** (em inglês, *screen printing* ou *silk screen*), e é o método mais versátil e tátil de toda a impressão.
 
 Se a flexografia veste as embalagens e o offset enche as livrarias, a serigrafia é a que imprime o **mundo dos objetos**. Vamos ver como funciona e porque continua insubstituível.
 
 ## O princípio: empurrar tinta através de uma malha
 
-A serigrafia é, no fundo, um **stencil sofisticado**. Imagina um quadro com uma malha esticada (antigamente seda — daí "silk screen"). Em certas zonas da malha, os furos estão **tapados**; nas outras, estão **abertos**. Quando se espalha tinta por cima e se arrasta uma espátula (a *rácle* ou *squeegee*), a tinta **só passa pelas zonas abertas** e deposita-se no material por baixo, formando a imagem.
+A serigrafia é, no fundo, um **stencil sofisticado**. Imagina um quadro com uma malha esticada (antigamente seda, daí "silk screen"). Em certas zonas da malha, os furos estão **tapados**; nas outras, estão **abertos**. Quando se espalha tinta por cima e se arrasta uma espátula (a *rácle* ou *squeegee*), a tinta **só passa pelas zonas abertas** e deposita-se no material por baixo, formando a imagem.
 
 O processo, passo a passo:
 
@@ -27,7 +27,7 @@ O processo, passo a passo:
 
 <div class="tech-box">
 <div class="tech-label">A "lineatura" da malha</div>
-<p>A finura da malha (medida em fios por centímetro) controla quanta tinta passa e quanto detalhe se consegue. <strong>Malha aberta</strong> (poucos fios) deixa passar muita tinta — ideal para brancos opacos e cores vivas sobre tecido escuro. <strong>Malha fina</strong> (muitos fios) deixa passar pouca tinta — para detalhe e linhas finas. Escolher a malha certa para o trabalho é metade da arte da serigrafia.</p>
+<p>A finura da malha (medida em fios por centímetro) controla quanta tinta passa e quanto detalhe se consegue. <strong>Malha aberta</strong> (poucos fios) deixa passar muita tinta, ideal para brancos opacos e cores vivas sobre tecido escuro. <strong>Malha fina</strong> (muitos fios) deixa passar pouca tinta, para detalhe e linhas finas. Escolher a malha certa para o trabalho é metade da arte da serigrafia.</p>
 </div>
 
 <figure class="article-figure">
@@ -58,7 +58,7 @@ O que distingue a serigrafia de quase todos os outros processos é a **espessura
 - **Cores intensas e saturadas.**
 - **Tinta que se sente:** aquele toque ligeiramente em relevo de uma t-shirt bem serigrafada.
 - **Durabilidade:** resiste a lavagens, sol e desgaste.
-- **Tintas especiais:** metálicas, fluorescentes, glitter, que incham com calor (*puff*), que brilham no escuro — a serigrafia adora-as.
+- **Tintas especiais:** metálicas, fluorescentes, glitter, que incham com calor (*puff*), que brilham no escuro, a serigrafia adora-as.
 
 ## Onde a serigrafia brilha
 
@@ -81,7 +81,7 @@ As tintas adaptam-se ao material: **plastisol** e tintas aquosas para têxtil, t
 Não é mágica. Tem limites claros:
 
 - **Mau para fotografias e degradés finos.** Consegue meios-tons, mas com muito mais dificuldade que offset ou digital. Para uma fotografia a cores cheia de detalhe, a serigrafia não é a escolha.
-- **Custo por cor.** Cada cor é uma tela a preparar. Um desenho com muitas cores fica caro e complexo — por isso os designs de serigrafia tendem a ser **gráficos, de poucas cores chapadas**.
+- **Custo por cor.** Cada cor é uma tela a preparar. Um desenho com muitas cores fica caro e complexo, por isso os designs de serigrafia tendem a ser **gráficos, de poucas cores chapadas**.
 - **Arranque por trabalho.** Preparar telas e registos tem um custo fixo; para **uma só peça** raramente compensa (aí entra a impressão digital têxtil ou transfer).
 - **Tiragens muito grandes e muito variadas** podem ser mais eficientes noutros processos.
 
@@ -96,7 +96,7 @@ A regra: a serigrafia adora **poucas cores, muitas peças, superfícies variadas
 
 A ideia de imprimir através de um stencil é **antiquíssima**. Há mais de mil anos, na China da dinastia Song, e no Japão, usavam-se stencils com malhas de cabelo e seda para decorar tecidos (a técnica japonesa do *katazome*). A Europa só adotou a técnica a sério no início do século XX.
 
-Em **1907**, o inglês **Samuel Simon** patenteou um processo de impressão por malha de seda, e a técnica começou a industrializar-se, primeiro em cartazes e sinalética. Mas o momento que tornou a serigrafia **cultural** foi outro: nos anos 1960, **Andy Warhol** adotou a serigrafia para a sua arte pop — as Marilyns, as latas de sopa, as cores chapadas e repetíveis. A serigrafia passou de técnica industrial a linguagem artística.
+Em **1907**, o inglês **Samuel Simon** patenteou um processo de impressão por malha de seda, e a técnica começou a industrializar-se, primeiro em cartazes e sinalética. Mas o momento que tornou a serigrafia **cultural** foi outro: nos anos 1960, **Andy Warhol** adotou a serigrafia para a sua arte pop, as Marilyns, as latas de sopa, as cores chapadas e repetíveis. A serigrafia passou de técnica industrial a linguagem artística.
 
 Ainda hoje é o processo de eleição para **posters de tiragem limitada** e **serigrafias de autor**, onde aquela camada espessa de tinta e a cor saturada dão um objeto que uma impressora digital não consegue imitar.
 
@@ -116,6 +116,6 @@ Nada disso. Há plastisol, aquosa, UV, para vidro, para metal, metálicas, fluor
 
 ## Em resumo
 
-A serigrafia empurra tinta através de uma **malha com stencil**, uma cor de cada vez, depositando uma **camada espessa** que dá opacidade, cor intensa, durabilidade e textura — sobre praticamente **qualquer material**. Brilha no têxtil, no vidro, nos objetos e na arte; tropeça na fotografia, na peça única e nos designs de muitas cores.
+A serigrafia empurra tinta através de uma **malha com stencil**, uma cor de cada vez, depositando uma **camada espessa** que dá opacidade, cor intensa, durabilidade e textura, sobre praticamente **qualquer material**. Brilha no têxtil, no vidro, nos objetos e na arte; tropeça na fotografia, na peça única e nos designs de muitas cores.
 
 De stencils chineses milenares à pop art de Warhol e às t-shirts que vestes, é talvez o processo mais democrático e tátil das artes gráficas: aquele que tira a impressão do papel e a põe no mundo dos objetos.

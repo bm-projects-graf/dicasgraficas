@@ -96,7 +96,7 @@
 <div class="wrap">
   <header>
     <h1>🖨️ Resolução máxima de impressão</h1>
-    <p class="sub">Carrega uma imagem e descobre o <strong>tamanho máximo</strong> a que pode ser impressa com qualidade — a 300 DPI (fotográfica) ou na resolução que escolheres.</p>
+    <p class="sub">Carrega uma imagem e descobre o <strong>tamanho máximo</strong> a que pode ser impressa com qualidade, a 300 DPI (fotográfica) ou na resolução que escolheres.</p>
   </header>
 
   <div class="card">
@@ -126,11 +126,11 @@
       <div class="campo">
         <label for="dpi">Resolução (DPI)</label>
         <select id="dpi">
-          <option value="300" selected>300 DPI — qualidade fotográfica</option>
-          <option value="240">240 DPI — muito boa</option>
-          <option value="200">200 DPI — boa</option>
-          <option value="150">150 DPI — grande formato / lona</option>
-          <option value="100">100 DPI — lona grande (vista de longe)</option>
+          <option value="300" selected>300 DPI, qualidade fotográfica</option>
+          <option value="240">240 DPI, muito boa</option>
+          <option value="200">200 DPI, boa</option>
+          <option value="150">150 DPI, grande formato / lona</option>
+          <option value="100">100 DPI, lona grande (vista de longe)</option>
           <option value="custom">Personalizado…</option>
         </select>
       </div>
@@ -175,7 +175,7 @@
 
   <div class="dica" id="dicaCard" style="display:none;">
     <span class="lbl">Como se calcula</span>
-    Tamanho (cm) = (pixéis ÷ DPI) × 2,54. A <strong>300 DPI</strong> é o padrão de qualidade (impressão vista de perto: cartões, folhetos, revistas). Para <strong>grande formato</strong> (cartazes, lonas vistos a metros de distância) usam-se resoluções mais baixas — 150, 100 ou menos DPI — porque o olho, à distância, não distingue os pontos.
+    Tamanho (cm) = (pixéis ÷ DPI) × 2,54. A <strong>300 DPI</strong> é o padrão de qualidade (impressão vista de perto: cartões, folhetos, revistas). Para <strong>grande formato</strong> (cartazes, lonas vistos a metros de distância) usam-se resoluções mais baixas, 150, 100 ou menos DPI, porque o olho, à distância, não distingue os pontos.
   </div>
 
   <footer>
@@ -253,15 +253,15 @@
   }
 
   function notaDpi(dpi) {
-    if (dpi >= 300) return "Padrão de qualidade — impressão vista de perto (cartões, folhetos, revistas).";
-    if (dpi >= 200) return "Muito boa — adequada para a maioria das impressões.";
-    if (dpi >= 150) return "Grande formato — cartazes e lonas vistos a 1-2 metros.";
+    if (dpi >= 300) return "Padrão de qualidade, impressão vista de perto (cartões, folhetos, revistas).";
+    if (dpi >= 200) return "Muito boa, adequada para a maioria das impressões.";
+    if (dpi >= 150) return "Grande formato, cartazes e lonas vistos a 1-2 metros.";
     if (dpi >= 90) return "Lona grande, vista de vários metros de distância.";
-    return "Resolução baixa — só para impressões muito grandes vistas de longe.";
+    return "Resolução baixa, só para impressões muito grandes vistas de longe.";
   }
 
   function classificar(w300) {
-    // w300 = largura máxima (cm) a 300 DPI — mede a "capacidade" da imagem
+    // w300 = largura máxima (cm) a 300 DPI, mede a "capacidade" da imagem
     if (w300 >= 25) return { txt: "Excelente", cor: "var(--verde)", pct: 100, msg: "Ótima para impressão de qualidade, mesmo em tamanhos grandes." };
     if (w300 >= 13) return { txt: "Boa", cor: "var(--verde)", pct: 70, msg: "Boa para a maioria das impressões (até cerca de A4/A3 a 300 DPI)." };
     if (w300 >= 7) return { txt: "Limitada", cor: "var(--laranja)", pct: 40, msg: "A 300 DPI só dá para impressões pequenas. Para maior, baixa o DPI (grande formato)." };
@@ -307,8 +307,8 @@
     else if (dpi >= 200) { veredito = "muito boa ✓"; cor = "var(--verde)"; }
     else if (dpi >= 150) { veredito = "boa para grande formato (visto a 1-2 m)"; cor = "var(--laranja)"; }
     else if (dpi >= 100) { veredito = "aceitável só para lona vista de longe"; cor = "var(--laranja)"; }
-    else { veredito = "fraca — a imagem ficaria pixelizada"; cor = "var(--vermelho)"; }
-    $("invRes").innerHTML = "A " + fmt(larg) + " × " + fmt(altCm) + " cm terias <span class=\"dpi-out\" style=\"color:" + cor + "\">" + Math.round(dpi) + " DPI</span> — <span style=\"color:" + cor + "\">" + veredito + "</span>.";
+    else { veredito = "fraca, a imagem ficaria pixelizada"; cor = "var(--vermelho)"; }
+    $("invRes").innerHTML = "A " + fmt(larg) + " × " + fmt(altCm) + " cm terias <span class=\"dpi-out\" style=\"color:" + cor + "\">" + Math.round(dpi) + " DPI</span>, <span style=\"color:" + cor + "\">" + veredito + "</span>.";
   }
 
   // Eventos

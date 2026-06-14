@@ -65,7 +65,7 @@ const ogImage = image || `${siteUrl}/og-default.jpg`;
     gtag('config', 'GA_MEASUREMENT_ID');
   </script> -->
 
-  <!-- Google AdSense — carrega só quando ADSENSE_CLIENT está definido em src/config.ts -->
+  <!-- Google AdSense, carrega só quando ADSENSE_CLIENT está definido em src/config.ts -->
   {ADSENSE_CLIENT && (
     <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossorigin="anonymous"></script>
   )}

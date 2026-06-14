@@ -1,6 +1,6 @@
 ---
 title: "Anatomia de uma letra: haste, bojo, serifa e o vocabulário dos tipógrafos"
-description: "Um mapa completo das partes de uma letra e das linhas que a governam — da altura-x à serifa, do bojo à contraforma. O vocabulário que transforma 'aquela parte ali' em conversa de profissional."
+description: "Um mapa completo das partes de uma letra e das linhas que a governam, da altura-x à serifa, do bojo à contraforma. O vocabulário que transforma 'aquela parte ali' em conversa de profissional."
 pubDate: 2026-06-21
 category: "Tipografia"
 keywords: "anatomia da letra, partes de uma letra, altura-x, serifa, bojo contraforma, vocabulário tipográfico, linha de base"
@@ -8,9 +8,9 @@ readingTime: "11 min"
 featured: false
 ---
 
-Toda a profissão tem o seu vocabulário, e a tipografia tem um dos mais antigos e poéticos. As letras têm **olhos**, **orelhas**, **braços**, **pernas**, **caudas** e **espinhas** — um corpo inteiro, herdado de séculos de tipógrafos que precisavam de nomear cada traço para o talhar em metal. Saber este vocabulário não é pedantismo: é o que te permite dizer exatamente o que vês, escolher tipos com critério e perceber porque é que uma letra se lê bem e outra não.
+Toda a profissão tem o seu vocabulário, e a tipografia tem um dos mais antigos e poéticos. As letras têm **olhos**, **orelhas**, **braços**, **pernas**, **caudas** e **espinhas**, um corpo inteiro, herdado de séculos de tipógrafos que precisavam de nomear cada traço para o talhar em metal. Saber este vocabulário não é pedantismo: é o que te permite dizer exatamente o que vês, escolher tipos com critério e perceber porque é que uma letra se lê bem e outra não.
 
-Este é o mapa anatómico da letra — as partes que a compõem e as linhas invisíveis que a governam.
+Este é o mapa anatómico da letra, as partes que a compõem e as linhas invisíveis que a governam.
 
 ## As linhas invisíveis que organizam tudo
 
@@ -24,7 +24,7 @@ Antes das partes, as **linhas de referência**. Toda a letra assenta num sistema
 
 <div class="tech-box">
 <div class="tech-label">Porque a altura-x manda na legibilidade</div>
-<p>De duas fontes ao mesmo tamanho em pontos, a que tiver <strong>maior altura-x</strong> parece maior e costuma ler-se melhor em corpos pequenos — as minúsculas ocupam mais "corpo" e abrem as contraformas. É por isso que duas fontes a "12 pt" podem parecer de tamanhos diferentes: o ponto mede o corpo total, mas o olho lê a altura-x. Um pormenor decisivo quando escolhes letra para <a href="/artigos/serif-sans-serif-familias-tipograficas/">texto longo impresso</a>.</p>
+<p>De duas fontes ao mesmo tamanho em pontos, a que tiver <strong>maior altura-x</strong> parece maior e costuma ler-se melhor em corpos pequenos, as minúsculas ocupam mais "corpo" e abrem as contraformas. É por isso que duas fontes a "12 pt" podem parecer de tamanhos diferentes: o ponto mede o corpo total, mas o olho lê a altura-x. Um pormenor decisivo quando escolhes letra para <a href="/artigos/serif-sans-serif-familias-tipograficas/">texto longo impresso</a>.</p>
 </div>
 
 <figure class="article-figure">
@@ -48,9 +48,9 @@ Agora o corpo. Os termos mais usados, dos que vais ouvir em qualquer conversa de
 - **Haste (*stem*):** o traço vertical principal de uma letra (a vertical do **b**, do **h**, do **l**).
 - **Travessão / barra (*crossbar, bar*):** o traço horizontal que liga ou atravessa (a barra do **A**, do **H**, o traço do **e**, do **f**, do **t**).
 - **Bojo / pança (*bowl*):** a curva fechada que encerra um espaço (a parte redonda do **b**, **d**, **o**, **p**, **q**).
-- **Contraforma / olho (*counter*):** o **espaço interior**, fechado ou parcialmente fechado, dentro de uma letra (o "buraco" do **o**, do **e**, do **a**). As contraformas são tão importantes como os traços — é o equilíbrio entre tinta e vazio que faz uma letra respirar.
+- **Contraforma / olho (*counter*):** o **espaço interior**, fechado ou parcialmente fechado, dentro de uma letra (o "buraco" do **o**, do **e**, do **a**). As contraformas são tão importantes como os traços, é o equilíbrio entre tinta e vazio que faz uma letra respirar.
 - **Serifa (*serif*):** o pequeno remate no fim das hastes, nas letras serifadas (ver mais abaixo).
-- **Terminal:** o fim de um traço que **não** tem serifa — pode ser reto, em gota, em gancho.
+- **Terminal:** o fim de um traço que **não** tem serifa, pode ser reto, em gota, em gancho.
 - **Braço (*arm*):** um traço horizontal ou inclinado preso só de um lado e livre na outra ponta (os braços do **E**, do **F**, do **T**, do **K**).
 - **Perna (*leg*):** o traço inferior que "desce" e suporta, como no **K**, no **R**, no **Q**.
 
@@ -68,12 +68,12 @@ A herança caligráfica deixou nomes encantadores para traços específicos:
 
 <div class="tech-box">
 <div class="tech-label">Ascendentes e descendentes</div>
-<p>A parte da minúscula que <strong>sobe</strong> acima da altura-x chama-se <strong>ascendente</strong> (o traço alto do <strong>b, d, f, h, k, l</strong>); a que <strong>desce</strong> abaixo da linha de base é a <strong>descendente</strong> (o rabo do <strong>g, j, p, q, y</strong>). São elas que dão ritmo vertical a uma linha de texto — e fontes com ascendentes/descendentes curtos parecem mais "apertadas" e densas.</p>
+<p>A parte da minúscula que <strong>sobe</strong> acima da altura-x chama-se <strong>ascendente</strong> (o traço alto do <strong>b, d, f, h, k, l</strong>); a que <strong>desce</strong> abaixo da linha de base é a <strong>descendente</strong> (o rabo do <strong>g, j, p, q, y</strong>). São elas que dão ritmo vertical a uma linha de texto, e fontes com ascendentes/descendentes curtos parecem mais "apertadas" e densas.</p>
 </div>
 
 ## A serifa, em detalhe
 
-Já que tanto se fala dela, vale conhecer os seus tipos — porque a forma da serifa diz muito sobre o caráter da letra:
+Já que tanto se fala dela, vale conhecer os seus tipos, porque a forma da serifa diz muito sobre o caráter da letra:
 
 - **Serifa-suporte (com colo/transição curva):** liga-se à haste por uma curva suave (*bracket*). Ar clássico e orgânico, típico das serifadas antigas.
 - **Serifa reta/fina (sem transição):** liga-se em ângulo seco, fina como um fio. Elegante e fria, das serifadas modernas (Didone).
@@ -85,7 +85,7 @@ Tudo isto se enquadra nas grandes famílias que explicámos em [serif, sans-seri
 
 Para além das partes, há atributos que caracterizam a fonte como um todo:
 
-- **Peso (*weight*):** a espessura dos traços — *thin*, *light*, *regular*, *medium*, *bold*, *black*. A mesma família costuma ter vários pesos.
+- **Peso (*weight*):** a espessura dos traços, *thin*, *light*, *regular*, *medium*, *bold*, *black*. A mesma família costuma ter vários pesos.
 - **Largura (*width*):** *condensed* (estreita), *regular*, *extended* (larga).
 - **Contraste:** a diferença entre os traços grossos e finos. Alto contraste (Didone) = elegante e frágil na impressão; baixo contraste (slab, muitas sans) = robusto.
 - **Eixo / inclinação do contraste (*stress*):** a direção em que a curva afina. Eixo inclinado evoca a pena caligráfica (humanistas); eixo vertical é mais moderno e racional.
@@ -93,7 +93,7 @@ Para além das partes, há atributos que caracterizam a fonte como um todo:
 
 ## Porque é que isto importa na prática
 
-Este vocabulário não é decoração académica — é ferramenta de trabalho:
+Este vocabulário não é decoração académica, é ferramenta de trabalho:
 
 - **Para escolher tipos:** sabes *porquê* uma fonte funciona melhor em corpo pequeno (altura-x generosa, contraformas abertas, baixo contraste) ou num título de luxo (alto contraste, serifas finas).
 - **Para falar com designers e gráficas:** "as serifas finas vão fechar na impressão sobre este papel poroso" é uma frase que evita um trabalho estragado (lembra o [ganho de ponto](/artigos/gramagem-do-papel-explicada/)).
@@ -102,7 +102,7 @@ Este vocabulário não é decoração académica — é ferramenta de trabalho:
 ## Confusões comuns
 
 **"Contraforma é o contorno da letra?"**
-Não. A contraforma (ou olho) é o **espaço interior** — o vazio dentro do **o**, do **e**, do **a**. É tão importante para a legibilidade como os traços: contraformas fechadas tornam a letra ilegível em corpo pequeno.
+Não. A contraforma (ou olho) é o **espaço interior**, o vazio dentro do **o**, do **e**, do **a**. É tão importante para a legibilidade como os traços: contraformas fechadas tornam a letra ilegível em corpo pequeno.
 
 **"Itálico é só letra inclinada."**
 Nem sempre. O **itálico** verdadeiro é um desenho cursivo distinto; a mera inclinação é **oblíquo**. Boas serifadas têm itálicos genuínos, com letras de forma diferente.
@@ -111,10 +111,10 @@ Nem sempre. O **itálico** verdadeiro é um desenho cursivo distinto; a mera inc
 Têm o mesmo **corpo**, mas podem parecer tamanhos diferentes conforme a **altura-x**. O olho lê a altura-x, não o ponto.
 
 **"Serifa é tudo igual."**
-Há serifas com colo curvo (clássicas), finas e secas (modernas) e grossas retangulares (slab). A forma da serifa define o caráter — e o comportamento na impressão.
+Há serifas com colo curvo (clássicas), finas e secas (modernas) e grossas retangulares (slab). A forma da serifa define o caráter, e o comportamento na impressão.
 
 ## Em resumo
 
 Uma letra é um pequeno organismo: assenta na **linha de base**, mede-se pela **altura-x** e pela **altura de maiúsculas**, e compõe-se de **hastes, bojos, contraformas, serifas, braços, pernas, caudas e espinhas**. A fonte inteira descreve-se por **peso, largura, contraste e eixo**.
 
-Dominar este vocabulário é dar o salto de "gosto desta letra" para "sei *porque* esta letra funciona" — e é o primeiro passo para usar tipografia como um profissional, não como quem só escolhe a que parece mais bonita no menu.
+Dominar este vocabulário é dar o salto de "gosto desta letra" para "sei *porque* esta letra funciona", e é o primeiro passo para usar tipografia como um profissional, não como quem só escolhe a que parece mais bonita no menu.

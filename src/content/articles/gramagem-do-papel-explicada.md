@@ -10,7 +10,7 @@ featured: false
 
 Quando pedes orçamento a uma gráfica, uma das primeiras perguntas que vais ouvir é: **"Qual é a gramagem?"**. Se nunca trabalhaste com impressão, é uma das perguntas mais misteriosas do mundo gráfico. O que é "gramagem"? Porque é importante? E porque varia tanto entre projetos?
 
-A boa notícia é que o conceito é simples. A menos boa é que as gramagens "certas" para cada projeto estão pouco padronizadas — depende muito da função, do orçamento e do efeito desejado.
+A boa notícia é que o conceito é simples. A menos boa é que as gramagens "certas" para cada projeto estão pouco padronizadas, depende muito da função, do orçamento e do efeito desejado.
 
 ## O que significa g/m²
 
@@ -18,12 +18,12 @@ A **gramagem** mede o **peso do papel por metro quadrado**, expresso em **gramas
 
 Um papel de 80g/m² pesa 80 gramas se cortares uma folha quadrada com 1 metro de lado. Um papel de 300g/m² pesa quase 4 vezes mais.
 
-Quanto maior o número, mais pesado o papel — e geralmente mais espesso, mais rígido, e com sensação mais "premium" ao toque.
+Quanto maior o número, mais pesado o papel, e geralmente mais espesso, mais rígido, e com sensação mais "premium" ao toque.
 
 <div class="tech-box">
 <div class="tech-label">Gramagem não é espessura: a "mão" do papel</div>
 <p>Gramagem é <strong>peso</strong> (g/m²), não espessura. A relação entre as duas chama-se <strong>mão do papel</strong> (ou volume específico): um papel de mão alta é "fofo" e ocupa muita espessura por grama; um de mão baixa é denso e compacto. Por isso a regra "mais gramagem = mais grosso" só vale <em>dentro do mesmo papel</em>.</p>
-<p>O caso que apanha toda a gente: um <strong>papel de edição (Ibérico) de 80g pode ser visivelmente mais espesso e encorpado do que um couché brilhante de 100g</strong> — apesar de pesar menos — porque tem mão muito mais alta. É por isto que os miolos de livros usam papéis de mão alta (mais corpo com menos peso, livro mais leve no correio). Onde a espessura real importa (cartões, capas, lombadas), mede-se em <strong>microns (µm)</strong>, não em gramas.</p>
+<p>O caso que apanha toda a gente: um <strong>papel de edição (Ibérico) de 80g pode ser visivelmente mais espesso e encorpado do que um couché brilhante de 100g</strong>, apesar de pesar menos, porque tem mão muito mais alta. É por isto que os miolos de livros usam papéis de mão alta (mais corpo com menos peso, livro mais leve no correio). Onde a espessura real importa (cartões, capas, lombadas), mede-se em <strong>microns (µm)</strong>, não em gramas.</p>
 </div>
 
 <figure class="article-figure">
@@ -128,24 +128,24 @@ Acima de 400g entramos em **cartolinas e cartões duplos** (frequentemente colag
 
 Para teres uma noção: subir de 250g para 300g num cartão de visita custa tipicamente **10-15% mais**. Subir de 130g para 170g num flyer pode custar **15-20% mais**. As gramagens muito altas (acima de 350g) frequentemente saltam para outra categoria de preço, pois exigem máquinas e processos diferentes.
 
-Em tiragens pequenas (centenas de unidades), a diferença absoluta é negligenciável — vale sempre a pena ir até à gramagem que faz o produto comunicar bem. Em tiragens grandes (dezenas de milhares), a diferença pode ser significativa.
+Em tiragens pequenas (centenas de unidades), a diferença absoluta é negligenciável, vale sempre a pena ir até à gramagem que faz o produto comunicar bem. Em tiragens grandes (dezenas de milhares), a diferença pode ser significativa.
 
 ## Confusões comuns
 
 **"Quero um papel grosso, 500g."**
-Para a maioria dos projetos, 500g é exagero — e em muitas máquinas nem é viável. 350g já é considerado premium em muitos contextos. Se procuras "grosso", pede também sugestões à gráfica.
+Para a maioria dos projetos, 500g é exagero, e em muitas máquinas nem é viável. 350g já é considerado premium em muitos contextos. Se procuras "grosso", pede também sugestões à gráfica.
 
 **"Quero um cartão de visita normal, fica bem 200g?"**
 200g vai parecer flácido na mão. Para cartão de visita profissional, 300g é o mínimo aceitável.
 
 **"Posso usar 170g como capa do meu catálogo?"**
-Tecnicamente sim, mas vai parecer fraco — uma capa em 170g dobra facilmente com o uso. 250g é o mínimo para capas decentes.
+Tecnicamente sim, mas vai parecer fraco, uma capa em 170g dobra facilmente com o uso. 250g é o mínimo para capas decentes.
 
 **"O reciclado precisa de gramagem maior porque é mais fraco?"**
 Não. Os papéis reciclados modernos têm resistência idêntica aos virgens. A gramagem escolhe-se pelos mesmos critérios.
 
 ## Como decidir
 
-A regra prática que serve para 90% dos casos: **escolhe a gramagem que parece bem na mão para o tipo de produto**. Se estás indeciso, pede amostras à gráfica em duas ou três gramagens — toca, dobra, vira contra a luz. A diferença entre 250g e 300g pode parecer marginal num número, mas é claramente percetível ao toque.
+A regra prática que serve para 90% dos casos: **escolhe a gramagem que parece bem na mão para o tipo de produto**. Se estás indeciso, pede amostras à gráfica em duas ou três gramagens, toca, dobra, vira contra a luz. A diferença entre 250g e 300g pode parecer marginal num número, mas é claramente percetível ao toque.
 
 E uma última nota: para projetos importantes, vale sempre a pena uma **prova física** antes da tiragem completa. Custa pouco e elimina surpresas. O papel que parece bem em catálogo pode parecer outra coisa quando está nas tuas mãos com a tua impressão real.

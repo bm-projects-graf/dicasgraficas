@@ -68,7 +68,7 @@
 <div class="wrap">
   <header>
     <h1>🔍 Inspetor de PDF para impressão</h1>
-    <p class="sub">Larga aqui um PDF e recebe um diagnóstico de prontidão para a máquina — cor, resolução, fontes e sangria. Tudo no teu navegador.</p>
+    <p class="sub">Larga aqui um PDF e recebe um diagnóstico de prontidão para a máquina, cor, resolução, fontes e sangria. Tudo no teu navegador.</p>
   </header>
 
   <div class="card">
@@ -77,7 +77,7 @@
       <h2>Arrasta o teu PDF para aqui</h2>
       <p>ou clica para escolher um ficheiro</p>
       <span class="btn">Escolher PDF</span>
-      <p class="priv">🔒 O ficheiro <strong>não sai do teu computador</strong> — a análise é 100% local.</p>
+      <p class="priv">🔒 O ficheiro <strong>não sai do teu computador</strong>, a análise é 100% local.</p>
       <input type="file" id="file" accept="application/pdf,.pdf" hidden />
     </div>
 
@@ -144,7 +144,7 @@
   }
 
   function render(r, f) {
-    var bannerTxt = { ok: "Pronto para a gráfica", aviso: "Quase lá — há avisos técnicos a rever", erro: "Atenção — há problemas a corrigir" };
+    var bannerTxt = { ok: "Pronto para a gráfica", aviso: "Quase lá, há avisos técnicos a rever", erro: "Atenção, há problemas a corrigir" };
     var bannerIco = { ok: "✅", aviso: "⚠️", erro: "⛔" };
     var html = '<div class="banner ' + r.overall + '"><span class="bi">' + bannerIco[r.overall] + '</span><span>' + bannerTxt[r.overall] +
       '<span class="fileinfo">' + escapeHtml(f.name) + " · " + fmtSize(f.size) + " · " + r.pages + (r.pages === 1 ? " página" : " páginas") + '</span></span></div>';
@@ -161,21 +161,21 @@
     if (rs.na) resBody = "Sem imagens colocadas para avaliar (documento vetorial ou só texto).";
     else if (rs.status === "ok") resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong>. Boa para impressão vista de perto.";
     else if (rs.status === "aviso") resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong> (abaixo de 300). Pode chegar para <strong>grande formato</strong> visto à distância, mas é arriscado para leitura de perto.";
-    else resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong> — muito baixa. Risco real de impressão pixelizada.";
+    else resBody = "Resolução mínima de <strong>~" + rs.minPPI + " PPI</strong>, muito baixa. Risco real de impressão pixelizada.";
     html += sec(rs.status, "Resolução das imagens", resBody, resMeta);
 
     // Fontes
     var ft = r.fontes, ftBody, ftMeta = "incorporadas: " + ft.embeddedCount + (ft.nonEmbedded.length ? " · em falta: " + ft.nonEmbedded.length : "");
-    if (ft.noFonts) ftBody = "Sem fontes a assinalar — o texto está vetorizado (em curvas) ou não há texto.";
+    if (ft.noFonts) ftBody = "Sem fontes a assinalar, o texto está vetorizado (em curvas) ou não há texto.";
     else if (ft.status === "ok") ftBody = "Todas as fontes do documento estão <strong>incorporadas</strong>. ✓";
     else ftBody = "Há fontes <strong>não incorporadas</strong>: " + ft.nonEmbedded.map(escapeHtml).join(", ") + ". Incorpora-as ou <strong>converte o texto em curvas</strong> no teu software de paginação.";
     html += sec(ft.status, "Fontes", ftBody, ftMeta);
 
     // Sangria
     var sg = r.sangria, sgBody, sgMeta = sg.hasTrim ? ("sangria mínima ~" + sg.minMM + " mm") : "sem TrimBox";
-    if (!sg.hasTrim) sgBody = "O PDF <strong>não define a TrimBox</strong> (tamanho final de corte) — típico de exports simples. Exporta com <strong>marcas de corte e 3 mm de sangria</strong> para a gráfica saber onde cortar.";
+    if (!sg.hasTrim) sgBody = "O PDF <strong>não define a TrimBox</strong> (tamanho final de corte), típico de exports simples. Exporta com <strong>marcas de corte e 3 mm de sangria</strong> para a gráfica saber onde cortar.";
     else if (sg.status === "ok") sgBody = "Sangria de <strong>~" + sg.minMM + " mm</strong> em todos os lados. ✓";
-    else if (sg.minMM <= 0.1) sgBody = "<strong>Sem sangria</strong> — a arte termina na linha de corte. Adiciona <strong>3 mm</strong> para evitar filetes brancos no corte.";
+    else if (sg.minMM <= 0.1) sgBody = "<strong>Sem sangria</strong>, a arte termina na linha de corte. Adiciona <strong>3 mm</strong> para evitar filetes brancos no corte.";
     else sgBody = "Sangria <strong>insuficiente (~" + sg.minMM + " mm)</strong>. Usa pelo menos <strong>3 mm</strong> para absorver a tolerância da guilhotina.";
     html += sec(sg.status, "Sangria (bleed)", sgBody, sgMeta);
 

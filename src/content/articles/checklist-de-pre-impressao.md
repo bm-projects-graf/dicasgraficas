@@ -1,6 +1,6 @@
 ---
 title: "Checklist de pré-impressão: 12 verificações antes de enviar"
-description: "A lista definitiva para conferir um ficheiro antes de o mandar para a gráfica: cor, resolução, bleed, fontes, preto, sobreimpressão, formato e mais — com as ferramentas para verificar cada ponto."
+description: "A lista definitiva para conferir um ficheiro antes de o mandar para a gráfica: cor, resolução, bleed, fontes, preto, sobreimpressão, formato e mais, com as ferramentas para verificar cada ponto."
 pubDate: 2026-06-13
 category: "Preparação de ficheiros"
 keywords: "checklist pré-impressão, verificar ficheiro antes de imprimir, preparar pdf gráfica, erros de impressão"
@@ -8,7 +8,7 @@ readingTime: "8 min"
 featured: true
 ---
 
-A diferença entre um trabalho que sai perfeito e um que volta com problemas (ou pior, que se descobre só depois de impresso) costuma estar em **detalhes que demoram segundos a verificar**. Esta é a checklist que vale a pena correr antes de carregar em "enviar" — com a explicação de cada ponto e as ferramentas para o conferir.
+A diferença entre um trabalho que sai perfeito e um que volta com problemas (ou pior, que se descobre só depois de impresso) costuma estar em **detalhes que demoram segundos a verificar**. Esta é a checklist que vale a pena correr antes de carregar em "enviar", com a explicação de cada ponto e as ferramentas para o conferir.
 
 Guarda esta página. É o teu **pré-flight pessoal**.
 
@@ -29,7 +29,7 @@ A impressão é [CMYK](/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/), n�
 
 ## 4. As fontes estão incorporadas (ou em curvas)?
 
-Se a fonte não viaja com o ficheiro, a gráfica vê outra letra. [Incorpora as fontes ou converte o texto em curvas](/artigos/fontes-incorporar-ou-converter-em-curvas/) — sobretudo nos logótipos.
+Se a fonte não viaja com o ficheiro, a gráfica vê outra letra. [Incorpora as fontes ou converte o texto em curvas](/artigos/fontes-incorporar-ou-converter-em-curvas/), sobretudo nos logótipos.
 → O [Inspetor de PDF](/inspetor-de-pdf/) lista fontes não incorporadas.
 
 ## 5. O preto está bem construído?
@@ -38,12 +38,12 @@ Texto pequeno em **preto puro** (K100); grandes áreas pretas em **[preto rico](
 
 ## 6. A sobreimpressão está correta?
 
-O preto de texto vai normalmente em [sobreimpressão (overprint)](/artigos/sobreimpressao-e-trapping/); o **branco nunca** — branco em overprint **desaparece** na máquina. Confirma os atributos de overprint dos teus elementos.
+O preto de texto vai normalmente em [sobreimpressão (overprint)](/artigos/sobreimpressao-e-trapping/); o **branco nunca**, branco em overprint **desaparece** na máquina. Confirma os atributos de overprint dos teus elementos.
 → Vê o efeito no [simulador de sobreimpressão vs vazado](/sobreimpressao-vs-vazado/).
 
 ## 7. O formato e a orientação estão certos?
 
-O documento está no tamanho final correto? Páginas na orientação certa? Para trabalhos de máquina, confirma que o produto encaixa bem na folha — e quantos saem por folha.
+O documento está no tamanho final correto? Páginas na orientação certa? Para trabalhos de máquina, confirma que o produto encaixa bem na folha, e quantos saem por folha.
 → Planeia na ferramenta de [aproveitamento de folha](/aproveitamento-de-folha/) e revê os [formatos de papel](/artigos/formatos-de-papel-a-b-c-sra/).
 
 ## 8. Os logótipos e ilustrações são vetoriais?
@@ -69,12 +69,12 @@ Se a cor é importante, nenhuma checklist substitui uma [prova de cor](/artigos/
 
 <div class="tech-box">
 <div class="tech-label">Atalho: deixa a máquina conferir por ti</div>
-<p>Os pontos 1, 2, 3 e 4 (cor, resolução, sangria e fontes) são os que mais estragam trabalhos — e são exatamente os que o nosso <a href="/inspetor-de-pdf/">Inspetor de PDF</a> verifica automaticamente. Larga lá o PDF final e tens um diagnóstico em segundos, sem enviar o ficheiro para lado nenhum. Usa-o como último passo antes de carregar em "enviar".</p>
+<p>Os pontos 1, 2, 3 e 4 (cor, resolução, sangria e fontes) são os que mais estragam trabalhos, e são exatamente os que o nosso <a href="/inspetor-de-pdf/">Inspetor de PDF</a> verifica automaticamente. Larga lá o PDF final e tens um diagnóstico em segundos, sem enviar o ficheiro para lado nenhum. Usa-o como último passo antes de carregar em "enviar".</p>
 </div>
 
 ## A regra acima de todas as regras
 
-Quando tiveres **qualquer** dúvida, **pergunta à gráfica antes de imprimir**. Cada gráfica tem o seu fluxo, os seus perfis e as suas preferências. Um email de 30 segundos a confirmar o perfil de cor ou o bleed poupa reimpressões inteiras. Ficheiros bem preparados não só evitam erros — fazem a gráfica trabalhar mais depressa e melhor para ti.
+Quando tiveres **qualquer** dúvida, **pergunta à gráfica antes de imprimir**. Cada gráfica tem o seu fluxo, os seus perfis e as suas preferências. Um email de 30 segundos a confirmar o perfil de cor ou o bleed poupa reimpressões inteiras. Ficheiros bem preparados não só evitam erros, fazem a gráfica trabalhar mais depressa e melhor para ti.
 
 ## Em resumo (a checklist em 12 pontos)
 
@@ -91,4 +91,4 @@ Quando tiveres **qualquer** dúvida, **pergunta à gráfica antes de imprimir**.
 11. **Papel/tiragem** adequados ✔
 12. **Prova** para cor crítica ✔
 
-Corre esta lista (e o [Inspetor de PDF](/inspetor-de-pdf/)) sempre antes de enviar. Vira hábito — e deixas de ter surpresas na receção do trabalho.
+Corre esta lista (e o [Inspetor de PDF](/inspetor-de-pdf/)) sempre antes de enviar. Vira hábito, e deixas de ter surpresas na receção do trabalho.

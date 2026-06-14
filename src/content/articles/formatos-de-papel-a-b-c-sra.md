@@ -8,13 +8,13 @@ readingTime: "8 min"
 featured: true
 ---
 
-Toda a gente conhece o A4 — mas porque é que tem exatamente 210 × 297 mm, e não um número redondo? E o que é um **SRA3**, esse formato que aparece nas gráficas e nas impressoras digitais? Por trás dos formatos de papel há uma lógica matemática elegante que vale a pena perceber, porque explica desde o A4 do escritório até ao formato da folha de máquina que escolhes para [aproveitar melhor o papel](/aproveitamento-de-folha/).
+Toda a gente conhece o A4, mas porque é que tem exatamente 210 × 297 mm, e não um número redondo? E o que é um **SRA3**, esse formato que aparece nas gráficas e nas impressoras digitais? Por trás dos formatos de papel há uma lógica matemática elegante que vale a pena perceber, porque explica desde o A4 do escritório até ao formato da folha de máquina que escolhes para [aproveitar melhor o papel](/aproveitamento-de-folha/).
 
 ## A série A e a magia do √2
 
 A série A é definida pela norma **ISO 216** e assenta numa ideia genial: **todos os formatos têm a mesma proporção**, e dobrar (ou cortar ao meio) um formato dá o formato seguinte.
 
-Essa proporção é **1 : √2** (1 : 1,414). É a única proporção em que, ao cortar uma folha ao meio no lado maior, as duas metades mantêm exatamente a mesma proporção do original. Por isso um A4 dobrado dá dois A5, um A3 cortado dá dois A4, e assim sucessivamente — sem nunca distorcer.
+Essa proporção é **1 : √2** (1 : 1,414). É a única proporção em que, ao cortar uma folha ao meio no lado maior, as duas metades mantêm exatamente a mesma proporção do original. Por isso um A4 dobrado dá dois A5, um A3 cortado dá dois A4, e assim sucessivamente, sem nunca distorcer.
 
 O ponto de partida é o **A0**, que tem uma **área de exatamente 1 m²** (841 × 1189 mm). A partir daí, cada número corta o anterior ao meio:
 
@@ -29,7 +29,7 @@ O ponto de partida é o **A0**, que tem uma **área de exatamente 1 m²** (841 �
 <g font-family="monospace" font-size="15" fill="#374151" text-anchor="middle">
 <text x="115" y="145">A1</text><text x="305" y="85">A2</text><text x="257" y="205">A3</text><text x="352" y="175">A4</text>
 </g>
-<text x="210" y="277" text-anchor="middle" font-family="monospace" font-size="11" fill="#9CA3AF">cada formato é metade do anterior — sempre na proporção 1:√2</text>
+<text x="210" y="277" text-anchor="middle" font-family="monospace" font-size="11" fill="#9CA3AF">cada formato é metade do anterior, sempre na proporção 1:√2</text>
 </svg>
 <figcaption>A série A é "encaixável": A0 contém dois A1, que contêm dois A2, e por aí fora. Cortar ao meio mantém sempre a mesma proporção (1:√2), e por isso ampliar um A4 para A3 não corta nada.</figcaption>
 </figure>
@@ -67,10 +67,10 @@ Aqui chegamos ao que confunde quem entra numa gráfica: os formatos **SRA** (e R
 
 Porquê maiores? Porque uma folha que vai ser impressa precisa de espaço extra para duas coisas:
 
-1. **Bleed** — a tinta que se prolonga para além do corte (vê [bleed e linha de corte](/artigos/bleed-margem-de-seguranca-linha-de-corte/)).
-2. **Pinça e marcas** — a zona por onde a máquina agarra a folha e as marcas de corte/registo.
+1. **Bleed**, a tinta que se prolonga para além do corte (vê [bleed e linha de corte](/artigos/bleed-margem-de-seguranca-linha-de-corte/)).
+2. **Pinça e marcas**, a zona por onde a máquina agarra a folha e as marcas de corte/registo.
 
-O **SRA** (*Supplementary Raw format A*) dá essa margem. O exemplo mais conhecido é o **SRA3: 320 × 450 mm** — maior que o A3 (297 × 420), o tamanho-padrão das impressoras digitais profissionais, precisamente para imprimir um A3 **com bleed**.
+O **SRA** (*Supplementary Raw format A*) dá essa margem. O exemplo mais conhecido é o **SRA3: 320 × 450 mm**, maior que o A3 (297 × 420), o tamanho-padrão das impressoras digitais profissionais, precisamente para imprimir um A3 **com bleed**.
 
 | Formato | Medidas (mm) | Para imprimir… |
 |---|---|---|
@@ -82,7 +82,7 @@ O **SRA** (*Supplementary Raw format A*) dá essa margem. O exemplo mais conheci
 
 <div class="tech-box">
 <div class="tech-label">Porque é que isto importa para o teu orçamento</div>
-<p>A folha que entra na máquina é um formato SRA (ou um formato de máquina maior, como 70×100 cm). Quantos produtos finais cabem nessa folha determina o custo por unidade. É exatamente essa conta que o nosso <a href="/aproveitamento-de-folha/">otimizador de aproveitamento de folha</a> faz — dá-lhe o formato de máquina e o do produto e vê quantos saem à folha e quanto se desperdiça.</p>
+<p>A folha que entra na máquina é um formato SRA (ou um formato de máquina maior, como 70×100 cm). Quantos produtos finais cabem nessa folha determina o custo por unidade. É exatamente essa conta que o nosso <a href="/aproveitamento-de-folha/">otimizador de aproveitamento de folha</a> faz, dá-lhe o formato de máquina e o do produto e vê quantos saem à folha e quanto se desperdiça.</p>
 </div>
 
 ## E os formatos americanos?
@@ -92,22 +92,22 @@ Os EUA (e parte do Canadá e México) não usam a série ISO. Usam formatos defi
 | Formato | Polegadas | mm | Equivalente |
 |---|---|---|---|
 | Letter | 8,5 × 11 | 216 × 279 | ~A4 (mas mais largo e baixo) |
-| Legal | 8,5 × 14 | 216 × 356 | — |
+| Legal | 8,5 × 14 | 216 × 356 |, |
 | Tabloid / Ledger | 11 × 17 | 279 × 432 | ~A3 |
 
-Como não têm proporção constante, ampliar de Letter para Tabloid **não** encaixa certinho como o A4→A3. Se trabalhas para clientes americanos, atenção a esta diferença — um design feito em A4 não cabe perfeitamente em Letter.
+Como não têm proporção constante, ampliar de Letter para Tabloid **não** encaixa certinho como o A4→A3. Se trabalhas para clientes americanos, atenção a esta diferença, um design feito em A4 não cabe perfeitamente em Letter.
 
 ## Confusões comuns
 
 **"A4 é o tamanho-base."**
-O tamanho-base da série é o **A0** (1 m²). O A4 é só o quarto corte a partir do A0 — é o mais comum no dia a dia, mas não é a referência.
+O tamanho-base da série é o **A0** (1 m²). O A4 é só o quarto corte a partir do A0, é o mais comum no dia a dia, mas não é a referência.
 
 **"Posso imprimir um A3 com bleed numa folha A3."**
-Não cabe. Um A3 com 3 mm de bleed de cada lado mede 303 × 426 mm — precisa de uma folha **SRA3** (320 × 450) que dê espaço ao bleed e às marcas.
+Não cabe. Um A3 com 3 mm de bleed de cada lado mede 303 × 426 mm, precisa de uma folha **SRA3** (320 × 450) que dê espaço ao bleed e às marcas.
 
 **"Letter é igual a A4."**
 São parecidos mas diferentes: Letter é mais largo (216 vs 210 mm) e mais baixo (279 vs 297 mm). Um PDF A4 impresso em Letter (ou vice-versa) fica com margens erradas.
 
 ## Em resumo
 
-A série **A** assenta na proporção 1:√2 e no A0 de 1 m², o que faz os formatos encaixarem e ampliarem sem distorção. A série **C** é para envelopes (C4 leva um A4), a **B** fica no meio. Os formatos **SRA/RA** são maiores, feitos para imprimir com **bleed e pinça** — por isso o A3 se imprime em SRA3. E os formatos **americanos** (Letter, Legal, Tabloid) seguem outra lógica, em polegadas. Saber isto ajuda-te a escolher a folha certa e a [aproveitá-la ao máximo](/aproveitamento-de-folha/).
+A série **A** assenta na proporção 1:√2 e no A0 de 1 m², o que faz os formatos encaixarem e ampliarem sem distorção. A série **C** é para envelopes (C4 leva um A4), a **B** fica no meio. Os formatos **SRA/RA** são maiores, feitos para imprimir com **bleed e pinça**, por isso o A3 se imprime em SRA3. E os formatos **americanos** (Letter, Legal, Tabloid) seguem outra lógica, em polegadas. Saber isto ajuda-te a escolher a folha certa e a [aproveitá-la ao máximo](/aproveitamento-de-folha/).

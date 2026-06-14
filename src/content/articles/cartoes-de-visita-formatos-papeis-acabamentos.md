@@ -8,7 +8,7 @@ readingTime: "10 min"
 featured: true
 ---
 
-O cartão de visita é o produto gráfico mais pequeno que existe — e, ironicamente, aquele onde mais se nota a diferença entre um trabalho profissional e um amador. É um objeto que a pessoa **pega na mão, vira, sente**. Um cartão fininho e mole comunica tanto quanto um cartão encorpado com um bom acabamento: só que comunica o contrário.
+O cartão de visita é o produto gráfico mais pequeno que existe, e, ironicamente, aquele onde mais se nota a diferença entre um trabalho profissional e um amador. É um objeto que a pessoa **pega na mão, vira, sente**. Um cartão fininho e mole comunica tanto quanto um cartão encorpado com um bom acabamento: só que comunica o contrário.
 
 Este guia cobre tudo o que precisas de decidir antes de mandar imprimir: formato, papel, acabamentos e a preparação do ficheiro. No fim, sabes exatamente o que pedir à gráfica.
 
@@ -25,20 +25,20 @@ Há variações que vale a pena conhecer:
 | Quadrado | 55 × 55 mm | Moderno, destaca-se, mas não cabe tão bem |
 | Mini / slim | 85 × 40 mm | Original, menos espaço útil |
 
-**Conselho:** a não ser que tenhas uma boa razão criativa, fica pelo **85 × 55 mm**. É o que encaixa em todo o lado, e "encaixar" é meio trabalho de um cartão. Os formatos especiais destacam-se — mas alguns não cabem nos porta-cartões, e isso pode significar irem parar ao lixo.
+**Conselho:** a não ser que tenhas uma boa razão criativa, fica pelo **85 × 55 mm**. É o que encaixa em todo o lado, e "encaixar" é meio trabalho de um cartão. Os formatos especiais destacam-se, mas alguns não cabem nos porta-cartões, e isso pode significar irem parar ao lixo.
 
 <div class="tech-box">
 <div class="tech-label">Bleed: não te esqueças</div>
-<p>Se o teu cartão tem cor ou imagem até à beira, o ficheiro tem de incluir <strong>bleed</strong>: normalmente <strong>3 mm extra</strong> para lá da linha de corte, de cada lado. Sem bleed, o corte — que tem sempre uma pequena tolerância — pode deixar uma linha branca na borda. Se este conceito é novo para ti, lê o <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">guia de bleed, margem de segurança e linha de corte</a> antes de exportar.</p>
+<p>Se o teu cartão tem cor ou imagem até à beira, o ficheiro tem de incluir <strong>bleed</strong>: normalmente <strong>3 mm extra</strong> para lá da linha de corte, de cada lado. Sem bleed, o corte, que tem sempre uma pequena tolerância, pode deixar uma linha branca na borda. Se este conceito é novo para ti, lê o <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">guia de bleed, margem de segurança e linha de corte</a> antes de exportar.</p>
 </div>
 
 ## O papel: a gramagem faz o cartão
 
-Se há uma decisão que define a qualidade percebida de um cartão, é a **gramagem** — o peso/espessura do papel. Um cartão de visita comunica pela mão antes de comunicar pelos olhos.
+Se há uma decisão que define a qualidade percebida de um cartão, é a **gramagem**, o peso/espessura do papel. Um cartão de visita comunica pela mão antes de comunicar pelos olhos.
 
-- **300 g/m² — o mínimo profissional.** Abaixo disto, o cartão parece flácido. 300 g é o piso aceitável.
-- **350 g/m² — o ponto doce.** Encorpado, firme, sensação de qualidade sem custo exagerado. É a escolha recomendada para a maioria.
-- **400 g/m² e acima — premium.** Rígido, "faz declaração". Frequente em cartões com acabamentos especiais ou colagens de duas camadas.
+- **300 g/m², o mínimo profissional.** Abaixo disto, o cartão parece flácido. 300 g é o piso aceitável.
+- **350 g/m², o ponto doce.** Encorpado, firme, sensação de qualidade sem custo exagerado. É a escolha recomendada para a maioria.
+- **400 g/m² e acima, premium.** Rígido, "faz declaração". Frequente em cartões com acabamentos especiais ou colagens de duas camadas.
 
 Para a explicação completa de gramagens e como elas se sentem, vê a [gramagem do papel explicada](/artigos/gramagem-do-papel-explicada/).
 
@@ -60,17 +60,17 @@ Uma película fina aplicada sobre o cartão. Protege e muda o toque:
 
 - **Mate:** sóbrio, elegante, anti-reflexo, toque suave. Muito popular em marcas modernas.
 - **Brilhante:** realça as cores, ar vivo. Menos "premium" hoje em dia, mas funciona para certos setores.
-- **Soft touch:** o "toque aveludado". Sensação premium imediata, quase como pele. O mais cobiçado — e o mais caro dos três.
+- **Soft touch:** o "toque aveludado". Sensação premium imediata, quase como pele. O mais cobiçado, e o mais caro dos três.
 
 Para a diferença detalhada entre eles, vê [plastificado mate, brilhante e soft touch](/artigos/plastificado-mate-brilhante-soft-touch/).
 
 ### Verniz localizado (UV spot)
 
-Verniz brilhante aplicado **só em zonas específicas** — o logótipo, um nome, um elemento gráfico. Cria contraste entre brilhante e mate sem cor extra. Fica espetacular sobre laminado mate. Explicação completa em [verniz UV: total, reserva e efeito mate-brilhante](/artigos/verniz-uv-total-reserva-efeito-mate-brilhante/).
+Verniz brilhante aplicado **só em zonas específicas**, o logótipo, um nome, um elemento gráfico. Cria contraste entre brilhante e mate sem cor extra. Fica espetacular sobre laminado mate. Explicação completa em [verniz UV: total, reserva e efeito mate-brilhante](/artigos/verniz-uv-total-reserva-efeito-mate-brilhante/).
 
 ### Hot stamping (estampagem a quente)
 
-Aplicação de uma folha metálica (ouro, prata, cobre, holográfica) com calor e pressão. É o acabamento de luxo por excelência. Aquele dourado verdadeiro e refletor que o CMYK nunca consegue fazer — só hot stamping ou cor metálica.
+Aplicação de uma folha metálica (ouro, prata, cobre, holográfica) com calor e pressão. É o acabamento de luxo por excelência. Aquele dourado verdadeiro e refletor que o CMYK nunca consegue fazer, só hot stamping ou cor metálica.
 
 ### Relevo e baixo-relevo
 
@@ -82,7 +82,7 @@ Desde simples **cantos arredondados** (suaves, amigáveis) até cortes personali
 
 <div class="tech-box">
 <div class="tech-label">Cuidado com o exagero</div>
-<p>Soft touch + verniz localizado + hot stamping + relevo no mesmo cartão não é "luxo a dobrar" — é caro e confuso. Os melhores cartões escolhem <strong>um acabamento de destaque</strong> e deixam-no respirar. Um bom 350 g com laminado mate e um hot stamping discreto no nome comunica mais do que um cartão com cinco efeitos a brigar.</p>
+<p>Soft touch + verniz localizado + hot stamping + relevo no mesmo cartão não é "luxo a dobrar", é caro e confuso. Os melhores cartões escolhem <strong>um acabamento de destaque</strong> e deixam-no respirar. Um bom 350 g com laminado mate e um hot stamping discreto no nome comunica mais do que um cartão com cinco efeitos a brigar.</p>
 </div>
 
 ## Preparar o ficheiro: a checklist que evita desastres
@@ -99,7 +99,7 @@ Antes de enviar para a gráfica, confirma:
 
 ## Quantos imprimir?
 
-O cartão de visita tem uma economia particular: **o grosso do custo está na preparação** (chapas, acertos, acabamentos), não no papel. Por isso, imprimir 100 ou 500 custa quase o mesmo por unidade no arranque — o preço por cartão desce muito com a quantidade.
+O cartão de visita tem uma economia particular: **o grosso do custo está na preparação** (chapas, acertos, acabamentos), não no papel. Por isso, imprimir 100 ou 500 custa quase o mesmo por unidade no arranque, o preço por cartão desce muito com a quantidade.
 
 - **100-250:** para uso pessoal ou quem distribui pouco.
 - **500:** o ponto de equilíbrio para a maioria dos profissionais.
@@ -116,7 +116,7 @@ Pensa também na **durabilidade da informação**: se mudas de número, morada o
 Não. O CMYK faz um castanho-amarelado, não um dourado metálico. Para ouro verdadeiro precisas de **hot stamping** ou **Pantone metálico**.
 
 **"Posso pôr texto rente à borda para aproveitar o espaço?"**
-Não. Qualquer coisa a menos de 3-4 mm da borda arrisca ser cortada. O corte tem tolerância — respeita a margem de segurança.
+Não. Qualquer coisa a menos de 3-4 mm da borda arrisca ser cortada. O corte tem tolerância, respeita a margem de segurança.
 
 **"Mando em RGB que depois a gráfica converte."**
 Arriscas surpresas de cor. Converte tu para CMYK e vê o resultado antes de entregar; assim controlas o que sai.
@@ -125,4 +125,4 @@ Arriscas surpresas de cor. Converte tu para CMYK e vê o resultado antes de entr
 
 Um bom cartão de visita resolve-se com poucas decisões certas: **85 × 55 mm**, **350 g**, um **laminado** que combine com a marca, no máximo **um acabamento de destaque**, e um **ficheiro bem preparado** com bleed, CMYK e 300 DPI. Faz isto e tens um objeto que comunica profissionalismo antes de dizeres uma palavra.
 
-E como sempre na impressão: para um trabalho que vais distribuir às centenas, vale a pena uma **prova física** antes da tiragem. Quando [pedires orçamento](/artigos/como-pedir-orcamento-a-uma-grafica/), indica logo gramagem, acabamentos e quantidade — é o que a gráfica precisa para te dar um preço sério à primeira.
+E como sempre na impressão: para um trabalho que vais distribuir às centenas, vale a pena uma **prova física** antes da tiragem. Quando [pedires orçamento](/artigos/como-pedir-orcamento-a-uma-grafica/), indica logo gramagem, acabamentos e quantidade, é o que a gráfica precisa para te dar um preço sério à primeira.

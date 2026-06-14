@@ -6,7 +6,7 @@
 // ============================================
 
 export interface Category {
-  /** Nome exato — tem de coincidir com o enum em content.config.ts */
+  /** Nome exato, tem de coincidir com o enum em content.config.ts */
   title: string;
   slug: string;
   /** Descrição longa (página da categoria) */
@@ -106,8 +106,8 @@ export const categories: Category[] = [
   {
     title: 'Design gráfico',
     slug: 'design-grafico',
-    short: 'A essência, a história e os estilos da comunicação visual — e quem a faz.',
-    description: 'O que é o design gráfico, a sua história, os grandes estilos ao longo do tempo, e os criadores — incluindo portugueses reconhecidos lá fora.',
+    short: 'A essência, a história e os estilos da comunicação visual, e quem a faz.',
+    description: 'O que é o design gráfico, a sua história, os grandes estilos ao longo do tempo, e os criadores, incluindo portugueses reconhecidos lá fora.',
     color: '#EA580C',
     number: '10',
     icon: '<path d="M5 19l2.5-7L15 4.5a2.1 2.1 0 0 1 3 0l1.5 1.5a2.1 2.1 0 0 1 0 3L12 16.5 5 19z" /><path d="M14 6l4 4" />'
