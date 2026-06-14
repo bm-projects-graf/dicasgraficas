@@ -48,6 +48,10 @@
   .paper-dark::after { opacity:0.35; }
   #art { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:multiply; display:none; pointer-events:none; }
   #view { position:absolute; inset:0; width:100%; height:100%; }
+  /* círculo que mostra o tamanho real do pincel, a seguir o cursor */
+  .brush-cursor { position:absolute; transform:translate(-50%,-50%); border-radius:50%; pointer-events:none; z-index:5;
+    border:1.5px solid rgba(34,211,238,0.95); background:rgba(34,211,238,0.22); box-shadow:0 0 0 1px rgba(0,0,0,0.25); }
+  .brush-cursor.erase { border-color:rgba(248,113,113,0.95); background:rgba(248,113,113,0.18); }
   .placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:1.5rem; pointer-events:none; }
   .placeholder span { color:rgba(255,255,255,0.78); font-size:0.92rem; max-width:320px; }
   .paper-white .placeholder span { color:rgba(0,0,0,0.45); }
@@ -96,8 +100,11 @@
     <div class="paper paper-dark" id="paper"></div>
     <img id="art" alt="" />
     <canvas id="view"></canvas>
+    <div class="brush-cursor" id="brushCursor" hidden></div>
     <div class="placeholder" id="ph"><span>Escolhe um papel e pinta o verniz, ou carrega um grafismo para o veres impresso no suporte.</span></div>
   </div>
+
+  <p class="hint" style="margin-top:0.8rem;">💡 O brilho do verniz só aparece quando <strong>passas o rato por cima</strong> da zona pintada, tal como o Spot UV reflete a luz na realidade.</p>
 
   <div class="dica">
     <span class="lbl">Porque é que isto importa</span>
@@ -134,6 +141,7 @@
   var mx = 0, my = 0;         // posição do rato para o reflexo (px de dispositivo)
   var hasImg = false;
   var rafPending = false;
+  var bc = $("brushCursor"), hovering = false, bcTimer = null;
 
   function sizeCanvases() {
     var r = stage.getBoundingClientRect();
@@ -152,7 +160,18 @@
   // converte um evento de ponteiro em coordenadas de canvas (px de dispositivo)
   function pos(e) {
     var r = stage.getBoundingClientRect();
-    return { x: (e.clientX - r.left) * dpr, y: (e.clientY - r.top) * dpr };
+    var cx = e.clientX - r.left, cy = e.clientY - r.top;
+    return { x: cx * dpr, y: cy * dpr, cx: cx, cy: cy };
+  }
+
+  // círculo-cursor que mostra o tamanho do pincel (em px CSS, a seguir o cursor)
+  function setBrushCursorSize() { if (bc) { bc.style.width = size + "px"; bc.style.height = size + "px"; } }
+  function updateBrushCursor(cx, cy) {
+    if (!bc) return;
+    bc.classList.toggle("erase", tool === "apagador");
+    setBrushCursorSize();
+    bc.style.left = cx + "px"; bc.style.top = cy + "px";
+    bc.hidden = false;
   }
 
   // ---- Pintura na máscara ----
@@ -224,18 +243,19 @@
 
   // ---- Ponteiro (rato + toque) ----
   stage.addEventListener("pointerdown", function (e) {
-    var p = pos(e); mx = p.x; my = p.y;
-    if (tool) { painting = true; lastX = p.x; lastY = p.y; stroke(p.x, p.y); try { stage.setPointerCapture(e.pointerId); } catch (_) {} render(); }
+    var p = pos(e); mx = p.x; my = p.y; hovering = true;
+    if (tool) { painting = true; lastX = p.x; lastY = p.y; stroke(p.x, p.y); updateBrushCursor(p.cx, p.cy); try { stage.setPointerCapture(e.pointerId); } catch (_) {} render(); }
   });
   stage.addEventListener("pointermove", function (e) {
-    var p = pos(e); mx = p.x; my = p.y;
+    var p = pos(e); mx = p.x; my = p.y; hovering = true;
+    if (tool) updateBrushCursor(p.cx, p.cy); else if (bc) bc.hidden = true;
     if (painting && tool) { stroke(p.x, p.y); render(); }
     else scheduleRender(); // só atualiza o reflexo
   });
   function endStroke() { if (painting) { painting = false; render(); } }
   stage.addEventListener("pointerup", endStroke);
   stage.addEventListener("pointercancel", endStroke);
-  stage.addEventListener("pointerleave", function () { if (!painting) { mx = W / 2; my = H / 2; scheduleRender(); } });
+  stage.addEventListener("pointerleave", function () { hovering = false; if (bc) bc.hidden = true; if (!painting) { mx = W / 2; my = H / 2; scheduleRender(); } });
 
   // ---- Inclinação no telemóvel: move o reflexo (opcional) ----
   window.addEventListener("deviceorientation", function (e) {
@@ -259,16 +279,26 @@
     tool = t;
     $("brush").classList.toggle("on", t === "verniz");
     $("eraser").classList.toggle("on", t === "apagador");
-    stage.style.cursor = t ? "crosshair" : "default";
+    stage.style.cursor = t ? "none" : "default";
+    if (!t && bc) bc.hidden = true;
     $("modehint").textContent = t === "verniz"
-      ? "Modo verniz ativo. Arrasta sobre a imagem para aplicar; larga para ver o brilho."
-      : (t === "apagador" ? "Modo apagador. Arrasta sobre as zonas a remover." : "A ver o brilho. Passa o rato por cima do verniz.");
+      ? "Modo verniz ativo. Arrasta sobre a imagem para aplicar. Depois passa o rato por cima da zona pintada para ver o brilho."
+      : (t === "apagador" ? "Modo apagador. Arrasta sobre as zonas a remover." : "A ver o brilho. Passa o rato por cima das zonas com verniz para o veres reagir à luz.");
     render();
   }
   $("brush").addEventListener("click", function () { setTool(tool === "verniz" ? null : "verniz"); });
   $("eraser").addEventListener("click", function () { setTool(tool === "apagador" ? null : "apagador"); });
   $("clear").addEventListener("click", function () { if (mctx) mctx.clearRect(0, 0, W, H); render(); });
-  $("size").addEventListener("input", function () { size = parseInt(this.value, 10) || 22; $("sizeval").textContent = size; });
+  $("size").addEventListener("input", function () {
+    size = parseInt(this.value, 10) || 22; $("sizeval").textContent = size;
+    setBrushCursorSize();
+    if (tool && bc) { // mostra logo o tamanho, ao centro, durante uns instantes
+      var r = stage.getBoundingClientRect();
+      bc.classList.toggle("erase", tool === "apagador");
+      bc.style.left = (r.width / 2) + "px"; bc.style.top = (r.height / 2) + "px"; bc.hidden = false;
+      clearTimeout(bcTimer); bcTimer = setTimeout(function () { if (!hovering) bc.hidden = true; }, 1300);
+    }
+  });
 
   // ---- Upload da imagem ----
   $("pick").addEventListener("click", function () { $("file").click(); });
