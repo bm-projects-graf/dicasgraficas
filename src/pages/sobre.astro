@@ -1,10 +1,42 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const siteUrl = 'https://dicasgraficas.com';
+
+// Identidade do autor (E-E-A-T): quem escreve e porque é que sabe do assunto.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': `${siteUrl}/#autor`,
+    name: 'Bruno Miguel Vieira Moluras',
+    alternateName: 'Bruno Moluras',
+    jobTitle: 'CEO da Onda Grafe e vice-presidente da APIGRAF',
+    description:
+      'Profissional de artes gráficas desde 1994. CEO da Onda Grafe e vice-presidente da APIGRAF, a associação portuguesa das indústrias gráficas. Escreve sobre impressão, papel, cor e acabamentos.',
+    url: `${siteUrl}/sobre/`,
+    email: 'bruno.moluras@ondagrafe.pt',
+    worksFor: { '@id': `${siteUrl}/#organization` },
+    memberOf: { '@type': 'Organization', name: 'APIGRAF', url: 'https://www.apigraf.pt' },
+    knowsAbout: [
+      'Artes gráficas',
+      'Impressão offset',
+      'Impressão digital',
+      'Pré-impressão',
+      'Gestão de cor',
+      'Papel e suportes',
+      'Acabamentos gráficos',
+      'Encadernação'
+    ]
+  }
+};
 ---
 
 <Base
   title="Sobre o projeto | dicasgraficas.com"
-  description="O dicasgraficas.com é um projeto editorial criado pela Onda Grafe para partilhar, de forma gratuita e rigorosa, conhecimento sobre artes gráficas em Portugal."
+  description="O dicasgraficas.com é um projeto editorial da Onda Grafe, escrito por Bruno Moluras, profissional de artes gráficas desde 1994 e vice-presidente da APIGRAF."
+  schema={schema}
 >
   <div class="static-page">
     <div class="container container-narrow">
@@ -22,12 +54,31 @@ import Base from '../layouts/Base.astro';
         Este projeto existe para mudar isso: <strong>reunir, explicar e preservar</strong> o conhecimento gráfico, de forma rigorosa mas acessível. De Gutenberg ao digital, da gramagem do papel à ciência da cor, queremos ser o lugar onde quem trabalha, ensina ou estuda as artes gráficas encontra explicações de confiança.
       </p>
 
+      <h2>Quem escreve</h2>
+      <p>
+        Os artigos deste site são escritos por <strong>Bruno Miguel Vieira Moluras</strong>, que trabalha em artes
+        gráficas <strong>desde 1994</strong>. É <strong>CEO da <a href="https://www.ondagrafe.pt" target="_blank" rel="noopener">Onda Grafe</a></strong>
+        e <strong>vice-presidente da APIGRAF</strong>, a associação portuguesa das indústrias gráficas, de comunicação
+        visual e transformadoras do papel.
+      </p>
+      <p>
+        Isto quer dizer uma coisa simples: o que lês aqui <strong>não vem de uma pesquisa na internet</strong>, vem de
+        três décadas dentro do setor, de máquinas, papel, tinta, orçamentos e trabalhos que correram bem e mal. É
+        também alguém que segue de perto o que está a mudar, das novas tecnologias de impressão à
+        <strong>inteligência artificial</strong>, e que acredita que o conhecimento do setor deve ser partilhado, não
+        guardado.
+      </p>
+      <p>
+        Se encontrares um erro, ou quiseres discutir um ponto técnico, <a href="/contacto/">fala connosco</a>. As
+        correções são bem-vindas e o site é atualizado quando é preciso.
+      </p>
+
       <h2>Quem está por trás: a Onda Grafe</h2>
       <p>
         A <strong>Onda Grafe</strong> é uma empresa portuguesa de artes gráficas. Vive de imprimir, todos os dias, e foi dessa experiência que nasceu a vontade de <strong>partilhar o que sabe</strong> com quem está a começar, a estudar ou simplesmente curioso sobre este mundo.
       </p>
       <p>
-        Este site é o nosso contributo para o setor: um espaço onde devolvemos parte do conhecimento que acumulámos, e onde damos a conhecer, com transparência, quem somos e o que fazemos. As cores do site, o azul que vês por todo o lado, são, aliás, as cores da própria Onda Grafe.
+        Este site é o nosso contributo para o setor: um espaço onde devolvemos parte do conhecimento que acumulámos, e onde damos a conhecer, com transparência, quem somos e o que fazemos.
       </p>
 
       <h2>Conteúdo para quem ensina e aprende</h2>

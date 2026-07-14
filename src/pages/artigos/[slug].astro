@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import ArticleAudio from '../../components/ArticleAudio.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
 import { getCollection, render } from 'astro:content';
 import { getCategory } from '../../data/categories';
 import { byInteresse } from '../../data/article-order';
@@ -45,7 +46,18 @@ const schema = [
     keywords: article.data.keywords ?? undefined,
     image: `${siteUrl}/og-default.png`,
     mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
-    author: { '@type': 'Organization', name: 'Onda Grafe', url: 'https://www.ondagrafe.pt' },
+    author: {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#autor`,
+      name: 'Bruno Miguel Vieira Moluras',
+      alternateName: 'Bruno Moluras',
+      jobTitle: 'CEO da Onda Grafe e vice-presidente da APIGRAF',
+      description: 'Profissional de artes gráficas desde 1994. CEO da Onda Grafe e vice-presidente da APIGRAF, a associação portuguesa das indústrias gráficas.',
+      url: `${siteUrl}/sobre/`,
+      worksFor: { '@id': `${siteUrl}/#organization` },
+      memberOf: { '@type': 'Organization', name: 'APIGRAF', url: 'https://www.apigraf.pt' },
+      knowsAbout: ['Artes gráficas', 'Impressão offset', 'Pré-impressão', 'Gestão de cor', 'Papel', 'Acabamentos gráficos', 'Encadernação']
+    },
     publisher: { '@id': `${siteUrl}/#organization` }
   },
   {
@@ -79,7 +91,10 @@ const schema = [
         <a href={`/categorias/${categorySlug}/`} class="masthead-cat">{article.data.category}</a>
         <h1 class="masthead-title">{article.data.title}</h1>
         <p class="masthead-desc">{article.data.description}</p>
-        {article.data.readingTime && <div class="masthead-info">{article.data.readingTime} de leitura</div>}
+        <div class="masthead-info">
+          <span class="masthead-autor">por <strong>Bruno Moluras</strong>, CEO da Onda Grafe e vice-presidente da APIGRAF</span>
+          {article.data.readingTime && <span class="masthead-tempo">{article.data.readingTime} de leitura</span>}
+        </div>
       </div>
       <span class="masthead-icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${cat?.icon ?? ''}</svg>`} />
       <span class="masthead-stripe" aria-hidden="true"></span>
@@ -92,6 +107,7 @@ const schema = [
     <div class="article-body">
       <div class="container container-narrow">
         <Content />
+        <AuthorBox />
       </div>
     </div>
   </article>

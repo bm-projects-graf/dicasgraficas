@@ -1230,11 +1230,28 @@ article[style*="--cat"] .article-body a { color: var(--cat); }
   max-width: 46ch;
 }
 .masthead-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+.masthead-autor {
+  font-size: 0.92rem;
+  max-width: 52ch;
+}
+.masthead-autor strong { font-weight: 700; }
+.masthead-tempo {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding-left: 1rem;
+}
+@media (max-width: 600px) {
+  .masthead-tempo { border-left: none; padding-left: 0; }
 }
 .masthead-icon {
   position: absolute;
