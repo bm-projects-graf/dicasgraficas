@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Simulador de verniz localizado (Spot UV) | dicasgraficas.com</title>
+<title>Simulador de acabamentos: verniz UV, glitter, prata e ouro | dicasgraficas.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -30,6 +30,7 @@
   .toolbar button.danger { color:#B91C1C; }
   .toolbar button:disabled { opacity:0.45; cursor:not-allowed; }
   .swatches { display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem; }
+  .swatches[hidden] { display:none; }   /* o display:flex acima anulava o atributo hidden */
   .swatches .lbl { font-size:0.82rem; color:var(--texto2); }
   .swatches .sw { width:24px; height:24px; border-radius:6px; border:2px solid #fff; box-shadow:0 0 0 1px var(--borda); cursor:pointer; padding:0; }
   .swatches .sw.on { box-shadow:0 0 0 2px var(--cor); }
@@ -72,8 +73,8 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>✨ Verniz localizado (Spot UV)</h1>
-    <p class="sub">Vê como a tinta CMYK (transparente) se comporta em papéis escuros e pinta com o pincel o efeito de verniz brilhante. Passa o rato por cima para ver o reflexo a mexer.</p>
+    <h1>✨ Acabamentos especiais</h1>
+    <p class="sub">Vê como a tinta CMYK (transparente) se comporta em papéis escuros e aplica <strong>verniz localizado (Spot UV)</strong>, <strong>glitter</strong> a cores, ou <strong>prata</strong> e <strong>ouro</strong> estampados. Passa o rato por cima para ver o reflexo a mexer.</p>
   </header>
 
   <div class="card">
