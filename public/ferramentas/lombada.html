@@ -6,51 +6,50 @@
 <title>Calculadora de lombada | dicasgraficas.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-  :root { --azul:#1B6FA8; --azul-escuro:#0F4A7A; --texto:#1A1A1A; --texto2:#6B7280; --borda:#E5E7EB; --bg:#F9FAFB; --bg-card:#FFFFFF; --aviso-bg:#FEF3C7; --aviso-borda:#F59E0B; --dica-bg:#EFF6FF; --dica-borda:#1B6FA8; }
+  :root { --azul:#7C3AED; --azul-escuro:#5B21B6; --texto:#1E2B2E; --texto2:#5C6A69; --borda:#E7DFCF; --bg:#FAF6EF; --bg-card:#FFFFFF; --aviso-bg:#FBF3DF; --aviso-borda:#C9A227; --dica-bg:#FBF3DF; --dica-borda:#C9A227; }
   * { box-sizing: border-box; }
-  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
-  .wrap { max-width:760px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
-  header h1 { font-size:1.6rem; margin:0 0 0.25rem; }
-  header p.sub { color:var(--texto2); margin:0 0 1rem; }
+  body { margin:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--texto); background:var(--bg); line-height:1.6; }
+  .wrap { max-width:780px; margin:0 auto; padding:1.5rem 1.25rem 4rem; }
+  header h1 { font-family:'Fraunces',Georgia,serif; font-weight:700; letter-spacing:-0.02em; font-size:1.6rem; margin:0 0 0.25rem; }
+  header::after { content:''; display:block; margin-top:0.7rem; width:120px; height:4px; border-radius:2px; background:linear-gradient(90deg,#009FE3 0 25%,#EC008C 0 50%,#FFD200 0 75%,#231F20 0 100%); }
+  header p.sub { color:var(--texto2); margin:0.7rem 0 1rem; }
   .mono { font-family:'IBM Plex Mono','SF Mono',Monaco,monospace; }
-  .aviso { background:var(--aviso-bg); border-left:4px solid var(--aviso-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.9rem; margin-bottom:1.5rem; }
-  .card { background:var(--bg-card); border:1px solid var(--borda); border-radius:10px; padding:1.25rem; margin-bottom:1.25rem; }
-  .card h2 { font-size:1.05rem; margin:0 0 1rem; }
+  .aviso { background:var(--aviso-bg); border-left:4px solid var(--aviso-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.88rem; margin-bottom:1.5rem; }
+  .card { background:var(--bg-card); border:1px solid var(--borda); border-radius:14px; padding:1.25rem; margin-bottom:1.25rem; box-shadow:0 1px 3px rgba(21,50,59,0.05); }
+  .card h2 { font-size:1.02rem; margin:0 0 1rem; }
   .linha { display:flex; gap:1rem; flex-wrap:wrap; }
-  .campo { flex:1; min-width:150px; margin-bottom:0.5rem; }
-  .campo label { display:block; font-weight:600; font-size:0.9rem; margin-bottom:0.35rem; }
-  .campo input, .campo select { width:100%; padding:0.6rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:inherit; background:#fff; }
+  .campo { flex:1; min-width:150px; margin-bottom:0.6rem; }
+  .campo label { display:block; font-weight:600; font-size:0.85rem; margin-bottom:0.3rem; }
+  .campo input, .campo select { width:100%; padding:0.6rem 0.7rem; border:1.5px solid var(--borda); border-radius:8px; font-size:1rem; font-family:inherit; background:#fff; color:var(--texto); }
   .campo input:focus, .campo select:focus { outline:none; border-color:var(--azul); }
+  .check { display:flex; align-items:center; gap:0.5rem; margin:0.3rem 0 0.6rem; }
+  .check input { width:18px; height:18px; }
+  .check label { font-weight:600; font-size:0.9rem; }
   .grande { text-align:center; padding:1.4rem; background:var(--bg); border-radius:10px; margin-top:0.5rem; }
   .grande .lbl { font-size:0.8rem; color:var(--texto2); text-transform:uppercase; letter-spacing:0.05em; }
-  .grande .val { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.4rem; color:var(--texto); }
+  .grande .val { font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:2.4rem; color:var(--azul); }
   .grande .val small { font-size:1.1rem; color:var(--texto2); font-weight:400; }
+  .grande .sub2 { font-size:0.85rem; color:var(--texto2); margin-top:0.3rem; }
   .detalhe { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1rem; margin-top:1rem; }
   @media (max-width:520px){ .detalhe { grid-template-columns:1fr; } }
   .detalhe .item { background:var(--bg); border-radius:8px; padding:0.55rem 0.8rem; }
   .detalhe .k { font-size:0.76rem; color:var(--texto2); }
   .detalhe .v { font-family:'IBM Plex Mono',monospace; font-weight:700; }
   .dica { background:var(--dica-bg); border-left:4px solid var(--dica-borda); padding:0.8rem 1rem; border-radius:0 6px 6px 0; font-size:0.9rem; margin-top:1.25rem; }
-  .dica .lbl { font-weight:700; color:var(--azul-escuro); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.15rem; }
+  .dica .lbl { font-weight:700; color:#8A6D12; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em; display:block; margin-bottom:0.15rem; }
   footer { margin-top:2rem; text-align:center; color:var(--texto2); font-size:0.82rem; }
   footer a { color:var(--azul); }
-  /* --- Tema Tinta & Papel (apenas visual) --- */
-  :root { --azul:#7C3AED; --azul-escuro:#5B21B6; --texto:#1E2B2E; --texto2:#5C6A69; --borda:#E7DFCF; --bg:#FAF6EF; --bg-card:#FFFFFF; --dica-bg:#FBF3DF; --dica-borda:#C9A227; }
-  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
-  header h1 { font-family:'Fraunces',Georgia,serif; font-weight:700; letter-spacing:-0.02em; }
-  header::after { content:''; display:block; margin-top:0.7rem; width:120px; height:4px; border-radius:2px; background:linear-gradient(90deg,#009FE3 0 25%,#EC008C 0 50%,#FFD200 0 75%,#231F20 0 100%); }
-  .card { border-radius:14px; box-shadow:0 1px 3px rgba(21,50,59,0.05); }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>📚 Calculadora de lombada</h1>
-    <p class="sub">Para livros e catálogos de <strong>lombada quadrada (colada)</strong>: descobre a espessura exata da lombada para fazeres a capa.</p>
+    <p class="sub">A espessura da lombada de um livro ou catálogo, a contar com o <strong>tipo de encadernação</strong> (colada/serrotada ou cosida à linha) e a <strong>capa</strong>.</p>
   </header>
 
   <div class="aviso">
-    ⚠️ A espessura depende da <strong>"mão" (volume) do papel</strong>, que varia entre fabricantes. Os valores por tipo são <strong>típicos/aproximados</strong>, para um trabalho real, confirma a <strong>espessura (caliper) na ficha técnica</strong> do papel ou usa "Personalizado".
+    ⚠️ A espessura depende da <strong>"mão" (volume) do papel</strong> e do modo de trabalho de cada gráfica. Os valores por defeito são <strong>típicos</strong>. Para um trabalho real, confirma a <strong>espessura (caliper) na ficha técnica do papel</strong> e o <strong>acréscimo de encadernação</strong> com a tua gráfica, os campos são todos editáveis.
   </div>
 
   <div class="card">
@@ -73,18 +72,68 @@
   </div>
 
   <div class="card">
-    <h2>2. Lombada</h2>
+    <h2>2. Encadernação</h2>
+    <div class="linha">
+      <div class="campo" style="min-width:230px;"><label for="encad">Tipo</label>
+        <select id="encad">
+          <option value="colada" selected>Colada / serrotada (PUR ou hotmelt)</option>
+          <option value="cosida">Cosida à linha (cadernos dobrados)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="boxColada">
+      <div class="linha">
+        <div class="campo"><label for="cola">Camada de cola (mm)</label><input type="number" id="cola" min="0" step="0.1" value="0.5" /></div>
+      </div>
+      <p style="font-size:0.84rem; color:var(--texto2); margin:0;">Na colada/serrotada as dobras são fresadas, a lombada fica praticamente igual à espessura do miolo. A cola acrescenta tipicamente <strong>0,3 a 0,8 mm</strong>. Põe 0 se a tua gráfica não a contar.</p>
+    </div>
+
+    <div id="boxCosida" style="display:none;">
+      <div class="linha">
+        <div class="campo"><label for="pagsCaderno">Páginas por caderno</label>
+          <select id="pagsCaderno">
+            <option value="8">8 páginas</option>
+            <option value="16" selected>16 páginas</option>
+            <option value="32">32 páginas</option>
+          </select>
+        </div>
+        <div class="campo"><label for="acresc">Acréscimo por caderno (mm)</label><input type="number" id="acresc" min="0" step="0.01" value="0.10" /></div>
+      </div>
+      <p style="font-size:0.84rem; color:var(--texto2); margin:0;">Na cosida à linha, cada <strong>caderno dobrado</strong> acrescenta espessura na lombada (a dobra e a linha). O acréscimo típico é <strong>0,05 a 0,15 mm por caderno</strong>, mais em papéis grossos e linhas mais fortes. É por isto que a mesma gramagem dá uma lombada <strong>maior</strong> quando é cosida.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3. Capa</h2>
+    <div class="check"><input type="checkbox" id="temCapa" checked /><label for="temCapa">Incluir a espessura da capa na largura da lombada</label></div>
+    <div class="linha" id="boxCapa">
+      <div class="campo"><label for="capaGram">Gramagem da capa (g/m²)</label><input type="number" id="capaGram" min="1" step="1" value="300" /></div>
+      <div class="campo"><label for="capaVol">Volume da capa (cm³/g)</label><input type="number" id="capaVol" min="0.5" max="2.5" step="0.01" value="0.80" /></div>
+    </div>
+    <p style="font-size:0.84rem; color:var(--texto2); margin:0.2rem 0 0;">A capa dobra à volta do miolo, por isso a lombada <strong>desenhada na capa</strong> soma a espessura da capa dos <strong>dois lados</strong>. Desliga se a tua gráfica te pedir só a medida do miolo.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. Resultado</h2>
     <div class="grande">
-      <div class="lbl">Espessura da lombada (miolo)</div>
-      <div class="val" id="lombada">—</div>
+      <div class="lbl">Lombada a desenhar na capa</div>
+      <div class="val" id="lombadaCapa">—</div>
+      <div class="sub2" id="subCapa"></div>
     </div>
     <div class="detalhe">
+      <div class="item"><div class="k">Miolo (folhas × espessura)</div><div class="v" id="lombada">—</div></div>
+      <div class="item"><div class="k">Acréscimo da encadernação</div><div class="v" id="acrescimoV">—</div></div>
       <div class="item"><div class="k">Folhas (páginas ÷ 2)</div><div class="v" id="folhas">—</div></div>
       <div class="item"><div class="k">Espessura de 1 folha</div><div class="v" id="caliper">—</div></div>
+      <div class="item" id="itemCadernos"><div class="k">Cadernos</div><div class="v" id="cadernos">—</div></div>
+      <div class="item"><div class="k">Espessura da capa (1 folha)</div><div class="v" id="capaEsp">—</div></div>
     </div>
     <div class="dica">
       <span class="lbl">Como se calcula</span>
-      Lombada = <strong>nº de folhas × espessura de cada folha</strong>. A espessura de cada folha = gramagem × volume ÷ 1000 (mm). O nº de folhas é metade das páginas (cada folha tem 2 páginas, frente e verso). <strong>A capa não está incluída</strong>, se a capa for grossa, soma a sua espessura à volta da lombada.
+      <strong>1 folha</strong> = gramagem × volume ÷ 1000 (mm). <strong>Miolo</strong> = (páginas ÷ 2) × espessura da folha.
+      <strong>Colada/serrotada:</strong> lombada = miolo + cola. <strong>Cosida:</strong> lombada = miolo + (nº de cadernos × acréscimo por caderno), porque os cadernos dobrados e a linha incham a lombada.
+      <strong>Na capa:</strong> soma-se ainda 2 × a espessura da capa.
     </div>
   </div>
 
@@ -103,30 +152,84 @@
     return parseFloat(v);
   }
   function fmt1(x){ return x.toFixed(1).replace(".", ","); }
+  function fmt2(x){ return x.toFixed(2).replace(".", ","); }
 
   function calcular(){
     var paginas = parseInt($("paginas").value,10) || 0;
     var gram = parseFloat($("gramagem").value) || 0;
     var vol = volumeAtual();
+    var encad = $("encad").value;
+
     var folhas = Math.ceil(paginas/2);
-    var caliperMm = gram * vol / 1000;       // espessura de 1 folha (mm)
-    var lombadaMm = folhas * caliperMm;
+    var caliperMm = gram * vol / 1000;          // espessura de 1 folha (mm)
+    var mioloMm = folhas * caliperMm;           // miolo como folhas soltas
+
+    // acréscimo da encadernação
+    var acrescimoMm = 0, nCadernos = 0;
+    if (encad === "cosida") {
+      var pc = parseInt($("pagsCaderno").value,10) || 16;
+      var perCaderno = parseFloat($("acresc").value); if (isNaN(perCaderno)) perCaderno = 0;
+      nCadernos = Math.ceil(paginas / pc);
+      acrescimoMm = nCadernos * perCaderno;     // dobra + linha, por caderno
+    } else {
+      var cola = parseFloat($("cola").value); if (isNaN(cola)) cola = 0;
+      acrescimoMm = cola;
+    }
+
+    var lombadaMm = mioloMm + acrescimoMm;      // lombada do bloco encadernado
+
+    // capa (dobra à volta: conta dos dois lados)
+    var temCapa = $("temCapa").checked;
+    var capaMm = 0;
+    if (temCapa) {
+      var cg = parseFloat($("capaGram").value) || 0;
+      var cv = parseFloat($("capaVol").value) || 0;
+      capaMm = cg * cv / 1000;
+    }
+    var lombadaCapaMm = lombadaMm + 2 * capaMm;
+
     if (paginas>0 && gram>0 && vol>0) {
-      $("lombada").innerHTML = fmt1(lombadaMm) + " <small>mm</small>";
+      $("lombadaCapa").innerHTML = fmt1(lombadaCapaMm) + " <small>mm</small>";
+      $("subCapa").textContent = temCapa
+        ? ("miolo " + fmt1(mioloMm) + " + encadernação " + fmt2(acrescimoMm) + " + 2 × capa " + fmt2(capaMm) + " mm")
+        : ("miolo " + fmt1(mioloMm) + " + encadernação " + fmt2(acrescimoMm) + " mm (sem capa)");
+      $("lombada").textContent = fmt1(mioloMm) + " mm";
+      $("acrescimoV").textContent = fmt2(acrescimoMm) + " mm" + (encad === "cosida" ? (" (" + nCadernos + " cadernos)") : " (cola)");
       $("folhas").textContent = folhas + " folhas";
       $("caliper").textContent = caliperMm.toFixed(3).replace(".", ",") + " mm (" + Math.round(caliperMm*1000) + " µm)";
+      $("cadernos").textContent = (encad === "cosida") ? (nCadernos + " cadernos") : "—";
+      $("capaEsp").textContent = temCapa ? (fmt2(capaMm) + " mm") : "—";
     } else {
-      $("lombada").textContent = "—"; $("folhas").textContent = "—"; $("caliper").textContent = "—";
+      ["lombadaCapa","lombada","acrescimoV","folhas","caliper","cadernos","capaEsp"].forEach(function(id){ $(id).textContent = "—"; });
+      $("subCapa").textContent = "";
     }
     postHeight();
   }
-  window.__lombada = function(p,g,v){ $("paginas").value=p; $("gramagem").value=g; $("tipo").value="custom"; $("volBox").style.display="block"; $("volCustom").value=v; calcular(); };
+
+  function atualizarEncad(){
+    var c = $("encad").value === "cosida";
+    $("boxCosida").style.display = c ? "block" : "none";
+    $("boxColada").style.display = c ? "none" : "block";
+    $("itemCadernos").style.display = c ? "block" : "none";
+    calcular();
+  }
+
+  // hook de teste: mantém o cálculo "puro" do miolo (sem cola nem capa)
+  window.__lombada = function(p,g,v){
+    $("paginas").value=p; $("gramagem").value=g; $("tipo").value="custom";
+    $("volBox").style.display="block"; $("volCustom").value=v;
+    $("encad").value="colada"; $("cola").value=0; $("temCapa").checked=false;
+    atualizarEncad(); calcular();
+    return $("lombada").textContent;
+  };
 
   $("tipo").addEventListener("change", function(){ $("volBox").style.display = ($("tipo").value==="custom")?"block":"none"; calcular(); });
-  $("paginas").addEventListener("input", calcular);
-  $("gramagem").addEventListener("input", calcular);
-  $("volCustom").addEventListener("input", calcular);
-  calcular();
+  $("encad").addEventListener("change", atualizarEncad);
+  $("temCapa").addEventListener("change", function(){ $("boxCapa").style.display = this.checked ? "flex" : "none"; calcular(); });
+  ["paginas","gramagem","volCustom","cola","acresc","pagsCaderno","capaGram","capaVol"].forEach(function(id){
+    $(id).addEventListener("input", calcular); $(id).addEventListener("change", calcular);
+  });
+  atualizarEncad();
 })();
 </script>
 </body>

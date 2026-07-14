@@ -29,6 +29,11 @@
   .toolbar button.on { background:var(--cor); border-color:var(--cor); color:#fff; }
   .toolbar button.danger { color:#B91C1C; }
   .toolbar button:disabled { opacity:0.45; cursor:not-allowed; }
+  .swatches { display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem; }
+  .swatches .lbl { font-size:0.82rem; color:var(--texto2); }
+  .swatches .sw { width:24px; height:24px; border-radius:6px; border:2px solid #fff; box-shadow:0 0 0 1px var(--borda); cursor:pointer; padding:0; }
+  .swatches .sw.on { box-shadow:0 0 0 2px var(--cor); }
+  .swatches input[type=color] { width:36px; height:28px; border:1px solid var(--borda); border-radius:6px; background:#fff; padding:2px; cursor:pointer; }
   .toolbar .sizewrap { display:flex; align-items:center; gap:0.5rem; margin-left:auto; font-size:0.82rem; color:var(--texto2); }
   .toolbar input[type=range] { accent-color:var(--cor); width:120px; }
 
@@ -87,20 +92,39 @@
   </div>
 
   <div class="card">
-    <div class="grupo">2. Pincel de verniz</div>
+    <div class="grupo">2. Acabamento</div>
+    <div class="toolbar" id="finishes">
+      <button data-finish="uv" class="on">✨ Verniz UV</button>
+      <button data-finish="glitter">🎉 Glitter</button>
+      <button data-finish="silver">⚪ Prata estampada</button>
+      <button data-finish="gold">🟡 Ouro estampado</button>
+    </div>
+    <div class="swatches" id="glitWrap" hidden>
+      <span class="lbl">Cor do glitter:</span>
+      <button class="sw" data-c="#C0392B" style="background:#C0392B" aria-label="vermelho"></button>
+      <button class="sw" data-c="#2563EB" style="background:#2563EB" aria-label="azul"></button>
+      <button class="sw" data-c="#10B981" style="background:#10B981" aria-label="verde"></button>
+      <button class="sw" data-c="#EC4899" style="background:#EC4899" aria-label="rosa"></button>
+      <button class="sw" data-c="#7C3AED" style="background:#7C3AED" aria-label="roxo"></button>
+      <button class="sw" data-c="#D4AF37" style="background:#D4AF37" aria-label="dourado"></button>
+      <input type="color" id="glitColor" value="#C0392B" aria-label="cor personalizada do glitter" />
+    </div>
+
+    <div class="grupo" style="margin-top:0.9rem;">3. Desenho</div>
     <div class="toolbar">
-      <button id="brush" class="on">🖌️ Verniz</button>
+      <button id="brush" class="on">🖌️ Pincel</button>
       <button id="eraser">🧽 Apagador</button>
       <button id="rect">▭ Retângulo</button>
       <button id="circ">⬤ Círculo</button>
+      <button id="poly">⬡ Polígono</button>
       <span class="sizewrap">Tamanho <input type="range" id="size" min="5" max="50" value="22" /> <span id="sizeval">22</span>px</span>
     </div>
     <div class="toolbar" style="margin-top:0.55rem;">
-      <button id="auto" disabled>✨ Aplicar na imagem</button>
+      <button id="auto" disabled>Aplicar na imagem</button>
       <button id="fill">Encher tudo</button>
       <button id="clear" class="danger">Limpar tudo</button>
     </div>
-    <div class="hint" id="modehint">Modo verniz ativo. Arrasta sobre a imagem para aplicar; larga para ver o brilho.</div>
+    <div class="hint" id="modehint">Modo pincel ativo. Arrasta para aplicar.</div>
   </div>
 
   <div class="stage" id="stage">
@@ -115,7 +139,7 @@
 
   <div class="dica">
     <span class="lbl">Porque é que isto importa</span>
-    As tintas de escala (CMYK) são <strong>transparentes</strong>: sem base branca, num papel escuro as zonas claras do grafismo "desaparecem" no tom do papel (é o que vês com a mistura subtrativa). O <strong>verniz localizado</strong> não tem cor, vive do <strong>reflexo</strong>, por isso brilha mesmo onde a tinta quase não se vê. É o acabamento ideal para dar destaque em suportes escuros.
+    As tintas de escala (CMYK) são <strong>transparentes</strong>: sem base branca, num papel escuro as zonas claras do grafismo "desaparecem" no tom do papel (é o que vês com a mistura subtrativa). O <strong>verniz</strong> é transparente e vive do <strong>reflexo</strong> (deixa ver o grafismo por baixo); já a <strong>prata</strong>, o <strong>ouro</strong> e o <strong>glitter</strong> são <strong>opacos</strong> e tapam o que está por baixo. São todos acabamentos ideais para dar destaque em suportes escuros.
   </div>
 
   <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
