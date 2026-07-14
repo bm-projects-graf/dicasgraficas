@@ -9,13 +9,39 @@ interface Props {
   description: string;
   canonical?: string;
   image?: string;
+  /** Dados estruturados (JSON-LD) específicos da página. */
+  schema?: object | object[];
 }
 
-const { title, description, canonical, image } = Astro.props;
+const { title, description, canonical, image, schema } = Astro.props;
 const siteUrl = 'https://dicasgraficas.com';
 const fullTitle = title.includes('dicasgraficas') ? title : `${title} | dicasgraficas.com`;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
-const ogImage = image || `${siteUrl}/og-default.jpg`;
+const ogImage = image || `${siteUrl}/og-default.png`;
+
+// Schema base: presente em todas as páginas (quem somos + o site)
+const baseSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'dicasgraficas.com',
+    url: siteUrl,
+    inLanguage: 'pt-PT',
+    description: 'Projeto editorial da Onda Grafe sobre artes gráficas, impressão, papel e acabamentos.',
+    publisher: { '@id': `${siteUrl}/#organization` }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: 'Onda Grafe',
+    url: 'https://www.ondagrafe.pt',
+    logo: `${siteUrl}/onda-grafe-cor.png`,
+    email: 'bruno.moluras@ondagrafe.pt'
+  }
+];
+
+const jsonLd = schema ? baseSchema.concat(Array.isArray(schema) ? schema : [schema]) : baseSchema;
 ---
 
 <!DOCTYPE html>
@@ -43,6 +69,9 @@ const ogImage = image || `${siteUrl}/og-default.jpg`;
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+
+  <!-- Dados estruturados (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -27,11 +27,43 @@ const relatedArticles = allArticles
 const cat = getCategory(article.data.category);
 const categorySlug = cat?.slug ?? '';
 const catColor = cat?.color ?? 'var(--color-primary)';
+
+// Dados estruturados: diz ao Google que isto é um artigo, e onde encaixa no site
+const siteUrl = 'https://dicasgraficas.com';
+const articleUrl = `${siteUrl}/artigos/${article.id}/`;
+const pubIso = new Date(article.data.pubDate).toISOString();
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.data.title,
+    description: article.data.description,
+    inLanguage: 'pt-PT',
+    datePublished: pubIso,
+    dateModified: pubIso,
+    articleSection: article.data.category,
+    keywords: article.data.keywords ?? undefined,
+    image: `${siteUrl}/og-default.png`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+    author: { '@type': 'Organization', name: 'Onda Grafe', url: 'https://www.ondagrafe.pt' },
+    publisher: { '@id': `${siteUrl}/#organization` }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: article.data.category, item: `${siteUrl}/categorias/${categorySlug}/` },
+      { '@type': 'ListItem', position: 3, name: article.data.title, item: articleUrl }
+    ]
+  }
+];
 ---
 
 <Base
   title={article.data.title}
   description={article.data.description}
+  schema={schema}
 >
   <article style={`--cat: ${catColor}`}>
     <header class="article-masthead">
