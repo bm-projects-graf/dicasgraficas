@@ -21,6 +21,61 @@ import Base from '../layouts/Base.astro';
 
       <iframe id="pdfFrame" src="/ferramentas/inspetor-de-pdf.html" title="Inspetor de PDF para impressão" loading="lazy"
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 560px; background: #FAF6EF;"></iframe>
+
+      <div class="tool-content" style="--cat: #4F46E5">
+        <h2>O que é um pré-flight</h2>
+        <p>
+          <strong>Pré-flight</strong> é a verificação que se faz a um ficheiro <strong>antes</strong> de ele entrar na
+          máquina, tal como um piloto verifica o avião antes de levantar voo. Numa gráfica é feito com software
+          profissional (Acrobat, PitStop). Esta ferramenta faz uma versão simplificada, mas verifica exatamente os
+          <strong>quatro pontos que mais estragam trabalhos</strong>.
+        </p>
+
+        <h2>O que é verificado</h2>
+        <h3>1. Cores (CMYK vs RGB)</h3>
+        <p>
+          Percorre as imagens do PDF e lê o espaço de cor de cada uma. Se encontrar
+          <a href="/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/">RGB</a>, avisa: essas cores vão mudar na
+          conversão para CMYK e raramente para melhor.
+        </p>
+        <h3>2. Resolução efetiva (PPI)</h3>
+        <p>
+          Não basta saber quantos pixéis tem a imagem, é preciso saber <strong>a que tamanho ela é desenhada</strong>
+          na página. A ferramenta interpreta as matrizes de posicionamento do PDF para calcular o
+          <strong>PPI real</strong>. Uma imagem de 300 PPI esticada para o dobro fica a 150.
+        </p>
+        <h3>3. Fontes</h3>
+        <p>
+          Verifica se cada fonte está <strong>incorporada</strong> no ficheiro. Se não estiver, a gráfica vê outra
+          letra. Vê <a href="/artigos/fontes-incorporar-ou-converter-em-curvas/">incorporar ou converter em curvas</a>.
+        </p>
+        <h3>4. Sangria (bleed)</h3>
+        <p>
+          Compara a <strong>TrimBox</strong> (tamanho final de corte) com a <strong>BleedBox</strong> ou a MediaBox.
+          Se não houver pelo menos 3 mm de folga, arriscas <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">filetes brancos no corte</a>.
+        </p>
+
+        <h2>O ficheiro não sai do teu computador</h2>
+        <p>
+          A análise corre <strong>inteiramente no teu navegador</strong> (JavaScript). O PDF <strong>não é enviado
+          para nenhum servidor</strong>, não é guardado e não é visto por ninguém. Podes usar esta ferramenta com
+          trabalhos confidenciais de clientes sem qualquer problema.
+        </p>
+
+        <div class="nota">
+          <strong>O que isto NÃO faz (honestidade):</strong> não substitui o pré-flight profissional da gráfica. Não
+          verifica <a href="/artigos/sobreimpressao-e-trapping/">sobreimpressão</a>, transparências achatadas,
+          cores diretas mal definidas, limite de tinta nem perfis ICC específicos. É um <strong>indicador</strong>,
+          muito útil, mas não uma garantia.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/checklist-de-pre-impressao/">Checklist de pré-impressão em 12 pontos</a>, a lista completa antes de enviar.</li>
+          <li><a href="/artigos/como-exportar-pdf-para-impressao/">Como exportar um PDF para a gráfica</a> (InDesign, Illustrator, Canva).</li>
+          <li><a href="/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/">PDF/X-1a vs PDF/X-4</a>, que norma usar.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

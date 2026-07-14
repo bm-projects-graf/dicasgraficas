@@ -5,6 +5,14 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# O site tem de viver num só domínio. Sem isto, o dicasgraficas.netlify.app
+# serve uma cópia integral do site e o Google vê conteúdo duplicado.
+[[redirects]]
+  from = "https://dicasgraficas.netlify.app/*"
+  to = "https://dicasgraficas.com/:splat"
+  status = 301
+  force = true
+
 # Cabeçalhos de segurança e performance
 [[headers]]
   for = "/*"

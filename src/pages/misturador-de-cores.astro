@@ -26,11 +26,54 @@ import Base from '../layouts/Base.astro';
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 900px; background: #FAF6EF;"
       ></iframe>
 
-      <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-top: 1rem;">
-        A mistura realista usa a biblioteca <span style="font-family: var(--font-mono)">Spectral.js</span>
-        (teoria de Kubelka-Munk). É uma aproximação para fins educativos, a cor real numa impressão
-        depende das tintas, do papel e da quadricromia.
-      </p>
+      <div class="tool-content" style="--cat: #DB2777">
+        <h2>Porque é que azul e amarelo dão verde (e no ecrã não dão)</h2>
+        <p>
+          Se misturares luz azul com luz amarela num ecrã, obténs <strong>branco</strong>. Se misturares tinta azul
+          com tinta amarela num papel, obténs <strong>verde</strong>. Não é contradição, são dois sistemas físicos
+          opostos.
+        </p>
+        <ul>
+          <li><strong>Ecrã (RGB, aditivo):</strong> parte do preto e <strong>soma luz</strong>. Quanto mais somas, mais claro fica. Todas as luzes juntas dão branco.</li>
+          <li><strong>Tinta (subtrativo):</strong> parte do papel branco e cada pigmento <strong>absorve (subtrai)</strong> parte da luz. Quanto mais tinta, mais escuro fica.</li>
+        </ul>
+        <p>
+          Uma tinta amarela absorve o azul e reflete o verde e o vermelho. Uma tinta azul absorve o vermelho e reflete
+          o verde e o azul. O que <strong>sobra</strong> das duas é o <strong>verde</strong>. É esse "o que sobra" que
+          esta ferramenta simula.
+        </p>
+
+        <h2>Porque é que a maioria dos misturadores online mente</h2>
+        <p>
+          Quase todas as ferramentas de mistura de cores fazem a <strong>média dos valores RGB</strong>. Azul + amarelo
+          dá-lhes cinzento, que é exatamente o que <strong>não</strong> acontece com tinta real. Aqui a mistura usa
+          <strong>Spectral.js</strong>, uma implementação da teoria de <strong>Kubelka-Munk</strong>, que modela como a
+          luz é <strong>absorvida e dispersa</strong> por pigmentos reais. O resultado comporta-se como tinta, não como
+          luz.
+        </p>
+
+        <h2>Como tirar partido</h2>
+        <ul>
+          <li><strong>Misturar:</strong> escolhe as cores e as proporções (2 partes disto, 1 daquilo) e compara o resultado à pigmento com a mistura "de ecrã".</li>
+          <li><strong>Adivinha:</strong> um jogo para treinar o olho, dado o resultado, descobre a mistura.</li>
+          <li><strong>Receita:</strong> o modo inverso. Dás-lhe a cor que queres e ele procura a combinação de tintas que lá chega.</li>
+        </ul>
+
+        <div class="nota">
+          <strong>Honestidade:</strong> é uma aproximação com fins educativos. A cor real numa impressão depende das
+          tintas concretas, do papel, do <a href="/artigos/ganho-de-ponto-dot-gain/">ganho de ponto</a> e da
+          quadricromia. Para cor que não pode falhar, existem as
+          <a href="/artigos/pantone-vs-cmyk-cores-diretas/">cores diretas Pantone</a> e a
+          <a href="/artigos/provas-de-cor-antes-da-tiragem/">prova de cor</a>.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/">CMYK ou RGB</a>, os dois mundos, luz e tinta.</li>
+          <li><a href="/artigos/teoria-da-cor-para-designers/">Teoria da cor para designers</a>.</li>
+          <li><a href="/artigos/o-que-e-o-gamut/">O que é o gamut</a>, porque há cores que a tinta nunca alcança.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

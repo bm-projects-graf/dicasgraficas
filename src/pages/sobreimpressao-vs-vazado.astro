@@ -21,6 +21,67 @@ import Base from '../layouts/Base.astro';
 
       <iframe id="opFrame" src="/ferramentas/overprint-knockout.html" title="Simulador de sobreimpressão vs vazado" loading="lazy"
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 760px; background: #0F1115;"></iframe>
+
+      <div class="tool-content" style="--cat: #0891B2">
+        <h2>Vazado (knockout): o comportamento normal</h2>
+        <p>
+          Quando pões um objeto de uma cor por cima de um fundo de outra cor, o normal é a máquina
+          <strong>"furar" o fundo</strong> no sítio exato do objeto, deixando lá o papel, e imprimir a cor do objeto
+          nesse buraco. As tintas <strong>não se misturam</strong>. É isto que faz um texto laranja sobre um fundo azul
+          sair mesmo laranja.
+        </p>
+
+        <h2>Sobreimpressão (overprint): imprimir por cima</h2>
+        <p>
+          Em <strong>overprint</strong>, o objeto é impresso <strong>por cima</strong> do fundo, sem furar. Como as
+          tintas de escala são <strong>transparentes</strong>, elas somam-se:
+        </p>
+        <div class="formula">
+          canal final = mín(fundo + objeto, 100%)<br />
+          fundo C20 M80 + objeto C60 M10 Y90 → C80 M90 Y90
+        </div>
+        <p>
+          Ou seja, aquele laranja sobre azul deixaria de ser laranja. Por isso o overprint raramente é o que queres
+          para cores. Mas há um caso em que é <strong>a norma da indústria</strong>.
+        </p>
+
+        <h2>Porque é que o preto de texto vai sempre em overprint</h2>
+        <p>
+          Imagina texto preto fino sobre um fundo de cor. Em vazado, a máquina teria de furar o fundo exatamente na
+          forma de cada letra. Ao mínimo desalinhamento das chapas (o <strong>erro de registo</strong>, inevitável),
+          aparece um <strong>filete branco</strong> à volta das letras. Pondo o preto em sobreimpressão, ele imprime-se
+          simplesmente por cima: não há furo, logo não pode haver filete branco.
+        </p>
+
+        <h2>O erro que arruína tiragens: branco em overprint</h2>
+        <p>
+          Na máquina, o branco é a <strong>ausência de tinta</strong>, é a cor do papel. Se marcares um objeto branco
+          como "sobreimprimir", estás literalmente a dizer <em>"imprime nada por cima do fundo"</em>. Resultado: o
+          fundo é impresso por cima e o <strong>texto branco desaparece</strong>. No ecrã vê-se perfeitamente, no papel
+          não existe. Experimenta no simulador: põe o texto a branco e liga o overprint.
+        </p>
+
+        <h2>E o trapping?</h2>
+        <p>
+          O <strong>trapping</strong> é a solução para os filetes brancos nas restantes cores: faz-se uma das cores
+          <strong>invadir ligeiramente</strong> a outra na zona de contacto (uns 0,05 a 0,15 mm), para que o
+          desalinhamento nunca deixe o papel à vista. Na esmagadora maioria dos casos é o <strong>RIP da gráfica</strong>
+          que o aplica automaticamente, não és tu que o fazes à mão.
+        </p>
+
+        <div class="nota">
+          <strong>Atenção às áreas grandes de preto.</strong> O overprint do preto é ótimo em texto, mas num fundo
+          preto grande a tinta preta não é totalmente opaca e o fundo pode transparecer. Aí usa-se
+          <a href="/artigos/preto-rico-vs-preto-puro/">preto rico</a> em <strong>vazado</strong>.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/sobreimpressao-e-trapping/">Sobreimpressão e trapping: o guia visual</a>.</li>
+          <li><a href="/artigos/preto-rico-vs-preto-puro/">Preto rico vs preto puro</a>.</li>
+          <li><a href="/artigos/checklist-de-pre-impressao/">Checklist de pré-impressão</a>, onde isto é o ponto 6.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

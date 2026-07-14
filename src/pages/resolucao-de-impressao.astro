@@ -27,10 +27,59 @@ import Base from '../layouts/Base.astro';
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 420px; background: #FAF6EF;"
       ></iframe>
 
-      <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-top: 1rem;">
-        Fórmula: tamanho (cm) = (pixéis ÷ DPI) × 2,54. A 300 DPI a impressão é vista de perto com qualidade;
-        no grande formato, visto à distância, basta menos resolução.
-      </p>
+      <div class="tool-content" style="--cat: #0EA5E9">
+        <h2>A conta que está por trás</h2>
+        <p>
+          Uma imagem digital tem um número <strong>fixo</strong> de pixéis. O que muda é a que tamanho os espalhas no
+          papel. Quantos mais pixéis por polegada, mais detalhe.
+        </p>
+        <div class="formula">
+          tamanho máximo (cm) = (pixéis ÷ DPI pretendido) × 2,54<br />
+          exemplo: 3000 px ÷ 300 DPI = 10 polegadas = 25,4 cm
+        </div>
+        <p>
+          O 2,54 é apenas a conversão de polegadas para centímetros. É por isto que uma foto de telemóvel dá um
+          cartaz razoável e um logótipo tirado de um site não dá nada.
+        </p>
+
+        <h2>Que DPI usar afinal</h2>
+        <p>
+          O famoso "300 DPI" não é uma lei universal, é a consequência da <strong>distância de leitura</strong>.
+          Quanto mais longe está o observador, menos detalhe o olho distingue:
+        </p>
+        <ul>
+          <li><strong>300 DPI</strong>, tudo o que se vê de perto: cartões, flyers, revistas, livros.</li>
+          <li><strong>200 a 250 DPI</strong>, cartazes A2/A1 vistos a um metro ou mais.</li>
+          <li><strong>150 DPI</strong>, grande formato visto a 2-3 metros.</li>
+          <li><strong>50 a 100 DPI</strong>, lonas e outdoors vistos a 10 metros. Não é batota, é física do olho.</li>
+        </ul>
+        <p>
+          Há ainda uma razão técnica para o 300: em offset, a resolução deve ser cerca do <strong>dobro da
+          lineatura</strong> da retícula. Uma revista a 150 LPI pede 300 PPI. Está explicado no
+          <a href="/artigos/resolucao-para-impressao-dpi/">guia do DPI</a>.
+        </p>
+
+        <h2>Aumentar a resolução não recupera detalhe</h2>
+        <p>
+          Esticar uma imagem pequena para 300 DPI no Photoshop <strong>não cria informação</strong>, apenas inventa
+          pixéis por interpolação. As ferramentas de IA fazem um trabalho impressionante em fotografias, mas continuam
+          a <strong>inventar</strong> detalhe, o que é inaceitável quando os pormenores têm de ser fiéis (um produto,
+          um rótulo, um texto).
+        </p>
+        <div class="nota">
+          <strong>A exceção que resolve tudo:</strong> logótipos, ícones e texto devem ser
+          <a href="/artigos/vetorial-vs-raster-imagens-para-impressao/">vetoriais</a>. Um vetor não tem resolução:
+          escala de um cartão de visita a uma fachada sem perder um único ponto de nitidez. A imagem que carregas
+          é lida no teu navegador e <strong>não é enviada para nenhum servidor</strong>.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/resolucao-para-impressao-dpi/">Resolução para impressão: o guia do DPI</a> (e a diferença entre DPI e PPI).</li>
+          <li><a href="/artigos/vetorial-vs-raster-imagens-para-impressao/">Vetorial vs raster</a>, porque o logótipo tem de ser vetor.</li>
+          <li><a href="/artigos/checklist-de-pre-impressao/">Checklist de pré-impressão</a>.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

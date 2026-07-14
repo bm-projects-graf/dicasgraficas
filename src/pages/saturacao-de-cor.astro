@@ -20,6 +20,65 @@ import Base from '../layouts/Base.astro';
 
       <iframe id="tacFrame" src="/ferramentas/saturacao-cmyk.html" title="Verificador de saturação de cor (TAC)" loading="lazy"
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 640px; background: #FAF6EF;"></iframe>
+
+      <div class="tool-content" style="--cat: #DC2626">
+        <h2>O que é o TAC</h2>
+        <p>
+          <strong>TAC</strong> (<em>Total Area Coverage</em>, ou cobertura total de tinta) é simplesmente a
+          <strong>soma das quatro percentagens</strong> de tinta num mesmo ponto do papel.
+        </p>
+        <div class="formula">
+          TAC = C + M + Y + K<br />
+          exemplo: C80 + M70 + Y70 + K70 = 290%
+        </div>
+        <p>
+          O máximo teórico é 400% (as quatro tintas a 100%), o chamado "preto de registo". Na prática,
+          <strong>nenhuma máquina aguenta 400%</strong> numa área grande.
+        </p>
+
+        <h2>Porque é que tinta a mais é um problema</h2>
+        <p>
+          O papel só absorve uma certa quantidade de tinta. Quando se ultrapassa esse limite acontece tudo o que
+          uma gráfica detesta:
+        </p>
+        <ul>
+          <li><strong>A tinta não seca</strong> a tempo.</li>
+          <li><strong>Decalque</strong> (<em>set-off</em>): a folha molhada suja a folha seguinte na pilha.</li>
+          <li><strong>Repintismo</strong> e manchas nas zonas escuras.</li>
+          <li>Em máquinas rápidas, tinta a mais pode até <strong>rasgar o papel</strong> ao passar entre cilindros.</li>
+        </ul>
+
+        <h2>Que limite usar</h2>
+        <ul>
+          <li><strong>Até 240%</strong>, seguro em qualquer lado, incluindo <strong>papel jornal e rotativa</strong>, que são os mais absorventes e menos tolerantes.</li>
+          <li><strong>240% a 300%</strong>, o território normal do <strong>offset em papel couché</strong>. É onde vive a maioria dos trabalhos.</li>
+          <li><strong>Acima de 300%</strong>, zona de perigo. Só com autorização expressa da gráfica.</li>
+        </ul>
+        <p>
+          Estes valores não são universais: o limite exato vem do <strong>perfil ICC</strong> da condição de impressão
+          (o FOGRA39, por exemplo, é construído à volta de um limite típico de 300% para couché). Na dúvida, pergunta
+          à tua gráfica qual o TAC máximo que aceita.
+        </p>
+
+        <h2>A solução: preto rico, não preto de registo</h2>
+        <p>
+          Quando alguém quer um preto "bem escuro", a tentação é carregar em tudo. Mas um bom
+          <strong>preto rico</strong> usa <strong>pouca tinta de apoio</strong>. Uma receita clássica e segura é
+          <strong>C40 M30 Y0 K100</strong>, que dá apenas <strong>170%</strong> de TAC e é visualmente muito mais
+          profundo do que um K100 sozinho.
+        </p>
+        <div class="nota">
+          <strong>Regra de ouro:</strong> texto pequeno em <strong>preto puro</strong> (K100, 100% de TAC), para não
+          haver problemas de registo. Áreas grandes e fundos em <strong>preto rico</strong> controlado.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/preto-rico-vs-preto-puro/">Preto rico vs preto puro</a>, quando usar cada um.</li>
+          <li><a href="/artigos/ganho-de-ponto-dot-gain/">Ganho de ponto</a>, porque as zonas escuras ainda saem mais escuras do que esperas.</li>
+          <li><a href="/artigos/gestao-de-cor-perfis-icc/">Gestão de cor e perfis ICC</a>, de onde vem o limite de tinta.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

@@ -20,6 +20,68 @@ import Base from '../layouts/Base.astro';
 
       <iframe id="lombFrame" src="/ferramentas/lombada.html" title="Calculadora de lombada" loading="lazy"
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 560px; background: #FAF6EF;"></iframe>
+
+      <div class="tool-content" style="--cat: #7C3AED">
+        <h2>Como se calcula a lombada</h2>
+        <p>
+          Tudo parte da <strong>espessura de uma folha</strong>. O papel não se mede em milímetros na ficha de
+          encomenda, mede-se em <strong>gramagem</strong> (g/m²), que é peso, não espessura. A ponte entre as duas
+          é o <strong>volume</strong> (também chamado "mão" do papel), que diz quanta espessura cada grama ocupa.
+        </p>
+        <div class="formula">
+          espessura de 1 folha (mm) = gramagem × volume ÷ 1000<br />
+          miolo (mm) = (nº de páginas ÷ 2) × espessura de 1 folha
+        </div>
+        <p>
+          Dividimos as páginas por dois porque <strong>uma folha tem duas páginas</strong> (frente e verso). Um livro
+          de 200 páginas tem 100 folhas. É por isto que o número de páginas de um livro é quase sempre par.
+        </p>
+
+        <h2>Porque é que a mesma gramagem dá lombadas diferentes</h2>
+        <p>
+          Aqui está o erro que mais faz a conta "não bater" com a gráfica: <strong>a encadernação também ocupa
+          espaço</strong>, e ocupa de forma diferente conforme a técnica.
+        </p>
+        <h3>Colada / serrotada (PUR ou hotmelt)</h3>
+        <p>
+          As dobras dos cadernos são <strong>fresadas</strong> (cortadas fora) e as folhas ficam praticamente soltas,
+          coladas pelo lombo. A lombada fica muito perto da espessura do miolo, mais a <strong>camada de cola</strong>,
+          tipicamente 0,3 a 0,8 mm.
+        </p>
+        <h3>Cosida à linha</h3>
+        <p>
+          Os cadernos mantêm-se <strong>dobrados</strong> e são cosidos com linha. A dobra e a linha acumulam-se no
+          lombo e <strong>incham a lombada</strong>. Quantos mais cadernos, maior o acréscimo. Com o mesmo papel e as
+          mesmas páginas, uma lombada cosida é sempre <strong>mais grossa</strong> do que uma colada. Um valor típico
+          é 0,05 a 0,15 mm por caderno, mas confirma sempre com a tua gráfica.
+        </p>
+
+        <h2>Não te esqueças da capa</h2>
+        <p>
+          A capa <strong>dobra à volta</strong> do miolo, por isso a lombada que desenhas na capa soma ainda a
+          espessura da capa <strong>dos dois lados</strong>. Numa capa de 300 g couché (≈0,24 mm) são mais 0,48 mm.
+          Parece pouco, mas é o suficiente para o texto da lombada sair descentrado na estante.
+        </p>
+
+        <h2>Erros comuns</h2>
+        <ul>
+          <li><strong>Usar a gramagem como se fosse espessura.</strong> Um papel de 90 g de mão alta é bem mais grosso do que um couché de 90 g. Vê o artigo da <a href="/artigos/gramagem-do-papel-explicada/">gramagem e da "mão" do papel</a>.</li>
+          <li><strong>Calcular a lombada só com o miolo</strong> e depois estranhar que a capa não fecha.</li>
+          <li><strong>Assumir os valores de tabela.</strong> O volume varia entre fabricantes. Para trabalho a sério, pede o <strong>caliper</strong> (espessura real, em microns) na ficha técnica do papel e usa a opção "Personalizado".</li>
+        </ul>
+
+        <div class="nota">
+          <strong>Conselho prático:</strong> antes de fechar a capa, peça à gráfica uma <strong>maqueta (dummy)</strong>
+          com o papel real e o número de páginas real. É a única forma de ter a certeza absoluta, e custa quase nada.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/anatomia-do-livro-e-da-revista/">Anatomia de um livro e de uma revista</a>, capa, lombada, badanas, cadernos e miolo.</li>
+          <li><a href="/artigos/guia-completo-encadernacao/">Guia completo de encadernação</a>, para escolher a técnica certa.</li>
+          <li><a href="/artigos/gramagem-do-papel-explicada/">Gramagem do papel explicada</a>, e porque não é o mesmo que espessura.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

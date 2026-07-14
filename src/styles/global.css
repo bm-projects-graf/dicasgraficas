@@ -1336,3 +1336,22 @@ article[style*="--cat"] .article-body a { color: var(--cat); }
     transition: none;
   }
 }
+
+/* --- Conteúdo editorial das páginas de ferramentas --- */
+.tool-content { max-width: 720px; margin: 2.75rem auto 1rem; }
+.tool-content h2 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); margin: 2.2rem 0 0.8rem; }
+.tool-content h3 { font-size: 1.1rem; margin: 1.4rem 0 0.4rem; font-family: var(--font-sans); font-weight: 700; }
+.tool-content p { margin-bottom: 1rem; }
+.tool-content ul, .tool-content ol { margin: 0 0 1.1rem 1.3rem; }
+.tool-content li { margin-bottom: 0.45rem; }
+.tool-content a { color: var(--cat, var(--color-primary)); font-weight: 600; }
+.tool-content .formula {
+  background: var(--color-bg-section);
+  border-left: 4px solid var(--cat, var(--color-primary));
+  padding: 0.9rem 1.1rem; border-radius: 0 8px 8px 0; margin: 1.3rem 0;
+  font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.7;
+}
+.tool-content .nota {
+  background: var(--color-bg-soft); border: 1px solid var(--color-border);
+  border-radius: 10px; padding: 0.9rem 1.1rem; margin: 1.3rem 0; font-size: 0.94rem;
+}

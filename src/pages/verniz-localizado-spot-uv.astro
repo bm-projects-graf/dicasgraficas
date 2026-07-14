@@ -21,6 +21,63 @@ import Base from '../layouts/Base.astro';
 
       <iframe id="spotFrame" src="/ferramentas/spot-uv.html" title="Simulador de verniz localizado (Spot UV)" loading="lazy"
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 760px; background: #FAF6EF;"></iframe>
+
+      <div class="tool-content" style="--cat: #9333EA">
+        <h2>Porque é que a tinta "desaparece" em papel escuro</h2>
+        <p>
+          As tintas de escala (CMYK) são <strong>transparentes</strong>. Funcionam por
+          <strong>subtração</strong>: assentam num papel branco e vão absorvendo luz. Num papel branco isso resulta em
+          cor; num papel <strong>escuro ou kraft</strong>, não há luz branca para refletir, e as zonas claras do teu
+          grafismo simplesmente <strong>assumem o tom do papel</strong>.
+        </p>
+        <p>
+          É exatamente isto que o simulador faz, com uma <strong>mistura subtrativa</strong> (o equivalente ao
+          <em>multiply</em>): carrega uma imagem sobre a cartolina escura e vê as zonas claras desaparecerem. É a
+          razão pela qual, em suportes escuros, se usa <strong>base branca</strong> (uma camada opaca por baixo) ou se
+          muda de estratégia para acabamentos que <strong>não dependem de tinta</strong>.
+        </p>
+
+        <h2>Verniz, foil e glitter: três coisas diferentes</h2>
+        <h3>Verniz localizado (Spot UV)</h3>
+        <p>
+          É <strong>transparente</strong>, não tem cor. Vive do <strong>reflexo</strong>: brilha onde é aplicado e o
+          resto fica mate. Como não depende de tinta, funciona lindamente em papéis escuros, é por isso que se vê
+          tanto em cartões pretos com o logótipo a brilhar. Deixa ver o que está por baixo.
+        </p>
+        <h3>Estampagem a quente (hot stamping): prata e ouro</h3>
+        <p>
+          É uma <strong>película metálica opaca</strong> aplicada a quente com um cunho. Ao contrário do verniz,
+          <strong>tapa completamente</strong> o que está por baixo, e é essa opacidade que lhe dá o brilho metálico
+          verdadeiro (o CMYK nunca consegue imitar um dourado real).
+        </p>
+        <h3>Glitter</h3>
+        <p>
+          Pó colorido aplicado sobre um adesivo. Opaco, com o brilho granulado dos pequenos pontos de cor.
+        </p>
+
+        <h2>Como se prepara o ficheiro</h2>
+        <p>
+          O verniz (ou o foil) não é uma cor, é uma <strong>ferramenta</strong>. Entrega-se numa
+          <strong>camada separada</strong>:
+        </p>
+        <ul>
+          <li>Uma <strong>cor direta (spot)</strong> própria, com um nome claro (ex.: <em>"VERNIZ"</em> ou <em>"FOIL"</em>), marcada como cor direta e não como cor de processo.</li>
+          <li>A 100%, em <strong>vetor</strong>, com as formas exatas onde o acabamento entra.</li>
+          <li>Em <strong>sobreimpressão</strong>, para não furar a arte que está por baixo.</li>
+        </ul>
+        <div class="nota">
+          <strong>Cuidados reais:</strong> traços muito finos e texto muito pequeno não seguram bem o verniz nem o
+          foil. E como há sempre uma <strong>tolerância de registo</strong> entre a impressão e o acabamento, evita
+          desenhos que exijam encaixe perfeito ao décimo de milímetro. Confirma sempre os mínimos com a tua gráfica.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/verniz-uv-total-reserva-efeito-mate-brilhante/">Verniz UV total e de reserva</a>, o efeito mate/brilhante.</li>
+          <li><a href="/artigos/hot-stamping-e-foil-acabamento-metalico/">Hot stamping e foil</a>, o acabamento metálico.</li>
+          <li><a href="/artigos/acabamento-digital-verniz-foil-relevo/">Acabamento digital</a>, verniz, foil e relevo sem ferramentas.</li>
+        </ul>
+      </div>
     </div>
   </div>
 

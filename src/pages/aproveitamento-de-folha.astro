@@ -21,6 +21,66 @@ import Base from '../layouts/Base.astro';
 
       <iframe id="aprovFrame" src="/ferramentas/aproveitamento-de-folha.html" title="Otimizador de aproveitamento de folha" loading="lazy"
         style="width: 100%; border: 1px solid var(--color-border); border-radius: 12px; min-height: 700px; background: #FAF6EF;"></iframe>
+
+      <div class="tool-content" style="--cat: #0D9488">
+        <h2>Porque é que isto decide o preço</h2>
+        <p>
+          Numa gráfica, o papel entra em <strong>folhas de máquina</strong> (70×100 cm, 50×70 cm, SRA3…) e sai em
+          produtos cortados. A pergunta que decide o custo é simples: <strong>quantos produtos saem de cada
+          folha?</strong> Passar de 8 para 9 produtos à folha é uma redução de mais de 10% no papel e no tempo de
+          máquina, com o mesmo trabalho.
+        </p>
+        <div class="formula">
+          desperdício (%) = (1 − (nº de peças × área da peça) ÷ área da folha) × 100
+        </div>
+
+        <h2>O que são a pinça, as margens e a cruzeta</h2>
+        <ul>
+          <li><strong>Pinça (ou boca):</strong> a tira por onde as garras da máquina <strong>agarram a folha</strong>. Nunca se pode imprimir ali. Tipicamente 10 a 15 mm.</li>
+          <li><strong>Margens:</strong> a faixa de defesa nos restantes lados, onde vão também as barras de controlo de cor.</li>
+          <li><strong>Espaço entre peças:</strong> a folga necessária para a guilhotina cortar sem comer o produto vizinho.</li>
+          <li><strong>Cruzeta:</strong> no tira-retira, o espaço central entre as duas metades da folha.</li>
+        </ul>
+        <p>
+          É por causa destas zonas que a folha útil é sempre <strong>mais pequena</strong> do que a folha comprada, e
+          é por isso que existem os formatos <a href="/artigos/formatos-de-papel-a-b-c-sra/">SRA</a>: um SRA3
+          (320×450 mm) existe precisamente para se imprimir um A3 <strong>com sangria e pinça</strong>.
+        </p>
+
+        <h2>Tira-retira: normal e cambalhota</h2>
+        <p>
+          No <strong>tira-retira</strong> imprime-se a frente e o verso com a <strong>mesma chapa</strong>, virando a
+          folha. A folha funciona como <strong>duas metades</strong> e, por isso, nenhuma peça pode atravessar o eixo
+          central. A ferramenta encaixa por metade e multiplica por dois.
+        </p>
+        <ul>
+          <li><strong>Normal:</strong> vira-se a folha da esquerda para a direita. A pinça <strong>mantém-se</strong> e as duas metades ficam lado a lado, com a cruzeta ao meio.</li>
+          <li><strong>Cambalhota:</strong> vira-se de cabeça para baixo. A pinça <strong>troca de ponta</strong>, por isso é preciso deixar pinça <strong>nos dois lados</strong>.</li>
+        </ul>
+
+        <h2>E o sentido da fibra?</h2>
+        <p>
+          Se o produto vai ser <strong>dobrado ou encadernado</strong>, a fibra do papel tem de correr na direção
+          certa, e isso pode impedir-te de rodar as peças 90° para aproveitar melhor a folha. É por isso que a
+          ferramenta tem a opção <strong>"manter o sentido da fibra"</strong>: desliga a rotação e mostra-te o
+          aproveitamento real, que costuma ser mais baixo. Vale a pena perceber o
+          <a href="/artigos/sentido-da-fibra-do-papel/">sentido da fibra</a> antes de decidir.
+        </p>
+
+        <div class="nota">
+          <strong>Nota honesta:</strong> este é um cálculo <strong>geométrico</strong>. Falta somar a
+          <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">sangria (bleed)</a> a cada peça, e a tua
+          gráfica pode ter restrições de máquina que mudem o resultado. Usa isto para orçamentar e comparar
+          hipóteses, não como plano de corte definitivo.
+        </div>
+
+        <h2>Saber mais</h2>
+        <ul>
+          <li><a href="/artigos/formatos-de-papel-a-b-c-sra/">Formatos de papel: série A, B, C e SRA</a>.</li>
+          <li><a href="/artigos/quanto-custa-imprimir-fatores-preco/">Quanto custa imprimir</a>, e o peso do aproveitamento no preço.</li>
+          <li><a href="/artigos/sustentabilidade-na-impressao/">Sustentabilidade na impressão</a>, menos aparas é menos custo e menos impacto.</li>
+        </ul>
+      </div>
     </div>
   </div>
 
