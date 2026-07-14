@@ -174,6 +174,10 @@
   var rafPending = false;
   var bc = $("brushCursor"), hovering = false, bcTimer = null;
   var shaping = false, shapeStart = { x: 0, y: 0 }, shapeEnd = { x: 0, y: 0 }, shapeType = "rect";
+  var finish = "uv";                 // "uv" | "glitter" | "silver" | "gold"
+  var glitterColor = "#C0392B";
+  var glit = null;                   // padrão de pontinhos do glitter (offscreen)
+  var polyPoints = [];               // vértices do polígono em construção
 
   function sizeCanvases() {
     var r = stage.getBoundingClientRect();
@@ -186,6 +190,7 @@
     W = newW; H = newH;
     view.width = W; view.height = H; mask.width = W; mask.height = H;
     if (keep && mctx) mctx.drawImage(keep, 0, 0, W, H);
+    buildGlitter();   // o padrão de pó depende do tamanho do palco
     render();
   }
 
@@ -239,29 +244,115 @@
   // 2) uma faixa especular (gradiente branco) cuja posição segue o cursor,
   // 3) recorte de TUDO à máscara com destination-in, para o brilho só aparecer
   //    onde há verniz. Fora da máscara o papel fica mate.
-  function drawGloss() {
-    if (!ctx) return;
-    ctx.clearRect(0, 0, W, H);
-    ctx.globalCompositeOperation = "source-over";
-    // 1) coating ténue uniforme
-    ctx.fillStyle = "rgba(255,255,255,0.05)";
-    ctx.fillRect(0, 0, W, H);
-    // 2) faixa especular diagonal, deslocada pela posição do rato
+  function hexToRgb(h) {
+    h = (h || "#000").replace("#", "");
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    return { r: parseInt(h.slice(0, 2), 16), g: parseInt(h.slice(2, 4), 16), b: parseInt(h.slice(4, 6), 16) };
+  }
+  function clamp255(v) { return Math.max(0, Math.min(255, Math.round(v))); }
+
+  // faixa especular: gradiente branco cuja posição segue o cursor (o "reflexo")
+  function specular(forca) {
     var diag = Math.max(W, H);
-    var ox = (mx - W / 2) * 0.6, oy = (my - H / 2) * 0.6; // deslocamento do reflexo
+    var ox = (mx - W / 2) * 0.6, oy = (my - H / 2) * 0.6;
     var gx = W / 2 + ox, gy = H / 2 + oy;
     var g = ctx.createLinearGradient(gx - diag * 0.45, gy - diag * 0.45, gx + diag * 0.45, gy + diag * 0.45);
     g.addColorStop(0.0, "rgba(255,255,255,0)");
     g.addColorStop(0.45, "rgba(255,255,255,0)");
-    g.addColorStop(0.5, "rgba(255,255,255,0.6)");
+    g.addColorStop(0.5, "rgba(255,255,255," + forca + ")");
     g.addColorStop(0.55, "rgba(255,255,255,0)");
     g.addColorStop(1.0, "rgba(255,255,255,0)");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
-    // 3) recorta à forma do verniz
-    ctx.globalCompositeOperation = "destination-in";
+  }
+
+  // padrão estático de pontinhos (o "pó" do glitter), gerado uma vez por cor/tamanho
+  function buildGlitter() {
+    glit = null;
+    if (finish !== "glitter" || !W || !H) return;
+    var c = document.createElement("canvas"); c.width = W; c.height = H;
+    var g = c.getContext("2d"); if (!g) return;
+    var rgb = hexToRgb(glitterColor);
+    var n = Math.round((W * H) / 200);
+    for (var i = 0; i < n; i++) {
+      var x = Math.random() * W, y = Math.random() * H, r = (0.6 + Math.random() * 1.6) * dpr;
+      var t = Math.random(), col;
+      if (t < 0.14) col = "rgba(255,255,255," + (0.5 + Math.random() * 0.5) + ")";        // faísca
+      else if (t < 0.26) col = "rgba(0,0,0,0.28)";                                         // sombra do grão
+      else {
+        var f = 0.55 + Math.random() * 0.75;
+        col = "rgba(" + clamp255(rgb.r * f) + "," + clamp255(rgb.g * f) + "," + clamp255(rgb.b * f) + "," + (0.6 + Math.random() * 0.4) + ")";
+      }
+      g.fillStyle = col; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill();
+    }
+    glit = c;
+  }
+
+  // Desenha o acabamento escolhido, sempre recortado à máscara (destination-in).
+  // UV = transparente (só reflexo, deixa ver o grafismo). Glitter/prata/ouro = opacos (tapam).
+  function drawEffect() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "source-over";
+    if (finish === "uv") {
+      ctx.fillStyle = "rgba(255,255,255,0.05)";      // camada de verniz "acordada"
+      ctx.fillRect(0, 0, W, H);
+      specular(0.6);
+    } else if (finish === "glitter") {
+      var rgb = hexToRgb(glitterColor);
+      ctx.fillStyle = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.85)";  // base de cor (opaca)
+      ctx.fillRect(0, 0, W, H);
+      if (glit) ctx.drawImage(glit, 0, 0);           // os pontinhos de pó
+      specular(0.35);
+    } else {                                          // prata / ouro estampados (foil opaco)
+      var pal = (finish === "gold")
+        ? ["#6E4E12", "#F6DD8E", "#CAA24A", "#FFF6D8", "#9C7A2A"]
+        : ["#5F6672", "#E7EBF0", "#AAB0BB", "#FFFFFF", "#7C828E"];
+      var g2 = ctx.createLinearGradient(0, 0, W * 0.25, H);
+      g2.addColorStop(0, pal[0]); g2.addColorStop(0.3, pal[1]); g2.addColorStop(0.5, pal[2]);
+      g2.addColorStop(0.72, pal[3]); g2.addColorStop(1, pal[4]);
+      ctx.fillStyle = g2; ctx.fillRect(0, 0, W, H);
+      specular(0.7);
+    }
+    ctx.globalCompositeOperation = "destination-in";  // só onde há acabamento aplicado
     ctx.drawImage(mask, 0, 0);
     ctx.globalCompositeOperation = "source-over";
+  }
+
+  // ---- Polígono: clicar pontos e fechar para encher ----
+  function polyPath(c, comCursor) {
+    if (!polyPoints.length) return;
+    c.beginPath();
+    c.moveTo(polyPoints[0].x, polyPoints[0].y);
+    for (var i = 1; i < polyPoints.length; i++) c.lineTo(polyPoints[i].x, polyPoints[i].y);
+    if (comCursor) c.lineTo(mx, my);
+    c.closePath();
+  }
+  function drawPolyPreview() {
+    if (!ctx || !polyPoints.length) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.drawImage(mask, 0, 0);
+    ctx.fillStyle = "#fff"; polyPath(ctx, true); ctx.fill();
+    ctx.globalCompositeOperation = "source-in";
+    ctx.fillStyle = "rgba(34,211,238,0.5)"; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = "source-over";
+    // contorno e vértices por cima (guia de desenho)
+    ctx.strokeStyle = "rgba(21,50,59,0.85)"; ctx.lineWidth = 1.5 * dpr;
+    ctx.beginPath(); ctx.moveTo(polyPoints[0].x, polyPoints[0].y);
+    for (var i = 1; i < polyPoints.length; i++) ctx.lineTo(polyPoints[i].x, polyPoints[i].y);
+    ctx.lineTo(mx, my); ctx.stroke();
+    for (var j = 0; j < polyPoints.length; j++) {
+      ctx.beginPath(); ctx.arc(polyPoints[j].x, polyPoints[j].y, (j === 0 ? 5 : 3) * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = (j === 0 ? "#22D3EE" : "#15323B"); ctx.fill();   // 1.º ponto destacado = alvo para fechar
+    }
+  }
+  function commitPoly() {
+    if (polyPoints.length >= 3 && mctx) {
+      mctx.globalCompositeOperation = "source-over";
+      mctx.fillStyle = "#fff"; polyPath(mctx, false); mctx.fill();
+    }
+    polyPoints = [];
   }
 
   // ---- Formas (retângulo / círculo): área precisa, sem ser à mão livre ----
@@ -311,7 +402,8 @@
   function render() {
     if (painting && (tool === "verniz" || tool === "apagador")) drawPreview();
     else if (shaping) drawShapePreview();
-    else drawGloss();
+    else if (tool === "poly" && polyPoints.length) drawPolyPreview();
+    else drawEffect();
   }
   function scheduleRender() {
     if (rafPending) return;
@@ -324,18 +416,27 @@
     var p = pos(e); mx = p.x; my = p.y; hovering = true;
     if (tool === "verniz" || tool === "apagador") {
       painting = true; lastX = p.x; lastY = p.y; stroke(p.x, p.y); updateBrushCursor(p.cx, p.cy);
+      try { stage.setPointerCapture(e.pointerId); } catch (_) {}
     } else if (tool === "rect" || tool === "circ") {
       shaping = true; shapeType = tool; shapeStart = { x: p.x, y: p.y }; shapeEnd = { x: p.x, y: p.y };
+      try { stage.setPointerCapture(e.pointerId); } catch (_) {}
+    } else if (tool === "poly") {
+      // fecha se clicar no 1.º ponto; senão acrescenta vértice
+      if (polyPoints.length >= 3 && Math.hypot(p.x - polyPoints[0].x, p.y - polyPoints[0].y) < 14 * dpr) commitPoly();
+      else polyPoints.push({ x: p.x, y: p.y });
     }
-    if (tool) { try { stage.setPointerCapture(e.pointerId); } catch (_) {} render(); }
+    if (tool) render();
   });
   stage.addEventListener("pointermove", function (e) {
     var p = pos(e); mx = p.x; my = p.y; hovering = true;
     if (tool === "verniz" || tool === "apagador") updateBrushCursor(p.cx, p.cy); else if (bc) bc.hidden = true;
     if (painting && (tool === "verniz" || tool === "apagador")) { stroke(p.x, p.y); render(); }
     else if (shaping) { shapeEnd = { x: p.x, y: p.y }; render(); }
+    else if (tool === "poly" && polyPoints.length) render();  // linha elástica até ao cursor
     else scheduleRender(); // só atualiza o reflexo
   });
+  stage.addEventListener("dblclick", function () { if (tool === "poly" && polyPoints.length >= 3) { commitPoly(); render(); } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && polyPoints.length) { polyPoints = []; render(); } });
   function endStroke() {
     if (painting) { painting = false; render(); }
     if (shaping) { commitShape(); shaping = false; render(); }
@@ -364,19 +465,22 @@
   // ---- Ferramentas ----
   function setTool(t) {
     tool = t;
+    polyPoints = [];                       // cancela um polígono a meio
     $("brush").classList.toggle("on", t === "verniz");
     $("eraser").classList.toggle("on", t === "apagador");
     $("rect").classList.toggle("on", t === "rect");
     $("circ").classList.toggle("on", t === "circ");
+    $("poly").classList.toggle("on", t === "poly");
     var freehand = (t === "verniz" || t === "apagador");
     stage.style.cursor = freehand ? "none" : (t ? "crosshair" : "default");
     if (!freehand && bc) bc.hidden = true;
     var hints = {
-      verniz: "Modo verniz ativo. Arrasta sobre a imagem para aplicar. Depois passa o rato por cima da zona pintada para ver o brilho.",
+      verniz: "Modo pincel. Arrasta para aplicar o acabamento. Depois passa o rato por cima para ver o reflexo.",
       apagador: "Modo apagador. Arrasta sobre as zonas a remover.",
-      rect: "Modo retângulo. Arrasta para definir a área de verniz.",
-      circ: "Modo círculo. Arrasta para definir a área de verniz.",
-      "": "A ver o brilho. Passa o rato por cima das zonas com verniz para o veres reagir à luz."
+      rect: "Modo retângulo. Arrasta para definir a área.",
+      circ: "Modo círculo. Arrasta para definir a área.",
+      poly: "Modo polígono. Clica para pôr pontos e clica no primeiro ponto (ou duplo-clique) para fechar e encher. Esc cancela.",
+      "": "A ver o resultado. Passa o rato por cima para o reflexo se mover."
     };
     $("modehint").textContent = hints[t || ""];
     render();
@@ -385,9 +489,34 @@
   $("eraser").addEventListener("click", function () { setTool(tool === "apagador" ? null : "apagador"); });
   $("rect").addEventListener("click", function () { setTool(tool === "rect" ? null : "rect"); });
   $("circ").addEventListener("click", function () { setTool(tool === "circ" ? null : "circ"); });
+  $("poly").addEventListener("click", function () { setTool(tool === "poly" ? null : "poly"); });
   $("auto").addEventListener("click", autoFromImage);
   $("fill").addEventListener("click", fillAll);
-  $("clear").addEventListener("click", function () { if (mctx) mctx.clearRect(0, 0, W, H); render(); });
+  $("clear").addEventListener("click", function () { if (mctx) mctx.clearRect(0, 0, W, H); polyPoints = []; render(); });
+
+  // ---- Acabamento (verniz UV / glitter / prata / ouro) ----
+  $("finishes").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    Array.prototype.forEach.call(this.children, function (x) { x.classList.remove("on"); });
+    b.classList.add("on");
+    finish = b.getAttribute("data-finish");
+    $("glitWrap").hidden = (finish !== "glitter");
+    buildGlitter();
+    render();
+  });
+  $("glitWrap").addEventListener("click", function (e) {
+    var s = e.target.closest(".sw"); if (!s) return;
+    glitterColor = s.getAttribute("data-c");
+    $("glitColor").value = glitterColor;
+    Array.prototype.forEach.call(this.querySelectorAll(".sw"), function (x) { x.classList.remove("on"); });
+    s.classList.add("on");
+    buildGlitter(); render();
+  });
+  $("glitColor").addEventListener("input", function () {
+    glitterColor = this.value;
+    Array.prototype.forEach.call($("glitWrap").querySelectorAll(".sw"), function (x) { x.classList.remove("on"); });
+    buildGlitter(); render();
+  });
   $("size").addEventListener("input", function () {
     size = parseInt(this.value, 10) || 22; $("sizeval").textContent = size;
     setBrushCursorSize();
