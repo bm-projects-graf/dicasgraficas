@@ -11,3 +11,8 @@
 // Assim que preencheres este valor e publicares, os "Auto Ads"
 // do Google passam a aparecer automaticamente em todo o site.
 export const ADSENSE_CLIENT = 'ca-pub-4273939150309967';
+
+// ---- Google Analytics 4 ----
+// ID de medição do fluxo de dados (formato "G-XXXXXXXXXX").
+// Enquanto estiver vazio, o Analytics NÃO é carregado.
+export const GA_MEASUREMENT_ID = 'G-8NVSJF2VZ6';
