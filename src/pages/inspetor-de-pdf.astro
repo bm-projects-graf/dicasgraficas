@@ -51,8 +51,19 @@ import Base from '../layouts/Base.astro';
         </p>
         <h3>4. Sangria (bleed)</h3>
         <p>
-          Compara a <strong>TrimBox</strong> (tamanho final de corte) com a <strong>BleedBox</strong> ou a MediaBox.
-          Se não houver pelo menos 3 mm de folga, arriscas <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">filetes brancos no corte</a>.
+          Compara a <strong>TrimBox</strong> (tamanho final de corte) com a <strong>BleedBox</strong> declarada no
+          ficheiro. Só dá luz verde com <strong>3 mm reais</strong> de folga, ter marcas de corte não chega. Sem
+          sangria, arriscas <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/">filetes brancos no corte</a>.
+        </p>
+        <h3>E ainda, nas verificações adicionais</h3>
+        <p>
+          O relatório inclui também: <strong>transparências vivas</strong> (opacidades, máscaras e modos de mistura),
+          presença de <a href="/artigos/sobreimpressao-e-trapping/"><strong>sobreimpressão (overprint)</strong></a>,
+          <a href="/artigos/pantone-vs-cmyk-cores-diretas/"><strong>tintas diretas (spot)</strong></a> com os nomes
+          usados e o alerta da <strong>cor de registo</strong>, o <strong>perfil de saída</strong> declarado
+          (<a href="/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/">PDF/X</a>, ex.: FOGRA39), a
+          <strong>consistência do tamanho das páginas</strong> e <strong>anotações/formulários</strong> que não
+          imprimem.
         </p>
 
         <h2>O ficheiro não sai do teu computador</h2>
@@ -63,10 +74,10 @@ import Base from '../layouts/Base.astro';
         </p>
 
         <div class="nota">
-          <strong>O que isto NÃO faz (honestidade):</strong> não substitui o pré-flight profissional da gráfica. Não
-          verifica <a href="/artigos/sobreimpressao-e-trapping/">sobreimpressão</a>, transparências achatadas,
-          cores diretas mal definidas, limite de tinta nem perfis ICC específicos. É um <strong>indicador</strong>,
-          muito útil, mas não uma garantia.
+          <strong>O que isto NÃO faz (honestidade):</strong> não substitui o pré-flight profissional da gráfica.
+          Deteta a <strong>presença</strong> de transparências, overprint e tintas diretas, mas não avalia se estão
+          <em>bem usadas</em> (ex.: um branco em sobreimpressão), nem cobre trapping, limites de tinta por zona ou a
+          validação completa dos perfis ICC. É um <strong>indicador</strong>, muito útil, mas não uma garantia.
         </div>
 
         <h2>Saber mais</h2>

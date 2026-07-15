@@ -56,11 +56,38 @@
         var descriptors = [], nonEmbedded = {}, embeddedCount = 0;
         // ---------- IMAGENS (cor) ----------
         var imgColor = { rgb: 0, cmyk: 0, gray: 0, lab: 0, spot: 0, other: 0 };
+        // ---------- TRANSPARÊNCIAS / OVERPRINT / CORES DIRETAS ----------
+        var transpWhy = {};          // motivo -> 1 (opacidade, máscara suave, modo de mistura)
+        var overprintFound = false;  // algum ExtGState com OP/op true
+        var spotNames = {};          // nome da tinta direta -> 1
+        var regAll = false;          // usa a cor de registo ("All") — erro clássico
+
+        // descodifica nomes PDF com escapes hex (#20 = espaço, etc.)
+        function decodeName(n) {
+          return String(n || "").replace(/#([0-9A-Fa-f]{2})/g, function (_, h) { return String.fromCharCode(parseInt(h, 16)); });
+        }
+        function collectSpot(arr) {
+          var head = nm(arr.get(0));
+          if (head === "Separation") {
+            var s = decodeName(nm(arr.get(1)));
+            if (s === "All") regAll = true; else if (s && s !== "None") spotNames[s] = 1;
+          } else if (head === "DeviceN") {
+            var lista = resolve(arr.get(1));
+            if (lista instanceof PDFArray) lista.asArray().forEach(function (x) {
+              var s2 = decodeName(nm(x));
+              if (s2 === "All") regAll = true;
+              else if (s2 && s2 !== "None" && s2 !== "Cyan" && s2 !== "Magenta" && s2 !== "Yellow" && s2 !== "Black") spotNames[s2] = 1;
+            });
+          }
+        }
 
         var allObjs = ctx.enumerateIndirectObjects(); // [[ref, obj], ...]
         allObjs.forEach(function (pair) {
           var obj = pair[1];
-          var dict = (obj && obj.dict) ? obj.dict : obj; // streams têm .dict
+          if (obj instanceof PDFArray) { try { collectSpot(obj); } catch (e) {} return; }
+          // CUIDADO: um PDFDict simples também tem uma propriedade interna .dict (um Map).
+          // Só os streams têm .dict como PDFDict verdadeiro — testar o tipo, não a existência.
+          var dict = (obj instanceof PDFDict) ? obj : ((obj && obj.dict instanceof PDFDict) ? obj.dict : null);
           if (!dict || !(dict instanceof PDFDict)) return;
           var type = nm(dict.get(PDFName.of("Type")));
           var subtype = nm(dict.get(PDFName.of("Subtype")));
@@ -81,6 +108,20 @@
             if (dict.get(PDFName.of("ImageMask"))) return; // máscaras 1-bit não contam
             var kind = classifyCS(dict.get(PDFName.of("ColorSpace")));
             if (imgColor[kind] != null) imgColor[kind]++; else imgColor.other++;
+            if (dict.get(PDFName.of("SMask"))) transpWhy["imagens com máscara (alpha)"] = 1;
+            // colorspace Separation numa imagem também conta como tinta direta
+            var csArr = resolve(dict.get(PDFName.of("ColorSpace")));
+            if (csArr instanceof PDFArray) { try { collectSpot(csArr); } catch (e) {} }
+          } else if (type === "ExtGState" || dict.get(PDFName.of("BM")) || dict.get(PDFName.of("OP")) || dict.get(PDFName.of("ca")) !== undefined) {
+            // estado gráfico: opacidade, modos de mistura, sobreimpressão
+            var ca = num(dict.get(PDFName.of("ca"))), CA = num(dict.get(PDFName.of("CA")));
+            if ((ca !== null && ca < 1) || (CA !== null && CA < 1)) transpWhy["opacidade < 100%"] = 1;
+            var sm = dict.get(PDFName.of("SMask"));
+            if (sm && nm(sm) !== "None") transpWhy["máscara suave (soft mask)"] = 1;
+            var bm = nm(dict.get(PDFName.of("BM")));
+            if (bm && bm !== "Normal" && bm !== "Compatible") transpWhy["modo de mistura (" + bm + ")"] = 1;
+            var OP = dict.get(PDFName.of("OP")), op = dict.get(PDFName.of("op"));
+            if ((OP && OP.toString() === "true") || (op && op.toString() === "true")) overprintFound = true;
           }
         });
 
@@ -146,27 +187,68 @@
         doc.getPages().forEach(function (p) { try { walkResFonts(p.node.Resources && p.node.Resources(), 0, {}); } catch (e) {} });
 
         // ---------- BOXES (sangria) por página ----------
+        // IMPORTANTE: só a BleedBox conta. Comparar TrimBox com a MediaBox dava
+        // falsos OK: um PDF exportado COM marcas de corte mas SEM bleed tem a
+        // MediaBox maior que a TrimBox (por causa das marcas), sem bleed nenhum.
         var pages = doc.getPages();
-        var sangrias = []; // mm mínimos por página (null = sem trimbox)
+        var sangrias = [];        // mm mínimos por página (só onde há BleedBox)
         var anyTrim = false;
+        var semBleedBox = 0;      // páginas com TrimBox mas sem BleedBox declarada
+        var pageSizes = {};       // "210x297" -> nº de páginas (tamanho final, mm)
+        var annotCount = 0;       // anotações que não imprimem (exclui links)
         pages.forEach(function (p) {
           var leaf = p.node;
           var media = boxNums(leaf.MediaBox && leaf.MediaBox());
-          var crop = boxNums(leaf.CropBox && leaf.CropBox());
           var trim = boxNums(leaf.TrimBox && leaf.TrimBox());
           var bleed = boxNums(leaf.BleedBox && leaf.BleedBox());
-          var finalBox = trim || null;
-          var outer = bleed || media || crop;
-          if (!finalBox) { sangrias.push(null); return; }
+
+          // tamanho final da página (mm, arredondado)
+          var ref = trim || media;
+          if (ref) {
+            var key = Math.round(ptToMm(ref.w)) + "×" + Math.round(ptToMm(ref.h));
+            pageSizes[key] = (pageSizes[key] || 0) + 1;
+          }
+
+          // anotações (comentários, campos de formulário) — não saem na máquina
+          try {
+            var annots = resolve(leaf.get(PDFName.of("Annots")));
+            if (annots instanceof PDFArray) annots.asArray().forEach(function (a) {
+              var ad = resolve(a);
+              if (ad && ad instanceof PDFDict && nm(ad.get(PDFName.of("Subtype"))) !== "Link") annotCount++;
+            });
+          } catch (e) {}
+
+          if (!trim) return;
           anyTrim = true;
-          if (!outer) { sangrias.push(0); return; }
-          var left = finalBox.x - outer.x;
-          var bottom = finalBox.y - outer.y;
-          var right = (outer.x + outer.w) - (finalBox.x + finalBox.w);
-          var top = (outer.y + outer.h) - (finalBox.y + finalBox.h);
-          var minMargin = Math.min(left, bottom, right, top);
-          sangrias.push(ptToMm(minMargin));
+          if (!bleed) { semBleedBox++; return; }
+          var left = trim.x - bleed.x;
+          var bottom = trim.y - bleed.y;
+          var right = (bleed.x + bleed.w) - (trim.x + trim.w);
+          var top = (bleed.y + bleed.h) - (trim.y + trim.h);
+          sangrias.push(ptToMm(Math.min(left, bottom, right, top)));
         });
+
+        // ---------- OUTPUT INTENT / PDF-X / TRAPPED ----------
+        var outputIntentId = null, isPdfX = false, trapped = null;
+        try {
+          var ois = resolve(doc.catalog.get(PDFName.of("OutputIntents")));
+          if (ois instanceof PDFArray && ois.size() > 0) {
+            var oi = resolve(ois.get(0));
+            if (oi instanceof PDFDict) {
+              var sType = nm(oi.get(PDFName.of("S")));
+              if (sType && sType.indexOf("GTS_PDFX") === 0) isPdfX = true;
+              var oci = resolve(oi.get(PDFName.of("OutputConditionIdentifier")));
+              outputIntentId = oci && oci.decodeText ? oci.decodeText() : (oci && oci.asString ? oci.asString().replace(/^\(|\)$/g, "") : null);
+            }
+          }
+        } catch (e) {}
+        try {
+          var info = ctx.trailerInfo && ctx.trailerInfo.Info ? resolve(ctx.trailerInfo.Info) : null;
+          if (info && info instanceof PDFDict) {
+            var tr = nm(info.get(PDFName.of("Trapped")));
+            if (tr) trapped = tr; // "True" | "False" | "Unknown"
+          }
+        } catch (e) {}
 
         // ---------- PPI (interpretador do content stream) ----------
         var ppiState = { min: Infinity, placed: 0, low: 0 };
@@ -325,19 +407,42 @@
           noFonts: (descriptors.length === 0 && nonEmbList.length === 0)
         };
 
-        // Sangria
-        var withTrim = sangrias.filter(function (x) { return x != null; });
+        // Sangria — OK só quando há BleedBox declarada com ≥3 mm em todas as páginas
         if (!anyTrim) {
-          report.sangria = { status: "aviso", hasTrim: false, minMM: null };
+          report.sangria = { status: "aviso", hasTrim: false, hasBleedBox: false, minMM: null };
+        } else if (semBleedBox > 0 || sangrias.length === 0) {
+          report.sangria = { status: "aviso", hasTrim: true, hasBleedBox: false, minMM: null };
         } else {
-          var minMM = Math.min.apply(null, withTrim);
-          var sst = minMM >= 2.9 ? "ok" : (minMM > 0.1 ? "aviso" : "aviso");
-          report.sangria = { status: sst, hasTrim: true, minMM: Math.round(minMM * 10) / 10 };
+          var minMM = Math.min.apply(null, sangrias);
+          report.sangria = { status: minMM >= 2.9 ? "ok" : "aviso", hasTrim: true, hasBleedBox: true, minMM: Math.round(minMM * 10) / 10 };
         }
 
-        var order = { ok: 0, aviso: 1, erro: 2 };
-        report.overall = [report.cor.status, report.resolucao.status, report.fontes.status, report.sangria.status]
-          .reduce(function (acc, s) { return order[s] > order[acc] ? s : acc; }, "ok");
+        // Transparências (informativo: bem geridas em PDF/X-4, risco em fluxos antigos)
+        var motivos = Object.keys(transpWhy);
+        report.transparencias = { status: motivos.length ? "info" : "ok", present: motivos.length > 0, motivos: motivos };
+
+        // Sobreimpressão (informativo: presença de estados com overprint ligado)
+        report.overprint = { status: overprintFound ? "info" : "ok", present: overprintFound, trapped: trapped };
+
+        // Cores diretas (spot) + cor de registo
+        var spotList = Object.keys(spotNames);
+        report.spot = { status: regAll ? "aviso" : (spotList.length ? "info" : "ok"), names: spotList, regAll: regAll };
+
+        // Output intent / PDF-X
+        report.outputIntent = { status: outputIntentId ? "ok" : "info", id: outputIntentId, pdfx: isPdfX };
+
+        // Páginas: tamanho final e consistência
+        var sizeKeys = Object.keys(pageSizes);
+        report.paginas = { status: sizeKeys.length > 1 ? "aviso" : "ok", sizes: sizeKeys, inconsistent: sizeKeys.length > 1 };
+
+        // Anotações / campos de formulário (não imprimem)
+        report.anotacoes = { status: annotCount > 0 ? "aviso" : "ok", count: annotCount };
+
+        var order = { ok: 0, info: 0, aviso: 1, erro: 2 };
+        report.overall = [
+          report.cor.status, report.resolucao.status, report.fontes.status, report.sangria.status,
+          report.spot.status, report.paginas.status, report.anotacoes.status
+        ].reduce(function (acc, s) { return order[s] > order[acc] ? s : acc; }, "ok");
         return report;
       });
   }

@@ -43,6 +43,7 @@
   .sec.ok { border-left-color:var(--ok-bd); }
   .sec.aviso { border-left-color:var(--av-bd); }
   .sec.erro { border-left-color:var(--er-bd); }
+  .sec.info { border-left-color:#3B82F6; }
   .sec h3 { display:flex; align-items:center; gap:0.5rem; font-size:1rem; margin:0 0 0.3rem; }
   .sec h3 .st { font-size:1.15rem; }
   .sec p { margin:0.25rem 0 0; font-size:0.92rem; }
@@ -90,7 +91,7 @@
   </div>
 
   <div class="disc">
-    <strong>Como ler este relatório.</strong> Esta análise corre inteiramente no teu navegador (o PDF não é enviado para nenhum servidor) e serve como <strong>indicador pedagógico</strong>. Não substitui o preflight profissional da gráfica: não cobre overprint, transparências achatadas, cores diretas mal definidas nem perfis ICC específicos. Em caso de dúvida, pede sempre uma <strong>prova</strong>.
+    <strong>Como ler este relatório.</strong> Esta análise corre inteiramente no teu navegador (o PDF não é enviado para nenhum servidor) e serve como <strong>indicador pedagógico</strong>. Deteta a <strong>presença</strong> de transparências, sobreimpressão e tintas diretas, mas não avalia se estão bem usadas (ex.: um branco em overprint), nem cobre trapping, limites de tinta por zona ou perfis ICC específicos. Não substitui o preflight profissional da gráfica. Em caso de dúvida, pede sempre uma <strong>prova</strong>.
   </div>
 
   <footer><a href="https://dicasgraficas.com" target="_blank" rel="noopener">dicasgraficas.com</a> · um projeto da Onda Grafe</footer>
@@ -105,7 +106,7 @@
   var $ = function (id) { return document.getElementById(id); };
   function postHeight() { if (window.parent === window) return; try { parent.postMessage({ type: "mixer-height", height: document.documentElement.scrollHeight }, "*"); } catch (e) {} }
   function fmtSize(b) { return b < 1048576 ? (b / 1024).toFixed(0) + " KB" : (b / 1048576).toFixed(1) + " MB"; }
-  var ICON = { ok: "🟢", aviso: "🟡", erro: "🔴" };
+  var ICON = { ok: "🟢", aviso: "🟡", erro: "🔴", info: "🔵" };
 
   var drop = $("drop"), file = $("file"), prog = $("prog"), out = $("out");
 
@@ -171,15 +172,50 @@
     else ftBody = "Há fontes <strong>não incorporadas</strong>: " + ft.nonEmbedded.map(escapeHtml).join(", ") + ". Incorpora-as ou <strong>converte o texto em curvas</strong> no teu software de paginação.";
     html += sec(ft.status, "Fontes", ftBody, ftMeta);
 
-    // Sangria
-    var sg = r.sangria, sgBody, sgMeta = sg.hasTrim ? ("sangria mínima ~" + sg.minMM + " mm") : "sem TrimBox";
+    // Sangria — OK só com BleedBox declarada ≥3 mm
+    var sg = r.sangria, sgBody, sgMeta = sg.minMM != null ? ("sangria mínima ~" + sg.minMM + " mm") : (sg.hasTrim ? "sem BleedBox" : "sem TrimBox");
     if (!sg.hasTrim) sgBody = "O PDF <strong>não define a TrimBox</strong> (tamanho final de corte), típico de exports simples. Exporta com <strong>marcas de corte e 3 mm de sangria</strong> para a gráfica saber onde cortar.";
+    else if (!sg.hasBleedBox) sgBody = "O PDF tem TrimBox mas <strong>não declara BleedBox</strong>, o que quase sempre significa que foi exportado <strong>sem sangria</strong> (mesmo que tenha marcas de corte). Ativa os <strong>3 mm de bleed</strong> na exportação.";
     else if (sg.status === "ok") sgBody = "Sangria de <strong>~" + sg.minMM + " mm</strong> em todos os lados. ✓";
     else if (sg.minMM <= 0.1) sgBody = "<strong>Sem sangria</strong>, a arte termina na linha de corte. Adiciona <strong>3 mm</strong> para evitar filetes brancos no corte.";
     else sgBody = "Sangria <strong>insuficiente (~" + sg.minMM + " mm)</strong>. Usa pelo menos <strong>3 mm</strong> para absorver a tolerância da guilhotina.";
     html += sec(sg.status, "Sangria (bleed)", sgBody, sgMeta);
 
-    html += '<p style="font-size:0.8rem;color:var(--texto2);margin-top:0.6rem;">Quer perceber cada ponto? Lê os guias de <a href="/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/" target="_blank" rel="noopener">CMYK vs RGB</a>, <a href="/artigos/resolucao-para-impressao-dpi/" target="_blank" rel="noopener">resolução/DPI</a> e <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/" target="_blank" rel="noopener">bleed</a>.</p>';
+    // ---- Verificações adicionais ----
+    html += '<h2 style="font-size:1rem;margin:1.4rem 0 0.7rem;">Verificações adicionais</h2>';
+
+    // Tamanho das páginas
+    var pg = r.paginas;
+    if (pg.inconsistent) html += sec("aviso", "Tamanho das páginas", "As páginas <strong>não têm todas o mesmo tamanho</strong> (" + pg.sizes.map(escapeHtml).join(", ") + " mm). Confirma se é intencional (capas ou desdobráveis) ou um erro de montagem.", pg.sizes.length + " tamanhos");
+    else html += sec("ok", "Tamanho das páginas", "Todas as páginas têm o mesmo tamanho final: <strong>" + escapeHtml(pg.sizes[0] || "?") + " mm</strong>.", null);
+
+    // Cores diretas / registo
+    var sp = r.spot;
+    if (sp.regAll) html += sec("aviso", "Cores diretas (spot)", "O ficheiro usa a <strong>cor de registo</strong> (\"Registration\"/All), que imprime em <strong>todas as chapas ao mesmo tempo</strong> (400% de tinta). É um erro clássico: troca por <strong>preto puro</strong> ou <strong>preto rico</strong>." + (sp.names.length ? " Tintas diretas: " + sp.names.map(escapeHtml).join(", ") + "." : ""), null);
+    else if (sp.names.length) html += sec("info", "Cores diretas (spot)", "O ficheiro usa <strong>" + sp.names.length + (sp.names.length === 1 ? " tinta direta" : " tintas diretas") + "</strong>: <strong>" + sp.names.map(escapeHtml).join(", ") + "</strong>. Confirma com a gráfica se vão ser impressas como Pantone ou convertidas para CMYK, e vê se não há duplicadas (ex.: \"PANTONE 485 C\" e \"Pantone 485\").", null);
+    else html += sec("ok", "Cores diretas (spot)", "Sem tintas diretas: o trabalho é só CMYK/escala de cinza.", null);
+
+    // Transparências
+    var tp = r.transparencias;
+    if (tp.present) html += sec("info", "Transparências", "O ficheiro tem <strong>transparências vivas</strong> (" + tp.motivos.map(escapeHtml).join("; ") + "). Em <strong>PDF/X-4</strong> é o normal e o RIP trata delas; em fluxos antigos (X-1a) têm de ser achatadas, e sobreposições complexas podem criar linhas finas nas juntas.", null);
+    else html += sec("ok", "Transparências", "Sem transparências vivas (ou já achatadas na exportação).", null);
+
+    // Sobreimpressão
+    var op = r.overprint;
+    if (op.present) html += sec("info", "Sobreimpressão (overprint)", "O ficheiro tem elementos com <strong>overprint ligado</strong>. É normal (e desejável) no preto de texto, mas confirma que <strong>nenhum elemento branco</strong> está em sobreimpressão, senão desaparece na máquina. Vê o efeito no simulador de sobreimpressão.", op.trapped ? ("Trapped: " + escapeHtml(op.trapped)) : null);
+    else html += sec("ok", "Sobreimpressão (overprint)", "Sem estados de sobreimpressão declarados." + (op.trapped ? "" : " (O trapping é normalmente aplicado pelo RIP da gráfica.)"), op.trapped ? ("Trapped: " + escapeHtml(op.trapped)) : null);
+
+    // Output intent / PDF-X
+    var oi2 = r.outputIntent;
+    if (oi2.id) html += sec("ok", "Perfil de saída (output intent)", "O ficheiro declara a condição de impressão: <strong>" + escapeHtml(oi2.id) + "</strong>" + (oi2.pdfx ? ", em norma <strong>PDF/X</strong>. ✓" : "."), null);
+    else html += sec("info", "Perfil de saída (output intent)", "O PDF <strong>não declara um perfil de saída</strong> (ex.: FOGRA39). Não é grave, mas exportar em <strong>PDF/X</strong> com o perfil da gráfica torna a cor mais previsível.", null);
+
+    // Anotações
+    var an = r.anotacoes;
+    if (an.count > 0) html += sec("aviso", "Anotações e formulários", "O ficheiro tem <strong>" + an.count + (an.count === 1 ? " anotação" : " anotações") + "</strong> (comentários, campos de formulário ou afins) que <strong>não imprimem</strong> ou podem imprimir de forma imprevisível. Achata ou remove antes de enviar.", null);
+    else html += sec("ok", "Anotações e formulários", "Sem comentários nem campos de formulário. ✓", null);
+
+    html += '<p style="font-size:0.8rem;color:var(--texto2);margin-top:0.6rem;">Quer perceber cada ponto? Lê os guias de <a href="/artigos/cmyk-ou-rgb-qual-usar-quando-vais-imprimir/" target="_blank" rel="noopener">CMYK vs RGB</a>, <a href="/artigos/bleed-margem-de-seguranca-linha-de-corte/" target="_blank" rel="noopener">bleed</a>, <a href="/artigos/sobreimpressao-e-trapping/" target="_blank" rel="noopener">sobreimpressão e trapping</a>, <a href="/artigos/pantone-vs-cmyk-cores-diretas/" target="_blank" rel="noopener">cores diretas</a> e <a href="/artigos/pdf-x-1a-vs-x-4-normas-de-impressao/" target="_blank" rel="noopener">PDF/X</a>.</p>';
     html += againBtn();
     out.innerHTML = html; out.classList.add("show"); bindAgain(); postHeight();
   }
